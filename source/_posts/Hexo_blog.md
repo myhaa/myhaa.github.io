@@ -62,9 +62,9 @@ title: HEXO创建个人博客
 
 ### （1）如图操作
 
-![第一步](images/create1.png)
+![图1](/Hexo_blog/create1.png)
 
-![第二步](images/create2.png)
+![图2](/Hexo_blog/create2.png)
 
 ### （2）注意事项
 
@@ -74,9 +74,9 @@ title: HEXO创建个人博客
 
 ### （1）如图操作
 
-![第三步](images/create3.png)
+![图3](/Hexo_blog/create3.png)
 
-![第四步](images/create4.png)
+![图4](/Hexo_blog/create4.png)
 
 # 三、写博客并发布到GitHub
 
@@ -129,7 +129,7 @@ ctrl c
 
 2. 如图
 
-![第五步](images/create5.png)
+![图5](/Hexo_blog/create5.png)
 
 3. 注意：修改图中标红的地方就OK，换成你自己的name
 
@@ -189,6 +189,17 @@ hexo d
    npm install https://github.com/CodeFalling/hexo-asset-image --save
    ```
 
-   
+
+2. 修改`_config_yml`配置
+
+   ```shell
+   post_asset_folder: true  # 将false改为true
+   ```
+
+3. 在`./source/_posts`中新建一个md文件时，同时创建一个与md文件同名的文件夹，该文件夹用来存放该md文件所需图片
+4. 接着在md文件中以`![](/md文件名/1.png)`的格式插入图片
+5. 详细教程请见[ETRD博客](http://etrd.org/2017/01/23/hexo中完美插入本地图片/)
+
+
 
 [回到顶部](#一、`Hexo`介绍)
