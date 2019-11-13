@@ -222,6 +222,8 @@ hexo d
 
 4. [参考链接](<https://www.jibing57.com/2017/10/30/how-to-use-post-link-on-hexo/>)
 
+## 5、更换主题
+
 
 
 [回到顶部](#一、`Hexo`介绍)
