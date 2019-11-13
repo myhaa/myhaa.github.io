@@ -113,7 +113,7 @@ ctrl c
 
 ### （1）如何配置连接
 
-1. 详情请见另一篇文章：[Git](Git.md)
+1. 详情请见另一篇文章：{% post_link Git Git %}
 
 ### （2）修改配置
 
@@ -140,7 +140,7 @@ git config --global user.name "your github name"
 git config --global user.email "your github private email"
 ```
 
-​	**注意：**`your github private email`怎么配置请看[Git](Git.md)
+​	**注意：**`your github private email`怎么配置请看{% post_link Git Git %}
 
 ### （4）发布到GitHub
 
@@ -199,6 +199,28 @@ hexo d
 3. 在`./source/_posts`中新建一个md文件时，同时创建一个与md文件同名的文件夹，该文件夹用来存放该md文件所需图片
 4. 接着在md文件中以`![](/md文件名/1.png)`的格式插入图片
 5. 详细教程请见[ETRD博客](http://etrd.org/2017/01/23/hexo中完美插入本地图片/)
+
+### （3）插入markdown
+
+1. Hexo的[标签插件](<https://hexo.io/zh-cn/docs/tag-plugins.html>)
+
+2. 引用站内文章
+
+   ```shell
+   {% post_path filename %}
+   {% post_link filename [title] [escape] %}
+   {% post_link hexo-3-8-released %} # 链接使用文章的标题
+   ```
+
+3. 在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。
+
+   例如，在文章中使用 `{% post_link how-to-bake-a-cake %}` 时，只需有一个名为 `how-to-bake-a-cake.md` 的文章文件即可。即使这个文件位于站点文件夹的 `source/posts/2015-02-my-family-holiday` 目录下、或者文章的永久链接是 `2018/en/how-to-bake-a-cake`，都没有影响。
+
+   默认链接文字是文章的标题，你也可以自定义要显示的文本。此时不应该使用 Markdown 语法 `[]()`。
+
+   默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用`escape`选项，禁止对特殊字符进行转义。
+
+4. [参考链接](<https://www.jibing57.com/2017/10/30/how-to-use-post-link-on-hexo/>)
 
 
 
