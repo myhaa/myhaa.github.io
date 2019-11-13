@@ -101,26 +101,12 @@ deploy:
   name: myhaa
   email: 32893249+myhaa@users.noreply.github.com
 
-# menu
-menu:
-  Index:
-    url: /
-    icon: fas fa-home
-  Tags:
-    url: /tags
-    icon: fas fa-tags
-  Categories:
-    url: /categories
-    icon: fas fa-bookmark
-  Archives:
-    url: /archives
-    icon: fas fa-archive
-  About:
-    url: /about
-    icon: fas fa-user-circle
-  Friends:
-    url: /friends
-    icon: fas fa-address-book
+# code
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
 
 # search
 search:
@@ -132,13 +118,6 @@ permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
 
-# wordCount
-wordCount:
-  enable: true # 将这个值设置为 true 即可.
-  postWordCount: true
-  min2read: true
-  totalCount: true
-
 # rss
 feed:
   type: atom
@@ -149,9 +128,3 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'tomorrow'
-  line_number: false    # default false
-  custom_css:
