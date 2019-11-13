@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Myhaa的个人博客
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: Myhaa
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://myhaa.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -44,7 +44,7 @@ post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
@@ -55,7 +55,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 12
   order_by: -date
 
 # Category & Tag
@@ -78,7 +78,7 @@ use_date_for_updated: false
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 12
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -90,7 +90,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -100,3 +100,58 @@ deploy:
   branch: master
   name: myhaa
   email: 32893249+myhaa@users.noreply.github.com
+
+# menu
+menu:
+  Index:
+    url: /
+    icon: fas fa-home
+  Tags:
+    url: /tags
+    icon: fas fa-tags
+  Categories:
+    url: /categories
+    icon: fas fa-bookmark
+  Archives:
+    url: /archives
+    icon: fas fa-archive
+  About:
+    url: /about
+    icon: fas fa-user-circle
+  Friends:
+    url: /friends
+    icon: fas fa-address-book
+
+# search
+search:
+  path: search.xml
+  field: post
+
+# pinyin
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+# wordCount
+wordCount:
+  enable: true # 将这个值设置为 true 即可.
+  postWordCount: true
+  min2read: true
+  totalCount: true
+
+# rss
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
