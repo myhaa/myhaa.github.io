@@ -62,9 +62,9 @@ title: HEXO创建个人博客
 
 ### （1）如图操作
 
-![第一步](pictures\创建博客仓库1.png)
+![第一步](images/create1.png)
 
-![第二步](pictures\创建博客仓库2.png)
+![第二步](images/create2.png)
 
 ### （2）注意事项
 
@@ -74,9 +74,9 @@ title: HEXO创建个人博客
 
 ### （1）如图操作
 
-![第三步](pictures\创建博客仓库3.png)
+![第三步](images/create3.png)
 
-![第四步](pictures\创建博客仓库4.png)
+![第四步](images/create4.png)
 
 # 三、写博客并发布到GitHub
 
@@ -129,7 +129,7 @@ ctrl c
 
 2. 如图
 
-![第五步](pictures\创建博客仓库5.png)
+![第五步](images/create5.png)
 
 3. 注意：修改图中标红的地方就OK，换成你自己的name
 
@@ -181,6 +181,14 @@ hexo d
    hexo d
    ```
 
+### （2）插入图片
 
+1. 安装插件
+
+   ```shell
+   npm install https://github.com/CodeFalling/hexo-asset-image --save
+   ```
+
+   
 
 [回到顶部](#一、`Hexo`介绍)
