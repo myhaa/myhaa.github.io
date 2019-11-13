@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+  <title>Myhaa的个人博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://myhaa.github.io/"/>
+  <updated>2019-11-13T10:56:53.793Z</updated>
+  <id>https://myhaa.github.io/</id>
+  
+  <author>
+    <name>Myhaa</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>推荐算法笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/recommendation-algorithm/"/>
+    <id>https://myhaa.github.io/2019/11/13/recommendation-algorithm/</id>
+    <published>2019-11-13T10:56:53.793Z</published>
+    <updated>2019-11-13T10:56:53.793Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、CF-Collaborative-Filtering&quot;&gt;&lt;a href=&quot;#一、CF-Collaborative-Filtering&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PYTHON笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/python/"/>
+    <id>https://myhaa.github.io/2019/11/13/python/</id>
+    <published>2019-11-13T10:56:53.788Z</published>
+    <updated>2019-11-13T10:56:53.788Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、PYTHON基础&quot;&gt;&lt;a href=&quot;#一、PYTHON基础&quot; class=&quot;headerlink&quot; title=&quot;一、PYTHON基础&quot;&gt;&lt;/a&gt;一、PYTHON基础&lt;/h1&gt;&lt;h1 id=&quot;二、PYTHON进阶&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LINUX笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/linux/"/>
+    <id>https://myhaa.github.io/2019/11/13/linux/</id>
+    <published>2019-11-13T10:56:53.783Z</published>
+    <updated>2019-11-13T10:56:53.783Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、Linux基础&quot;&gt;&lt;a href=&quot;#一、Linux基础&quot; class=&quot;headerlink&quot; title=&quot;一、Linux基础&quot;&gt;&lt;/a&gt;一、Linux基础&lt;/h1&gt;&lt;h1 id=&quot;二、工作遇到问题&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>学习清单</title>
+    <link href="https://myhaa.github.io/2019/11/13/knowledge-topology/"/>
+    <id>https://myhaa.github.io/2019/11/13/knowledge-topology/</id>
+    <published>2019-11-13T10:56:53.778Z</published>
+    <updated>2019-11-13T10:56:53.778Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、实用工具&quot;&gt;&lt;a href=&quot;#一、实用工具&quot; class=&quot;headerlink&quot; title=&quot;一、实用工具&quot;&gt;&lt;/a&gt;一、实用工具&lt;/h1&gt;&lt;h2 id=&quot;编程语言&quot;&gt;&lt;a href=&quot;#编程语言&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/java/"/>
+    <id>https://myhaa.github.io/2019/11/13/java/</id>
+    <published>2019-11-13T10:56:53.772Z</published>
+    <updated>2019-11-13T10:56:53.773Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、JAVA基础&quot;&gt;&lt;a href=&quot;#一、JAVA基础&quot; class=&quot;headerlink&quot; title=&quot;一、JAVA基础&quot;&gt;&lt;/a&gt;一、JAVA基础&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HEXO创建个人博客</title>
+    <link href="https://myhaa.github.io/2019/11/13/hexo-blog/"/>
+    <id>https://myhaa.github.io/2019/11/13/hexo-blog/</id>
+    <published>2019-11-13T10:56:53.734Z</published>
+    <updated>2019-11-13T11:01:17.202Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、Hexo介绍&quot;&gt;&lt;a href=&quot;#一、Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hexo介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Hexo&lt;/code&gt;介绍&lt;/h1&gt;&lt;h2 id=&quot;1、官网&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/hadoop/"/>
+    <id>https://myhaa.github.io/2019/11/13/hadoop/</id>
+    <published>2019-11-13T10:56:53.729Z</published>
+    <updated>2019-11-13T10:56:53.729Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、Hadoop介绍&quot;&gt;&lt;a href=&quot;#一、Hadoop介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hadoop介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Hadoop&lt;/code&gt;介绍&lt;/h1&gt;&lt;h1 id&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HIVE笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/hive/"/>
+    <id>https://myhaa.github.io/2019/11/13/hive/</id>
+    <published>2019-11-13T10:56:53.723Z</published>
+    <updated>2019-11-13T10:56:53.724Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、HIVE基础&quot;&gt;&lt;a href=&quot;#一、HIVE基础&quot; class=&quot;headerlink&quot; title=&quot;一、HIVE基础&quot;&gt;&lt;/a&gt;一、HIVE基础&lt;/h1&gt;&lt;h2 id=&quot;1、HIVE数据类型&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/git/"/>
+    <id>https://myhaa.github.io/2019/11/13/git/</id>
+    <published>2019-11-13T10:56:53.718Z</published>
+    <updated>2019-11-13T10:56:53.719Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、Git介绍&quot;&gt;&lt;a href=&quot;#一、Git介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Git介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Git&lt;/code&gt;介绍&lt;/h1&gt;&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>计算广告笔记</title>
+    <link href="https://myhaa.github.io/2019/11/13/computational-advertising/"/>
+    <id>https://myhaa.github.io/2019/11/13/computational-advertising/</id>
+    <published>2019-11-13T10:56:53.714Z</published>
+    <updated>2019-11-13T10:56:53.714Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;一、名词解释&quot;&gt;&lt;a href=&quot;#一、名词解释&quot; class=&quot;headerlink&quot; title=&quot;一、名词解释&quot;&gt;&lt;/a&gt;一、名词解释&lt;/h1&gt;&lt;h2 id=&quot;广告主&quot;&gt;&lt;a href=&quot;#广告主&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
