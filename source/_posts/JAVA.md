@@ -1,10 +1,21 @@
 ---
-title: JAVA笔记
+title: Java笔记
+date: 2019-10-13 15:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 有关Java的笔记
+categories: Programming
+tags:
+  - Java
 ---
 
-[TOC]
-
-# 一、JAVA基础
+# 一、Java基础
 
 ## 安装
 
@@ -12,7 +23,7 @@ title: JAVA笔记
 
 - `JDK`：Java Development Kit
 
-  如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器JAVAC、调试器JDB等开发工具
+  如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器JavaC、调试器JDB等开发工具
 
 - `JRE`：Java Runtime Environment
 
@@ -34,7 +45,7 @@ title: JAVA笔记
 
 ### 基本结构
 
-（1）一个完整的JAVA程序。
+（1）一个完整的Java程序。
 
 ```java
 /**
@@ -267,7 +278,7 @@ public class Main {
     ```
   
     ```java
-    import java.util.Arrays;
+    import Java.util.Arrays;
     int[] ns = { 1, 1, 2, 3, 5, 8 };
     System.out.println(Arrays.toString(ns));
     ```
@@ -275,7 +286,7 @@ public class Main {
   * 数组排序
   
     ```java
-    import java.util.Arrays;
+    import Java.util.Arrays;
     int[] ns = { 28, 12, 89, 73, 65};
     Arrays.sort(ns); //正序
     ```
@@ -283,7 +294,7 @@ public class Main {
   * 多维数组
   
     ```java
-    import java.util.Arrays;
+    import Java.util.Arrays;
     int[][] ns = {
                 { 1, 2, 3, 4 },
                 { 5, 6, 7, 8 },
@@ -313,7 +324,7 @@ public class Main {
 * 输入：
 
   ```java
-  import java.util.Scanner;
+  import Java.util.Scanner;
   
   public class Main {
       public static void main(String[] args) {
@@ -401,7 +412,7 @@ public class Main {
 * `break`：在循环过程中，可以使用`break`语句跳出当前循环
 * `continue`：前结束本次循环，直接继续执行下次循环。
 
-# 二、JAVA进阶
+# 二、Java进阶
 
 ## 面向对象编程基础
 
@@ -681,7 +692,7 @@ public class Main {
 
 
 
-## JAVA核心类
+## Java核心类
 
 
 
@@ -697,12 +708,10 @@ public class Main {
 
 
 
-# 三、JAVA参考资料
+# 三、参考书籍
 
 * [廖大神](<https://www.liaoxuefeng.com/wiki/1252599548343744>)
 
-# 四、工作常见问题
+# 四、疑难解答
 
 
-
-[回到顶部](#一、JAVA基础)

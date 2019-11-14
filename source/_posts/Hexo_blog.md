@@ -1,10 +1,22 @@
 ---
-title: HEXO创建个人博客
+title: Hexo创建个人博客
+date: 2019-11-12 11:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 运用Hexo+GitHub搭建个人博客详细教程
+categories: GitHub
+tags:
+  - Hexo
+  - GitHub
 ---
 
-[TOC]
-
-# 一、`Hexo`介绍
+# 一、Hexo介绍
 
 ## 1、官网
 
@@ -224,6 +236,4 @@ hexo d
 
 ## 5、更换主题
 
-
-
-[回到顶部](#一、`Hexo`介绍)
+* [hexo-theme-matery](<https://github.com/blinkfox/hexo-theme-matery>)

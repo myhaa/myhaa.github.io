@@ -1,10 +1,20 @@
 ---
 title: 学习清单
+date: 2019-10-10 15:21:11
+author: Myhaa
+img:
+top: true
+cover: true
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 列出的学习清单
+categories: Learning
+tags:
+  - Java
+  - Python
 ---
-
-[TOC]
-
-
 
 # 一、实用工具
 
@@ -195,7 +205,3 @@ title: 学习清单
 # 三、推荐书籍
 
 
-
-
-
-[回到顶部](#一、实用工具)

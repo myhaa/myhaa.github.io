@@ -1,14 +1,28 @@
 ---
-title: LINUX笔记
+title: Linux笔记
+date: 2019-10-14 15:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 有关Linux的笔记
+categories: Programming
+tags:
+  - Linux
+  - Shell
 ---
-
-[TOC]
 
 # 一、Linux基础
 
+# 二、Linux进阶
 
+# 三、参考书籍
 
-# 二、工作遇到问题
+# 四、疑难解答
 
 ## 1、修改文件或目录的权限
 
@@ -47,11 +61,3 @@ chmod [-cfvR] [--help] [--version] mode file...
 # 给个人目录的其他用户删除写权限
  hadoop fs -chmod -R o-w /user/name/dir
 ```
-
-
-
-
-
-
-
-[回到顶部](#一、Linux基础)

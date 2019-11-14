@@ -1,8 +1,21 @@
 ---
 title: 计算广告笔记
+date: 2019-10-12 15:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 有关计算广告的笔记
+categories: Advertising
+tags:
+  - Computational Advertising
+  - RTB
+  - DSP
 ---
-
-[TOC]
 
 # 一、名词解释
 
@@ -126,7 +139,3 @@ title: 计算广告笔记
 * [计算广告系统算法与架构综述](<https://zhuanlan.zhihu.com/p/60544294>)
 
 
-
-
-
-[回到顶部](#一、名词解释)

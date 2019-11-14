@@ -1,12 +1,24 @@
 ---
-title: HIVE笔记
+title: Hive笔记
+date: 2019-10-12 17:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 有关Hive的笔记
+categories: Big Data
+tags:
+  - Hive
+  - MapReduce
 ---
 
-[TOC]
+# 一、Hive基础
 
-# 一、HIVE基础
-
-## 1、HIVE数据类型
+## 1、Hive数据类型
 
 （1）原始类型
 
@@ -36,7 +48,7 @@ title: HIVE笔记
 | `UNION`  |              在有限取值范围内的一个值               | `create_union(1,’a’,63)` |
 | `STRUCT` |                字段集合,类型可以不同                |   `struct(‘1’,1,1.0)`    |
 
-## 2、HIVE数据库操作
+## 2、Hive数据库操作
 
 （1）创建数据库
 
@@ -58,7 +70,7 @@ DROP DATABASE StatementDROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRIC
 DROP DATABASE IF EXISTS userdb;
 ```
 
-## 3、HIVE表操作
+## 3、Hive表操作
 
 （1）创建表
 
@@ -119,7 +131,7 @@ ALTER TABLE employee REPLACE COLUMNS (
 DROP TABLE [IF EXISTS] table_name;
 ```
 
-## 4、HIVE表数据操作
+## 4、Hive表数据操作
 
 （1）插入数据
 
@@ -165,7 +177,7 @@ UPDATE tablename SET column = value [, column = value ...] [WHERE expression]
 DELETE FROM tablename [WHERE expression]
 ```
 
-## 5、HIVE分区操作
+## 5、Hive分区操作
 
 （1）添加分区
 
@@ -198,7 +210,7 @@ ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec, PARTITION part
 ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);
 ```
 
-## 6、HIVE内置运算符
+## 6、Hive内置运算符
 
 （1）关系运算符
 
@@ -249,7 +261,7 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);
 | M[Key] | M 是一个 Map<K, V> 并 key 的类型为K | 它返回对应于映射中关键字的值。                |
 | S.x    | S 是一个结构                        | 它返回S的s字段                                |
 
-## 7、HIVE内置函数
+## 7、Hive内置函数
 
 ```mysql
 -- 返回BIGINT最近的double值。
@@ -322,7 +334,7 @@ weekofyear(string date, 'yyMMdd')
 -- 返回enddate与begindate之间的时间差的天数
 datediff(string enddate,string begindate)
 
-select datediff(‘2016-06-01’,’2016-05-01’) from hive_sum limit 1;
+select datediff(‘2016-06-01’,’2016-05-01’) from Hive_sum limit 1;
 
 -- 返回date增加days天后的日期
 date_add(string date,int days)
@@ -350,7 +362,7 @@ min(col)
 max(col)
 ```
 
-## 8、HIVE视图和索引
+## 8、Hive视图和索引
 
 （1）创建视图
 
@@ -392,7 +404,7 @@ AS 'index.handler.class.name'
 
 -- 例子：使用字段 Id, Name, Salary, Designation, 和 Dept创建一个名为index_salary的索引，对employee 表的salary列索引。
 CREATE INDEX inedx_salary ON TABLE employee(salary)
-AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler';
+AS 'org.apache.hadoop.Hive.ql.index.compact.CompactIndexHandler';
 ```
 
 （4）删除索引
@@ -401,9 +413,9 @@ AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler';
 DROP INDEX <index_name> ON <table_name>
 ```
 
-# 二、HIVE进阶
+# 二、Hive进阶
 
-## 1、HIVE SELECT 数据
+## 1、Hive SELECT 数据
 
 ```mysql
 SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
@@ -423,17 +435,17 @@ FROM table_reference
 from... where.... select... group by... having ... order by...
 ```
 
-**备注：**hive语句和mysql都可以通过explain查看执行计划，使用explain + hive语句
+**备注：**Hive语句和mysql都可以通过explain查看执行计划，使用explain + Hive语句
 
 
 
-# 三、HIVE参考书籍
+# 三、参考书籍
 
-* [易百教程](<https://www.yiibai.com/hive/>)
+* [易百教程](<https://www.yiibai.com/Hive/>)
 
-# 四、工作常见问题
+# 四、疑难解答
 
-## 1、HIVE 在指定位置添加字段
+## 1、Hive 在指定位置添加字段
 
 * 首先添加字段
 
@@ -447,12 +459,12 @@ from... where.... select... group by... having ... order by...
   alter table table_name change c_time c_time string after address;
   ```
 
-## 2、HIVE创建表时指定文件格式
+## 2、Hive创建表时指定文件格式
 
 * **TEXTFIEL**
 
   默认格式，数据不做压缩，磁盘开销大，数据解析开销大。
-  可结合Gzip、Bzip2使用（系统自动检查，执行查询时自动解压），但使用这种方式，hive不会对数据进行切分，从而无法对数据进行并行操作。
+  可结合Gzip、Bzip2使用（系统自动检查，执行查询时自动解压），但使用这种方式，Hive不会对数据进行切分，从而无法对数据进行并行操作。
 
   ```mysql
   -- 固定格式
@@ -463,7 +475,7 @@ from... where.... select... group by... having ... order by...
   create table test1(str STRING)  
   STORED AS
   INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
-  OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+  OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveIgnoreKeyTextOutputFormat'
   ```
 
 * **SEQUENCEFILE**
@@ -480,7 +492,7 @@ from... where.... select... group by... having ... order by...
   create table test1(str STRING)  
   STORED AS
   INPUTFORMAT 'org.apache.hadoop.mapred.SequenceFileInputFormat'
-  OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat'
+  OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveSequenceFileOutputFormat'
   ```
 
 * **RCFILE**
@@ -495,12 +507,13 @@ from... where.... select... group by... having ... order by...
   -- 自定义格式
   create table test1(str STRING)  
   STORED AS
-  INPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileInputFormat'
-  OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'
+  INPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileInputFormat'
+  OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'
   ```
 
+## 3、Hive同时拆分多列为多行
 
-## 3、HIVE同时拆分多列为多行，[链接](<https://stackoverflow.com/questions/37585638/hive-split-delimited-columns-over-multiple-rows-select-based-on-position?rq=1>)
+* [问题链接](<https://stackoverflow.com/questions/37585638/Hive-split-delimited-columns-over-multiple-rows-select-based-on-position?rq=1>)
 
 **问题：**
 
@@ -553,8 +566,3 @@ id col3 col4
 
 > select instr('abc\073abc', '\073');
 
-
-
-
-
-[回到顶部](#一、HIVE基础)

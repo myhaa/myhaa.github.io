@@ -1,10 +1,23 @@
 ---
 title: 推荐算法笔记
+date: 2019-10-17 15:21:11
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 有关推荐算法的笔记
+categories: Algorithm
+tags:
+  - Recommendation Algorithm
 ---
 
-[TOC]
 
-# 一、`CF(Collaborative-Filtering)`
+
+# 一、CF(Collaborative-Filtering)
 
 主要思想：
 
@@ -48,22 +61,14 @@ title: 推荐算法笔记
 
 
 
-# 二、`FM(Factorization Machine)`
+# 二、FM(Factorization Machine)
 
 
 
-# 三、`FFM(Field Factorization Machine)`
+# 三、FFM(Field Factorization Machine)
 
 
 
-# 四、`DEEP & WIDE`
+# 四、DEEP & WIDE
 
 
-
-
-
-
-
-
-
-[回到顶部](#一、`CF(Collaborative-Filtering)`)
