@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PYTHON笔记, Myhaa的个人博客">
+    <meta name="keywords" content="PYTHON笔记, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="[TOC]
 一、PYTHON基础二、PYTHON进阶三、PYTHON参考书籍四、工作常见问题1、PYTHON2编码问题
 参考
@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>PYTHON笔记 | Myhaa的个人博客</title>
+    <title>PYTHON笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -31,8 +31,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="Myhaa的个人博客" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -44,7 +45,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">Myhaa的个人博客</span>
+                    <span class="logo-span">Myhaa's Blog</span>
                 </a>
             </div>
             
@@ -142,10 +143,10 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Myhaa的个人博客</div>
+        <div class="logo-name">Myhaa's Blog</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            要么孤独，要么庸俗
             
         </div>
     </div>
@@ -480,9 +481,9 @@
 <li>在<code>Python3</code>版本中，所有的字符串都是使用<code>Unicode</code>编码的字符串序列。</li>
 <li><a href="https://foofish.net/how-python3-handle-charset-encoding.html" target="_blank" rel="noopener">参考</a></li>
 </ul>
-<h2 id="3、产生一段时间的日期"><a href="#3、产生一段时间的日期" class="headerlink" title="3、产生一段时间的日期"></a>3、产生一段时间的日期</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
+<h2 id="3、产生一段时间的日期"><a href="#3、产生一段时间的日期" class="headerlink" title="3、产生一段时间的日期"></a>3、产生一段时间的日期</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
 <span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><a href="#一、PYTHON基础">回到顶部</a></p>
 
             </div>
@@ -667,7 +668,7 @@ date_id_list <span class="token operator">=</span> <span class="token punctuatio
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">感谢您的赏识！</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -825,7 +826,7 @@ mode : 权限设定字串，格式如下 :
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: Myhaa的个人博客<br />'
+            + '来源: Myhaa's Blog<br />'
             + '文章作者: Myhaa<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -856,10 +857,6 @@ mode : 权限设定字串，格式如下 :
 
 <!-- 代码块折行 -->
 
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -886,7 +883,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -898,7 +895,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 

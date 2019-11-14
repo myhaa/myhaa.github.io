@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LINUX笔记, Myhaa的个人博客">
+    <meta name="keywords" content="LINUX笔记, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="[TOC]
 一、Linux基础二、工作遇到问题1、修改文件或目录的权限（1）语法
 chmod [-cfvR] [--help] [--version] mode file...
@@ -18,7 +18,7 @@ mode : 权限设定字串，格式如下 :
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LINUX笔记 | Myhaa的个人博客</title>
+    <title>LINUX笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -31,8 +31,9 @@ mode : 权限设定字串，格式如下 :
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="Myhaa的个人博客" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -44,7 +45,7 @@ mode : 权限设定字串，格式如下 :
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">Myhaa的个人博客</span>
+                    <span class="logo-span">Myhaa's Blog</span>
                 </a>
             </div>
             
@@ -142,10 +143,10 @@ mode : 权限设定字串，格式如下 :
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Myhaa的个人博客</div>
+        <div class="logo-name">Myhaa's Blog</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            要么孤独，要么庸俗
             
         </div>
     </div>
@@ -473,10 +474,10 @@ mode : 权限设定字串，格式如下 :
             <div id="articleContent">
                 <p>[TOC]</p>
 <h1 id="一、Linux基础"><a href="#一、Linux基础" class="headerlink" title="一、Linux基础"></a>一、Linux基础</h1><h1 id="二、工作遇到问题"><a href="#二、工作遇到问题" class="headerlink" title="二、工作遇到问题"></a>二、工作遇到问题</h1><h2 id="1、修改文件或目录的权限"><a href="#1、修改文件或目录的权限" class="headerlink" title="1、修改文件或目录的权限"></a>1、修改文件或目录的权限</h2><p>（1）语法</p>
-<pre class=" language-shell"><code class="language-shell">chmod [-cfvR] [--help] [--version] mode file...</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">chmod [-cfvR] [--help] [--version] mode file...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（2）参数说明</p>
 <p><strong>mode :</strong> 权限设定字串，格式如下 :</p>
-<pre class=" language-shell"><code class="language-shell">[ugoa...][[+-=][rwxX]...][,...]</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">[ugoa...][[+-=][rwxX]...][,...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>其中：</strong></p>
 <ul>
 <li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
@@ -493,8 +494,8 @@ mode : 权限设定字串，格式如下 :
 <li>–version : 显示版本</li>
 </ul>
 <p>（4）实例</p>
-<pre class=" language-shell"><code class="language-shell"># 给个人目录的其他用户删除写权限
- hadoop fs -chmod -R o-w /user/name/dir</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell"># 给个人目录的其他用户删除写权限
+ hadoop fs -chmod -R o-w /user/name/dir<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><a href="#一、Linux基础">回到顶部</a></p>
 
             </div>
@@ -679,7 +680,7 @@ mode : 权限设定字串，格式如下 :
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">感谢您的赏识！</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -838,7 +839,7 @@ PYTHON大数据工具查询引擎SQLPIGHIVEPRESTOIMPALASPARK SQL计算工具流�
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: Myhaa的个人博客<br />'
+            + '来源: Myhaa's Blog<br />'
             + '文章作者: Myhaa<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -869,10 +870,6 @@ PYTHON大数据工具查询引擎SQLPIGHIVEPRESTOIMPALASPARK SQL计算工具流�
 
 <!-- 代码块折行 -->
 
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -899,7 +896,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -911,7 +908,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 

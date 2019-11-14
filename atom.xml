@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="https://www.w3.org/2005/Atom">
-  <title>Myhaa的个人博客</title>
+  <title>Myhaa&#39;s Blog</title>
   
-  
+  <subtitle>MYH</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2019-11-13T10:56:53.793Z</updated>
+  <updated>2019-11-13T11:08:34.295Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>推荐算法笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/recommendation-algorithm/"/>
     <id>https://myhaa.github.io/2019/11/13/recommendation-algorithm/</id>
-    <published>2019-11-13T10:56:53.793Z</published>
-    <updated>2019-11-13T10:56:53.793Z</updated>
+    <published>2019-11-13T11:08:34.295Z</published>
+    <updated>2019-11-13T11:08:34.295Z</updated>
     
     <summary type="html">
     
@@ -44,8 +44,8 @@
     <title>PYTHON笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/python/"/>
     <id>https://myhaa.github.io/2019/11/13/python/</id>
-    <published>2019-11-13T10:56:53.788Z</published>
-    <updated>2019-11-13T10:56:53.788Z</updated>
+    <published>2019-11-13T11:08:34.290Z</published>
+    <updated>2019-11-13T11:08:34.290Z</updated>
     
     <summary type="html">
     
@@ -68,8 +68,8 @@
     <title>LINUX笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/linux/"/>
     <id>https://myhaa.github.io/2019/11/13/linux/</id>
-    <published>2019-11-13T10:56:53.783Z</published>
-    <updated>2019-11-13T10:56:53.783Z</updated>
+    <published>2019-11-13T11:08:34.284Z</published>
+    <updated>2019-11-13T11:08:34.285Z</updated>
     
     <summary type="html">
     
@@ -92,8 +92,8 @@
     <title>学习清单</title>
     <link href="https://myhaa.github.io/2019/11/13/knowledge-topology/"/>
     <id>https://myhaa.github.io/2019/11/13/knowledge-topology/</id>
-    <published>2019-11-13T10:56:53.778Z</published>
-    <updated>2019-11-13T10:56:53.778Z</updated>
+    <published>2019-11-13T11:08:34.279Z</published>
+    <updated>2019-11-13T11:08:34.280Z</updated>
     
     <summary type="html">
     
@@ -116,8 +116,8 @@
     <title>JAVA笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/java/"/>
     <id>https://myhaa.github.io/2019/11/13/java/</id>
-    <published>2019-11-13T10:56:53.772Z</published>
-    <updated>2019-11-13T10:56:53.773Z</updated>
+    <published>2019-11-13T11:08:34.273Z</published>
+    <updated>2019-11-13T11:08:34.274Z</updated>
     
     <summary type="html">
     
@@ -140,8 +140,8 @@
     <title>HEXO创建个人博客</title>
     <link href="https://myhaa.github.io/2019/11/13/hexo-blog/"/>
     <id>https://myhaa.github.io/2019/11/13/hexo-blog/</id>
-    <published>2019-11-13T10:56:53.734Z</published>
-    <updated>2019-11-13T11:01:17.202Z</updated>
+    <published>2019-11-13T11:08:34.235Z</published>
+    <updated>2019-11-13T11:08:34.235Z</updated>
     
     <summary type="html">
     
@@ -164,8 +164,8 @@
     <title>Hadoop笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/hadoop/"/>
     <id>https://myhaa.github.io/2019/11/13/hadoop/</id>
-    <published>2019-11-13T10:56:53.729Z</published>
-    <updated>2019-11-13T10:56:53.729Z</updated>
+    <published>2019-11-13T11:08:34.230Z</published>
+    <updated>2019-11-13T11:08:34.230Z</updated>
     
     <summary type="html">
     
@@ -188,8 +188,8 @@
     <title>HIVE笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/hive/"/>
     <id>https://myhaa.github.io/2019/11/13/hive/</id>
-    <published>2019-11-13T10:56:53.723Z</published>
-    <updated>2019-11-13T10:56:53.724Z</updated>
+    <published>2019-11-13T11:08:34.224Z</published>
+    <updated>2019-11-13T11:08:34.225Z</updated>
     
     <summary type="html">
     
@@ -212,8 +212,8 @@
     <title>Git笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/git/"/>
     <id>https://myhaa.github.io/2019/11/13/git/</id>
-    <published>2019-11-13T10:56:53.718Z</published>
-    <updated>2019-11-13T10:56:53.719Z</updated>
+    <published>2019-11-13T11:08:34.220Z</published>
+    <updated>2019-11-13T11:08:34.220Z</updated>
     
     <summary type="html">
     
@@ -236,8 +236,8 @@
     <title>计算广告笔记</title>
     <link href="https://myhaa.github.io/2019/11/13/computational-advertising/"/>
     <id>https://myhaa.github.io/2019/11/13/computational-advertising/</id>
-    <published>2019-11-13T10:56:53.714Z</published>
-    <updated>2019-11-13T10:56:53.714Z</updated>
+    <published>2019-11-13T11:08:34.214Z</published>
+    <updated>2019-11-13T11:08:34.215Z</updated>
     
     <summary type="html">
     

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HIVE笔记, Myhaa的个人博客">
+    <meta name="keywords" content="HIVE笔记, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="[TOC]
 一、HIVE基础1、HIVE数据类型（1）原始类型
 
@@ -37,7 +37,7 @@ SMALLINT
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HIVE笔记 | Myhaa的个人博客</title>
+    <title>HIVE笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -50,8 +50,9 @@ SMALLINT
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="Myhaa的个人博客" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -63,7 +64,7 @@ SMALLINT
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">Myhaa的个人博客</span>
+                    <span class="logo-span">Myhaa's Blog</span>
                 </a>
             </div>
             
@@ -161,10 +162,10 @@ SMALLINT
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Myhaa的个人博客</div>
+        <div class="logo-name">Myhaa's Blog</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            要么孤独，要么庸俗
             
         </div>
     </div>
@@ -602,19 +603,19 @@ SMALLINT
 </tr>
 </tbody></table>
 <h2 id="2、HIVE数据库操作"><a href="#2、HIVE数据库操作" class="headerlink" title="2、HIVE数据库操作"></a>2、HIVE数据库操作</h2><p>（1）创建数据库</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 CREATE DATABASE|SCHEMA [IF NOT EXISTS] <database name>;
 
 -- 例子
-CREATE DATABASE IF NOT EXISTS database_name;</code></pre>
+CREATE DATABASE IF NOT EXISTS database_name;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）删除数据库</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 DROP DATABASE StatementDROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];
 
 -- 例子
-DROP DATABASE IF EXISTS userdb;</code></pre>
+DROP DATABASE IF EXISTS userdb;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="3、HIVE表操作"><a href="#3、HIVE表操作" class="headerlink" title="3、HIVE表操作"></a>3、HIVE表操作</h2><p>（1）创建表</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.] table_name
 [(col_name data_type [COMMENT col_comment], ...)]
 [COMMENT table_comment]
@@ -631,9 +632,9 @@ COMMENT ‘Employee details’
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ‘\t’
 LINES TERMINATED BY ‘\n’
-STORED AS TEXTFILE;</code></pre>
+STORED AS TEXTFILE;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）修改表</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 重命名表
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 重命名表
 ALTER TABLE name RENAME TO new_name
 
 ALTER TABLE employee RENAME TO emp;
@@ -657,54 +658,54 @@ ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
 
 ALTER TABLE employee REPLACE COLUMNS (
     eid INT empid Int,
-    ename STRING name String);</code></pre>
+    ename STRING name String);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（3）删除表</p>
-<pre class=" language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] table_name;</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] table_name;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="4、HIVE表数据操作"><a href="#4、HIVE表数据操作" class="headerlink" title="4、HIVE表数据操作"></a>4、HIVE表数据操作</h2><p>（1）插入数据</p>
 <ul>
 <li><code>LOAD DATA</code>：从<code>HDFS</code>中加载数据会直接<code>move</code>！</li>
 </ul>
-<pre class=" language-mysql"><code class="language-mysql">--命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">--命令
 LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)]
 
 --例子
-LOAD DATA LOCAL INPATH '/home/user/sample.txt' OVERWRITE INTO TABLE employee;</code></pre>
+LOAD DATA LOCAL INPATH '/home/user/sample.txt' OVERWRITE INTO TABLE employee;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>INSERT INTO</code></li>
 </ul>
-<pre class=" language-mysql"><code class="language-mysql">insert into table account 
-select id, age, name from account_tmp;</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">insert into table account 
+select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li><code>INSERT OVERWRITE</code></li>
 </ul>
-<pre class=" language-mysql"><code class="language-mysql">insert overwrite table account2 
-select id, age, name from account_tmp;</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">insert overwrite table account2 
+select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong><em>注意</em></strong>：</p>
 <p><code>insert overwrite</code>会覆盖已经存在的数据，假如原始表使用<code>overwrite</code>上述的数据，先现将原始表的数据<code>remove</code>，再插入新数据。</p>
 <p><code>insert into</code>只是简单的插入，不考虑原始表的数据，直接追加到表中。</p>
 <p>（2）修改数据</p>
-<pre class=" language-mysql"><code class="language-mysql">UPDATE tablename SET column = value [, column = value ...] [WHERE expression]</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">UPDATE tablename SET column = value [, column = value ...] [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（3）删除数据</p>
-<pre class=" language-mysql"><code class="language-mysql">DELETE FROM tablename [WHERE expression]</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DELETE FROM tablename [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="5、HIVE分区操作"><a href="#5、HIVE分区操作" class="headerlink" title="5、HIVE分区操作"></a>5、HIVE分区操作</h2><p>（1）添加分区</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 ALTER TABLE table_name ADD [IF NOT EXISTS] PARTITION (p_column = p_col_value, p_column = p_col_value, ...)
 [LOCATION 'location1'] (p2_column = p2_col_value, p2_column = p2_col_value, ...) [LOCATION 'location2'] ...;
 
 -- 例子
-ALTER TABLE employee ADD PARTITION (year=’2013’) location '/2012/part2012';</code></pre>
+ALTER TABLE employee ADD PARTITION (year=’2013’) location '/2012/part2012';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）重命名分区</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 ALTER TABLE table_name PARTITION partition_spec RENAME TO PARTITION partition_spec;
 
 -- 例子
-ALTER TABLE employee PARTITION (year=’1203’) RENAME TO PARTITION (Yoj=’1203’);</code></pre>
+ALTER TABLE employee PARTITION (year=’1203’) RENAME TO PARTITION (Yoj=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（3）删除分区</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec, PARTITION partition_spec,...;
 
 -- 例子
-ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);</code></pre>
+ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="6、HIVE内置运算符"><a href="#6、HIVE内置运算符" class="headerlink" title="6、HIVE内置运算符"></a>6、HIVE内置运算符</h2><p>（1）关系运算符</p>
 <table>
 <thead>
@@ -890,7 +891,7 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);</code></pre>
 <td>它返回S的s字段</td>
 </tr>
 </tbody></table>
-<h2 id="7、HIVE内置函数"><a href="#7、HIVE内置函数" class="headerlink" title="7、HIVE内置函数"></a>7、HIVE内置函数</h2><pre class=" language-mysql"><code class="language-mysql">-- 返回BIGINT最近的double值。
+<h2 id="7、HIVE内置函数"><a href="#7、HIVE内置函数" class="headerlink" title="7、HIVE内置函数"></a>7、HIVE内置函数</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 返回BIGINT最近的double值。
 round(double a)
 
 -- 返回最大BIGINT值等于或小于double。
@@ -985,9 +986,9 @@ avg(DISTINCT col)
 
 -- 返回该组中的列的最大最小值。
 min(col)
-max(col)</code></pre>
+max(col)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="8、HIVE视图和索引"><a href="#8、HIVE视图和索引" class="headerlink" title="8、HIVE视图和索引"></a>8、HIVE视图和索引</h2><p>（1）创建视图</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 CREATE VIEW [IF NOT EXISTS] view_name [(column_name [COMMENT column_comment], ...) ]
 [COMMENT table_comment]
 AS SELECT ...
@@ -995,11 +996,11 @@ AS SELECT ...
 -- 例子
 CREATE VIEW emp_30000 AS
 SELECT * FROM employee
-WHERE salary>30000;</code></pre>
+WHERE salary>30000;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）删除视图</p>
-<pre class=" language-mysql"><code class="language-mysql">DROP VIEW view_name</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP VIEW view_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（3）创建索引</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
 CREATE INDEX index_name
 ON TABLE base_table_name (col_name, ...)
 AS 'index.handler.class.name'
@@ -1016,35 +1017,35 @@ AS 'index.handler.class.name'
 
 -- 例子：使用字段 Id, Name, Salary, Designation, 和 Dept创建一个名为index_salary的索引，对employee 表的salary列索引。
 CREATE INDEX inedx_salary ON TABLE employee(salary)
-AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler';</code></pre>
+AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（4）删除索引</p>
-<pre class=" language-mysql"><code class="language-mysql">DROP INDEX <index_name> ON <table_name></code></pre>
-<h1 id="二、HIVE进阶"><a href="#二、HIVE进阶" class="headerlink" title="二、HIVE进阶"></a>二、HIVE进阶</h1><h2 id="1、HIVE-SELECT-数据"><a href="#1、HIVE-SELECT-数据" class="headerlink" title="1、HIVE SELECT 数据"></a>1、HIVE SELECT 数据</h2><pre class=" language-mysql"><code class="language-mysql">SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP INDEX <index_name> ON <table_name><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="二、HIVE进阶"><a href="#二、HIVE进阶" class="headerlink" title="二、HIVE进阶"></a>二、HIVE进阶</h1><h2 id="1、HIVE-SELECT-数据"><a href="#1、HIVE-SELECT-数据" class="headerlink" title="1、HIVE SELECT 数据"></a>1、HIVE SELECT 数据</h2><pre class="line-numbers language-mysql"><code class="language-mysql">SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
 FROM table_reference 
 [WHERE where_condition] 
 [GROUP BY col_list] 
 [HAVING having_condition] 
 [CLUSTER BY col_list | [DISTRIBUTE BY col_list] [SORT BY col_list]] 
 [ORDER BY col_list]
-[LIMIT number];</code></pre>
-<h2 id="2、命令执行顺序"><a href="#2、命令执行顺序" class="headerlink" title="2、命令执行顺序"></a>2、命令执行顺序</h2><pre class=" language-mysql"><code class="language-mysql">-- 大致顺序
-from... where.... select... group by... having ... order by...</code></pre>
+[LIMIT number];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2、命令执行顺序"><a href="#2、命令执行顺序" class="headerlink" title="2、命令执行顺序"></a>2、命令执行顺序</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 大致顺序
+from... where.... select... group by... having ... order by...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>备注：</strong>hive语句和mysql都可以通过explain查看执行计划，使用explain + hive语句</p>
 <h1 id="三、HIVE参考书籍"><a href="#三、HIVE参考书籍" class="headerlink" title="三、HIVE参考书籍"></a>三、HIVE参考书籍</h1><ul>
 <li><a href="https://www.yiibai.com/hive/" target="_blank" rel="noopener">易百教程</a></li>
 </ul>
 <h1 id="四、工作常见问题"><a href="#四、工作常见问题" class="headerlink" title="四、工作常见问题"></a>四、工作常见问题</h1><h2 id="1、HIVE-在指定位置添加字段"><a href="#1、HIVE-在指定位置添加字段" class="headerlink" title="1、HIVE 在指定位置添加字段"></a>1、HIVE 在指定位置添加字段</h2><ul>
 <li><p>首先添加字段</p>
-<pre class=" language-mysql"><code class="language-mysql">alter table table_name add columns (c_time string comment '当前时间');</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name add columns (c_time string comment '当前时间');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>其次更改字段的顺序</p>
-<pre class=" language-mysql"><code class="language-mysql">alter table table_name change c_time c_time string after address;</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name change c_time c_time string after address;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
 <h2 id="2、HIVE创建表时指定文件格式"><a href="#2、HIVE创建表时指定文件格式" class="headerlink" title="2、HIVE创建表时指定文件格式"></a>2、HIVE创建表时指定文件格式</h2><ul>
 <li><p><strong>TEXTFIEL</strong></p>
 <p>默认格式，数据不做压缩，磁盘开销大，数据解析开销大。<br>可结合Gzip、Bzip2使用（系统自动检查，执行查询时自动解压），但使用这种方式，hive不会对数据进行切分，从而无法对数据进行并行操作。</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS TEXTFILE;
 
@@ -1052,11 +1053,11 @@ STORED AS TEXTFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'</code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>SEQUENCEFILE</strong></p>
 <p>SequenceFile是Hadoop API提供的一种二进制文件支持，其具有使用方便、可分割、可压缩的特点。<br>SequenceFile支持三种压缩选择：NONE, RECORD, BLOCK。 Record压缩率低，一般建议使用BLOCK压缩。</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS SEQUENCEFILE;
 
@@ -1064,11 +1065,11 @@ STORED AS SEQUENCEFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.mapred.SequenceFileInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat'</code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>RCFILE</strong></p>
 <p>RCFILE是一种行列存储相结合的存储方式。首先，其将数据按行分块，保证同一个record在一个块上，避免读一个记录需要读取多个block。其次，块数据列式存储，有利于数据压缩和快速的列存取。</p>
-<pre class=" language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS RCFILE;
 
@@ -1076,17 +1077,17 @@ STORED AS RCFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'</code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h2 id="3、HIVE同时拆分多列为多行，链接"><a href="#3、HIVE同时拆分多列为多行，链接" class="headerlink" title="3、HIVE同时拆分多列为多行，链接"></a>3、HIVE同时拆分多列为多行，<a href="https://stackoverflow.com/questions/37585638/hive-split-delimited-columns-over-multiple-rows-select-based-on-position?rq=1" target="_blank" rel="noopener">链接</a></h2><p><strong>问题：</strong></p>
 <p>I’m Looking for a way to split the column based on comma delimited data. Below is my dataset</p>
-<pre class=" language-mysql"><code class="language-mysql">id  col1  col2
-1   5,6   7,8</code></pre>
+<pre class="line-numbers language-mysql"><code class="language-mysql">id  col1  col2
+1   5,6   7,8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>I want to get the result</p>
-<pre class=" language-mysql"><code class="language-mysql">id col1 col2
+<pre class="line-numbers language-mysql"><code class="language-mysql">id col1 col2
 1  5    7
-1  6    8</code></pre>
+1  6    8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>答案：</strong></p>
 <p>You can use <code>posexplode()</code> to create position index columns for your split arrays. Then, select only those rows where the position indices are equal.</p>
 <pre><code>SELECT id, col3, col4
@@ -1292,7 +1293,7 @@ OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'</code></pre>
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">感谢您的赏识！</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1444,7 +1445,7 @@ OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'</code></pre>
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: Myhaa的个人博客<br />'
+            + '来源: Myhaa's Blog<br />'
             + '文章作者: Myhaa<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
@@ -1475,10 +1476,6 @@ OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.RCFileOutputFormat'</code></pre>
 
 <!-- 代码块折行 -->
 
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -1505,7 +1502,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -1517,7 +1514,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
