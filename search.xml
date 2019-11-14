@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>SPARK</title>
+      <link href="/2019/11/14/spark/"/>
+      <url>/2019/11/14/spark/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、SPARK基础"><a href="#一、SPARK基础" class="headerlink" title="一、SPARK基础"></a>一、SPARK基础</h1><h1 id="二、SPARK进阶"><a href="#二、SPARK进阶" class="headerlink" title="二、SPARK进阶"></a>二、SPARK进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spark </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+            <tag> Markdown </tag>
+            
+            <tag> Streaming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>推荐算法笔记</title>
       <link href="/2019/11/13/recommendation-algorithm/"/>
       <url>/2019/11/13/recommendation-algorithm/</url>

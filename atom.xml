@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2019-11-13T11:08:34.295Z</updated>
+  <updated>2019-11-14T03:51:12.569Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SPARK</title>
+    <link href="https://myhaa.github.io/2019/11/14/spark/"/>
+    <id>https://myhaa.github.io/2019/11/14/spark/</id>
+    <published>2019-11-14T03:21:11.000Z</published>
+    <updated>2019-11-14T03:51:12.569Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、SPARK基础&quot;&gt;&lt;a href=&quot;#一、SPARK基础&quot; class=&quot;headerlink&quot; title=&quot;一、SPARK基础&quot;&gt;&lt;/a&gt;一、SPARK基础&lt;/h1&gt;&lt;h1 id=&quot;二、SPARK进阶&quot;&gt;&lt;a href=&quot;#二、SPARK进阶&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spark" scheme="https://myhaa.github.io/categories/Spark/"/>
+    
+    
+      <category term="Spark" scheme="https://myhaa.github.io/tags/Spark/"/>
+    
+      <category term="Markdown" scheme="https://myhaa.github.io/tags/Markdown/"/>
+    
+      <category term="Streaming" scheme="https://myhaa.github.io/tags/Streaming/"/>
+    
+  </entry>
   
   <entry>
     <title>推荐算法笔记</title>

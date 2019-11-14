@@ -4,13 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="推荐算法笔记, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="[TOC]
-一、CF(Collaborative-Filtering)主要思想：
-协同过滤推荐方法的主要思想是：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。
-1、基于用户的协同过滤潜在假设：
-
-如果用户过">
+    <meta name="keywords" content="SPARK, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="一、SPARK基础二、SPARK进阶三、参考书籍四、疑难解答">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>推荐算法笔记 | Myhaa&#39;s Blog</title>
+    <title>SPARK | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        推荐算法笔记
+                        SPARK
                     </div>
                 </div>
             </div>
@@ -426,12 +421,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spark/">
+                                <span class="chip bg-color">Spark</span>
+                            </a>
+                        
+                            <a href="/tags/Markdown/">
+                                <span class="chip bg-color">Markdown</span>
+                            </a>
+                        
+                            <a href="/tags/Streaming/">
+                                <span class="chip bg-color">Streaming</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Spark/" class="post-category">
+                                Spark
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -440,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-13
+                    2019-11-14
                 </div>
                 
 
@@ -449,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    461
+                    18
                 </div>
                 
 
@@ -472,64 +488,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[TOC]</p>
-<h1 id="一、CF-Collaborative-Filtering"><a href="#一、CF-Collaborative-Filtering" class="headerlink" title="一、CF(Collaborative-Filtering)"></a>一、<code>CF(Collaborative-Filtering)</code></h1><p>主要思想：</p>
-<p>协同过滤推荐方法的主要思想是：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。</p>
-<h2 id="1、基于用户的协同过滤"><a href="#1、基于用户的协同过滤" class="headerlink" title="1、基于用户的协同过滤"></a>1、基于用户的协同过滤</h2><p>潜在假设：</p>
-<ul>
-<li>如果用户过去有相似的偏好，那么他们未来也会有相似的偏好；</li>
-<li>用户偏好不会随时间而变化</li>
-</ul>
-<p>主要思想：</p>
-<ul>
-<li>首先，给定一个评分数据集和当前用户的ID作为输入，找出与当前用户过去有相似偏好的其他用户；</li>
-<li>然后，对当前用户没有评价过的物品，利用最近邻对物品的评分计算预测值。</li>
-</ul>
-<p>（1）协同推荐的评分数据库（例子1）</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>物品1</th>
-<th>物品2</th>
-<th>物品3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用户1</td>
-<td>5</td>
-<td>4</td>
-<td>？</td>
-</tr>
-<tr>
-<td>用户2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td>用户3</td>
-<td>4</td>
-<td>5</td>
-<td>3</td>
-</tr>
-</tbody></table>
-<p>（2）算法步骤</p>
-<ul>
-<li>利用用户已有的物品评分<code>rate</code>计算用户之间的相似度$sim(a, b)$，相似度计算方法可以是<strong><code>pearson</code>相关系数、改进余弦相似度、<code>spearman</code>秩相关系数、均方差等</strong>。（计算相似度是用两个用户拥有共同行为物品的评分来计算）</li>
-<li>针对要预测的每个用户，选择与其相似度排名最靠前的<code>k</code>个用户对指定物品的评分做加权计算来得到该用户对该物品的评分。</li>
-</ul>
-<p>（3）面临的挑战</p>
-<ul>
-<li>用户量和物品量很大时，算法性能不高</li>
-<li>当需要扫描大量潜在近邻时，很难做到实时计算预测值</li>
-</ul>
-<h2 id="2、基于物品的协同过滤"><a href="#2、基于物品的协同过滤" class="headerlink" title="2、基于物品的协同过滤"></a>2、基于物品的协同过滤</h2><p>主要思想：</p>
-<ul>
-<li>利用物品间的相似度来计算预测值</li>
-</ul>
-<h1 id="二、FM-Factorization-Machine"><a href="#二、FM-Factorization-Machine" class="headerlink" title="二、FM(Factorization Machine)"></a>二、<code>FM(Factorization Machine)</code></h1><h1 id="三、FFM-Field-Factorization-Machine"><a href="#三、FFM-Field-Factorization-Machine" class="headerlink" title="三、FFM(Field Factorization Machine)"></a>三、<code>FFM(Field Factorization Machine)</code></h1><h1 id="四、DEEP-amp-WIDE"><a href="#四、DEEP-amp-WIDE" class="headerlink" title="四、DEEP &amp; WIDE"></a>四、<code>DEEP &amp; WIDE</code></h1><p><a href="#一、`CF(Collaborative-Filtering)`">回到顶部</a></p>
-
+                <h1 id="一、SPARK基础"><a href="#一、SPARK基础" class="headerlink" title="一、SPARK基础"></a>一、SPARK基础</h1><h1 id="二、SPARK进阶"><a href="#二、SPARK进阶" class="headerlink" title="二、SPARK进阶"></a>二、SPARK进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1>
             </div>
             <hr/>
 
@@ -554,7 +513,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2019/11/13/recommendation-algorithm/">https://myhaa.github.io/2019/11/13/recommendation-algorithm/</a>
+                    <a href="https://myhaa.github.io/2019/11/14/spark/">https://myhaa.github.io/2019/11/14/spark/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,7 +550,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Spark/">
+                                    <span class="chip bg-color">Spark</span>
+                                </a>
+                            
+                                <a href="/tags/Markdown/">
+                                    <span class="chip bg-color">Markdown</span>
+                                </a>
+                            
+                                <a href="/tags/Streaming/">
+                                    <span class="chip bg-color">Streaming</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -755,9 +726,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/11/14/spark/">
                     <div class="card-image">
@@ -775,9 +747,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -790,6 +762,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -816,24 +789,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/13/python/">
+                <a href="/2019/11/13/recommendation-algorithm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="PYTHON笔记">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="推荐算法笔记">
                         
-                        <span class="card-title">PYTHON笔记</span>
+                        <span class="card-title">推荐算法笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             [TOC]
-一、PYTHON基础二、PYTHON进阶三、PYTHON参考书籍四、工作常见问题1、PYTHON2编码问题
-参考
+一、CF(Collaborative-Filtering)主要思想：
+协同过滤推荐方法的主要思想是：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。
+1、基于用户的协同过滤潜在假设：
 
-2、PYTHON3编码问题
-在Python3版本中，把&#39;xxx&#39;和u&#39;xxx&#39;统
+如果用户过
                         
                     </div>
                     <div class="publish-info">
