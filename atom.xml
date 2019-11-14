@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2019-11-14T03:51:12.569Z</updated>
+  <updated>2019-11-14T08:31:06.125Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SPARK</title>
+    <title>Spark</title>
     <link href="https://myhaa.github.io/2019/11/14/spark/"/>
     <id>https://myhaa.github.io/2019/11/14/spark/</id>
     <published>2019-11-14T03:21:11.000Z</published>
-    <updated>2019-11-14T03:51:12.569Z</updated>
+    <updated>2019-11-14T08:31:06.125Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,14 @@
       
         
         
-          &lt;h1 id=&quot;一、SPARK基础&quot;&gt;&lt;a href=&quot;#一、SPARK基础&quot; class=&quot;headerlink&quot; title=&quot;一、SPARK基础&quot;&gt;&lt;/a&gt;一、SPARK基础&lt;/h1&gt;&lt;h1 id=&quot;二、SPARK进阶&quot;&gt;&lt;a href=&quot;#二、SPARK进阶&quot;
+          &lt;h1 id=&quot;一、Spark基础&quot;&gt;&lt;a href=&quot;#一、Spark基础&quot; class=&quot;headerlink&quot; title=&quot;一、Spark基础&quot;&gt;&lt;/a&gt;一、Spark基础&lt;/h1&gt;&lt;h1 id=&quot;二、Spark进阶&quot;&gt;&lt;a href=&quot;#二、Spark进阶&quot;
         
       
     
     </summary>
     
     
-      <category term="Spark" scheme="https://myhaa.github.io/categories/Spark/"/>
+      <category term="Big Data" scheme="https://myhaa.github.io/categories/Big-Data/"/>
     
     
       <category term="Spark" scheme="https://myhaa.github.io/tags/Spark/"/>
@@ -48,11 +48,11 @@
   </entry>
   
   <entry>
-    <title>推荐算法笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/recommendation-algorithm/"/>
-    <id>https://myhaa.github.io/2019/11/13/recommendation-algorithm/</id>
-    <published>2019-11-13T11:08:34.295Z</published>
-    <updated>2019-11-13T11:08:34.295Z</updated>
+    <title>Git笔记</title>
+    <link href="https://myhaa.github.io/2019/11/12/git/"/>
+    <id>https://myhaa.github.io/2019/11/12/git/</id>
+    <published>2019-11-12T08:21:11.000Z</published>
+    <updated>2019-11-14T07:14:42.976Z</updated>
     
     <summary type="html">
     
@@ -60,143 +60,30 @@
       
         
         
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、CF-Collaborative-Filtering&quot;&gt;&lt;a href=&quot;#一、CF-Collaborative-Filtering&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;一、Git基础&quot;&gt;&lt;a href=&quot;#一、Git基础&quot; class=&quot;headerlink&quot; title=&quot;一、Git基础&quot;&gt;&lt;/a&gt;一、Git基础&lt;/h1&gt;&lt;h1 id=&quot;二、Git进阶&quot;&gt;&lt;a href=&quot;#二、Git进阶&quot;
         
       
     
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>PYTHON笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/python/"/>
-    <id>https://myhaa.github.io/2019/11/13/python/</id>
-    <published>2019-11-13T11:08:34.290Z</published>
-    <updated>2019-11-13T11:08:34.290Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、PYTHON基础&quot;&gt;&lt;a href=&quot;#一、PYTHON基础&quot; class=&quot;headerlink&quot; title=&quot;一、PYTHON基础&quot;&gt;&lt;/a&gt;一、PYTHON基础&lt;/h1&gt;&lt;h1 id=&quot;二、PYTHON进阶&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
+      <category term="GitHub" scheme="https://myhaa.github.io/categories/GitHub/"/>
     
     
+      <category term="Git" scheme="https://myhaa.github.io/tags/Git/"/>
     
-  </entry>
-  
-  <entry>
-    <title>LINUX笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/linux/"/>
-    <id>https://myhaa.github.io/2019/11/13/linux/</id>
-    <published>2019-11-13T11:08:34.284Z</published>
-    <updated>2019-11-13T11:08:34.285Z</updated>
+      <category term="GitHub" scheme="https://myhaa.github.io/tags/GitHub/"/>
     
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、Linux基础&quot;&gt;&lt;a href=&quot;#一、Linux基础&quot; class=&quot;headerlink&quot; title=&quot;一、Linux基础&quot;&gt;&lt;/a&gt;一、Linux基础&lt;/h1&gt;&lt;h1 id=&quot;二、工作遇到问题&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>学习清单</title>
-    <link href="https://myhaa.github.io/2019/11/13/knowledge-topology/"/>
-    <id>https://myhaa.github.io/2019/11/13/knowledge-topology/</id>
-    <published>2019-11-13T11:08:34.279Z</published>
-    <updated>2019-11-13T11:08:34.280Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、实用工具&quot;&gt;&lt;a href=&quot;#一、实用工具&quot; class=&quot;headerlink&quot; title=&quot;一、实用工具&quot;&gt;&lt;/a&gt;一、实用工具&lt;/h1&gt;&lt;h2 id=&quot;编程语言&quot;&gt;&lt;a href=&quot;#编程语言&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/java/"/>
-    <id>https://myhaa.github.io/2019/11/13/java/</id>
-    <published>2019-11-13T11:08:34.273Z</published>
-    <updated>2019-11-13T11:08:34.274Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、JAVA基础&quot;&gt;&lt;a href=&quot;#一、JAVA基础&quot; class=&quot;headerlink&quot; title=&quot;一、JAVA基础&quot;&gt;&lt;/a&gt;一、JAVA基础&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>HEXO创建个人博客</title>
-    <link href="https://myhaa.github.io/2019/11/13/hexo-blog/"/>
-    <id>https://myhaa.github.io/2019/11/13/hexo-blog/</id>
-    <published>2019-11-13T11:08:34.235Z</published>
-    <updated>2019-11-13T11:08:34.235Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、Hexo介绍&quot;&gt;&lt;a href=&quot;#一、Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hexo介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Hexo&lt;/code&gt;介绍&lt;/h1&gt;&lt;h2 id=&quot;1、官网&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
+      <category term="SSH" scheme="https://myhaa.github.io/tags/SSH/"/>
     
   </entry>
   
   <entry>
     <title>Hadoop笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/hadoop/"/>
-    <id>https://myhaa.github.io/2019/11/13/hadoop/</id>
-    <published>2019-11-13T11:08:34.230Z</published>
-    <updated>2019-11-13T11:08:34.230Z</updated>
+    <link href="https://myhaa.github.io/2019/11/12/hadoop/"/>
+    <id>https://myhaa.github.io/2019/11/12/hadoop/</id>
+    <published>2019-11-12T07:31:11.000Z</published>
+    <updated>2019-11-14T07:14:12.608Z</updated>
     
     <summary type="html">
     
@@ -204,23 +91,30 @@
       
         
         
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、Hadoop介绍&quot;&gt;&lt;a href=&quot;#一、Hadoop介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hadoop介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Hadoop&lt;/code&gt;介绍&lt;/h1&gt;&lt;h1 id&gt;&lt;a
+          &lt;h1 id=&quot;一、Hadoop介绍&quot;&gt;&lt;a href=&quot;#一、Hadoop介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hadoop介绍&quot;&gt;&lt;/a&gt;一、Hadoop介绍&lt;/h1&gt;&lt;h1 id=&quot;二、Hadoop进阶&quot;&gt;&lt;a
         
       
     
     </summary>
     
     
+      <category term="Big Data" scheme="https://myhaa.github.io/categories/Big-Data/"/>
+    
+    
+      <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
+    
+      <category term="HDFS" scheme="https://myhaa.github.io/tags/HDFS/"/>
+    
+      <category term="MapReduce" scheme="https://myhaa.github.io/tags/MapReduce/"/>
     
   </entry>
   
   <entry>
-    <title>HIVE笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/hive/"/>
-    <id>https://myhaa.github.io/2019/11/13/hive/</id>
-    <published>2019-11-13T11:08:34.224Z</published>
-    <updated>2019-11-13T11:08:34.225Z</updated>
+    <title>Hexo创建个人博客</title>
+    <link href="https://myhaa.github.io/2019/11/12/hexo-blog/"/>
+    <id>https://myhaa.github.io/2019/11/12/hexo-blog/</id>
+    <published>2019-11-12T03:21:11.000Z</published>
+    <updated>2019-11-14T07:16:29.067Z</updated>
     
     <summary type="html">
     
@@ -228,23 +122,28 @@
       
         
         
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、HIVE基础&quot;&gt;&lt;a href=&quot;#一、HIVE基础&quot; class=&quot;headerlink&quot; title=&quot;一、HIVE基础&quot;&gt;&lt;/a&gt;一、HIVE基础&lt;/h1&gt;&lt;h2 id=&quot;1、HIVE数据类型&quot;&gt;&lt;a
+          &lt;h1 id=&quot;一、Hexo介绍&quot;&gt;&lt;a href=&quot;#一、Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Hexo介绍&quot;&gt;&lt;/a&gt;一、Hexo介绍&lt;/h1&gt;&lt;h2 id=&quot;1、官网&quot;&gt;&lt;a href=&quot;#1、官网&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
+      <category term="GitHub" scheme="https://myhaa.github.io/categories/GitHub/"/>
+    
+    
+      <category term="GitHub" scheme="https://myhaa.github.io/tags/GitHub/"/>
+    
+      <category term="Hexo" scheme="https://myhaa.github.io/tags/Hexo/"/>
     
   </entry>
   
   <entry>
-    <title>Git笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/git/"/>
-    <id>https://myhaa.github.io/2019/11/13/git/</id>
-    <published>2019-11-13T11:08:34.220Z</published>
-    <updated>2019-11-13T11:08:34.220Z</updated>
+    <title>推荐算法笔记</title>
+    <link href="https://myhaa.github.io/2019/10/17/recommendation-algorithm/"/>
+    <id>https://myhaa.github.io/2019/10/17/recommendation-algorithm/</id>
+    <published>2019-10-17T07:21:11.000Z</published>
+    <updated>2019-11-14T08:29:59.809Z</updated>
     
     <summary type="html">
     
@@ -252,23 +151,138 @@
       
         
         
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、Git介绍&quot;&gt;&lt;a href=&quot;#一、Git介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Git介绍&quot;&gt;&lt;/a&gt;一、&lt;code&gt;Git&lt;/code&gt;介绍&lt;/h1&gt;&lt;p&gt;&lt;a
+          &lt;h1 id=&quot;一、CF-Collaborative-Filtering&quot;&gt;&lt;a href=&quot;#一、CF-Collaborative-Filtering&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
+      <category term="Algorithm" scheme="https://myhaa.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="Recommendation Algorithm" scheme="https://myhaa.github.io/tags/Recommendation-Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python笔记</title>
+    <link href="https://myhaa.github.io/2019/10/15/python/"/>
+    <id>https://myhaa.github.io/2019/10/15/python/</id>
+    <published>2019-10-15T07:21:11.000Z</published>
+    <updated>2019-11-14T07:29:35.292Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Python基础&quot;&gt;&lt;a href=&quot;#一、Python基础&quot; class=&quot;headerlink&quot; title=&quot;一、Python基础&quot;&gt;&lt;/a&gt;一、Python基础&lt;/h1&gt;&lt;h1 id=&quot;二、Python进阶&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Programming" scheme="https://myhaa.github.io/categories/Programming/"/>
+    
+    
+      <category term="Python" scheme="https://myhaa.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux笔记</title>
+    <link href="https://myhaa.github.io/2019/10/14/linux/"/>
+    <id>https://myhaa.github.io/2019/10/14/linux/</id>
+    <published>2019-10-14T07:21:11.000Z</published>
+    <updated>2019-11-14T07:28:23.050Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Linux基础&quot;&gt;&lt;a href=&quot;#一、Linux基础&quot; class=&quot;headerlink&quot; title=&quot;一、Linux基础&quot;&gt;&lt;/a&gt;一、Linux基础&lt;/h1&gt;&lt;h1 id=&quot;二、Linux进阶&quot;&gt;&lt;a href=&quot;#二、Linux进阶&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Programming" scheme="https://myhaa.github.io/categories/Programming/"/>
+    
+    
+      <category term="Linux" scheme="https://myhaa.github.io/tags/Linux/"/>
+    
+      <category term="Shell" scheme="https://myhaa.github.io/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java笔记</title>
+    <link href="https://myhaa.github.io/2019/10/13/java/"/>
+    <id>https://myhaa.github.io/2019/10/13/java/</id>
+    <published>2019-10-13T07:21:11.000Z</published>
+    <updated>2019-11-14T07:24:08.878Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Java基础&quot;&gt;&lt;a href=&quot;#一、Java基础&quot; class=&quot;headerlink&quot; title=&quot;一、Java基础&quot;&gt;&lt;/a&gt;一、Java基础&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Programming" scheme="https://myhaa.github.io/categories/Programming/"/>
+    
+    
+      <category term="Java" scheme="https://myhaa.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive笔记</title>
+    <link href="https://myhaa.github.io/2019/10/12/hive/"/>
+    <id>https://myhaa.github.io/2019/10/12/hive/</id>
+    <published>2019-10-12T09:21:11.000Z</published>
+    <updated>2019-11-14T07:20:13.949Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、Hive基础&quot;&gt;&lt;a href=&quot;#一、Hive基础&quot; class=&quot;headerlink&quot; title=&quot;一、Hive基础&quot;&gt;&lt;/a&gt;一、Hive基础&lt;/h1&gt;&lt;h2 id=&quot;1、Hive数据类型&quot;&gt;&lt;a href=&quot;#1、Hive数据类型&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Big Data" scheme="https://myhaa.github.io/categories/Big-Data/"/>
+    
+    
+      <category term="MapReduce" scheme="https://myhaa.github.io/tags/MapReduce/"/>
+    
+      <category term="Hive" scheme="https://myhaa.github.io/tags/Hive/"/>
     
   </entry>
   
   <entry>
     <title>计算广告笔记</title>
-    <link href="https://myhaa.github.io/2019/11/13/computational-advertising/"/>
-    <id>https://myhaa.github.io/2019/11/13/computational-advertising/</id>
-    <published>2019-11-13T11:08:34.214Z</published>
-    <updated>2019-11-13T11:08:34.215Z</updated>
+    <link href="https://myhaa.github.io/2019/10/12/computational-advertising/"/>
+    <id>https://myhaa.github.io/2019/10/12/computational-advertising/</id>
+    <published>2019-10-12T07:21:11.000Z</published>
+    <updated>2019-11-14T07:15:33.452Z</updated>
     
     <summary type="html">
     
@@ -276,14 +290,50 @@
       
         
         
-          &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;一、名词解释&quot;&gt;&lt;a href=&quot;#一、名词解释&quot; class=&quot;headerlink&quot; title=&quot;一、名词解释&quot;&gt;&lt;/a&gt;一、名词解释&lt;/h1&gt;&lt;h2 id=&quot;广告主&quot;&gt;&lt;a href=&quot;#广告主&quot;
+          &lt;h1 id=&quot;一、名词解释&quot;&gt;&lt;a href=&quot;#一、名词解释&quot; class=&quot;headerlink&quot; title=&quot;一、名词解释&quot;&gt;&lt;/a&gt;一、名词解释&lt;/h1&gt;&lt;h2 id=&quot;广告主&quot;&gt;&lt;a href=&quot;#广告主&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
+      <category term="Advertising" scheme="https://myhaa.github.io/categories/Advertising/"/>
+    
+    
+      <category term="Computational Advertising" scheme="https://myhaa.github.io/tags/Computational-Advertising/"/>
+    
+      <category term="RTB" scheme="https://myhaa.github.io/tags/RTB/"/>
+    
+      <category term="DSP" scheme="https://myhaa.github.io/tags/DSP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习清单</title>
+    <link href="https://myhaa.github.io/2019/10/10/knowledge-topology/"/>
+    <id>https://myhaa.github.io/2019/10/10/knowledge-topology/</id>
+    <published>2019-10-10T07:21:11.000Z</published>
+    <updated>2019-11-14T08:31:21.376Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、实用工具&quot;&gt;&lt;a href=&quot;#一、实用工具&quot; class=&quot;headerlink&quot; title=&quot;一、实用工具&quot;&gt;&lt;/a&gt;一、实用工具&lt;/h1&gt;&lt;h2 id=&quot;编程语言&quot;&gt;&lt;a href=&quot;#编程语言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Learning" scheme="https://myhaa.github.io/categories/Learning/"/>
+    
+    
+      <category term="Java" scheme="https://myhaa.github.io/tags/Java/"/>
+    
+      <category term="Python" scheme="https://myhaa.github.io/tags/Python/"/>
     
   </entry>
   

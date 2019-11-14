@@ -4,8 +4,34 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spark, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Spark基础二、Spark进阶三、参考书籍四、疑难解答">
+    <meta name="keywords" content="Hive笔记, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="一、Hive基础1、Hive数据类型（1）原始类型
+
+
+
+类型
+描述
+示例
+
+
+
+Boolean
+true、false
+TRUE
+
+
+TINYINT
+-128~127
+1Y
+
+
+SMALLINT
+-32768~32767
+1S
+
+
+INT
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +39,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spark | Myhaa&#39;s Blog</title>
+    <title>Hive笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +331,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Spark
+                        Hive笔记
                     </div>
                 </div>
             </div>
@@ -423,16 +449,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Spark/">
-                                <span class="chip bg-color">Spark</span>
+                            <a href="/tags/MapReduce/">
+                                <span class="chip bg-color">MapReduce</span>
                             </a>
                         
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
-                            </a>
-                        
-                            <a href="/tags/Streaming/">
-                                <span class="chip bg-color">Streaming</span>
+                            <a href="/tags/Hive/">
+                                <span class="chip bg-color">Hive</span>
                             </a>
                         
                     </div>
@@ -456,7 +478,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-14
+                    2019-10-12
                 </div>
                 
 
@@ -465,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    11 分
                 </div>
                 
 				
@@ -488,7 +510,627 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Spark基础"><a href="#一、Spark基础" class="headerlink" title="一、Spark基础"></a>一、Spark基础</h1><h1 id="二、Spark进阶"><a href="#二、Spark进阶" class="headerlink" title="二、Spark进阶"></a>二、Spark进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1>
+                <h1 id="一、Hive基础"><a href="#一、Hive基础" class="headerlink" title="一、Hive基础"></a>一、Hive基础</h1><h2 id="1、Hive数据类型"><a href="#1、Hive数据类型" class="headerlink" title="1、Hive数据类型"></a>1、Hive数据类型</h2><p>（1）原始类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Boolean</code></td>
+<td align="center"><code>true</code>、<code>false</code></td>
+<td align="center"><code>TRUE</code></td>
+</tr>
+<tr>
+<td align="center"><code>TINYINT</code></td>
+<td align="center">-128~127</td>
+<td align="center"><code>1Y</code></td>
+</tr>
+<tr>
+<td align="center"><code>SMALLINT</code></td>
+<td align="center">-32768~32767</td>
+<td align="center"><code>1S</code></td>
+</tr>
+<tr>
+<td align="center"><code>INT</code></td>
+<td align="center">4个字节的带符号整数</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center"><code>BIGINT</code></td>
+<td align="center">8字节带符号整数</td>
+<td align="center"><code>1L</code></td>
+</tr>
+<tr>
+<td align="center"><code>FLOAT</code></td>
+<td align="center">4字节单精度浮点数</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center"><code>DOUBLE</code></td>
+<td align="center">8字节双精度浮点数</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center"><code>DECIMAL</code></td>
+<td align="center">任意精度的带符号小数</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="center"><code>STRING</code></td>
+<td align="center">字符串</td>
+<td align="center"><code>‘ABC’</code></td>
+</tr>
+<tr>
+<td align="center"><code>VARCHAR</code></td>
+<td align="center">长字符串</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>CHAR</code></td>
+<td align="center">固定长度字符串</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>BINARY</code></td>
+<td align="center">字节数组</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>TIMESTAMP</code></td>
+<td align="center">时间戳，纳秒精度</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>DATE</code></td>
+<td align="center">日期</td>
+<td align="center"><code>2019-10-08</code></td>
+</tr>
+</tbody></table>
+<p>（2）复杂类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ARRAY</code></td>
+<td align="center">有序的的同类型的集合</td>
+<td align="center"><code>array(1,2)</code></td>
+</tr>
+<tr>
+<td align="center"><code>MAP</code></td>
+<td align="center">key-value<br>key必须为原始类型，value可以任意类型</td>
+<td align="center"><code>map(‘a’,1,’b’,2)</code></td>
+</tr>
+<tr>
+<td align="center"><code>UNION</code></td>
+<td align="center">在有限取值范围内的一个值</td>
+<td align="center"><code>create_union(1,’a’,63)</code></td>
+</tr>
+<tr>
+<td align="center"><code>STRUCT</code></td>
+<td align="center">字段集合,类型可以不同</td>
+<td align="center"><code>struct(‘1’,1,1.0)</code></td>
+</tr>
+</tbody></table>
+<h2 id="2、Hive数据库操作"><a href="#2、Hive数据库操作" class="headerlink" title="2、Hive数据库操作"></a>2、Hive数据库操作</h2><p>（1）创建数据库</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+CREATE DATABASE|SCHEMA [IF NOT EXISTS] <database name>;
+
+-- 例子
+CREATE DATABASE IF NOT EXISTS database_name;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）删除数据库</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+DROP DATABASE StatementDROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];
+
+-- 例子
+DROP DATABASE IF EXISTS userdb;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、Hive表操作"><a href="#3、Hive表操作" class="headerlink" title="3、Hive表操作"></a>3、Hive表操作</h2><p>（1）创建表</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.] table_name
+[(col_name data_type [COMMENT col_comment], ...)]
+[COMMENT table_comment]
+[ROW FORMAT row_format]
+[STORED AS file_format]
+
+-- 例子
+CREATE TABLE IF NOT EXISTS employee
+(eid int, 
+ name String,
+ salary String, 
+ destination String)
+COMMENT ‘Employee details’
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）修改表</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 重命名表
+ALTER TABLE name RENAME TO new_name
+
+ALTER TABLE employee RENAME TO emp;
+
+-- 添加列
+ALTER TABLE name ADD COLUMNS (col_spec[, col_spec ...])
+
+ALTER TABLE employee ADD COLUMNS (
+    dept STRING COMMENT 'Department name');
+
+-- 删除列
+ALTER TABLE name DROP [COLUMN] column_name
+
+-- 更改列属性
+ALTER TABLE name CHANGE column_name new_name new_type
+
+ALTER TABLE employee CHANGE salary salary Double;
+
+-- 替换列
+ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
+
+ALTER TABLE employee REPLACE COLUMNS (
+    eid INT empid Int,
+    ename STRING name String);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（3）删除表</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] table_name;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="4、Hive表数据操作"><a href="#4、Hive表数据操作" class="headerlink" title="4、Hive表数据操作"></a>4、Hive表数据操作</h2><p>（1）插入数据</p>
+<ul>
+<li><code>LOAD DATA</code>：从<code>HDFS</code>中加载数据会直接<code>move</code>！</li>
+</ul>
+<pre class="line-numbers language-mysql"><code class="language-mysql">--命令
+LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)]
+
+--例子
+LOAD DATA LOCAL INPATH '/home/user/sample.txt' OVERWRITE INTO TABLE employee;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>INSERT INTO</code></li>
+</ul>
+<pre class="line-numbers language-mysql"><code class="language-mysql">insert into table account 
+select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><code>INSERT OVERWRITE</code></li>
+</ul>
+<pre class="line-numbers language-mysql"><code class="language-mysql">insert overwrite table account2 
+select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong><em>注意</em></strong>：</p>
+<p><code>insert overwrite</code>会覆盖已经存在的数据，假如原始表使用<code>overwrite</code>上述的数据，先现将原始表的数据<code>remove</code>，再插入新数据。</p>
+<p><code>insert into</code>只是简单的插入，不考虑原始表的数据，直接追加到表中。</p>
+<p>（2）修改数据</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">UPDATE tablename SET column = value [, column = value ...] [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（3）删除数据</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DELETE FROM tablename [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="5、Hive分区操作"><a href="#5、Hive分区操作" class="headerlink" title="5、Hive分区操作"></a>5、Hive分区操作</h2><p>（1）添加分区</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+ALTER TABLE table_name ADD [IF NOT EXISTS] PARTITION (p_column = p_col_value, p_column = p_col_value, ...)
+[LOCATION 'location1'] (p2_column = p2_col_value, p2_column = p2_col_value, ...) [LOCATION 'location2'] ...;
+
+-- 例子
+ALTER TABLE employee ADD PARTITION (year=’2013’) location '/2012/part2012';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）重命名分区</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+ALTER TABLE table_name PARTITION partition_spec RENAME TO PARTITION partition_spec;
+
+-- 例子
+ALTER TABLE employee PARTITION (year=’1203’) RENAME TO PARTITION (Yoj=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（3）删除分区</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec, PARTITION partition_spec,...;
+
+-- 例子
+ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="6、Hive内置运算符"><a href="#6、Hive内置运算符" class="headerlink" title="6、Hive内置运算符"></a>6、Hive内置运算符</h2><p>（1）关系运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A = B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A != B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A &lt; B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A &lt;= B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A &gt; B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A &gt;= B</td>
+<td>所有基本类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A IS NULL</td>
+<td>所有类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A IS NOT NULL</td>
+<td>所有类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A LIKE B</td>
+<td>字符串</td>
+<td>TRUE，如果字符串模式A匹配到B，<br>否则FALSE。</td>
+</tr>
+<tr>
+<td>A RLIKE B</td>
+<td>字符串</td>
+<td>TRUE：A任何子字符串匹配Java正则表达式B；</td>
+</tr>
+<tr>
+<td>A REGEXP B</td>
+<td>字符串</td>
+<td>等同于RLIKE.</td>
+</tr>
+</tbody></table>
+<p>（2）算术运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A + B</td>
+<td>所有数字类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A - B</td>
+<td>所有数字类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A * B</td>
+<td>所有数字类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A / B</td>
+<td>所有数字类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A % B</td>
+<td>所有数字类型</td>
+<td></td>
+</tr>
+<tr>
+<td>A &amp; B</td>
+<td>所有数字类型</td>
+<td>A和B的按位与结果</td>
+</tr>
+<tr>
+<td>A | B</td>
+<td>所有数字类型</td>
+<td>A和B的按位或结果</td>
+</tr>
+<tr>
+<td>A ^ B</td>
+<td>所有数字类型</td>
+<td>A和B的按位异或结果</td>
+</tr>
+<tr>
+<td>~ A</td>
+<td>所有数字类型</td>
+<td>A按位非的结果</td>
+</tr>
+</tbody></table>
+<p>（3）逻辑运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A AND B</td>
+<td>Boolean</td>
+<td>与</td>
+</tr>
+<tr>
+<td>A &amp;&amp; B</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>A OR B</td>
+<td>Boolean</td>
+<td>或</td>
+</tr>
+<tr>
+<td>A || B</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>NOT A</td>
+<td>Boolean</td>
+<td>非</td>
+</tr>
+<tr>
+<td>! A</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>（4）复杂运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A[n]</td>
+<td>A是一个数组，n是一个int</td>
+<td>它返回数组A的第n+1个元素，第一个元素的索引0。</td>
+</tr>
+<tr>
+<td>M[Key]</td>
+<td>M 是一个 Map&lt;K, V&gt; 并 key 的类型为K</td>
+<td>它返回对应于映射中关键字的值。</td>
+</tr>
+<tr>
+<td>S.x</td>
+<td>S 是一个结构</td>
+<td>它返回S的s字段</td>
+</tr>
+</tbody></table>
+<h2 id="7、Hive内置函数"><a href="#7、Hive内置函数" class="headerlink" title="7、Hive内置函数"></a>7、Hive内置函数</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 返回BIGINT最近的double值。
+round(double a)
+
+-- 返回最大BIGINT值等于或小于double。
+floor(double a)
+
+-- 它返回最小BIGINT值等于或大于double。
+ceil(double a)
+
+-- 它返回一个随机数，从行改变到行。
+rand()
+rand(int seed)
+
+-- 它返回从A后串联B产生的字符串
+concat(string A, string B, ...)
+
+-- 它返回一个起始位置start到A结束的子字符串
+substr(string A, int start)
+
+-- 返回从给定长度length的从起始位置start开始的字符串。
+substr(string A, int start, int length)
+
+-- 它返回转换所有字符为大写的字符串。
+upper(string A)
+ucase(string A)
+
+-- 它返回转换所有字符为小写的字符串。
+lower(string A)
+lcase(string A)
+
+-- 它返回字符串从A两端修剪空格的结果
+trim(string A)
+
+-- 它返回从A左边开始修整空格产生的字符串(左手侧)
+ltrim(string A)
+
+-- 它返回从A右边开始修整空格产生的字符串(右侧)
+rtrim(string A)
+
+-- 它返回将A中的子字符串B替换为C的全新字符串
+regexp_replace(string A, string B, string C)
+
+-- 它返回在映射类型或数组类型的元素的数量。
+size(Map<K.V>)
+size(Array<T>)
+
+-- 将字段expr的数据类型转换为type。如果转换不成功，返回的是NULL。
+cast(<expr> as <type>)
+
+-- 将10位的时间戳值unixtime转为日期函数
+from_unixtime(int unixtime, 'yyyy-MM-dd HH:mm:ss')
+
+-- 返回一个字符串时间戳的日期部分：to_date("1970-01-01 00:00:00") = "1970-01-01"
+to_date(string timestamp, 'yyyy-MM-dd')
+
+-- 返回指定日期的unix时间戳
+unix_timestamp(string date, 'yyyy-MM-dd HH:mm:ss')  -- date的形式必须为’yyyy-MM-dd HH:mm:ss’的形式
+unix_timestamp()  -- 返回当前时间的unix时间戳
+
+-- 返回时间字段中的年月日
+year(string date, 'yyMMdd')  -- 年
+month(string date, 'yyMMdd')  -- 月
+day(string date, 'yyMMdd')  -- 日
+
+-- 返回时间字段是本年的第多少周
+weekofyear(string date, 'yyMMdd')
+
+-- 返回enddate与begindate之间的时间差的天数
+datediff(string enddate,string begindate)
+
+select datediff(‘2016-06-01’,’2016-05-01’) from Hive_sum limit 1;
+
+-- 返回date增加days天后的日期
+date_add(string date,int days)
+
+-- 返回date减少days天后的日期
+date_sub(string date,int days)
+
+-- 提取从基于指定的JSON路径的JSON字符串JSON对象，并返回提取的JSON字符串的JSON对象。
+get_json_object(string json_string, string path)
+
+-- 返回检索行的总数。
+count(*)
+count(expr)
+
+-- 返回该组或该组中的列的不同值的分组和所有元素的总和。
+sum(col)
+sum(DISTINCT col)
+
+-- 返回上述组或该组中的列的不同值的元素的平均值。
+avg(col)
+avg(DISTINCT col)
+
+-- 返回该组中的列的最大最小值。
+min(col)
+max(col)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8、Hive视图和索引"><a href="#8、Hive视图和索引" class="headerlink" title="8、Hive视图和索引"></a>8、Hive视图和索引</h2><p>（1）创建视图</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+CREATE VIEW [IF NOT EXISTS] view_name [(column_name [COMMENT column_comment], ...) ]
+[COMMENT table_comment]
+AS SELECT ...
+
+-- 例子
+CREATE VIEW emp_30000 AS
+SELECT * FROM employee
+WHERE salary>30000;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）删除视图</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP VIEW view_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（3）创建索引</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+CREATE INDEX index_name
+ON TABLE base_table_name (col_name, ...)
+AS 'index.handler.class.name'
+[WITH DEFERRED REBUILD]
+[IDXPROPERTIES (property_name=property_value, ...)]
+[IN TABLE index_table_name]
+[PARTITIONED BY (col_name, ...)]
+[
+   [ ROW FORMAT ...] STORED AS ...
+   | STORED BY ...
+]
+[LOCATION hdfs_path]
+[TBLPROPERTIES (...)]
+
+-- 例子：使用字段 Id, Name, Salary, Designation, 和 Dept创建一个名为index_salary的索引，对employee 表的salary列索引。
+CREATE INDEX inedx_salary ON TABLE employee(salary)
+AS 'org.apache.hadoop.Hive.ql.index.compact.CompactIndexHandler';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（4）删除索引</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">DROP INDEX <index_name> ON <table_name><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="二、Hive进阶"><a href="#二、Hive进阶" class="headerlink" title="二、Hive进阶"></a>二、Hive进阶</h1><h2 id="1、Hive-SELECT-数据"><a href="#1、Hive-SELECT-数据" class="headerlink" title="1、Hive SELECT 数据"></a>1、Hive SELECT 数据</h2><pre class="line-numbers language-mysql"><code class="language-mysql">SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
+FROM table_reference 
+[WHERE where_condition] 
+[GROUP BY col_list] 
+[HAVING having_condition] 
+[CLUSTER BY col_list | [DISTRIBUTE BY col_list] [SORT BY col_list]] 
+[ORDER BY col_list]
+[LIMIT number];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2、命令执行顺序"><a href="#2、命令执行顺序" class="headerlink" title="2、命令执行顺序"></a>2、命令执行顺序</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 大致顺序
+from... where.... select... group by... having ... order by...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>备注：</strong>Hive语句和mysql都可以通过explain查看执行计划，使用explain + Hive语句</p>
+<h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><ul>
+<li><a href="https://www.yiibai.com/Hive/" target="_blank" rel="noopener">易百教程</a></li>
+</ul>
+<h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、Hive-在指定位置添加字段"><a href="#1、Hive-在指定位置添加字段" class="headerlink" title="1、Hive 在指定位置添加字段"></a>1、Hive 在指定位置添加字段</h2><ul>
+<li><p>首先添加字段</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name add columns (c_time string comment '当前时间');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>其次更改字段的顺序</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name change c_time c_time string after address;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="2、Hive创建表时指定文件格式"><a href="#2、Hive创建表时指定文件格式" class="headerlink" title="2、Hive创建表时指定文件格式"></a>2、Hive创建表时指定文件格式</h2><ul>
+<li><p><strong>TEXTFIEL</strong></p>
+<p>默认格式，数据不做压缩，磁盘开销大，数据解析开销大。<br>可结合Gzip、Bzip2使用（系统自动检查，执行查询时自动解压），但使用这种方式，Hive不会对数据进行切分，从而无法对数据进行并行操作。</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+create table test1(str STRING)  
+STORED AS TEXTFILE;
+
+-- 自定义格式
+create table test1(str STRING)  
+STORED AS
+INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveIgnoreKeyTextOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>SEQUENCEFILE</strong></p>
+<p>SequenceFile是Hadoop API提供的一种二进制文件支持，其具有使用方便、可分割、可压缩的特点。<br>SequenceFile支持三种压缩选择：NONE, RECORD, BLOCK。 Record压缩率低，一般建议使用BLOCK压缩。</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+create table test1(str STRING)  
+STORED AS SEQUENCEFILE;
+
+-- 自定义格式
+create table test1(str STRING)  
+STORED AS
+INPUTFORMAT 'org.apache.hadoop.mapred.SequenceFileInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveSequenceFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>RCFILE</strong></p>
+<p>RCFILE是一种行列存储相结合的存储方式。首先，其将数据按行分块，保证同一个record在一个块上，避免读一个记录需要读取多个block。其次，块数据列式存储，有利于数据压缩和快速的列存取。</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+create table test1(str STRING)  
+STORED AS RCFILE;
+
+-- 自定义格式
+create table test1(str STRING)  
+STORED AS
+INPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="3、Hive同时拆分多列为多行"><a href="#3、Hive同时拆分多列为多行" class="headerlink" title="3、Hive同时拆分多列为多行"></a>3、Hive同时拆分多列为多行</h2><ul>
+<li><a href="https://stackoverflow.com/questions/37585638/Hive-split-delimited-columns-over-multiple-rows-select-based-on-position?rq=1" target="_blank" rel="noopener">问题链接</a></li>
+</ul>
+<p><strong>问题：</strong></p>
+<p>I’m Looking for a way to split the column based on comma delimited data. Below is my dataset</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">id  col1  col2
+1   5,6   7,8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>I want to get the result</p>
+<pre class="line-numbers language-mysql"><code class="language-mysql">id col1 col2
+1  5    7
+1  6    8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>答案：</strong></p>
+<p>You can use <code>posexplode()</code> to create position index columns for your split arrays. Then, select only those rows where the position indices are equal.</p>
+<pre><code>SELECT id, col3, col4
+  FROM test
+  lateral VIEW posexplode(split(col1,&#39;\002&#39;)) col1 AS pos3, col3
+  lateral VIEW posexplode(split(col2,&#39;\002&#39;)) col2 AS pos4, col4
+  WHERE pos3 = pos4;</code></pre><p>Output:</p>
+<pre><code>id col3 col4
+1  5    7
+1  6    8</code></pre><h2 id="4、-Hive或spark中执行sql字符常量包含-时会报错"><a href="#4、-Hive或spark中执行sql字符常量包含-时会报错" class="headerlink" title="4、 Hive或spark中执行sql字符常量包含;时会报错"></a>4、 Hive或spark中执行sql字符常量包含<code>;</code>时会报错</h2><p>比如</p>
+<blockquote>
+<p>select instr(‘abc;abc’, ‘;’);</p>
+</blockquote>
+<p>报错</p>
+<blockquote>
+<p>NoViableAltException(-1@[147:1: selectExpression : ( expression | tableAllColumns );])</p>
+</blockquote>
+<p><strong>修改：</strong>需要将<code>;</code>改为<code>ascii</code></p>
+<blockquote>
+<p>select instr(‘abc\073abc’, ‘\073’);</p>
+</blockquote>
+
             </div>
             <hr/>
 
@@ -513,7 +1155,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2019/11/14/spark/">https://myhaa.github.io/2019/11/14/spark/</a>
+                    <a href="https://myhaa.github.io/2019/10/12/hive/">https://myhaa.github.io/2019/10/12/hive/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,16 +1193,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Spark/">
-                                    <span class="chip bg-color">Spark</span>
+                                <a href="/tags/MapReduce/">
+                                    <span class="chip bg-color">MapReduce</span>
                                 </a>
                             
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
-                                </a>
-                            
-                                <a href="/tags/Streaming/">
-                                    <span class="chip bg-color">Streaming</span>
+                                <a href="/tags/Hive/">
+                                    <span class="chip bg-color">Hive</span>
                                 </a>
                             
                         </div>
@@ -726,56 +1364,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/14/spark/">
+                <a href="/2019/10/13/java/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java笔记">
                         
-                        <span class="card-title">Spark</span>
+                        <span class="card-title">Java笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark自学笔记
+                            有关Java的笔记
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Big-Data/" class="post-category">
-                                    Big Data
+                            <a href="/categories/Programming/" class="post-category">
+                                    Programming
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spark/">
-                        <span class="chip bg-color">Spark</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
-                    
-                    <a href="/tags/Streaming/">
-                        <span class="chip bg-color">Streaming</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -789,31 +1417,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/12/git/">
+                <a href="/2019/10/12/computational-advertising/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Git笔记">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="计算广告笔记">
                         
-                        <span class="card-title">Git笔记</span>
+                        <span class="card-title">计算广告笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有关Git的笔记
+                            有关计算广告的笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GitHub/" class="post-category">
-                                    GitHub
+                            <a href="/categories/Advertising/" class="post-category">
+                                    Advertising
                                 </a>
                             
                             
@@ -823,16 +1451,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Computational-Advertising/">
+                        <span class="chip bg-color">Computational Advertising</span>
                     </a>
                     
-                    <a href="/tags/GitHub/">
-                        <span class="chip bg-color">GitHub</span>
+                    <a href="/tags/RTB/">
+                        <span class="chip bg-color">RTB</span>
                     </a>
                     
-                    <a href="/tags/SSH/">
-                        <span class="chip bg-color">SSH</span>
+                    <a href="/tags/DSP/">
+                        <span class="chip bg-color">DSP</span>
                     </a>
                     
                 </div>

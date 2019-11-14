@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spark, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Spark基础二、Spark进阶三、参考书籍四、疑难解答">
+    <meta name="keywords" content="Linux笔记, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="一、Linux基础二、Linux进阶三、参考书籍四、疑难解答1、修改文件或目录的权限（1）语法
+chmod [-cfvR] [--help] [--version] mode file...
+（2）参数说明
+mode : 权限设定字串，格式">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spark | Myhaa&#39;s Blog</title>
+    <title>Linux笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +308,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Spark
+                        Linux笔记
                     </div>
                 </div>
             </div>
@@ -423,16 +426,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Spark/">
-                                <span class="chip bg-color">Spark</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
-                            </a>
-                        
-                            <a href="/tags/Streaming/">
-                                <span class="chip bg-color">Streaming</span>
+                            <a href="/tags/Shell/">
+                                <span class="chip bg-color">Shell</span>
                             </a>
                         
                     </div>
@@ -443,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Big-Data/" class="post-category">
-                                Big Data
+                            <a href="/categories/Programming/" class="post-category">
+                                Programming
                             </a>
                         
                     </div>
@@ -456,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-14
+                    2019-10-14
                 </div>
                 
 
@@ -465,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18
+                    308
                 </div>
                 
 
@@ -488,7 +487,30 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Spark基础"><a href="#一、Spark基础" class="headerlink" title="一、Spark基础"></a>一、Spark基础</h1><h1 id="二、Spark进阶"><a href="#二、Spark进阶" class="headerlink" title="二、Spark进阶"></a>二、Spark进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1>
+                <h1 id="一、Linux基础"><a href="#一、Linux基础" class="headerlink" title="一、Linux基础"></a>一、Linux基础</h1><h1 id="二、Linux进阶"><a href="#二、Linux进阶" class="headerlink" title="二、Linux进阶"></a>二、Linux进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、修改文件或目录的权限"><a href="#1、修改文件或目录的权限" class="headerlink" title="1、修改文件或目录的权限"></a>1、修改文件或目录的权限</h2><p>（1）语法</p>
+<pre class="line-numbers language-shell"><code class="language-shell">chmod [-cfvR] [--help] [--version] mode file...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（2）参数说明</p>
+<p><strong>mode :</strong> 权限设定字串，格式如下 :</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[ugoa...][[+-=][rwxX]...][,...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>其中：</strong></p>
+<ul>
+<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
+<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
+<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+</ul>
+<p>（3）其他参数说明：</p>
+<ul>
+<li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
+<li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
+<li>-v : 显示权限变更的详细资料</li>
+<li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+<p>（4）实例</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 给个人目录的其他用户删除写权限
+ hadoop fs -chmod -R o-w /user/name/dir<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -513,7 +535,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2019/11/14/spark/">https://myhaa.github.io/2019/11/14/spark/</a>
+                    <a href="https://myhaa.github.io/2019/10/14/linux/">https://myhaa.github.io/2019/10/14/linux/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,16 +573,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Spark/">
-                                    <span class="chip bg-color">Spark</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
-                                </a>
-                            
-                                <a href="/tags/Streaming/">
-                                    <span class="chip bg-color">Streaming</span>
+                                <a href="/tags/Shell/">
+                                    <span class="chip bg-color">Shell</span>
                                 </a>
                             
                         </div>
@@ -726,56 +744,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/14/spark/">
+                <a href="/2019/10/15/python/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Python笔记">
                         
-                        <span class="card-title">Spark</span>
+                        <span class="card-title">Python笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark自学笔记
+                            有关Python的笔记
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Big-Data/" class="post-category">
-                                    Big Data
+                            <a href="/categories/Programming/" class="post-category">
+                                    Programming
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spark/">
-                        <span class="chip bg-color">Spark</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
-                    
-                    <a href="/tags/Streaming/">
-                        <span class="chip bg-color">Streaming</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
@@ -789,31 +797,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/12/git/">
+                <a href="/2019/10/13/java/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Git笔记">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java笔记">
                         
-                        <span class="card-title">Git笔记</span>
+                        <span class="card-title">Java笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有关Git的笔记
+                            有关Java的笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GitHub/" class="post-category">
-                                    GitHub
+                            <a href="/categories/Programming/" class="post-category">
+                                    Programming
                                 </a>
                             
                             
@@ -823,16 +831,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/GitHub/">
-                        <span class="chip bg-color">GitHub</span>
-                    </a>
-                    
-                    <a href="/tags/SSH/">
-                        <span class="chip bg-color">SSH</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>

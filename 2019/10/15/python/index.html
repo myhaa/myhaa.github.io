@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spark, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Spark基础二、Spark进阶三、参考书籍四、疑难解答">
+    <meta name="keywords" content="Python笔记, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="一、Python基础二、Python进阶三、参考书籍四、疑难解答1、Python2编码问题
+参考
+
+2、Python3编码问题
+在Python3版本中，把&amp;#39;xxx&amp;#39;和u&amp;#39;xxx&amp;#39;统一成Unicode编码，即写">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spark | Myhaa&#39;s Blog</title>
+    <title>Python笔记 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +309,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Spark
+                        Python笔记
                     </div>
                 </div>
             </div>
@@ -423,16 +427,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Spark/">
-                                <span class="chip bg-color">Spark</span>
-                            </a>
-                        
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
-                            </a>
-                        
-                            <a href="/tags/Streaming/">
-                                <span class="chip bg-color">Streaming</span>
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
                             </a>
                         
                     </div>
@@ -443,8 +439,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Big-Data/" class="post-category">
-                                Big Data
+                            <a href="/categories/Programming/" class="post-category">
+                                Programming
                             </a>
                         
                     </div>
@@ -456,7 +452,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-14
+                    2019-10-15
                 </div>
                 
 
@@ -465,7 +461,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18
+                    127
                 </div>
                 
 
@@ -488,7 +484,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Spark基础"><a href="#一、Spark基础" class="headerlink" title="一、Spark基础"></a>一、Spark基础</h1><h1 id="二、Spark进阶"><a href="#二、Spark进阶" class="headerlink" title="二、Spark进阶"></a>二、Spark进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1>
+                <h1 id="一、Python基础"><a href="#一、Python基础" class="headerlink" title="一、Python基础"></a>一、Python基础</h1><h1 id="二、Python进阶"><a href="#二、Python进阶" class="headerlink" title="二、Python进阶"></a>二、Python进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、Python2编码问题"><a href="#1、Python2编码问题" class="headerlink" title="1、Python2编码问题"></a>1、<code>Python2</code>编码问题</h2><ul>
+<li><a href="https://foofish.net/why-Python-encoding-is-tricky.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="2、Python3编码问题"><a href="#2、Python3编码问题" class="headerlink" title="2、Python3编码问题"></a>2、<code>Python3</code>编码问题</h2><ul>
+<li>在<code>Python3</code>版本中，把<code>&#39;xxx&#39;</code>和<code>u&#39;xxx&#39;</code>统一成<code>Unicode</code>编码，即写不写前缀<code>u</code>都是一样的。</li>
+<li>在<code>Python3</code>版本中，所有的字符串都是使用<code>Unicode</code>编码的字符串序列。</li>
+<li><a href="https://foofish.net/how-Python3-handle-charset-encoding.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="3、产生一段时间的日期"><a href="#3、产生一段时间的日期" class="headerlink" title="3、产生一段时间的日期"></a>3、产生一段时间的日期</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -513,7 +520,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2019/11/14/spark/">https://myhaa.github.io/2019/11/14/spark/</a>
+                    <a href="https://myhaa.github.io/2019/10/15/python/">https://myhaa.github.io/2019/10/15/python/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,16 +558,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Spark/">
-                                    <span class="chip bg-color">Spark</span>
-                                </a>
-                            
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
-                                </a>
-                            
-                                <a href="/tags/Streaming/">
-                                    <span class="chip bg-color">Streaming</span>
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -726,56 +725,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/14/spark/">
+                <a href="/2019/10/17/recommendation-algorithm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="推荐算法笔记">
                         
-                        <span class="card-title">Spark</span>
+                        <span class="card-title">推荐算法笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spark自学笔记
+                            有关推荐算法的笔记
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Big-Data/" class="post-category">
-                                    Big Data
+                            <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spark/">
-                        <span class="chip bg-color">Spark</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
-                    
-                    <a href="/tags/Streaming/">
-                        <span class="chip bg-color">Streaming</span>
+                    <a href="/tags/Recommendation-Algorithm/">
+                        <span class="chip bg-color">Recommendation Algorithm</span>
                     </a>
                     
                 </div>
@@ -789,31 +778,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/12/git/">
+                <a href="/2019/10/14/linux/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Git笔记">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux笔记">
                         
-                        <span class="card-title">Git笔记</span>
+                        <span class="card-title">Linux笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有关Git的笔记
+                            有关Linux的笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GitHub/" class="post-category">
-                                    GitHub
+                            <a href="/categories/Programming/" class="post-category">
+                                    Programming
                                 </a>
                             
                             
@@ -823,16 +812,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/GitHub/">
-                        <span class="chip bg-color">GitHub</span>
-                    </a>
-                    
-                    <a href="/tags/SSH/">
-                        <span class="chip bg-color">SSH</span>
+                    <a href="/tags/Shell/">
+                        <span class="chip bg-color">Shell</span>
                     </a>
                     
                 </div>
