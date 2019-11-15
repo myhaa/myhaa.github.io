@@ -3,8 +3,8 @@ title: Git笔记
 date: 2019-11-12 16:21:11
 author: Myhaa
 img:
-top: false
-cover: false
+top: true
+cover: true
 coverImg:
 password:
 toc: true
