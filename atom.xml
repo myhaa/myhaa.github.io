@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2019-11-14T08:31:06.125Z</updated>
+  <updated>2019-11-18T12:06:47.058Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySql</title>
+    <link href="https://myhaa.github.io/2019/11/18/mysql/"/>
+    <id>https://myhaa.github.io/2019/11/18/mysql/</id>
+    <published>2019-11-18T11:36:26.000Z</published>
+    <updated>2019-11-18T12:06:47.058Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、MySql基础&quot;&gt;&lt;a href=&quot;#一、MySql基础&quot; class=&quot;headerlink&quot; title=&quot;一、MySql基础&quot;&gt;&lt;/a&gt;一、MySql基础&lt;/h1&gt;&lt;h2 id=&quot;1、MySql简介&quot;&gt;&lt;a href=&quot;#1、MySql简介&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Big Data" scheme="https://myhaa.github.io/categories/Big-Data/"/>
+    
+    
+      <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
+    
+      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
+    
+  </entry>
   
   <entry>
     <title>Spark</title>
