@@ -271,13 +271,14 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: false
-  owner:
-  repo:
+  enable: true
+  owner: myhaa
+  repo: myhaa.github.io
   oauth:
-    clientId:
-    clientSecret:
-  admin:
+    clientId: a1900fd4b8fb7a569ef7
+    clientSecret: d1176a5ad242e4887008f5d4389ea5a35f199c44
+  admin: 
+    - myhaa
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
@@ -313,7 +314,7 @@ valine:
   visitor: true
   avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
   pageSize: 10
-  placeholder: 'just go go' # Comment Box placeholder
+  placeholder: '不需要登录即可以评论！' # Comment Box placeholder
   background: /medias/comment_bg.png
 
 # Whether to display fork me on github icon and link, default true, You can change it to your repo address

@@ -148,13 +148,3 @@ live2d:
     show: true 
   react: 
     opacity: 0.7
-
-# gitalk
-gitalk:
-  enable: false
-  owner: myhaa
-  repo: myhaa.github.io
-  oauth:
-    clientId: 
-    clientSecret: 
-  admin: myhaa
