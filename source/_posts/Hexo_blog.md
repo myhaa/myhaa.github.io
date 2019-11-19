@@ -237,3 +237,26 @@ hexo d
 ## 5、更换主题
 
 * [hexo-theme-matery](<https://github.com/blinkfox/hexo-theme-matery>)
+
+### （1）设置文章头-一劳永逸
+* 修改`/scaffolds/post.md`代码如下：
+
+```markdown
+---
+title: {{ title }}
+date: {{ date }}
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 
+categories: 
+tags:
+  - 
+---
+```
+

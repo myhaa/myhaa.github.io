@@ -408,11 +408,20 @@ git push origin :refs/tags/v1.4-lw
 git push origin --delete <tagname>
 ```
 
-# 二、Git进阶
+# 二、Git进阶-分支
 
-## 1、 分支操作
+## 1、 分支简介
 
+### （1）什么是分支？
 
+* 如下图，master是默认分支，testing是其他分支。
+* 分支的存在是让你可以把master作为正式环境，把testing作为开发环境，当开发环境的代码需要上线时就将其合并到正式环境master。
+
+![图2：分支](/Git/branch.png)
+
+### （2）分支详细说明
+
+* [参考官网](<https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell>)
 
 # 三、参考书籍
 
