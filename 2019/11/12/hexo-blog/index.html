@@ -469,7 +469,7 @@ npm">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -622,6 +622,25 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <h2 id="5、更换主题"><a href="#5、更换主题" class="headerlink" title="5、更换主题"></a>5、更换主题</h2><ul>
 <li><a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">hexo-theme-matery</a></li>
 </ul>
+<h3 id="（1）设置文章头-一劳永逸"><a href="#（1）设置文章头-一劳永逸" class="headerlink" title="（1）设置文章头-一劳永逸"></a>（1）设置文章头-一劳永逸</h3><ul>
+<li>修改<code>/scaffolds/post.md</code>代码如下：</li>
+</ul>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
+title: {{ title }}
+date: {{ date }}
+author: Myhaa
+img:
+top: false
+cover: false
+coverImg:
+password:
+toc: true
+mathjax: false
+summary: 
+categories: 
+tags:
+  - 
+<span class="token hr punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
