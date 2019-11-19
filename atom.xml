@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2019-11-19T03:56:50.732Z</updated>
+  <updated>2019-11-19T04:00:13.108Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://myhaa.github.io/2019/11/19/sql/"/>
     <id>https://myhaa.github.io/2019/11/19/sql/</id>
     <published>2019-11-19T03:48:39.000Z</published>
-    <updated>2019-11-19T03:56:50.732Z</updated>
+    <updated>2019-11-19T04:00:13.108Z</updated>
     
     <summary type="html">
     
@@ -64,9 +64,9 @@
       <category term="Big Data" scheme="https://myhaa.github.io/categories/Big-Data/"/>
     
     
-      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
-    
       <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
+    
+      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
     
   </entry>
   
