@@ -419,9 +419,157 @@ git push origin --delete <tagname>
 
 ![图2：分支](/Git/branch.png)
 
-### （2）分支详细说明
+### （2）默认分支
+
+* master
+
+### （3）分支详细说明
 
 * [参考官网](<https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell>)
+
+## 2、本地分支操作
+
+### （1）创建分支
+
+```shell
+git branch test
+```
+
+### （2）切换到该分支
+
+* 当分支还存在文件没有add+commit的时候，是没法进行分支切换的。
+
+```shell
+git checkout test
+```
+
+### （3）创建并切换分支一步到位
+
+```shell
+git checkout -b test
+```
+
+### （4）查看分支
+
+```shell
+git branch
+```
+
+### （5）合并分支
+
+```shell
+git merge test  # 在master分支上将test分支合并过来
+git merge master  # 在test分支上将master分支合并过来
+```
+
+### （6）分支冲突解决
+
+* 当两个分支的同一文件都被修改提交时，这时合并两个分支就会出现冲突，那么解决冲突的办法就是手动修改两个文件，使其一致。
+
+```shell
+git mergetool  # 查看合并冲突
+```
+
+### （7）删除分支
+
+```shell
+git branch -d test  # 在master分支上删除test分支
+```
+
+### （8）查看被合并过的分支
+
+```shell
+git branch --merged
+```
+
+### （9）查看未被合并过的分支
+
+```shell
+git branch --no-merged
+```
+
+## 3、远程分支操作
+
+### （1）克隆远程仓库
+
+![图3：克隆后的远程仓库和本地仓库](/Git/remote_branch.png)
+
+* 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
+
+### （2）当远程仓库被修改后
+
+![图4：被别人修改后的远程仓库和本地仓库](/Git/remote_branch1.png)
+
+* 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
+
+### （3）git fetch origin后的远程仓库和本地仓库
+
+![图5：fetch过后的仓库](/Git/remote_branch2.png)
+
+* 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
+
+### （4）多个远程仓库
+
+![图6：多个远程仓库](/Git/remote_branch3.png)
+
+* 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
+
+### （5）push分支到远程
+
+* 只推送你想跟别人共享的分支deploy
+
+```shell
+git push origin deploy
+```
+
+### （6）在本地仓库建立一个新分支并与远程仓库对应
+
+```shell
+git checkout -b serverfix origin/serverfix
+git checkout -b sf origin/serverfix
+git checkout --track origin/serverfix
+```
+
+### （7）查看本地分支跟踪的是哪个远程分支及具体信息
+
+```shell
+# 如果想查看远程最新信息则先用fetch命令
+# git fetch --all  
+git branch -vv
+```
+
+### （8）删除远程分支
+
+```shell
+git push origin --delete serverfix
+```
+
+**注意：**Basically all this does is remove the pointer from the server. The Git server will generally keep the data there for a while until a garbage collection runs, so if it was accidentally deleted, it’s often easy to recover.
+
+## 4、Rebasing
+
+### （1）什么是Rebasing？
+
+* In Git, there are two main ways to integrate changes from one branch into another: the `merge` and the `rebase`. 
+
+### （2）merge
+
+![图7：merge](/Git/merge.png)
+
+### （3）Rebasing
+
+![图8：rebasing](/Git/rebasing.png)
+
+* 如上图，rebasing相当于是把c4这个commit_id抹去，这样会导致这个提交信息被清除，**有利也有弊**。
+
+**注意：**
+
+* Do not rebase commits that exist outside your repository and people may have based work on them.
+* 即不要rebase别人的提交信息，导致混淆产生。
+
+### （4）merge vs rebasing
+
+* 个人还是觉得merge好，但是如果合并历史太多，可以酌情使用rebasing
 
 # 三、参考书籍
 
