@@ -260,3 +260,10 @@ tags:
 ---
 ```
 
+### （2）修改subtitle
+
+![图：修改subtitle](/Hexo_blog/xiugaisubtitle.png)
+
+### （3）修改dream
+
+![图：修改dream](/Hexo_blog/xiugaidream.png)
