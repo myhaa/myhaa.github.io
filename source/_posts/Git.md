@@ -601,5 +601,8 @@ git commit --amend
 
 ```shell
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch your_want_to_rm_file_name' --prune-empty --tag-name-filter cat -- --all
+git add .
+git commit -m "rm some files"
+git push origin --force --all
 ```
 
