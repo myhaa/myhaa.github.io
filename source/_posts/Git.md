@@ -578,6 +578,28 @@ git push origin --delete serverfix
 
 # 四、疑难解答
 
+## 清除历史提交中的敏感信息
 
+### 问题介绍
 
+* 某次提交把私人信息（密码或私钥等）提交到了远程仓库，该怎么办？
+
+### 处理方式
+
+#### 第一种情况
+
+* 提交的敏感信息**还没有推送到远程仓库**
+
+```shell
+# 修改代码
+git commit --amend
+```
+
+#### 第二种情况
+
+* 提交的敏感信息**已经推送到远程仓库**
+
+```shell
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch your_want_to_rm_file_name' --prune-empty --tag-name-filter cat -- --all
+```
 
