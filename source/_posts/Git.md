@@ -606,3 +606,4 @@ git commit -m "rm some files"
 git push origin --force --all
 ```
 
+* [参考链接](<https://stackoverflow.com/questions/872565/remove-sensitive-files-and-their-commits-from-git-history>)
