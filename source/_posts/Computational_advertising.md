@@ -157,3 +157,4 @@ tags:
 * 《计算广告》 刘鹏 / 王超
 * [计算广告系统算法与架构综述](<https://zhuanlan.zhihu.com/p/60544294>)
 * [RTB广告竞价系统的算法介绍](https://dolantinlist.github.io/2018/05/21/RTB广告竞价系统的算法介绍/)
+
