@@ -55,9 +55,10 @@ ssh-keygen -t rsa -C "注册的GitLab邮箱"  # 公钥、密钥名输入gitlab_i
 ssh-keygen -t rsa -C "注册的GitHub邮箱"  # 公钥、密钥名输入github_id_rsa，其他一律回车
 ```
 
-**备注：**上述代码完成后会在`~/.ssh/`目录生成以下文件：github_id_rsa、github_id_rsa.pub、gitlab_id_rsa、gitlab_id_rsa.pub
+**备注：**
 
-2. 将github_id_rsa.pub的内容配置到GitHub网站的sshkey中，将gitlab_id_rsa.pub的内容配置到GitLab网站的sshkey中。
+1. 上述代码完成后会在`~/.ssh/`目录生成以下文件：github_id_rsa、github_id_rsa.pub、gitlab_id_rsa、gitlab_id_rsa.pub
+2. 将github_id_rsa.pub的内容配置到GitHub网站的sshkey中，将gitlab_id_rsa.pub的内容配置到GitLab网站的sshkey中
 3. 在`~/.ssh/`目录下创建config文件，告诉git不同平台使用不同key
 
 ```shell
