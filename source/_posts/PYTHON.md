@@ -10,9 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 有关Python的笔记
-categories: Programming
+categories: 编程与开发
 tags:
   - Python
+  - 编程语言
 ---
 
 

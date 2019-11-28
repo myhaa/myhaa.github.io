@@ -3,7 +3,7 @@ title: Hadoop笔记
 date: 2019-11-12 15:31:11
 author: Myhaa
 img:
-top: false
+top: true
 cover: false
 coverImg:
 password:
@@ -13,7 +13,6 @@ summary: 有关Hadoop的笔记
 categories: AI/数据科学
 tags:
   - 数据科学
-  - 大数据处理架构
   - Hadoop
 ---
 
@@ -55,8 +54,8 @@ tags:
 * 分布式计算框架-YARN：负责计算资源调度，内存、CPU、带宽等等
 * 离线计算-MapReduce：分布式并行编程模型，离线计算、批处理，基于磁盘，详情请见{% post_link YARN YARN笔记 %}
 * DAG计算-Tez：运行在YARN之上的下一代Hadoop查询处理框架，将很多的MapReduce作业进行分析优化以后构建成一个有向无环图（DAG），保证获得最好的处理效率，详情请见{% post_link Tez Tez笔记 %}
-* 内存计算-Spark：类似MapReduce的通用并行框架，基于内存计算，性能比MapReduce高，详情请见{% post_link Spark Spark笔记 %}
-* Hive：Hadoop上的数据仓库，把大量的历史数据保存到数据仓库中，建立各种维度，专门用于企业决策分析，支持SQL语句，会将SQL语句转化为MapReduce作业去执行，详情请见{% post_link Hive Hive笔记 %}
+* 内存计算-Spark：类似MapReduce的通用并行框架，基于内存计算，性能比MapReduce高，详情请见{% post_link SPARK Spark笔记 %}
+* Hive：Hadoop上的数据仓库，把大量的历史数据保存到数据仓库中，建立各种维度，专门用于企业决策分析，支持SQL语句，会将SQL语句转化为MapReduce作业去执行，详情请见{% post_link HIVE Hive笔记 %}
 * Pig：基于Hadoop的大规模数据分析平台，提供类似SQL的查询语言Pig Latin，流数据处理，轻量级分析，用一两行语句就可以跟复杂的MapReduce语句得到一样的结果，详情请见{% post_link Pig Pig笔记 %}
 * 作业流调度系统-Oozie：把很多个工作环节进行调度，详情请见{% post_link Oozie Oozie笔记 %}
 * 分布式协调服务-ZooKeeper：提供分布式协调一致性服务，分布式锁，集群管理等操作，详情请见{% post_link ZooKeeper ZooKeeper笔记 %}

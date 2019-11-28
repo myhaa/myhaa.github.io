@@ -10,9 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 有关推荐算法的笔记
-categories: Algorithm
+categories: AI/数据科学
 tags:
-  - Recommendation Algorithm
+  - 数据科学
+  - 推荐算法
 ---
 
 

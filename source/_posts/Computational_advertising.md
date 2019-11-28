@@ -3,18 +3,17 @@ title: 计算广告笔记
 date: 2019-10-12 15:21:11
 author: Myhaa
 img:
-top: false
+top: true
 cover: false
 coverImg:
 password:
 toc: true
 mathjax: false
 summary: 有关计算广告的笔记
-categories: Advertising
+categories: AI/数据科学
 tags:
-  - Computational Advertising
-  - RTB
-  - DSP
+  - 数据科学
+  - 计算广告
 ---
 
 # 一、名词解释

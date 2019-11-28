@@ -10,10 +10,11 @@ password:
 toc: true
 mathjax: false
 summary: 有关Hive的笔记
-categories: Big Data
+categories: AI/数据科学
 tags:
+  - 数据科学
+  - Hadoop
   - Hive
-  - MapReduce
 ---
 
 # 一、Hive基础
@@ -565,4 +566,37 @@ id col3 col4
 **修改：**需要将`;`改为`ascii`
 
 > select instr('abc\073abc', '\073');
+
+## 5、如何在 Apache Hive 中解析 Json 数组
+
+### 问题1：从**json字符串**中解析一个字段-get_json_object
+
+```hive
+hive>  SELECT get_json_object('{"website":"www.iteblog.com","name":"过往记忆"}', '$.website');
+OK
+www.iteblog.com
+```
+
+### 问题2：从**json字符串**中解析多个字段-json_tuple
+
+```hive
+hive> SELECT json_tuple('{"website":"www.iteblog.com","name":"过往记忆"}', 'website', 'name');
+OK
+www.iteblog.com 过往记忆
+```
+
+### 问题3：从**json数组**中解析某一个字段-get_json_object
+
+```hive
+hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$.[0].website');
+OK
+www.iteblog.com
+```
+
+### 问题4：从**json数组**中解析多个字段-先explode再get_json_object或json_tuple
+
+* explode将**json数组**用一行拆分成多行
+* 然后再对其进行**json字符串**解析
+
+详情请参考[如何在 Apache Hive 中解析 Json 数组](https://www.iteblog.com/archives/2362.html)
 

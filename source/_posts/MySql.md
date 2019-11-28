@@ -10,10 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 有关MySql的笔记
-categories: Big Data
+categories: AI/数据科学
 tags:
   - MySql
-  - Sql
+  - 数据科学
 ---
 
 # 一、MySql基础

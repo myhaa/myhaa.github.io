@@ -1,8 +1,8 @@
 [{
-    "avatar": "http://image.luokangyuan.com/1_qq_27922023.jpg",
-    "name": "码酱",
-    "introduction": "我不是大佬，只是在追寻大佬的脚步",
-    "url": "http://luokangyuan.com/",
+    "avatar": "https://www.iteblog.com/wp-content/themes/yusi2.0/img/pic/8.jpg",
+    "name": "过往追忆",
+    "introduction": "专注于大数据技术及应用技术文章",
+    "url": "https://www.iteblog.com/",
     "title": "前去学习"
 }, {
     "avatar": "http://image.luokangyuan.com/4027734.jpeg",
@@ -11,9 +11,9 @@
     "url": "https://blinkfox.github.io/",
     "title": "前去学习"
 }, {
-    "avatar": "http://image.luokangyuan.com/avatar.jpg",
-    "name": "ja_rome",
-    "introduction": "平凡的脚步也可以走出伟大的行程",
-    "url": "https://me.csdn.net/jlh912008548",
+    "avatar": "https://awps-assets.meituan.net/mit-x/blog-images-bundle-common/tech-team.png",
+    "name": "美团技术团队",
+    "introduction": "美团技术团队",
+    "url": "https://tech.meituan.com/",
     "title": "前去学习"
 }]

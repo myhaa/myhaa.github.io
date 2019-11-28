@@ -10,10 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 运用Hexo+GitHub搭建个人博客详细教程
-categories: GitHub
+categories: 编程与开发
 tags:
   - Hexo
-  - GitHub
+  - 编程语言
 ---
 
 # 一、Hexo介绍

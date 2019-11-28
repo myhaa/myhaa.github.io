@@ -10,10 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 有关Linux的笔记
-categories: Programming
+categories: 编程与开发
 tags:
   - Linux
-  - Shell
+  - 网络安全
 ---
 
 # 一、Linux基础

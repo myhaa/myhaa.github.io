@@ -10,11 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: Spark自学笔记
-categories: Big Data
+categories: AI/数据科学
 tags:
   - Spark
-  - Markdown
-  - Streaming
+  - 数据科学
 ---
 
 # 一、Spark基础

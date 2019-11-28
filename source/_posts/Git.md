@@ -4,17 +4,16 @@ date: 2019-11-12 16:21:11
 author: Myhaa
 img:
 top: true
-cover: true
+cover: false
 coverImg:
 password:
 toc: true
 mathjax: false
 summary: 有关Git的笔记
-categories: GitHub
+categories: 编程与开发
 tags:
+  - 编程语言
   - Git
-  - GitHub
-  - SSH
 ---
 
 

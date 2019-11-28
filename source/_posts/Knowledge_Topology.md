@@ -10,10 +10,10 @@ password:
 toc: true
 mathjax: false
 summary: 列出的学习清单
-categories: Learning
+categories: 学习
 tags:
-  - Java
-  - Python
+  - 编程语言
+  - 数据科学
 ---
 
 # 一、实用工具
