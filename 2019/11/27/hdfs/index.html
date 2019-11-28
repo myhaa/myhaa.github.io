@@ -475,14 +475,14 @@ HDFS简介与相关概念HDFS简介实现目标：
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    988
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 				
@@ -545,7 +545,7 @@ HDFS简介与相关概念HDFS简介实现目标：
 <ul>
 <li>参考<a href="https://tech.meituan.com/2016/08/26/namenode.html" target="_blank" rel="noopener">HDFS NameNode内存全景</a></li>
 </ul>
-<h4 id="DatanNode"><a href="#DatanNode" class="headerlink" title="DatanNode"></a>DatanNode</h4><h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
+<h4 id="DatanNode（廉价机器）"><a href="#DatanNode（廉价机器）" class="headerlink" title="DatanNode（廉价机器）"></a>DatanNode（廉价机器）</h4><h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
 <li>存储文件内容</li>
 <li>文件内容保存到磁盘</li>
 <li>维护block id到DataNode本地文件的映射关系</li>
@@ -572,7 +572,48 @@ HDFS简介与相关概念HDFS简介实现目标：
 <li>隔离问题：集群中只有一个NameNode，只有一个命名空间，因此没法对不同程序进行隔离</li>
 <li>集群的可用性：一旦唯一的NameNode发生故障，则导致整个集群不可用</li>
 </ul>
-<h2 id="HDFS存储原理"><a href="#HDFS存储原理" class="headerlink" title="HDFS存储原理"></a>HDFS存储原理</h2><h2 id="HDFS数据读写过程"><a href="#HDFS数据读写过程" class="headerlink" title="HDFS数据读写过程"></a>HDFS数据读写过程</h2><h1 id="HDFS进阶"><a href="#HDFS进阶" class="headerlink" title="HDFS进阶"></a>HDFS进阶</h1><h2 id="HDFS编程实践"><a href="#HDFS编程实践" class="headerlink" title="HDFS编程实践"></a>HDFS编程实践</h2><h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
+<h2 id="HDFS存储原理"><a href="#HDFS存储原理" class="headerlink" title="HDFS存储原理"></a>HDFS存储原理</h2><h3 id="冗余数据保存"><a href="#冗余数据保存" class="headerlink" title="冗余数据保存"></a>冗余数据保存</h3><ul>
+<li>多副本对数据进行冗余保存，一般默认冗余保存3份</li>
+<li>优点<ol>
+<li>加快数据传输速度</li>
+<li>容易检查数据错误</li>
+<li>保证数据可靠性</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据存取策略"><a href="#数据存取策略" class="headerlink" title="数据存取策略"></a>数据存取策略</h3><h4 id="数据存放"><a href="#数据存放" class="headerlink" title="数据存放"></a>数据存放</h4><ul>
+<li>第一个副本：放置在上传文件的数据节点；如果在集群外提交，则随机挑选机器存放</li>
+<li>第二个副本：放置在与第一个副本<strong>不同的机架</strong>（rack）的节点上</li>
+<li>第三个副本：与第一个副本<strong>相同机架</strong>的不同节点上</li>
+</ul>
+<h4 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h4><ul>
+<li>当客户端读取数据时，从NameNode获得数据块不同副本的存放位置列表，通过API来获取这些存放位置的机架ID与客户端对应机架ID，如果ID相同，则优先选择该副本，反之随机读取</li>
+</ul>
+<h3 id="数据错误与恢复"><a href="#数据错误与恢复" class="headerlink" title="数据错误与恢复"></a>数据错误与恢复</h3><h4 id="NameNode出错"><a href="#NameNode出错" class="headerlink" title="NameNode出错"></a>NameNode出错</h4><ul>
+<li>使用SecondaryNameNode进行数据恢复</li>
+</ul>
+<h4 id="DataNode出错"><a href="#DataNode出错" class="headerlink" title="DataNode出错"></a>DataNode出错</h4><ul>
+<li>心跳机制：每个DataNode会定期向NameNode发送心跳信息</li>
+<li>当DataNode出错时，NameNode收不到心跳，则会将他们标记为“宕机”，其节点上所有数据标记为“不可读”，也不会再给他们发送任何IO请求</li>
+<li>NameNode还会检查，当某个数据库的副本数量小于冗余因子，就会启动<strong>数据冗余复制</strong>，产生新副本</li>
+</ul>
+<h4 id="数据出错"><a href="#数据出错" class="headerlink" title="数据出错"></a>数据出错</h4><ul>
+<li>网络传输和磁盘错误等因素，会造成数据错误</li>
+<li>当文件本创建时，客户端会对每一个文件进行信息摘录，并写入到同一路径的隐藏文件中</li>
+<li>当客户端读取文件的时候，会先读取信息摘录文件，然后对读取的数据块进行校验，如果检验出错，客户端则会<strong>请求到另外一个DataNode读取文件块</strong>，并向NameNode报告这个文件块有错误，然后NameNode会重新复制这个块</li>
+</ul>
+<h2 id="HDFS数据读写过程"><a href="#HDFS数据读写过程" class="headerlink" title="HDFS数据读写过程"></a>HDFS数据读写过程</h2><h3 id="读过程-JAVA"><a href="#读过程-JAVA" class="headerlink" title="读过程-JAVA"></a>读过程-JAVA</h3><ul>
+<li>JAVA读过程</li>
+</ul>
+<p><img src="/2019/11/27/hdfs/java_read_hdfs.png" alt="图：JAVA读HDFS过程"></p>
+<h3 id="写过程-JAVA"><a href="#写过程-JAVA" class="headerlink" title="写过程-JAVA"></a>写过程-JAVA</h3><ul>
+<li>JAVA写过程</li>
+</ul>
+<p><img src="/2019/11/27/hdfs/java_write_hdfs.png" alt="图：JAVA写HDFS过程"></p>
+<h1 id="HDFS进阶"><a href="#HDFS进阶" class="headerlink" title="HDFS进阶"></a>HDFS进阶</h1><h2 id="HDFS编程实践"><a href="#HDFS编程实践" class="headerlink" title="HDFS编程实践"></a>HDFS编程实践</h2><ul>
+<li><a href="http://dblab.xmu.edu.cn/blog/290-2/" target="_blank" rel="noopener">编程实践</a></li>
+</ul>
+<h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
 <li><a href="https://study.163.com/course/courseMain.htm?courseId=1002887002" target="_blank" rel="noopener">大数据技术原理与应用</a></li>
 </ul>
 <h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1>
