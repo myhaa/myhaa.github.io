@@ -264,6 +264,8 @@ tags:
 
 ![图：修改subtitle](/Hexo_blog/xiugaisubtitle.png)
 
+**注意：**第一步修改应该是在`bg-cover-content.ejs`中
+
 ### （3）修改dream
 
 ![图：修改dream](/Hexo_blog/xiugaidream.png)
