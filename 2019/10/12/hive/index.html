@@ -491,7 +491,7 @@ INT
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.8k
                 </div>
                 
 
@@ -1140,9 +1140,10 @@ www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <h3 id="问题2：从json字符串中解析多个字段-json-tuple"><a href="#问题2：从json字符串中解析多个字段-json-tuple" class="headerlink" title="问题2：从json字符串中解析多个字段-json_tuple"></a>问题2：从<strong>json字符串</strong>中解析多个字段-json_tuple</h3><pre class="line-numbers language-hive"><code class="language-hive">hive> SELECT json_tuple('{"website":"www.iteblog.com","name":"过往记忆"}', 'website', 'name');
 OK
 www.iteblog.com 过往记忆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题3：从json数组中解析某一个字段-get-json-object"><a href="#问题3：从json数组中解析某一个字段-get-json-object" class="headerlink" title="问题3：从json数组中解析某一个字段-get_json_object"></a>问题3：从<strong>json数组</strong>中解析某一个字段-get_json_object</h3><pre class="line-numbers language-hive"><code class="language-hive">hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$.[0].website');
+<h3 id="问题3：从json数组中解析某一个字段-get-json-object"><a href="#问题3：从json数组中解析某一个字段-get-json-object" class="headerlink" title="问题3：从json数组中解析某一个字段-get_json_object"></a>问题3：从<strong>json数组</strong>中解析某一个字段-get_json_object</h3><pre class="line-numbers language-hive"><code class="language-hive">hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$[0].website');
 OK
 www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意：</strong>这里与参考链接<a href="https://www.iteblog.com/archives/2362.html" target="_blank" rel="noopener">如何在 Apache Hive 中解析 Json 数组</a>中不同的是，我使用的是<code>$[0].website</code>，而参考链接使用的<code>$.[0].website</code>，我按照<strong>参考链接给的方法select不出答案</strong></p>
 <h3 id="问题4：从json数组中解析多个字段-先explode再get-json-object或json-tuple"><a href="#问题4：从json数组中解析多个字段-先explode再get-json-object或json-tuple" class="headerlink" title="问题4：从json数组中解析多个字段-先explode再get_json_object或json_tuple"></a>问题4：从<strong>json数组</strong>中解析多个字段-先explode再get_json_object或json_tuple</h3><ul>
 <li>explode将<strong>json数组</strong>用一行拆分成多行</li>
 <li>然后再对其进行<strong>json字符串</strong>解析</li>
