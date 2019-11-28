@@ -588,10 +588,12 @@ www.iteblog.com 过往记忆
 ### 问题3：从**json数组**中解析某一个字段-get_json_object
 
 ```hive
-hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$.[0].website');
+hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$[0].website');
 OK
 www.iteblog.com
 ```
+
+**注意：**这里与参考链接[如何在 Apache Hive 中解析 Json 数组](https://www.iteblog.com/archives/2362.html)中不同的是，我使用的是`$[0].website`，而参考链接使用的`$.[0].website`，我按照**参考链接给的方法select不出答案**
 
 ### 问题4：从**json数组**中解析多个字段-先explode再get_json_object或json_tuple
 
