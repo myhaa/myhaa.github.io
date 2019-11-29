@@ -14,6 +14,7 @@ categories: AI/数据科学
 tags:
   - MySql
   - 数据科学
+  - 数据库
 ---
 
 # 一、MySql基础

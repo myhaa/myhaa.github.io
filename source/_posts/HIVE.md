@@ -13,6 +13,7 @@ summary: 有关Hive的笔记
 categories: AI/数据科学
 tags:
   - 数据科学
+  - 数据仓库
   - Hadoop
   - Hive
 ---
@@ -438,13 +439,34 @@ from... where.... select... group by... having ... order by...
 
 **备注：**Hive语句和mysql都可以通过explain查看执行计划，使用explain + Hive语句
 
+# 三、Hive原理
+
+## 数据仓库概念
+
+* Hive是数据仓库
+* **数据仓库跟数据库的区别：**
+  1. 数据库：传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易。
+  2. 数据仓库：数据仓库系统的应用主要是OLAP（On-Line Analytical Processing），支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。
+
+![图：数据仓库结构](/HIVE/hive_data_warehouse.png)
+
+## Hive简介
+
+* Hadoop顶层的数据仓库工具
+* 支持大数据存储与分析
+* 依赖HDFS存储数据
+* 依赖MapReduce处理数据
+* 有类似SQL的查询语言-HiveQL
+* 用户通过HiveQL运行MapReduce任务
 
 
-# 三、参考书籍
+
+# 四、参考书籍
 
 * [易百教程](<https://www.yiibai.com/Hive/>)
+* [大数据技术原理与应用](<https://study.163.com/course/courseMain.htm?courseId=1002887002>)
 
-# 四、疑难解答
+# 五、疑难解答
 
 ## 1、Hive 在指定位置添加字段
 

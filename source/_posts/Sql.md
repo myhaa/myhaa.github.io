@@ -8,6 +8,7 @@ mathjax: false
 tags:
   - Sql
   - 数据科学
+  - 数据库
 date: 2019-11-19 11:48:39
 img:
 coverImg:
