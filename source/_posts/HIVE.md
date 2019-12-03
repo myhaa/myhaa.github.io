@@ -458,15 +458,89 @@ from... where.... select... group by... having ... order by...
 * 依赖MapReduce处理数据
 * 有类似SQL的查询语言-HiveQL
 * 用户通过HiveQL运行MapReduce任务
+* Hive适用于**BI报表**，Pig适合ETL过程，HBase提供数据的实时访问
 
+## Hive与传统Sql对比
 
+| 对比项目 | Hive         | 传统Sql        |
+| -------- | ------------ | -------------- |
+| 数据插入 | 支持批量导入 | 支持单条和批量 |
+| 数据更新 | 不支持       | 支持           |
+| 索引     | 支持         | 支持           |
+| 分区     | 支持         | 支持           |
+| 执行延迟 | 高           | 低             |
+| 扩展性   | 好           | 有限           |
 
-# 四、参考书籍
+## Hive系统架构
+
+### 用户接口模块
+
+#### CLI
+
+* Shell命令行
+* Karmasphere
+
+#### HWI
+
+* web接口
+* Hue
+
+#### JDBC
+
+* Qubole
+* Hive 的Java，与使用传统数据库JDBC的方式类似
+
+#### ODBC
+
+* Hive 的Java，与使用传统数据库JDBC的方式类似
+
+#### Thrift Server
+
+* RPC调用
+
+### 驱动模块
+
+* 编译器
+* 优化器
+* 执行器
+* 解释器、编译器、优化器完成 HQL 查询语句从词法分析、语法分析、编译、优化以及查询计划（plan）的生成。
+* 生成的查询计划存储在 HDFS 中，并在随后有 MapReduce 调用执行
+
+### 元数据存储
+
+* 元数据存储模块（metastore）是一个独立的关系型数据库，目前只支持 mysql、derby。
+* Hive 中的元数据包括表的名字，表的列和分区及其属性，表的属性（是否为外部表等），表的数据所在目录等
+
+## Hive工作原理
+
+### HQL转换成MapReduce作业的过程
+
+* [HQL解析原理](<http://www.aboutyun.com/thread-20461-1-1.html>)
+
+![图：hive_to_mapreduce](/HIVE/hive_to_mapreduce.png)
+
+**注意：**
+
+* 当启动MR程序时，Hive本身不会生成MR算法程序，需要通过一个“Job执行计划”的XML文件驱动来执行内置的Mapper和Reducer模块
+* Hive通过和JobTracker通信来初始化MR任务
+
+### Hive HA基本原理
+
+![图：hiveHA](/HIVE/hiveHA.png)
+
+# 四、impala
+
+* impala是由Cloudera公司开发的新型查询系统，提供SQL语义。
+* 它的运行**需要依赖Hive的元数据**，能够查询PB级数据，在性能上比Hive高出3~30倍
+* impala不需要将查询语句转为MR程序运行，**而是使用传统的分布式查询引擎直接到HDFS上查询数据**
+* 详情请见{% post_link Impala Impala笔记 %}
+
+# 五、参考书籍
 
 * [易百教程](<https://www.yiibai.com/Hive/>)
 * [大数据技术原理与应用](<https://study.163.com/course/courseMain.htm?courseId=1002887002>)
 
-# 五、疑难解答
+# 六、疑难解答
 
 ## 1、Hive 在指定位置添加字段
 
