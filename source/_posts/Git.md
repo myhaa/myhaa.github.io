@@ -18,7 +18,7 @@ tags:
 
 
 
-# 一、Git基础
+# Git基础
 
 ## 1、Git简介
 
@@ -408,7 +408,7 @@ git push origin :refs/tags/v1.4-lw
 git push origin --delete <tagname>
 ```
 
-# 二、Git进阶-分支
+# Git进阶-分支
 
 ## 1、 分支简介
 
@@ -571,12 +571,132 @@ git push origin --delete serverfix
 
 * 个人还是觉得merge好，但是如果合并历史太多，可以酌情使用rebasing
 
-# 三、参考书籍
+# Git进阶-Git Flow
+
+## Git Flow简介
+
+### Git Flow是什么？
+
+* 团队合作开发时，主分支、开发分支、功能分支、bug分支等等必不可少。那么问题来了，**多人多分支的情况应该如何制定一个工作流程才不产生冲突呢？**答案是：
+  1. Git Flow
+  2. GitHub Flow
+  3. GitLab Flow
+* Git Flow让我们更方便的管理一个项目
+
+###  Git Flow安装
+
+* For Windows users, [Git for Windows](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Windows#git-for-windows) is the recommended method.
+
+  ## Git for Windows
+
+  Follow the instructions on the [Git for Windows homepage](https://git-for-windows.github.io/) to install Git for Windows. As of Git for Windows 2.6.4, GitFlow (AVH edition) is included, so you're all done.
+
+## Git Flow操作
+
+### 寻求帮助
+
+```gitbash
+git flow help  # 查看命令帮助
+```
+
+### 在仓库中设置git-flow
+
+```gitbash
+git flow init
+```
+
+**注意：**
+
+1. 把项目切换到git-flow时，就用git-flow命令操作
+2. 普通的git命令和git-flow命令互不冲突
+3. git-flow不会改变仓库
+4. 使用`git flow init`命令时，实际上只是在**当前分支配置了一些命名规则**
+
+### 分支的模式
+
+#### 长期分支
+
+git-flow会预设两个主分支在仓库中，也就是说要同时维护两个分支
+
+* master：正式环境代码，不能在这个分支上工作
+* develop： 开发分支，以该分支为基础分支来进行功能开发等等
+
+#### 短期分支
+
+短期分支只是临时存在，当开发完成则可以删除该分支
+
+* feature：功能开发分支
+* hotfix：bug修复分支
+* release：版本发布分支
+
+![图：git-flow分支模式](/Git/git_flow_branch.png)
+
+### 功能开发分支-feature
+
+feature分支基于develop分支
+
+```gitbash
+git flow feature start concat  # 新增留言功能
+```
+
+* `git flow feature start new_feature`命令会在develop分支上创建一个new_feature分支，然后就可以在该分支上进行功能开发
+* 当完成功能开发后，合并与删除分支命令如下
+
+```gitbash
+git flow feature finish concat  # 完成功能开发
+```
+
+* `git flow feature finsih concat`命令会把concat分支开发的内容整合到develop分支中，并把concat分支删除
+
+### 版本管理-release
+
+release分支基于develop分支
+
+当develop分支的代码已经成熟时，就可以把**这部分工作生成一个要发布的版本**，使用如下命令生成版本号以及版本管理
+
+```gitbash
+git flow release start 1.1.1  # 版本号1.1.1
+```
+
+* 上述命令产生release分支后，再对该分支的一些文件记录版本号则可以使用以下命令进行版本发布
+
+```gitbash
+git flow release finish 1.1.1
+```
+
+* `git flow release finish 1.1.1`命令会做如下操作
+  1. 拉取远程仓库，确保本地仓库是最新
+  2. release分支的内容会合并到master和develop分支上
+  3. 删除release分支，并回到develop分支
+
+### bug修复-hotfix
+
+#### 创建hotfix
+
+hotfix分支是基于master分支的，对已发布的代码修复bug
+
+```gitbash
+git flow hotfix start bug1
+```
+
+#### 完成hotfix分支
+
+```gitbash
+git flow hotfix finish bug1
+```
+
+* `git flow hotfix finish bug1`内部操作如下
+  1. 完成的改动会合并到master和develop分支上
+  2. 这个hotfix程序将被标记
+  3. hotfix分支被删除，然后回到develop分支
+  4. **然后利用release分支操作发布版本**
+
+# 参考书籍
 
 * [官方教程](<https://git-scm.com/book/en/v2>)
 * [廖大神](https://www.liaoxuefeng.com/wiki/896043488029600)
 
-# 四、疑难解答
+# 疑难解答
 
 ## 清除历史提交中的敏感信息
 
