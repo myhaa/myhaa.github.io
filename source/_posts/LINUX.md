@@ -61,3 +61,19 @@ chmod [-cfvR] [--help] [--version] mode file...
 # 给个人目录的其他用户删除写权限
  hadoop fs -chmod -R o-w /user/name/dir
 ```
+
+## 2、vim 文本搜索
+
+### 问题：
+
+* 在Linux环境中，一个大文本中搜索指定字符串应该怎么操作？
+
+### 解决：
+
+```linux
+vi my.txt
+```
+
+* 键盘按`Esc`
+* 输入`/search_string`
+* 键盘按`n`或者`N`来进行向前或向后搜索
