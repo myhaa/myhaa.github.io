@@ -464,7 +464,7 @@ mode : 权限设定字串，格式">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    308
+                    368
                 </div>
                 
 
@@ -510,6 +510,15 @@ mode : 权限设定字串，格式">
 <p>（4）实例</p>
 <pre class="line-numbers language-shell"><code class="language-shell"># 给个人目录的其他用户删除写权限
  hadoop fs -chmod -R o-w /user/name/dir<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="2、vim-文本搜索"><a href="#2、vim-文本搜索" class="headerlink" title="2、vim 文本搜索"></a>2、vim 文本搜索</h2><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ul>
+<li>在Linux环境中，一个大文本中搜索指定字符串应该怎么操作？</li>
+</ul>
+<h3 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h3><pre class="line-numbers language-linux"><code class="language-linux">vi my.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>键盘按<code>Esc</code></li>
+<li>输入<code>/search_string</code></li>
+<li>键盘按<code>n</code>或者<code>N</code>来进行向前或向后搜索</li>
+</ul>
 
             </div>
             <hr/>

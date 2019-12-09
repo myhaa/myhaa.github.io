@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Git笔记, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Git基础1、Git简介（1）什么是Git？
+    <meta name="description" content="Git基础1、Git简介（1）什么是Git？
 Git是迄今为止最先进的分布式版本控制系统
 
 （2）Git安装
@@ -14,7 +14,7 @@ Git是迄今为止最先进的分布式版本控制系统
 （3）Git设置
 checking your settings
 
-git config --list  # 查看g">
+git config --list  # 查看git">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,14 +470,14 @@ git config --list  # 查看g">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    15 分
                 </div>
                 
 				
@@ -493,7 +493,7 @@ git config --list  # 查看g">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Git基础"><a href="#一、Git基础" class="headerlink" title="一、Git基础"></a>一、Git基础</h1><h2 id="1、Git简介"><a href="#1、Git简介" class="headerlink" title="1、Git简介"></a>1、Git简介</h2><h3 id="（1）什么是Git？"><a href="#（1）什么是Git？" class="headerlink" title="（1）什么是Git？"></a>（1）什么是Git？</h3><ul>
+                <h1 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h1><h2 id="1、Git简介"><a href="#1、Git简介" class="headerlink" title="1、Git简介"></a>1、Git简介</h2><h3 id="（1）什么是Git？"><a href="#（1）什么是Git？" class="headerlink" title="（1）什么是Git？"></a>（1）什么是Git？</h3><ul>
 <li>Git是迄今为止最先进的分布式版本控制系统</li>
 </ul>
 <h3 id="（2）Git安装"><a href="#（2）Git安装" class="headerlink" title="（2）Git安装"></a>（2）Git安装</h3><ul>
@@ -769,7 +769,7 @@ git push origin :refs/tags/v1.4-lw
 
 # 第二种方法
 git push origin --delete <tagname><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="二、Git进阶-分支"><a href="#二、Git进阶-分支" class="headerlink" title="二、Git进阶-分支"></a>二、Git进阶-分支</h1><h2 id="1、-分支简介"><a href="#1、-分支简介" class="headerlink" title="1、 分支简介"></a>1、 分支简介</h2><h3 id="（1）什么是分支？"><a href="#（1）什么是分支？" class="headerlink" title="（1）什么是分支？"></a>（1）什么是分支？</h3><ul>
+<h1 id="Git进阶-分支"><a href="#Git进阶-分支" class="headerlink" title="Git进阶-分支"></a>Git进阶-分支</h1><h2 id="1、-分支简介"><a href="#1、-分支简介" class="headerlink" title="1、 分支简介"></a>1、 分支简介</h2><h3 id="（1）什么是分支？"><a href="#（1）什么是分支？" class="headerlink" title="（1）什么是分支？"></a>（1）什么是分支？</h3><ul>
 <li>如下图，master是默认分支，testing是其他分支。</li>
 <li>分支的存在是让你可以把master作为正式环境，把testing作为开发环境，当开发环境的代码需要上线时就将其合并到正式环境master。</li>
 </ul>
@@ -840,11 +840,83 @@ git branch -vv<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <h3 id="（4）merge-vs-rebasing"><a href="#（4）merge-vs-rebasing" class="headerlink" title="（4）merge vs rebasing"></a>（4）merge vs rebasing</h3><ul>
 <li>个人还是觉得merge好，但是如果合并历史太多，可以酌情使用rebasing</li>
 </ul>
-<h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><ul>
+<h1 id="Git进阶-Git-Flow"><a href="#Git进阶-Git-Flow" class="headerlink" title="Git进阶-Git Flow"></a>Git进阶-Git Flow</h1><h2 id="Git-Flow简介"><a href="#Git-Flow简介" class="headerlink" title="Git Flow简介"></a>Git Flow简介</h2><h3 id="Git-Flow是什么？"><a href="#Git-Flow是什么？" class="headerlink" title="Git Flow是什么？"></a>Git Flow是什么？</h3><ul>
+<li>团队合作开发时，主分支、开发分支、功能分支、bug分支等等必不可少。那么问题来了，<strong>多人多分支的情况应该如何制定一个工作流程才不产生冲突呢？</strong>答案是：<ol>
+<li>Git Flow</li>
+<li>GitHub Flow</li>
+<li>GitLab Flow</li>
+</ol>
+</li>
+<li>Git Flow让我们更方便的管理一个项目</li>
+</ul>
+<h3 id="Git-Flow安装"><a href="#Git-Flow安装" class="headerlink" title="Git Flow安装"></a>Git Flow安装</h3><ul>
+<li><p>For Windows users, <a href="https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Windows#git-for-windows" target="_blank" rel="noopener">Git for Windows</a> is the recommended method.</p>
+<h2 id="Git-for-Windows"><a href="#Git-for-Windows" class="headerlink" title="Git for Windows"></a>Git for Windows</h2><p>Follow the instructions on the <a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">Git for Windows homepage</a> to install Git for Windows. As of Git for Windows 2.6.4, GitFlow (AVH edition) is included, so you’re all done.</p>
+</li>
+</ul>
+<h2 id="Git-Flow操作"><a href="#Git-Flow操作" class="headerlink" title="Git Flow操作"></a>Git Flow操作</h2><h3 id="寻求帮助"><a href="#寻求帮助" class="headerlink" title="寻求帮助"></a>寻求帮助</h3><pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow help  # 查看命令帮助<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="在仓库中设置git-flow"><a href="#在仓库中设置git-flow" class="headerlink" title="在仓库中设置git-flow"></a>在仓库中设置git-flow</h3><pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>注意：</strong></p>
+<ol>
+<li>把项目切换到git-flow时，就用git-flow命令操作</li>
+<li>普通的git命令和git-flow命令互不冲突</li>
+<li>git-flow不会改变仓库</li>
+<li>使用<code>git flow init</code>命令时，实际上只是在<strong>当前分支配置了一些命名规则</strong></li>
+</ol>
+<h3 id="分支的模式"><a href="#分支的模式" class="headerlink" title="分支的模式"></a>分支的模式</h3><h4 id="长期分支"><a href="#长期分支" class="headerlink" title="长期分支"></a>长期分支</h4><p>git-flow会预设两个主分支在仓库中，也就是说要同时维护两个分支</p>
+<ul>
+<li>master：正式环境代码，不能在这个分支上工作</li>
+<li>develop： 开发分支，以该分支为基础分支来进行功能开发等等</li>
+</ul>
+<h4 id="短期分支"><a href="#短期分支" class="headerlink" title="短期分支"></a>短期分支</h4><p>短期分支只是临时存在，当开发完成则可以删除该分支</p>
+<ul>
+<li>feature：功能开发分支</li>
+<li>hotfix：bug修复分支</li>
+<li>release：版本发布分支</li>
+</ul>
+<p><img src="/2019/11/12/git/git_flow_branch.png" alt="图：git-flow分支模式"></p>
+<h3 id="功能开发分支-feature"><a href="#功能开发分支-feature" class="headerlink" title="功能开发分支-feature"></a>功能开发分支-feature</h3><p>feature分支基于develop分支</p>
+<pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow feature start concat  # 新增留言功能<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>git flow feature start new_feature</code>命令会在develop分支上创建一个new_feature分支，然后就可以在该分支上进行功能开发</li>
+<li>当完成功能开发后，合并与删除分支命令如下</li>
+</ul>
+<pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow feature finish concat  # 完成功能开发<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>git flow feature finsih concat</code>命令会把concat分支开发的内容整合到develop分支中，并把concat分支删除</li>
+</ul>
+<h3 id="版本管理-release"><a href="#版本管理-release" class="headerlink" title="版本管理-release"></a>版本管理-release</h3><p>release分支基于develop分支</p>
+<p>当develop分支的代码已经成熟时，就可以把<strong>这部分工作生成一个要发布的版本</strong>，使用如下命令生成版本号以及版本管理</p>
+<pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow release start 1.1.1  # 版本号1.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>上述命令产生release分支后，再对该分支的一些文件记录版本号则可以使用以下命令进行版本发布</li>
+</ul>
+<pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow release finish 1.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>git flow release finish 1.1.1</code>命令会做如下操作<ol>
+<li>拉取远程仓库，确保本地仓库是最新</li>
+<li>release分支的内容会合并到master和develop分支上</li>
+<li>删除release分支，并回到develop分支</li>
+</ol>
+</li>
+</ul>
+<h3 id="bug修复-hotfix"><a href="#bug修复-hotfix" class="headerlink" title="bug修复-hotfix"></a>bug修复-hotfix</h3><h4 id="创建hotfix"><a href="#创建hotfix" class="headerlink" title="创建hotfix"></a>创建hotfix</h4><p>hotfix分支是基于master分支的，对已发布的代码修复bug</p>
+<pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow hotfix start bug1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="完成hotfix分支"><a href="#完成hotfix分支" class="headerlink" title="完成hotfix分支"></a>完成hotfix分支</h4><pre class="line-numbers language-gitbash"><code class="language-gitbash">git flow hotfix finish bug1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>git flow hotfix finish bug1</code>内部操作如下<ol>
+<li>完成的改动会合并到master和develop分支上</li>
+<li>这个hotfix程序将被标记</li>
+<li>hotfix分支被删除，然后回到develop分支</li>
+<li><strong>然后利用release分支操作发布版本</strong></li>
+</ol>
+</li>
+</ul>
+<h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
 <li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">官方教程</a></li>
 <li><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖大神</a></li>
 </ul>
-<h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="清除历史提交中的敏感信息"><a href="#清除历史提交中的敏感信息" class="headerlink" title="清除历史提交中的敏感信息"></a>清除历史提交中的敏感信息</h2><h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><ul>
+<h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1><h2 id="清除历史提交中的敏感信息"><a href="#清除历史提交中的敏感信息" class="headerlink" title="清除历史提交中的敏感信息"></a>清除历史提交中的敏感信息</h2><h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><ul>
 <li>某次提交把私人信息（密码或私钥等）提交到了远程仓库，该怎么办？</li>
 </ul>
 <h3 id="处理方式"><a href="#处理方式" class="headerlink" title="处理方式"></a>处理方式</h3><h4 id="第一种情况"><a href="#第一种情况" class="headerlink" title="第一种情况"></a>第一种情况</h4><ul>
