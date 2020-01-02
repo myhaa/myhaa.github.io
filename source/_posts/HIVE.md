@@ -689,7 +689,7 @@ OK
 www.iteblog.com
 ```
 
-**注意：**这里与参考链接[如何在 Apache Hive 中解析 Json 数组](https://www.iteblog.com/archives/2362.html)中不同的是，我使用的是`$[0].website`，而参考链接使用的`$.[0].website`，我按照**参考链接给的方法select不出答案**
+**注意：**这里与参考链接[如何在 Apache Hive 中解析 Json 数组](https://www.iteblog.com/archives/2362.html)中不同的是，因为我用的是`sparkSql`，所以我用的是`$[0].website`，而参考链接使用的`$.[0].website`，我按照**参考链接给的方法在Hive也select不出答案（可能是hive版本不同吧）**
 
 ### 问题4：从**json数组**中解析多个字段-先explode再get_json_object或json_tuple
 
