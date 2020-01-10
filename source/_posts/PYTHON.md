@@ -50,3 +50,32 @@ import pandas as pd
 date_id_list = [datetime.strftime(x, '%Y%m%d') for x in list(pd.date_range(start='20190701', end='20190928'))]
 ```
 
+## 4、mrjob运行参数详情
+
+```shell
+python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir
+```
+
+**参考官方文档：**[mrjob](<https://mrjob.readthedocs.io/en/latest/>)
+
+## 5、list中排列组合
+
+```python
+from itertools import combinations
+
+combine_2 = list(combinations([1,2,3,4], 2))
+```
+
+## 6、获取指定目录下指定文件
+
+```python
+import os
+
+L = []
+for root, dirs, files in os.walk(os.getcwd()):
+    for x in files:
+        if os.path.splitext(x)[1] == '.txt':
+            L.append(os.path.join(root, x))
+file_path = L[0]
+```
+
