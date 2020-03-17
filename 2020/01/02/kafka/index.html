@@ -469,14 +469,14 @@ Kafka集群将记录流存储在称为主题Topic的类别中
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    9 分
                 </div>
                 
 				
@@ -569,7 +569,58 @@ Kafka集群将记录流存储在称为主题Topic的类别中
 <p><strong>举例如下图：</strong></p>
 <p><img src="/2020/01/02/kafka/consumer-groups.png" alt="log_consumer"></p>
 <ul>
-<li><h1 id="Kafka进阶"><a href="#Kafka进阶" class="headerlink" title="Kafka进阶"></a>Kafka进阶</h1></li>
+<li>一个包含四个分区（P0-P3）和两个消费者组的两台服务器【Kafka集群】</li>
+<li>消费者组A有两个消费者实例（C1、C2），而组B有四个（C3-C6）</li>
+<li>Kafka中实现消费的方法是在消费者实例的日志中划分分区，这样每个实例在任何时候都是分区“公平共享”的唯一消费者</li>
+<li>这个保持组成员身份的过程是由Kafka协议动态处理的</li>
+<li>如果新的实例加入组，它们将从组的其他成员那里接管一些分区</li>
+<li>如果一个实例死亡，它的分区将分配给其余的实例</li>
+<li>如图中：消费者组A中C1负责P0\P3，C2负责P1\P2；消费者组B中每个实例负责一个分区</li>
+<li>Kafka只提供分区内记录的总顺序，而不提供主题中不同分区之间的总顺序</li>
+<li>对大多数应用程序来说，按分区排序和按键分区数据的能力已经足够</li>
+<li>但是，如果需要记录的总顺序，则可以使用只有一个分区的主题来实现</li>
+<li>尽管这意味着每个使用者组只有一个使用者进程（一个使用者实例？）</li>
+</ul>
+<h3 id="多租户-Multi-tenancy"><a href="#多租户-Multi-tenancy" class="headerlink" title="多租户[Multi-tenancy]"></a>多租户<code>[Multi-tenancy]</code></h3><ul>
+<li>可以将Kafka部署为多租户解决方案</li>
+<li>通过配置哪些主题可以生成或使用数据，可以启用多租户</li>
+<li>还有对限额的操作支持</li>
+<li>管理员可以对请求定义和强制配额，以控制客户端使用的代理资源</li>
+<li>有关更多信息，请参阅<a href="https://kafka.apache.org/documentation/#security" target="_blank" rel="noopener">安全文档</a></li>
+</ul>
+<h3 id="保证性-Guarantees"><a href="#保证性-Guarantees" class="headerlink" title="保证性[Guarantees]"></a>保证性<code>[Guarantees]</code></h3><p>在较高级别上，Kafka提供以下保证：</p>
+<ul>
+<li>生产者发送到特定主题分区的消息将按照发送的顺序追加<ol>
+<li>也就是说，如果记录M1是由与记录M2相同的生产者发送的，并且M1是先发送的，那么M1的偏移量将比M2低，并出现在日志的前面</li>
+</ol>
+</li>
+<li>消费者实例按【记录在日志中存储的顺序】查看记录</li>
+<li>对于具有复制因子N的主题，我们将容忍至多N-1个服务器故障，而不会丢失提交到日志的任何记录</li>
+</ul>
+<h1 id="Kafka进阶"><a href="#Kafka进阶" class="headerlink" title="Kafka进阶"></a>Kafka进阶</h1><h2 id="Kafka作为消息传递系统-Kafka-as-a-Messaging-System"><a href="#Kafka作为消息传递系统-Kafka-as-a-Messaging-System" class="headerlink" title="Kafka作为消息传递系统[Kafka as a Messaging System]"></a>Kafka作为消息传递系统<code>[Kafka as a Messaging System]</code></h2><h3 id="传统的企业消息传递系统"><a href="#传统的企业消息传递系统" class="headerlink" title="传统的企业消息传递系统"></a>传统的企业消息传递系统</h3><p>传统的消息传递系统拥有两个模块：</p>
+<h4 id="队列-queuing"><a href="#队列-queuing" class="headerlink" title="队列-queuing"></a>队列-queuing</h4><ul>
+<li>在队列中，消费者池可以从服务器读取数据，而每条记录都将被发送到其中的一位消费者</li>
+<li>队列的优点是它允许在多个消费者实例上划分数据处理</li>
+<li>不幸的是，队列不是多用户的：一旦一个进程读取了数据，其他用户就读取不了了</li>
+<li>传统队列在服务器上按顺序保留记录，如果多个使用者从队列中消费，则服务器按存储记录的顺序分发记录</li>
+<li>然而，尽管服务器按顺序分发记录，但这些记录是异步传递给消费者的，因此它们可能在不同的消费者上不按顺序到达</li>
+<li>这实际上意味着记录的顺序在并行使用时丢失</li>
+<li>消息传递系统通常通过“独占消费者”的概念来解决这个问题，该概念只允许一个进程从队列中消费，但这当然意味着处理中不存在并行性</li>
+</ul>
+<h4 id="发布-订阅-publish-subscribe"><a href="#发布-订阅-publish-subscribe" class="headerlink" title="发布-订阅-publish-subscribe"></a>发布-订阅-publish-subscribe</h4><ul>
+<li>在发布-订阅中，记录被广播给所有消费者</li>
+<li>发布-订阅允许将数据广播到多个进程，但是由于每个消息都传递到每个订阅者，因此无法扩展处理</li>
+</ul>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><ul>
+<li>Kafka中的消费者组概念概括了队列＆发布-订阅</li>
+<li>与队列一样，消费者组允许将处理划分到一组进程(消费者组的成员)上</li>
+<li>与发布-订阅一样，Kafka允许向多个消费者组广播消息</li>
+<li>Kafka也比传统的消息传递系统有更强的订购保证</li>
+<li>通过对主题内分区的并行性的概念，Kafka能够在用户进程池上提供<strong>排序保证</strong>和<strong>负载平衡</strong></li>
+<li>这是通过将主题中的分区分配给消费者组中的消费者实例来实现的，这样每个分区正好由组中的一个消费者使用</li>
+<li>通过这样做，我们可以确保消费者是该分区的唯一读取者，并按顺序使用数据</li>
+<li>由于有许多分区，这仍然可以在许多消费者实例上平衡负载</li>
+<li>但是请注意，在一个消费者组中<strong>不能有比分区更多</strong>的消费者实例</li>
 </ul>
 <h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
 <li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">官网文档</a></li>

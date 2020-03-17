@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Python笔记, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Python基础二、Python进阶三、参考书籍四、疑难解答1、Python2编码问题
+    <meta name="description" content="一、Python基础二、Python进阶三、参考书籍四、疑难解答1、编码问题Python2编码问题
 参考
 
-2、Python3编码问题
-在Python3版本中，把&amp;#39;xxx&amp;#39;和u&amp;#39;xxx&amp;#39;统一成Unicode编码，即写">
+Python3编码问题
+在Python3版本中，把&amp;#39;xxx&amp;#39;和u&amp;#39;xxx&amp;#39;统一成Unicode编码，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    235
+                    285
                 </div>
                 
 
@@ -488,23 +488,30 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Python基础"><a href="#一、Python基础" class="headerlink" title="一、Python基础"></a>一、Python基础</h1><h1 id="二、Python进阶"><a href="#二、Python进阶" class="headerlink" title="二、Python进阶"></a>二、Python进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、Python2编码问题"><a href="#1、Python2编码问题" class="headerlink" title="1、Python2编码问题"></a>1、<code>Python2</code>编码问题</h2><ul>
+                <h1 id="一、Python基础"><a href="#一、Python基础" class="headerlink" title="一、Python基础"></a>一、Python基础</h1><h1 id="二、Python进阶"><a href="#二、Python进阶" class="headerlink" title="二、Python进阶"></a>二、Python进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、编码问题"><a href="#1、编码问题" class="headerlink" title="1、编码问题"></a>1、编码问题</h2><h3 id="Python2编码问题"><a href="#Python2编码问题" class="headerlink" title="Python2编码问题"></a><code>Python2</code>编码问题</h3><ul>
 <li><a href="https://foofish.net/why-Python-encoding-is-tricky.html" target="_blank" rel="noopener">参考</a></li>
 </ul>
-<h2 id="2、Python3编码问题"><a href="#2、Python3编码问题" class="headerlink" title="2、Python3编码问题"></a>2、<code>Python3</code>编码问题</h2><ul>
+<h3 id="Python3编码问题"><a href="#Python3编码问题" class="headerlink" title="Python3编码问题"></a><code>Python3</code>编码问题</h3><ul>
 <li>在<code>Python3</code>版本中，把<code>&#39;xxx&#39;</code>和<code>u&#39;xxx&#39;</code>统一成<code>Unicode</code>编码，即写不写前缀<code>u</code>都是一样的。</li>
 <li>在<code>Python3</code>版本中，所有的字符串都是使用<code>Unicode</code>编码的字符串序列。</li>
 <li><a href="https://foofish.net/how-Python3-handle-charset-encoding.html" target="_blank" rel="noopener">参考</a></li>
 </ul>
-<h2 id="3、产生一段时间的日期"><a href="#3、产生一段时间的日期" class="headerlink" title="3、产生一段时间的日期"></a>3、产生一段时间的日期</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
+<h2 id="2、日期操作"><a href="#2、日期操作" class="headerlink" title="2、日期操作"></a>2、日期操作</h2><ul>
+<li><a href="https://www.runoob.com/python/python-date-time.html" target="_blank" rel="noopener">参考菜鸟教程</a></li>
+</ul>
+<h3 id="产生一段时间的日期"><a href="#产生一段时间的日期" class="headerlink" title="产生一段时间的日期"></a>产生一段时间的日期</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
 <span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="4、mrjob运行参数详情"><a href="#4、mrjob运行参数详情" class="headerlink" title="4、mrjob运行参数详情"></a>4、mrjob运行参数详情</h2><pre class="line-numbers language-shell"><code class="language-shell">python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="获取指定日期的前-后N天"><a href="#获取指定日期的前-后N天" class="headerlink" title="获取指定日期的前-后N天"></a>获取指定日期的前-后N天</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> datetime
+n <span class="token operator">=</span> <span class="token number">1</span>
+tomorrow <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span> <span class="token operator">+</span> datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 2015-10-29 00:00:00</span>
+tomorrow_format <span class="token operator">=</span> tomorrow<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># '20151029'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、mrjob运行参数详情"><a href="#3、mrjob运行参数详情" class="headerlink" title="3、mrjob运行参数详情"></a>3、mrjob运行参数详情</h2><pre class="line-numbers language-shell"><code class="language-shell">python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>参考官方文档：</strong><a href="https://mrjob.readthedocs.io/en/latest/" target="_blank" rel="noopener">mrjob</a></p>
-<h2 id="5、list中排列组合"><a href="#5、list中排列组合" class="headerlink" title="5、list中排列组合"></a>5、list中排列组合</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> combinations
+<h2 id="4、list中排列组合"><a href="#4、list中排列组合" class="headerlink" title="4、list中排列组合"></a>4、list中排列组合</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> combinations
 
 combine_2 <span class="token operator">=</span> list<span class="token punctuation">(</span>combinations<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="6、获取指定目录下指定文件"><a href="#6、获取指定目录下指定文件" class="headerlink" title="6、获取指定目录下指定文件"></a>6、获取指定目录下指定文件</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> os
+<h2 id="5、获取指定目录下指定文件"><a href="#5、获取指定目录下指定文件" class="headerlink" title="5、获取指定目录下指定文件"></a>5、获取指定目录下指定文件</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> os
 
 L <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">for</span> root<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
