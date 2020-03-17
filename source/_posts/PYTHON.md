@@ -32,17 +32,23 @@ tags:
 
 # 四、疑难解答
 
-## 1、`Python2`编码问题
+## 1、编码问题
+
+### `Python2`编码问题
 
 * [参考](<https://foofish.net/why-Python-encoding-is-tricky.html>)
 
-## 2、`Python3`编码问题
+### `Python3`编码问题
 
 * 在`Python3`版本中，把`'xxx'`和`u'xxx'`统一成`Unicode`编码，即写不写前缀`u`都是一样的。
 * 在`Python3`版本中，所有的字符串都是使用`Unicode`编码的字符串序列。
 * [参考](<https://foofish.net/how-Python3-handle-charset-encoding.html>)
 
-## 3、产生一段时间的日期
+## 2、日期操作
+
+* [参考菜鸟教程](<https://www.runoob.com/python/python-date-time.html>)
+
+### 产生一段时间的日期
 
 ```python
 from datetime import datetime, date, timedelta
@@ -50,7 +56,18 @@ import pandas as pd
 date_id_list = [datetime.strftime(x, '%Y%m%d') for x in list(pd.date_range(start='20190701', end='20190928'))]
 ```
 
-## 4、mrjob运行参数详情
+### 获取指定日期的前-后N天
+
+```python
+import datetime
+n = 1
+tomorrow = datetime.datetime(2015, 10, 28) + datetime.timedelta(days=1)	# 2015-10-29 00:00:00
+tomorrow_format = tomorrow.strftime('%Y%m%d')	# '20151029'
+```
+
+
+
+## 3、mrjob运行参数详情
 
 ```shell
 python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir
@@ -58,7 +75,7 @@ python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file
 
 **参考官方文档：**[mrjob](<https://mrjob.readthedocs.io/en/latest/>)
 
-## 5、list中排列组合
+## 4、list中排列组合
 
 ```python
 from itertools import combinations
@@ -66,7 +83,7 @@ from itertools import combinations
 combine_2 = list(combinations([1,2,3,4], 2))
 ```
 
-## 6、获取指定目录下指定文件
+## 5、获取指定目录下指定文件
 
 ```python
 import os

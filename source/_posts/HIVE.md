@@ -698,3 +698,9 @@ www.iteblog.com
 
 详情请参考[如何在 Apache Hive 中解析 Json 数组](https://www.iteblog.com/archives/2362.html)
 
+## 6、删除表但是没删除hdfs数据，重建表并关联hdfs数据
+
+[参考1](<https://stackoverflow.com/questions/40043986/hdinsight-hive-msck-repair-table-table-name-throwing-error>)
+
+[参考2](<https://blog.csdn.net/BabyFish13/article/details/79169496>)
+
