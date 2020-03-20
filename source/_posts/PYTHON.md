@@ -96,3 +96,13 @@ for root, dirs, files in os.walk(os.getcwd()):
 file_path = L[0]
 ```
 
+## 6、命令行参数`sys.argv[1:]`解析
+
+* [python类库31--命令行解析](https://www.cnblogs.com/itech/archive/2010/12/31/1919017.html)
+
+### 手动解析
+
+### getopt解析
+
+### optionparser解析【推荐】
+

@@ -715,4 +715,11 @@ public class Main {
 
 # 四、疑难解答
 
+## 1、使用IntelliJ IDEA 配置Maven
+
+* [参考](<https://blog.csdn.net/qq_32588349/article/details/51461182>)
+
+## 2、Intellij IDEA 打包jar的多种方式
+
+* [参考](<https://blog.csdn.net/Thousa_Ho/article/details/72799871>)
 

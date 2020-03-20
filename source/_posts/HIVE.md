@@ -704,3 +704,17 @@ www.iteblog.com
 
 [参考2](<https://blog.csdn.net/BabyFish13/article/details/79169496>)
 
+## 7、HIVE将表划分测试集与训练集的方法
+
+* [将Hive表拆分为测试集和训练集](https://www.thinbug.com/q/23548892)
+
+* <https://www.iteblog.com/archives/1996.html>
+
+```hiveql
+from (
+ select *, (rand() * 100 <= x) as is_test_set from my_table
+) t
+insert overwrite directory '/test_set' select * where is_test_set = true
+insert overwrite directory '/training_set' select * where is_test_set = false;
+```
+
