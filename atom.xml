@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2020-01-17T09:14:07.570Z</updated>
+  <updated>2020-03-20T07:33:21.277Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算广告学3-0</title>
+    <link href="https://myhaa.github.io/2020/03/20/ji-suan-guang-gao-xue-3-0/"/>
+    <id>https://myhaa.github.io/2020/03/20/ji-suan-guang-gao-xue-3-0/</id>
+    <published>2020-03-20T06:21:23.000Z</published>
+    <updated>2020-03-20T07:33:21.277Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;流量分配&quot;&gt;&lt;a href=&quot;#流量分配&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+      <category term="计算广告" scheme="https://myhaa.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka</title>
@@ -402,7 +431,7 @@
     <link href="https://myhaa.github.io/2019/10/15/python/"/>
     <id>https://myhaa.github.io/2019/10/15/python/</id>
     <published>2019-10-15T07:21:11.000Z</published>
-    <updated>2020-03-17T03:01:58.501Z</updated>
+    <updated>2020-03-20T07:24:20.277Z</updated>
     
     <summary type="html">
     
@@ -460,7 +489,7 @@
     <link href="https://myhaa.github.io/2019/10/13/java/"/>
     <id>https://myhaa.github.io/2019/10/13/java/</id>
     <published>2019-10-13T07:21:11.000Z</published>
-    <updated>2019-11-28T02:52:00.413Z</updated>
+    <updated>2020-03-17T08:55:29.067Z</updated>
     
     <summary type="html">
     
@@ -489,7 +518,7 @@
     <link href="https://myhaa.github.io/2019/10/12/hive/"/>
     <id>https://myhaa.github.io/2019/10/12/hive/</id>
     <published>2019-10-12T09:21:11.000Z</published>
-    <updated>2020-03-12T11:05:02.605Z</updated>
+    <updated>2020-03-18T04:01:37.452Z</updated>
     
     <summary type="html">
     

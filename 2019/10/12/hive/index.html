@@ -1258,6 +1258,17 @@ www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <p>详情请参考<a href="https://www.iteblog.com/archives/2362.html" target="_blank" rel="noopener">如何在 Apache Hive 中解析 Json 数组</a></p>
 <h2 id="6、删除表但是没删除hdfs数据，重建表并关联hdfs数据"><a href="#6、删除表但是没删除hdfs数据，重建表并关联hdfs数据" class="headerlink" title="6、删除表但是没删除hdfs数据，重建表并关联hdfs数据"></a>6、删除表但是没删除hdfs数据，重建表并关联hdfs数据</h2><p><a href="https://stackoverflow.com/questions/40043986/hdinsight-hive-msck-repair-table-table-name-throwing-error" target="_blank" rel="noopener">参考1</a></p>
 <p><a href="https://blog.csdn.net/BabyFish13/article/details/79169496" target="_blank" rel="noopener">参考2</a></p>
+<h2 id="7、HIVE将表划分测试集与训练集的方法"><a href="#7、HIVE将表划分测试集与训练集的方法" class="headerlink" title="7、HIVE将表划分测试集与训练集的方法"></a>7、HIVE将表划分测试集与训练集的方法</h2><ul>
+<li><p><a href="https://www.thinbug.com/q/23548892" target="_blank" rel="noopener">将Hive表拆分为测试集和训练集</a></p>
+</li>
+<li><p><a href="https://www.iteblog.com/archives/1996.html" target="_blank" rel="noopener">https://www.iteblog.com/archives/1996.html</a></p>
+</li>
+</ul>
+<pre class="line-numbers language-hiveql"><code class="language-hiveql">from (
+ select *, (rand() * 100 <= x) as is_test_set from my_table
+) t
+insert overwrite directory '/test_set' select * where is_test_set = true
+insert overwrite directory '/training_set' select * where is_test_set = false;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
