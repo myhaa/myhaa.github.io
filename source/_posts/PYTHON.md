@@ -83,7 +83,9 @@ from itertools import combinations
 combine_2 = list(combinations([1,2,3,4], 2))
 ```
 
-## 5、获取指定目录下指定文件
+## 5、文件操作
+
+### 获取指定目录下指定文件
 
 ```python
 import os
@@ -96,6 +98,15 @@ for root, dirs, files in os.walk(os.getcwd()):
 file_path = L[0]
 ```
 
+### pandas读取excel文件
+
+```python
+roc_data = pd.read_excel(file_path, sheet_name='20200323_10000')
+roc_data
+```
+
+
+
 ## 6、命令行参数`sys.argv[1:]`解析
 
 * [python类库31--命令行解析](https://www.cnblogs.com/itech/archive/2010/12/31/1919017.html)
@@ -105,4 +116,11 @@ file_path = L[0]
 ### getopt解析
 
 ### optionparser解析【推荐】
+
+## 7、字典排序
+
+```python
+result = {}
+sorted(result.items(), key=lambda x: x[1], reverse=True)
+```
 
