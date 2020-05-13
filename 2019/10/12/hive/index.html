@@ -1269,6 +1269,10 @@ www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><
 ) t
 insert overwrite directory '/test_set' select * where is_test_set = true
 insert overwrite directory '/training_set' select * where is_test_set = false;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8、HIVE日期操作"><a href="#8、HIVE日期操作" class="headerlink" title="8、HIVE日期操作"></a>8、HIVE日期操作</h2><h3 id="获取时间戳"><a href="#获取时间戳" class="headerlink" title="获取时间戳"></a>获取时间戳</h3><pre class="line-numbers language-hive"><code class="language-hive">select unix_timestamp('2015-04-30 13:51:20');
+select unix_timestamp('2015-04-30');<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="转格式"><a href="#转格式" class="headerlink" title="转格式"></a>转格式</h3><pre class="line-numbers language-hive"><code class="language-hive">select from_unixtime(1323308943,'yyyyMMdd');
+select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>

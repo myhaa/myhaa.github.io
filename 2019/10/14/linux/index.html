@@ -464,7 +464,7 @@ mode : 权限设定字串，格式">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    368
+                    406
                 </div>
                 
 
@@ -518,6 +518,19 @@ mode : 权限设定字串，格式">
 <li>键盘按<code>Esc</code></li>
 <li>输入<code>/search_string</code></li>
 <li>键盘按<code>n</code>或者<code>N</code>来进行向前或向后搜索</li>
+</ul>
+<h2 id="3、日期循环"><a href="#3、日期循环" class="headerlink" title="3、日期循环"></a>3、日期循环</h2><pre class="line-numbers language-shell"><code class="language-shell">#! /bin/bash
+
+start=20200312
+end=20200322
+
+while [ ${start} -le ${end} ]
+do
+  echo ${start}
+  start=`date -d "1 day ${start}" +%Y%m%d`    # 日期自增
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>参考<a href="https://sjq597.github.io/2015/11/03/Shell-按日期循环执行/" target="_blank" rel="noopener">日期循环</a></li>
 </ul>
 
             </div>
