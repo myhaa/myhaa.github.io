@@ -718,3 +718,19 @@ insert overwrite directory '/test_set' select * where is_test_set = true
 insert overwrite directory '/training_set' select * where is_test_set = false;
 ```
 
+## 8、HIVE日期操作
+
+### 获取时间戳
+
+```hive
+select unix_timestamp('2015-04-30 13:51:20');
+select unix_timestamp('2015-04-30');
+```
+
+### 转格式
+
+```hive
+select from_unixtime(1323308943,'yyyyMMdd');
+select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');
+```
+

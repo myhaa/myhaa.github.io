@@ -77,3 +77,20 @@ vi my.txt
 * 键盘按`Esc`
 * 输入`/search_string`
 * 键盘按`n`或者`N`来进行向前或向后搜索
+
+## 3、日期循环
+
+```shell
+#! /bin/bash
+
+start=20200312
+end=20200322
+
+while [ ${start} -le ${end} ]
+do
+  echo ${start}
+  start=`date -d "1 day ${start}" +%Y%m%d`	# 日期自增
+done
+```
+
+* 参考[日期循环](https://sjq597.github.io/2015/11/03/Shell-按日期循环执行/)
