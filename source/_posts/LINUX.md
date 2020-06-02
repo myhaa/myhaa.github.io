@@ -94,3 +94,10 @@ done
 ```
 
 * 参考[日期循环](https://sjq597.github.io/2015/11/03/Shell-按日期循环执行/)
+
+## 4、将代码输出重定向到log文件-不覆盖的形式
+
+```shell
+0 11 * * * /usr/bin/python3 /home/meiyunhe/adsp_new/orientation.py >> /home/meiyunhe/adsp_new/logs1_ori.txt 2>&1
+```
+

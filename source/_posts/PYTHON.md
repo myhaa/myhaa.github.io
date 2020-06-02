@@ -124,3 +124,24 @@ result = {}
 sorted(result.items(), key=lambda x: x[1], reverse=True)
 ```
 
+## 8、python自动登录Linux等服务
+
+[参考](https://pexpect.readthedocs.io/en/stable/overview.html)
+
+```python
+import pexpect
+child = pexpect.spawn('ftp ftp.openbsd.org')
+child.expect('Name .*: ')
+child.sendline('anonymous')
+child.expect('Password:')
+child.sendline('noah@example.com')
+child.expect('ftp> ')
+child.sendline('lcd /tmp')
+child.expect('ftp> ')
+child.sendline('cd pub/OpenBSD')
+child.expect('ftp> ')
+child.sendline('get README')
+child.expect('ftp> ')
+child.sendline('bye')
+```
+
