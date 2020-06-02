@@ -465,14 +465,14 @@ Python3编码问题
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    346
+                    408
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -526,6 +526,21 @@ roc_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 </ul>
 <h3 id="手动解析"><a href="#手动解析" class="headerlink" title="手动解析"></a>手动解析</h3><h3 id="getopt解析"><a href="#getopt解析" class="headerlink" title="getopt解析"></a>getopt解析</h3><h3 id="optionparser解析【推荐】"><a href="#optionparser解析【推荐】" class="headerlink" title="optionparser解析【推荐】"></a>optionparser解析【推荐】</h3><h2 id="7、字典排序"><a href="#7、字典排序" class="headerlink" title="7、字典排序"></a>7、字典排序</h2><pre class="line-numbers language-python"><code class="language-python">result <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 sorted<span class="token punctuation">(</span>result<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="8、python自动登录Linux等服务"><a href="#8、python自动登录Linux等服务" class="headerlink" title="8、python自动登录Linux等服务"></a>8、python自动登录Linux等服务</h2><p><a href="https://pexpect.readthedocs.io/en/stable/overview.html" target="_blank" rel="noopener">参考</a></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pexpect
+child <span class="token operator">=</span> pexpect<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">'ftp ftp.openbsd.org'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Name .*: '</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'anonymous'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Password:'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'noah@example.com'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'lcd /tmp'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'cd pub/OpenBSD'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'get README'</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
+child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'bye'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
