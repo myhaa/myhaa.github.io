@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2020-05-18T11:39:24.147Z</updated>
+  <updated>2020-06-03T03:03:20.750Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>google-MapReduce</title>
+    <link href="https://myhaa.github.io/2020/06/03/google-mapreduce/"/>
+    <id>https://myhaa.github.io/2020/06/03/google-mapreduce/</id>
+    <published>2020-06-03T01:25:31.000Z</published>
+    <updated>2020-06-03T03:03:20.750Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2020/06/03/google-mapreduce/image-20200603093104618.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Google Three Papers" scheme="https://myhaa.github.io/categories/Google-Three-Papers/"/>
+    
+    
+      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+      <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
+    
+      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>flask</title>
@@ -51,7 +82,7 @@
     <link href="https://myhaa.github.io/2020/04/24/jin-zi-ta-yuan-li-du-shu-bi-ji/"/>
     <id>https://myhaa.github.io/2020/04/24/jin-zi-ta-yuan-li-du-shu-bi-ji/</id>
     <published>2020-04-24T01:07:50.000Z</published>
-    <updated>2020-06-02T01:51:52.218Z</updated>
+    <updated>2020-06-02T07:02:31.045Z</updated>
     
     <summary type="html">
     
@@ -70,9 +101,9 @@
       <category term="读书笔记" scheme="https://myhaa.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="职场能力" scheme="https://myhaa.github.io/tags/%E8%81%8C%E5%9C%BA%E8%83%BD%E5%8A%9B/"/>
-    
       <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="职场能力" scheme="https://myhaa.github.io/tags/%E8%81%8C%E5%9C%BA%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
@@ -568,35 +599,6 @@
       <category term="编程语言" scheme="https://myhaa.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
       <category term="Python" scheme="https://myhaa.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux笔记</title>
-    <link href="https://myhaa.github.io/2019/10/14/linux/"/>
-    <id>https://myhaa.github.io/2019/10/14/linux/</id>
-    <published>2019-10-14T07:21:11.000Z</published>
-    <updated>2020-06-01T03:47:08.499Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Linux基础&quot;&gt;&lt;a href=&quot;#一、Linux基础&quot; class=&quot;headerlink&quot; title=&quot;一、Linux基础&quot;&gt;&lt;/a&gt;一、Linux基础&lt;/h1&gt;&lt;h1 id=&quot;二、Linux进阶&quot;&gt;&lt;a href=&quot;#二、Linux进阶&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="编程与开发" scheme="https://myhaa.github.io/categories/%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="Linux" scheme="https://myhaa.github.io/tags/Linux/"/>
-    
-      <category term="网络安全" scheme="https://myhaa.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
