@@ -4,14 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="google-MapReduce, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="Title
-【译文】
-
-MapReduce：大型集群上的简化数据处理
-
+    <meta name="keywords" content="FTRL, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="Title    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
 Abstract【原文】
-    MapReduce is a programming model and an associated implementation f">
+    W">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +15,7 @@ Abstract【原文】
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>google-MapReduce | Myhaa&#39;s Blog</title>
+    <title>FTRL | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,13 +307,13 @@ Abstract【原文】
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        google-MapReduce
+                        FTRL
                     </div>
                 </div>
             </div>
@@ -433,12 +429,12 @@ Abstract【原文】
                                 <span class="chip bg-color">数据科学</span>
                             </a>
                         
-                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">读书笔记</span>
+                            <a href="/tags/Optimization-Method/">
+                                <span class="chip bg-color">Optimization Method</span>
                             </a>
                         
-                            <a href="/tags/Hadoop/">
-                                <span class="chip bg-color">Hadoop</span>
+                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">读书笔记</span>
                             </a>
                         
                     </div>
@@ -449,8 +445,8 @@ Abstract【原文】
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Google-Three-Papers/" class="post-category">
-                                Google Three Papers
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                AI/数据科学
                             </a>
                         
                     </div>
@@ -462,7 +458,7 @@ Abstract【原文】
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-03
+                    2020-06-04
                 </div>
                 
 
@@ -471,14 +467,14 @@ Abstract【原文】
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    989
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    4 分
                 </div>
                 
 				
@@ -494,46 +490,35 @@ Abstract【原文】
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h1><p><img src="/2020/06/03/google-mapreduce/image-20200603093104618.png" alt="image-20200603093104618"></p>
-<p>【译文】</p>
-<ul>
-<li>MapReduce：大型集群上的简化数据处理</li>
-</ul>
+                <h1 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h1><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>【原文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key. Many real world tasks are expressible in this model, as shown in the paper.</span>
-
-<span class="token code keyword">    Programs written in this functional style are automatically parallelized and executed on a large cluster of commodity machines. The run-time system takes care of the details of partitioning the input data, scheduling the program’s execution across a set of machines, handling machine failures, and managing the required inter-machine communication. This allows programmers without any experience with parallel and distributed systems to easily utilize the resources of a large distributed system.</span>
-
-<span class="token code keyword">    Our implementation of MapReduce runs on a large cluster of commodity machines and is highly scalable: a typical MapReduce computation processes many terabytes of data on thousands of machines. Programmers find the system easy to use: hundreds of MapReduce programs have been implemented and upwards of one thousand MapReduce jobs are executed on Google’s clusters every day.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    We prove that many mirror descent algorithms for online convex optimization (such as online gradient descent) have an equivalent interpretation as follow-the-regularizedleader (FTRL) algorithms. This observation makes the relationships between many commonly used algorithms explicit, and provides theoretical insight on previous experimental observations. In particular, even though the FOBOS composite mirror descent algorithm handles L1 regularization explicitly, it has been observed that the FTRL-style Regularized Dual Averaging (RDA) algorithm is even more e ective at producing sparsity. Our results demonstrate that the key di erence between these algorithms is how they handle the cumulative L1 penalty. While FOBOS handles the L1 term exactly on any given update, we show that it is e ectively using subgradient approximations to the L1 penalty from previous rounds, leading to less sparsity than RDA, which handles the cumulative penalty in closed form. The FTRL-Proximal algorithm, which we introduce, can be seen as a hybrid of these two algorithms, and signi cantly outperforms both on a large, realworld dataset.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>【译文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    MapReduce是用于处理和生成大数据集的编程模型（相关的实现）。 用户指定key\value对以生成一组中间key\value对的map函数，以及指定归纳与同一中间key\value关联的所有中间key\value的reduce函数。 如本文所示，许多现实世界的任务在这种模型中都是可以表达的。</span>
-
-<span class="token code keyword">    用这种函数式编写的程序会自动并行化，并在大型计算机集群上执行。运行时系统负责对输入数据进行分区、安排跨机器的程序执行、处理机器故障和管理所需的机器间通信等细节。这使得没有任何并行和分布式系统经验的程序员可以轻松地利用大型分布式系统的资源。</span>
-
-<span class="token code keyword">    我们的MapReduce实现运行在大量的普通机器上，并且具有高度的可伸缩性:典型的MapReduce计算在数千台机器上处理许多TB级的数据。程序员发现这个系统很容易使用:已经实现了数百个MapReduce程序，每天在谷歌集群上执行的MapReduce任务都超过1000个。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>【重点】</p>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    我们证明了许多用于在线凸优化的镜像下降算法（例如在线梯度下降）具有与follow-the-regularizedleader (FTRL)算法等效的解释。该观察使许多常用算法之间的关系变得明确，并提供了对先前实验观察的理论见解。尤其是，即使FOBOS复合镜像下降算法可以明确处理L1正则化，也已经观察到FTRL样式的正则平均化（RDA）算法在产生稀疏性方面更为有效。我们的结果表明，这些算法之间的关键区别在于它们如何处理累积的L1损失。尽管FOBOS可以在任何给定的更新中精确地处理L1项，但我们证明它有效地使用了前几轮对L1罚分的次梯度近似，导致稀疏性低于RDA，后者以封闭形式处理累积罚分。我们介绍的FTRL-Proximal算法可以看作是这两种算法的混合体，在大型的真实数据集上均远胜过两者。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h2><p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605145145754.png" alt="image-20200605145145754">)<img src="/2020/06/04/ftrl/image-20200605145210366.png" alt="image-20200605145210366"></p>
+<p>【译文】</p>
+<p>​        我们考虑了在线凸优化的问题及其在在线学习中的应用。 在每一轮中，$t=1,…,T$，我们选择一个点$x_t\in R^n$。 然后揭示了凸损失函数$f_t$以及损失$f_t(x_t)$。在这项工作中，我们研究了在线凸优化的两个最重要且成功的低regret算法家族之间的关系。 从表面上看，诸如Regularized Dual Averaging [Xiao，2009]之类的正规化领导算法与FOBOS [Duchi and Singer，2009]等梯度下降（更普遍的是镜像下降）风格的算法似乎有所不同。 但是，这里我们表明，在二次稳定正则化的情况下，算法之间基本上只有两个区别：</p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605150118526.png" alt="image-20200605150118526"></p>
+<p>【译文】</p>
 <ul>
-<li>MapReduce是用于处理和生成大数据集的编程模型（相关的实现）</li>
-<li>包含map函数和reduce函数，使用key\value对</li>
-<li>高度的可伸缩性</li>
+<li>它们如何选择将额外的强凸性用于保证低regret：RDA将正则化集中在原点，而FOBOS将正则化集中在当前可行点。</li>
+<li>它们如何处理任意的非光滑正则化函数。这包括投影到可行集的机制以及如何处理L1正则化。</li>
 </ul>
-<h2 id="1、Introduction"><a href="#1、Introduction" class="headerlink" title="1、Introduction"></a>1、Introduction</h2><p>【原文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    Over the past five years, the authors and many others at Google have implemented hundreds of special-purpose computations that process large amounts of raw data, such as crawled documents, web request logs, etc., to compute various kinds of derived data, such as inverted indices, various representations of the graph structure of web documents, summaries of the number of pages crawled per host, the set of most frequent queries in a given day, etc. Most such computations are conceptually straightforward. However, the input data is usually large and the computations have to be distributed across hundreds or thousands of machines in order to finish in a reasonable amount of time. The issues of how to parallelize the computation, distribute the data, and handle failures conspire to obscure the original simple computation with large amounts of complex code to deal with these issues.</span>
-
-<span class="token code keyword">    As a reaction to this complexity, we designed a new abstraction that allows us to express the simple computations we were trying to perform but hides the messy details of parallelization, fault-tolerance, data distribution and load balancing in a library. Our abstraction is inspired by the map and reduce primitives present in Lisp and many other functional languages. We realized that most of our computations involved applying a map operation to each logical “record” in our input in order to compute a set of intermediate key/value pairs, and then applying a reduce operation to all the values that shared the same key, in order to combine the derived data appropriately. Our use of a functional model with userspecified map and reduce operations allows us to parallelize large computations easily and to use re-execution as the primary mechanism for fault tolerance.</span>
-
-<span class="token code keyword">    The major contributions of this work are a simple and powerful interface that enables automatic parallelization and distribution of large-scale computations, combined with an implementation of this interface that achieves high performance on large clusters of commodity PCs.</span>
-
-<span class="token code keyword">    Section 2 describes the basic programming model and gives several examples. Section 3 describes an implementation of the MapReduce interface tailored towards our cluster-based computing environment. Section 4 describes several refinements of the programming model that we have found useful. Section 5 has performance measurements of our implementation for a variety of tasks. Section 6 explores the use of MapReduce within Google including our experiences in using it as the basis for a rewrite of our production indexing system. Section 7 discusses related and future work.</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2020/06/04/ftrl/image-20200605150139243.png" alt="image-20200605150139243"></p>
 <p>【译文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    在过去的五年中，Google的作者和许多其他人已经实现了数百种特殊用途的计算，这些计算处理大量的原始数据（例如抓取的文档，Web请求日志等），以计算各种派生数据，例如：作为反向索引，Web文档的图形结构的各种表示形式，每个主机爬取的网页摘要，给定一天中最频繁的查询集等。大多数此类计算在概念上都很简单。 但是，输入数据通常很大，并且必须在数百或数千台计算机上分布计算，才能在合理的时间内完成计算。 如何并行化计算，分配数据和处理故障的问题，用大量复杂的代码来处理这些问题，使原来简单的计算变得模糊不清。</span>
-
-<span class="token code keyword">    为了应对这种复杂性，我们设计了一个新的抽象，该抽象使我们能够表达我们试图执行的简单计算，但在库中隐藏了并行化，容错，数据分发和负载平衡的混乱细节。 Lisp和许多其他功能语言中的map和reduce原语启发了我们的抽象。 我们意识到，大多数计算都涉及对输入中的每个逻辑“记录”应用映射操作，以便计算一组key/value键/值对，然后对共享同一key的所有值应用归约操作，适当地组合得出的数据。我们使用具有用户指定的映射和归约运算的功能模型，使我们能够轻松地并行进行大型计算，并将重新执行用作容错的主要机制。</span>
-
-<span class="token code keyword">    这项工作的主要贡献是一个简单而强大的界面，该界面可实现大规模计算的自动并行化和分配，并结合了该界面的实现，可在大型商用PC集群上实现高性能。</span>
-
-<span class="token code keyword">    第2节描述了基本的编程模型，并给出了一些示例。 第3节介绍了针对我们基于集群的计算环境量身定制的MapReduce接口的实现。 第4节描述了一些有用的编程模型改进。 第5节对我们执行各种任务的性能进行了度量。 第6节探讨了MapReduce在Google中的用法，包括我们使用它作为重写生产索引系统基础的经验。 第7节讨论相关和未来的工作。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​        为了使这些区别更精确，同时也说明这些家族实际上是密切相关的，我们考虑第三种算法，FTRL-Proximal。当省略非光滑项时，该算法实际上与FOBOS是相同的。另一方面，其更新与对偶平均的更新基本相同，只是增加的强凸性以当前可行点为中心(见表1)。</p>
+<p>【表1】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605152908088.png" alt="image-20200605152908088"></p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605150155117.png" alt="image-20200605150155117"></p>
+<p>【译文】</p>
+<p>​        先前的工作已通过实验表明，采用L1正则化进行对偶平均比引入FOBOS更有效地引入稀疏性[Xiao,2009,Duchi et al.,2010a]。我们的等价定理对此提供了理论上的解释：RDA考虑了第t轮的累积L1惩罚$t\lambda||x||<em>1$，FOBOS（当使用等价定理视为全局优化时）考虑$\phi</em>{1:t-1}*x+\lambda||x||<em>1$，其中$\phi_s$是确定的$\lambda||x_s||_1$的次梯度近似（我们用$\phi</em>{1:t-1}$代表$\sum_{s=1}^{t-1}{\phi_s}$，并根据需要将表示法扩展为矩阵和函数的和）。</p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605150209723.png" alt="image-20200605150209723"></p>
+<p>【译文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200605150311078.png" alt="image-20200605150311078"></p>
 
             </div>
             <hr/>
@@ -559,7 +544,7 @@ Abstract【原文】
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2020/06/03/google-mapreduce/">https://myhaa.github.io/2020/06/03/google-mapreduce/</a>
+                    <a href="https://myhaa.github.io/2020/06/04/ftrl/">https://myhaa.github.io/2020/06/04/ftrl/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,12 +586,12 @@ Abstract【原文】
                                     <span class="chip bg-color">数据科学</span>
                                 </a>
                             
-                                <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">读书笔记</span>
+                                <a href="/tags/Optimization-Method/">
+                                    <span class="chip bg-color">Optimization Method</span>
                                 </a>
                             
-                                <a href="/tags/Hadoop/">
-                                    <span class="chip bg-color">Hadoop</span>
+                                <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">读书笔记</span>
                                 </a>
                             
                         </div>
@@ -777,7 +762,7 @@ Abstract【原文】
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2020-06-03T09-25-31',
+        id: '2020-06-04T10-57-11',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -798,9 +783,10 @@ Abstract【原文】
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/04/ftrl/">
                     <div class="card-image">
@@ -818,9 +804,9 @@ Abstract【原文】
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -833,6 +819,7 @@ Abstract【原文】
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -859,31 +846,31 @@ Abstract【原文】
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/18/flask/">
+                <a href="/2020/06/03/google-mapreduce/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="flask">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="google-MapReduce">
                         
-                        <span class="card-title">flask</span>
+                        <span class="card-title">google-MapReduce</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python3建立轻量级web应用程序框架
+                            MapReduce的原理介绍
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
-                                    AI/数据科学
+                            <a href="/categories/Google-Three-Papers/" class="post-category">
+                                    Google Three Papers
                                 </a>
                             
                             
@@ -897,8 +884,12 @@ Abstract【原文】
                         <span class="chip bg-color">数据科学</span>
                     </a>
                     
-                    <a href="/tags/web%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">web服务</span>
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">读书笔记</span>
+                    </a>
+                    
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
                     </a>
                     
                 </div>

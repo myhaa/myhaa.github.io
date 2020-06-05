@@ -561,11 +561,12 @@ git config --local user.email 'youremail'<span aria-hidden="true" class="line-nu
 <pre class="line-numbers language-shell"><code class="language-shell">*@users.noreply.github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="2、创建版本库"><a href="#2、创建版本库" class="headerlink" title="2、创建版本库"></a>2、创建版本库</h2><h3 id="（1）将已有文件夹变为版本库"><a href="#（1）将已有文件夹变为版本库" class="headerlink" title="（1）将已有文件夹变为版本库"></a>（1）将已有文件夹变为版本库</h3><pre class="line-numbers language-shell"><code class="language-shell">cd /home/user/my_project  # 切换到想要初始化的文件夹
 git init  # 初始化为版本库，文件夹会出现.git的隐藏文件夹
+git remote add origin ssh://git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git
 git add .  # 添加文件夹中所有文件到暂存区
-git commit -m "your commit description"  # 提交暂存区所有文件到版本库并保存提交记录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+git commit -m "your commit description"  # 提交暂存区所有文件到版本库并保存提交记录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="（2）从远处仓库（GitLab-GitHub）克隆"><a href="#（2）从远处仓库（GitLab-GitHub）克隆" class="headerlink" title="（2）从远处仓库（GitLab\GitHub）克隆"></a>（2）从远处仓库（GitLab\GitHub）克隆</h3><pre class="line-numbers language-shell"><code class="language-shell">cd /home/user/my_project  # 切换到想要存放版本库的文件夹
 git clone https://github.com/myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone https地址
-git clone git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone ssh地址
+git clone ssh://git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone ssh地址
 cd How-To-Ask-Questions-The-Smart-Way  # 进入clone的版本库文件夹<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="3、操作版本库"><a href="#3、操作版本库" class="headerlink" title="3、操作版本库"></a>3、操作版本库</h2><h3 id="（1）版本库中文件的两种状态"><a href="#（1）版本库中文件的两种状态" class="headerlink" title="（1）版本库中文件的两种状态"></a>（1）版本库中文件的两种状态</h3><ol>
 <li>未追踪状态（<em>untracked</em>）：从未<strong>add+commit</strong>的文件（Untracked files:）</li>
