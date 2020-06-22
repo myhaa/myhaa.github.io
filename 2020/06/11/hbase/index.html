@@ -4,12 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Python笔记, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="一、Python基础二、Python进阶三、参考书籍四、疑难解答1、编码问题Python2编码问题
-参考
-
-Python3编码问题
-在Python3版本中，把&amp;#39;xxx&amp;#39;和u&amp;#39;xxx&amp;#39;统一成Unicode编码，">
+    <meta name="keywords" content="HBase.md, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="HBase基础简介    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Had">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@ Python3编码问题
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python笔记 | Myhaa&#39;s Blog</title>
+    <title>HBase.md | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,13 +305,13 @@ Python3编码问题
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python笔记
+                        HBase.md
                     </div>
                 </div>
             </div>
@@ -427,12 +423,12 @@ Python3编码问题
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-                                <span class="chip bg-color">编程语言</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
+                                <span class="chip bg-color">数据科学</span>
                             </a>
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
+                            <a href="/tags/HBase/">
+                                <span class="chip bg-color">HBase</span>
                             </a>
                         
                     </div>
@@ -443,8 +439,8 @@ Python3编码问题
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%BC%80%E5%8F%91/" class="post-category">
-                                编程与开发
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                AI/数据科学
                             </a>
                         
                     </div>
@@ -456,7 +452,7 @@ Python3编码问题
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-15
+                    2020-06-11
                 </div>
                 
 
@@ -465,14 +461,14 @@ Python3编码问题
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    552
+                    229
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -488,74 +484,33 @@ Python3编码问题
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Python基础"><a href="#一、Python基础" class="headerlink" title="一、Python基础"></a>一、Python基础</h1><h1 id="二、Python进阶"><a href="#二、Python进阶" class="headerlink" title="二、Python进阶"></a>二、Python进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、编码问题"><a href="#1、编码问题" class="headerlink" title="1、编码问题"></a>1、编码问题</h2><h3 id="Python2编码问题"><a href="#Python2编码问题" class="headerlink" title="Python2编码问题"></a><code>Python2</code>编码问题</h3><ul>
-<li><a href="https://foofish.net/why-Python-encoding-is-tricky.html" target="_blank" rel="noopener">参考</a></li>
+                <h1 id="HBase基础"><a href="#HBase基础" class="headerlink" title="HBase基础"></a>HBase基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Hadoop 提供类似于BigTable 规模的服务。因此，它可以对稀疏文件提供极高的容错率。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><ul>
+<li>single-node</li>
+<li>standalone</li>
 </ul>
-<h3 id="Python3编码问题"><a href="#Python3编码问题" class="headerlink" title="Python3编码问题"></a><code>Python3</code>编码问题</h3><ul>
-<li>在<code>Python3</code>版本中，把<code>&#39;xxx&#39;</code>和<code>u&#39;xxx&#39;</code>统一成<code>Unicode</code>编码，即写不写前缀<code>u</code>都是一样的。</li>
-<li>在<code>Python3</code>版本中，所有的字符串都是使用<code>Unicode</code>编码的字符串序列。</li>
-<li><a href="https://foofish.net/how-Python3-handle-charset-encoding.html" target="_blank" rel="noopener">参考</a></li>
+<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h2><h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><pre class="line-numbers language-shell"><code class="language-shell">$ ./bin/hbase shell
+hbase(main):001:0><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="2-2-建表"><a href="#2-2-建表" class="headerlink" title="2.2 建表"></a>2.2 建表</h3><ul>
+<li>必须指定表名<code>test</code>和列名<code>cf</code></li>
 </ul>
-<h2 id="2、日期操作"><a href="#2、日期操作" class="headerlink" title="2、日期操作"></a>2、日期操作</h2><ul>
-<li><a href="https://www.runoob.com/python/python-date-time.html" target="_blank" rel="noopener">参考菜鸟教程</a></li>
-</ul>
-<h3 id="产生一段时间的日期"><a href="#产生一段时间的日期" class="headerlink" title="产生一段时间的日期"></a>产生一段时间的日期</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
-<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="获取指定日期的前-后N天"><a href="#获取指定日期的前-后N天" class="headerlink" title="获取指定日期的前-后N天"></a>获取指定日期的前-后N天</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> datetime
-n <span class="token operator">=</span> <span class="token number">1</span>
-tomorrow <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span> <span class="token operator">+</span> datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 2015-10-29 00:00:00</span>
-tomorrow_format <span class="token operator">=</span> tomorrow<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># '20151029'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="3、mrjob运行参数详情"><a href="#3、mrjob运行参数详情" class="headerlink" title="3、mrjob运行参数详情"></a>3、mrjob运行参数详情</h2><pre class="line-numbers language-shell"><code class="language-shell">python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>参考官方文档：</strong><a href="https://mrjob.readthedocs.io/en/latest/" target="_blank" rel="noopener">mrjob</a></p>
-<h2 id="4、list中排列组合"><a href="#4、list中排列组合" class="headerlink" title="4、list中排列组合"></a>4、list中排列组合</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> combinations
+<pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):001:0> create 'test', 'cf'
+0 row(s) in 0.4170 seconds
 
-combine_2 <span class="token operator">=</span> list<span class="token punctuation">(</span>combinations<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="5、文件操作"><a href="#5、文件操作" class="headerlink" title="5、文件操作"></a>5、文件操作</h2><h3 id="获取指定目录下指定文件"><a href="#获取指定目录下指定文件" class="headerlink" title="获取指定目录下指定文件"></a>获取指定目录下指定文件</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> os
+=> Hbase::Table - test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-3-列出表信息"><a href="#2-3-列出表信息" class="headerlink" title="2.3 列出表信息"></a>2.3 列出表信息</h3><pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):002:0> list 'test'
+TABLE
+test
+1 row(s) in 0.0180 seconds
 
-L <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> root<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> files<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'.txt'</span><span class="token punctuation">:</span>
-            L<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-file_path <span class="token operator">=</span> L<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="pandas读取excel文件"><a href="#pandas读取excel文件" class="headerlink" title="pandas读取excel文件"></a>pandas读取excel文件</h3><pre class="line-numbers language-python"><code class="language-python">roc_data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> sheet_name<span class="token operator">=</span><span class="token string">'20200323_10000'</span><span class="token punctuation">)</span>
-roc_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="6、命令行参数sys-argv-1-解析"><a href="#6、命令行参数sys-argv-1-解析" class="headerlink" title="6、命令行参数sys.argv[1:]解析"></a>6、命令行参数<code>sys.argv[1:]</code>解析</h2><ul>
-<li><a href="https://www.cnblogs.com/itech/archive/2010/12/31/1919017.html" target="_blank" rel="noopener">python类库31–命令行解析</a></li>
-</ul>
-<h3 id="手动解析"><a href="#手动解析" class="headerlink" title="手动解析"></a>手动解析</h3><h3 id="getopt解析"><a href="#getopt解析" class="headerlink" title="getopt解析"></a>getopt解析</h3><h3 id="optionparser解析【推荐】"><a href="#optionparser解析【推荐】" class="headerlink" title="optionparser解析【推荐】"></a>optionparser解析【推荐】</h3><h2 id="7、字典排序"><a href="#7、字典排序" class="headerlink" title="7、字典排序"></a>7、字典排序</h2><pre class="line-numbers language-python"><code class="language-python">result <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-sorted<span class="token punctuation">(</span>result<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="8、python自动登录Linux等服务"><a href="#8、python自动登录Linux等服务" class="headerlink" title="8、python自动登录Linux等服务"></a>8、python自动登录Linux等服务</h2><p><a href="https://pexpect.readthedocs.io/en/stable/overview.html" target="_blank" rel="noopener">参考</a></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pexpect
-child <span class="token operator">=</span> pexpect<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">'ftp ftp.openbsd.org'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Name .*: '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'anonymous'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Password:'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'noah@example.com'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'lcd /tmp'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'cd pub/OpenBSD'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'get README'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'bye'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="9、-生成requirements-txt"><a href="#9、-生成requirements-txt" class="headerlink" title="9、 生成requirements.txt"></a>9、 生成requirements.txt</h2><h3 id="第一种方法：太多太杂，对整个虚拟环境的"><a href="#第一种方法：太多太杂，对整个虚拟环境的" class="headerlink" title="第一种方法：太多太杂，对整个虚拟环境的"></a>第一种方法：太多太杂，对整个虚拟环境的</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 生成</span>
-pip freeze <span class="token operator">></span> requirements<span class="token punctuation">.</span>txt
-
-<span class="token comment" spellcheck="true"># 安装</span>
-pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="第二种方法：需要pip安装模块，但是可以对指定目录进行生成"><a href="#第二种方法：需要pip安装模块，但是可以对指定目录进行生成" class="headerlink" title="第二种方法：需要pip安装模块，但是可以对指定目录进行生成"></a>第二种方法：需要pip安装模块，但是可以对指定目录进行生成</h3><pre><code># pip 安装模块
-pip3 install pipreqs
-
-# 对指定目录进行生成requirements.txt
-cd 到指定目录
-pipreqs ./ --encoding=utf8
-# 这样在指定目录就会有requirements.txt的依赖文件</code></pre><h2 id="10、python取mysql中文乱码"><a href="#10、python取mysql中文乱码" class="headerlink" title="10、python取mysql中文乱码"></a>10、python取mysql中文乱码</h2><ol>
-<li>mysql代码中将中文字段用<code>hex</code>函数转换</li>
-<li>python代码中用<code>bytes.fromhex(取出的字段).decode(&#39;utf-8&#39;)</code>来转换</li>
-</ol>
+=> ["test"]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):003:0> describe 'test'
+Table test is ENABLED
+test
+COLUMN FAMILIES DESCRIPTION
+{NAME => 'cf', VERSIONS => '1', EVICT_BLOCKS_ON_CLOSE => 'false', NEW_VERSION_BEHAVIOR => 'false', KEEP_DELETED_CELLS => 'FALSE', CACHE_DATA_ON_WRITE => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', MIN_VERSIONS => '0', REPLICATION_SCOPE => '0', BLOOMFILTER => 'ROW', CACHE_INDEX_ON_WRITE => 'false', IN_MEMORY => 'false', CACHE_BLOOMS_ON_WRITE => 'false', PREFETCH_BLOCKS_ON_OPEN => 'false', COMPRESSION => 'NONE', BLOCKCACHE => 'true', BLOCKSIZE => '65536'}
+1 row(s)
+Took 0.9998 seconds<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -581,7 +536,7 @@ pipreqs ./ --encoding=utf8
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2019/10/15/python/">https://myhaa.github.io/2019/10/15/python/</a>
+                    <a href="https://myhaa.github.io/2020/06/11/hbase/">https://myhaa.github.io/2020/06/11/hbase/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,12 +574,12 @@ pipreqs ./ --encoding=utf8
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-                                    <span class="chip bg-color">编程语言</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
+                                    <span class="chip bg-color">数据科学</span>
                                 </a>
                             
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
+                                <a href="/tags/HBase/">
+                                    <span class="chip bg-color">HBase</span>
                                 </a>
                             
                         </div>
@@ -795,7 +750,7 @@ pipreqs ./ --encoding=utf8
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2019-10-15T15-21-11',
+        id: '2020-06-11T11-19-55',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -816,29 +771,84 @@ pipreqs ./ --encoding=utf8
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/17/recommendation-algorithm/">
+                <a href="/2020/06/11/hbase/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="推荐算法笔记">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="HBase.md">
                         
-                        <span class="card-title">推荐算法笔记</span>
+                        <span class="card-title">HBase.md</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有关推荐算法的笔记
+                            HBase笔记
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-17
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                    AI/数据科学
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
+                        <span class="chip bg-color">数据科学</span>
+                    </a>
+                    
+                    <a href="/tags/HBase/">
+                        <span class="chip bg-color">HBase</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/04/ftrl/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="FTRL">
+                        
+                        <span class="card-title">FTRL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            FTRL的原理介绍和工程实现
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -858,61 +868,12 @@ pipreqs ./ --encoding=utf8
                         <span class="chip bg-color">数据科学</span>
                     </a>
                     
-                    <a href="/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">推荐算法</span>
+                    <a href="/tags/Optimization-Method/">
+                        <span class="chip bg-color">Optimization Method</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/14/linux/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux笔记">
-                        
-                        <span class="card-title">Linux笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            有关Linux的笔记
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%BC%80%E5%8F%91/" class="post-category">
-                                    编程与开发
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">网络安全</span>
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">读书笔记</span>
                     </a>
                     
                 </div>
