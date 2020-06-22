@@ -117,6 +117,7 @@ git config --local user.email 'youremail'
 ```shell
 cd /home/user/my_project  # 切换到想要初始化的文件夹
 git init  # 初始化为版本库，文件夹会出现.git的隐藏文件夹
+git remote add origin ssh://git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git
 git add .  # 添加文件夹中所有文件到暂存区
 git commit -m "your commit description"  # 提交暂存区所有文件到版本库并保存提交记录
 ```
@@ -126,7 +127,7 @@ git commit -m "your commit description"  # 提交暂存区所有文件到版本�
 ```shell
 cd /home/user/my_project  # 切换到想要存放版本库的文件夹
 git clone https://github.com/myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone https地址
-git clone git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone ssh地址
+git clone ssh://git@github.com:myhaa/How-To-Ask-Questions-The-Smart-Way.git  # clone ssh地址
 cd How-To-Ask-Questions-The-Smart-Way  # 进入clone的版本库文件夹
 ```
 

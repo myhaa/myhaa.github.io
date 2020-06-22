@@ -14,10 +14,10 @@ date: 2020-06-03 09:25:31
 img:
 coverImg:
 password:
-summary:
+summary: MapReduce的原理介绍
 ---
 
-# 题目
+# Title
 
 ![image-20200603093104618](google_MapReduce/image-20200603093104618.png)
 
@@ -25,7 +25,7 @@ summary:
 
 * MapReduce：大型集群上的简化数据处理
 
-## 摘要
+## Abstract
 
 【原文】
 
@@ -49,4 +49,34 @@ summary:
 
 【重点】
 
-* 
+* MapReduce是用于处理和生成大数据集的编程模型（相关的实现）
+* 包含map函数和reduce函数，使用key\value对
+* 高度的可伸缩性
+
+## 1、Introduction
+
+【原文】
+
+```markdown
+	Over the past five years, the authors and many others at Google have implemented hundreds of special-purpose computations that process large amounts of raw data, such as crawled documents, web request logs, etc., to compute various kinds of derived data, such as inverted indices, various representations of the graph structure of web documents, summaries of the number of pages crawled per host, the set of most frequent queries in a given day, etc. Most such computations are conceptually straightforward. However, the input data is usually large and the computations have to be distributed across hundreds or thousands of machines in order to finish in a reasonable amount of time. The issues of how to parallelize the computation, distribute the data, and handle failures conspire to obscure the original simple computation with large amounts of complex code to deal with these issues.
+
+	As a reaction to this complexity, we designed a new abstraction that allows us to express the simple computations we were trying to perform but hides the messy details of parallelization, fault-tolerance, data distribution and load balancing in a library. Our abstraction is inspired by the map and reduce primitives present in Lisp and many other functional languages. We realized that most of our computations involved applying a map operation to each logical “record” in our input in order to compute a set of intermediate key/value pairs, and then applying a reduce operation to all the values that shared the same key, in order to combine the derived data appropriately. Our use of a functional model with userspecified map and reduce operations allows us to parallelize large computations easily and to use re-execution as the primary mechanism for fault tolerance.
+
+	The major contributions of this work are a simple and powerful interface that enables automatic parallelization and distribution of large-scale computations, combined with an implementation of this interface that achieves high performance on large clusters of commodity PCs.
+
+	Section 2 describes the basic programming model and gives several examples. Section 3 describes an implementation of the MapReduce interface tailored towards our cluster-based computing environment. Section 4 describes several refinements of the programming model that we have found useful. Section 5 has performance measurements of our implementation for a variety of tasks. Section 6 explores the use of MapReduce within Google including our experiences in using it as the basis for a rewrite of our production indexing system. Section 7 discusses related and future work.
+
+```
+
+【译文】
+
+```markdown
+	在过去的五年中，Google的作者和许多其他人已经实现了数百种特殊用途的计算，这些计算处理大量的原始数据（例如抓取的文档，Web请求日志等），以计算各种派生数据，例如：作为反向索引，Web文档的图形结构的各种表示形式，每个主机爬取的网页摘要，给定一天中最频繁的查询集等。大多数此类计算在概念上都很简单。 但是，输入数据通常很大，并且必须在数百或数千台计算机上分布计算，才能在合理的时间内完成计算。 如何并行化计算，分配数据和处理故障的问题，用大量复杂的代码来处理这些问题，使原来简单的计算变得模糊不清。
+	
+	为了应对这种复杂性，我们设计了一个新的抽象，该抽象使我们能够表达我们试图执行的简单计算，但在库中隐藏了并行化，容错，数据分发和负载平衡的混乱细节。 Lisp和许多其他功能语言中的map和reduce原语启发了我们的抽象。 我们意识到，大多数计算都涉及对输入中的每个逻辑“记录”应用映射操作，以便计算一组key/value键/值对，然后对共享同一key的所有值应用归约操作，适当地组合得出的数据。我们使用具有用户指定的映射和归约运算的功能模型，使我们能够轻松地并行进行大型计算，并将重新执行用作容错的主要机制。
+	
+	这项工作的主要贡献是一个简单而强大的界面，该界面可实现大规模计算的自动并行化和分配，并结合了该界面的实现，可在大型商用PC集群上实现高性能。
+	
+	第2节描述了基本的编程模型，并给出了一些示例。 第3节介绍了针对我们基于集群的计算环境量身定制的MapReduce接口的实现。 第4节描述了一些有用的编程模型改进。 第5节对我们执行各种任务的性能进行了度量。 第6节探讨了MapReduce在Google中的用法，包括我们使用它作为重写生产索引系统基础的经验。 第7节讨论相关和未来的工作。
+```
+

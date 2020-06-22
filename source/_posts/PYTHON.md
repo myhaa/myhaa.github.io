@@ -145,3 +145,34 @@ child.expect('ftp> ')
 child.sendline('bye')
 ```
 
+## 9、 生成requirements.txt
+
+### 第一种方法：太多太杂，对整个虚拟环境的
+
+```python
+# 生成
+pip freeze > requirements.txt
+
+# 安装
+pip install -r requirements.txt
+```
+
+### 第二种方法：需要pip安装模块，但是可以对指定目录进行生成
+
+```
+# pip 安装模块
+pip3 install pipreqs
+
+# 对指定目录进行生成requirements.txt
+cd 到指定目录
+pipreqs ./ --encoding=utf8
+# 这样在指定目录就会有requirements.txt的依赖文件
+```
+
+
+
+## 10、python取mysql中文乱码
+
+1. mysql代码中将中文字段用`hex`函数转换
+2. python代码中用`bytes.fromhex(取出的字段).decode('utf-8')`来转换
+
