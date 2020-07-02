@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Python笔记, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="一、Python基础二、Python进阶三、参考书籍四、疑难解答1、编码问题Python2编码问题
 参考
@@ -32,11 +32,11 @@ Python3编码问题
     
 <link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
@@ -465,7 +465,7 @@ Python3编码问题
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    552
+                    553
                 </div>
                 
 
@@ -499,60 +499,70 @@ Python3编码问题
 <h2 id="2、日期操作"><a href="#2、日期操作" class="headerlink" title="2、日期操作"></a>2、日期操作</h2><ul>
 <li><a href="https://www.runoob.com/python/python-date-time.html" target="_blank" rel="noopener">参考菜鸟教程</a></li>
 </ul>
-<h3 id="产生一段时间的日期"><a href="#产生一段时间的日期" class="headerlink" title="产生一段时间的日期"></a>产生一段时间的日期</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime<span class="token punctuation">,</span> date<span class="token punctuation">,</span> timedelta
-<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-date_id_list <span class="token operator">=</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> list<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>date_range<span class="token punctuation">(</span>start<span class="token operator">=</span><span class="token string">'20190701'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'20190928'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="获取指定日期的前-后N天"><a href="#获取指定日期的前-后N天" class="headerlink" title="获取指定日期的前-后N天"></a>获取指定日期的前-后N天</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> datetime
-n <span class="token operator">=</span> <span class="token number">1</span>
-tomorrow <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span> <span class="token operator">+</span> datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 2015-10-29 00:00:00</span>
-tomorrow_format <span class="token operator">=</span> tomorrow<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y%m%d'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># '20151029'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="3、mrjob运行参数详情"><a href="#3、mrjob运行参数详情" class="headerlink" title="3、mrjob运行参数详情"></a>3、mrjob运行参数详情</h2><pre class="line-numbers language-shell"><code class="language-shell">python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="产生一段时间的日期"><a href="#产生一段时间的日期" class="headerlink" title="产生一段时间的日期"></a>产生一段时间的日期</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">from datetime import datetime, date, timedelta
+import pandas as pd
+date_id_list = [datetime.strftime(x, '%Y%m%d') for x in list(pd.date_range(start='20190701', end='20190928'))]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="获取指定日期的前-后N天"><a href="#获取指定日期的前-后N天" class="headerlink" title="获取指定日期的前-后N天"></a>获取指定日期的前-后N天</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import datetime
+n = 1
+tomorrow = datetime.datetime(2015, 10, 28) + datetime.timedelta(days=1)    # 2015-10-29 00:00:00
+tomorrow_format = tomorrow.strftime('%Y%m%d')    # '20151029'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3、mrjob运行参数详情"><a href="#3、mrjob运行参数详情" class="headerlink" title="3、mrjob运行参数详情"></a>3、mrjob运行参数详情</h2><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">python xxx.py -r hadoop --local-tmp-dir 'xxx' --hadoop-tmp-dir 'hdfs:xxx' --file 'xxx.txt' --jobconf mapred.map.tasks=20 --jobconf mapred.reduce.tasks=2 input.txt -o output_dir
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>参考官方文档：</strong><a href="https://mrjob.readthedocs.io/en/latest/" target="_blank" rel="noopener">mrjob</a></p>
-<h2 id="4、list中排列组合"><a href="#4、list中排列组合" class="headerlink" title="4、list中排列组合"></a>4、list中排列组合</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> itertools <span class="token keyword">import</span> combinations
+<h2 id="4、list中排列组合"><a href="#4、list中排列组合" class="headerlink" title="4、list中排列组合"></a>4、list中排列组合</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">from itertools import combinations
 
-combine_2 <span class="token operator">=</span> list<span class="token punctuation">(</span>combinations<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="5、文件操作"><a href="#5、文件操作" class="headerlink" title="5、文件操作"></a>5、文件操作</h2><h3 id="获取指定目录下指定文件"><a href="#获取指定目录下指定文件" class="headerlink" title="获取指定目录下指定文件"></a>获取指定目录下指定文件</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> os
+combine_2 = list(combinations([1,2,3,4], 2))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="5、文件操作"><a href="#5、文件操作" class="headerlink" title="5、文件操作"></a>5、文件操作</h2><h3 id="获取指定目录下指定文件"><a href="#获取指定目录下指定文件" class="headerlink" title="获取指定目录下指定文件"></a>获取指定目录下指定文件</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import os
 
-L <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> root<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> files<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'.txt'</span><span class="token punctuation">:</span>
-            L<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-file_path <span class="token operator">=</span> L<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="pandas读取excel文件"><a href="#pandas读取excel文件" class="headerlink" title="pandas读取excel文件"></a>pandas读取excel文件</h3><pre class="line-numbers language-python"><code class="language-python">roc_data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> sheet_name<span class="token operator">=</span><span class="token string">'20200323_10000'</span><span class="token punctuation">)</span>
-roc_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+L = []
+for root, dirs, files in os.walk(os.getcwd()):
+    for x in files:
+        if os.path.splitext(x)[1] == '.txt':
+            L.append(os.path.join(root, x))
+file_path = L[0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="pandas读取excel文件"><a href="#pandas读取excel文件" class="headerlink" title="pandas读取excel文件"></a>pandas读取excel文件</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">roc_data = pd.read_excel(file_path, sheet_name='20200323_10000')
+roc_data
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="6、命令行参数sys-argv-1-解析"><a href="#6、命令行参数sys-argv-1-解析" class="headerlink" title="6、命令行参数sys.argv[1:]解析"></a>6、命令行参数<code>sys.argv[1:]</code>解析</h2><ul>
-<li><a href="https://www.cnblogs.com/itech/archive/2010/12/31/1919017.html" target="_blank" rel="noopener">python类库31–命令行解析</a></li>
+<li><a href="https://www.cnblogs.com/itech/archive/2010/12/31/1919017.html" target="_blank" rel="noopener">python类库31—命令行解析</a></li>
 </ul>
-<h3 id="手动解析"><a href="#手动解析" class="headerlink" title="手动解析"></a>手动解析</h3><h3 id="getopt解析"><a href="#getopt解析" class="headerlink" title="getopt解析"></a>getopt解析</h3><h3 id="optionparser解析【推荐】"><a href="#optionparser解析【推荐】" class="headerlink" title="optionparser解析【推荐】"></a>optionparser解析【推荐】</h3><h2 id="7、字典排序"><a href="#7、字典排序" class="headerlink" title="7、字典排序"></a>7、字典排序</h2><pre class="line-numbers language-python"><code class="language-python">result <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-sorted<span class="token punctuation">(</span>result<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="手动解析"><a href="#手动解析" class="headerlink" title="手动解析"></a>手动解析</h3><h3 id="getopt解析"><a href="#getopt解析" class="headerlink" title="getopt解析"></a>getopt解析</h3><h3 id="optionparser解析【推荐】"><a href="#optionparser解析【推荐】" class="headerlink" title="optionparser解析【推荐】"></a>optionparser解析【推荐】</h3><h2 id="7、字典排序"><a href="#7、字典排序" class="headerlink" title="7、字典排序"></a>7、字典排序</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">result = {}
+sorted(result.items(), key=lambda x: x[1], reverse=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="8、python自动登录Linux等服务"><a href="#8、python自动登录Linux等服务" class="headerlink" title="8、python自动登录Linux等服务"></a>8、python自动登录Linux等服务</h2><p><a href="https://pexpect.readthedocs.io/en/stable/overview.html" target="_blank" rel="noopener">参考</a></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pexpect
-child <span class="token operator">=</span> pexpect<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">'ftp ftp.openbsd.org'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Name .*: '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'anonymous'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'Password:'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'noah@example.com'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'lcd /tmp'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'cd pub/OpenBSD'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'get README'</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>expect<span class="token punctuation">(</span><span class="token string">'ftp> '</span><span class="token punctuation">)</span>
-child<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">'bye'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="9、-生成requirements-txt"><a href="#9、-生成requirements-txt" class="headerlink" title="9、 生成requirements.txt"></a>9、 生成requirements.txt</h2><h3 id="第一种方法：太多太杂，对整个虚拟环境的"><a href="#第一种方法：太多太杂，对整个虚拟环境的" class="headerlink" title="第一种方法：太多太杂，对整个虚拟环境的"></a>第一种方法：太多太杂，对整个虚拟环境的</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 生成</span>
-pip freeze <span class="token operator">></span> requirements<span class="token punctuation">.</span>txt
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import pexpect
+child = pexpect.spawn('ftp ftp.openbsd.org')
+child.expect('Name .*: ')
+child.sendline('anonymous')
+child.expect('Password:')
+child.sendline('noah@example.com')
+child.expect('ftp> ')
+child.sendline('lcd /tmp')
+child.expect('ftp> ')
+child.sendline('cd pub/OpenBSD')
+child.expect('ftp> ')
+child.sendline('get README')
+child.expect('ftp> ')
+child.sendline('bye')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="9、-生成requirements-txt"><a href="#9、-生成requirements-txt" class="headerlink" title="9、 生成requirements.txt"></a>9、 生成requirements.txt</h2><h3 id="第一种方法：太多太杂，对整个虚拟环境的"><a href="#第一种方法：太多太杂，对整个虚拟环境的" class="headerlink" title="第一种方法：太多太杂，对整个虚拟环境的"></a>第一种方法：太多太杂，对整个虚拟环境的</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 生成
+pip freeze > requirements.txt
 
-<span class="token comment" spellcheck="true"># 安装</span>
-pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 安装
+pip install -r requirements.txt
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第二种方法：需要pip安装模块，但是可以对指定目录进行生成"><a href="#第二种方法：需要pip安装模块，但是可以对指定目录进行生成" class="headerlink" title="第二种方法：需要pip安装模块，但是可以对指定目录进行生成"></a>第二种方法：需要pip安装模块，但是可以对指定目录进行生成</h3><pre><code># pip 安装模块
 pip3 install pipreqs
 
 # 对指定目录进行生成requirements.txt
 cd 到指定目录
 pipreqs ./ --encoding=utf8
-# 这样在指定目录就会有requirements.txt的依赖文件</code></pre><h2 id="10、python取mysql中文乱码"><a href="#10、python取mysql中文乱码" class="headerlink" title="10、python取mysql中文乱码"></a>10、python取mysql中文乱码</h2><ol>
+# 这样在指定目录就会有requirements.txt的依赖文件
+</code></pre><h2 id="10、python取mysql中文乱码"><a href="#10、python取mysql中文乱码" class="headerlink" title="10、python取mysql中文乱码"></a>10、python取mysql中文乱码</h2><ol>
 <li>mysql代码中将中文字段用<code>hex</code>函数转换</li>
 <li>python代码中用<code>bytes.fromhex(取出的字段).decode(&#39;utf-8&#39;)</code>来转换</li>
 </ol>
@@ -1260,7 +1270,24 @@ $(function () {
     
     
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
 </body>

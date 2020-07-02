@@ -3,11 +3,12 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="FTRL, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="Title    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
+
 Abstract【原文】
-    W">
+    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,11 +31,11 @@ Abstract【原文】
     
 <link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
@@ -429,12 +430,12 @@ Abstract【原文】
                                 <span class="chip bg-color">数据科学</span>
                             </a>
                         
-                            <a href="/tags/Optimization-Method/">
-                                <span class="chip bg-color">Optimization Method</span>
-                            </a>
-                        
                             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">读书笔记</span>
+                            </a>
+                        
+                            <a href="/tags/Optimization-Method/">
+                                <span class="chip bg-color">Optimization Method</span>
                             </a>
                         
                     </div>
@@ -467,14 +468,14 @@ Abstract【原文】
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
 				
@@ -490,11 +491,14 @@ Abstract【原文】
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h1><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h1><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>【原文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    We prove that many mirror descent algorithms for online convex optimization (such as online gradient descent) have an equivalent interpretation as follow-the-regularizedleader (FTRL) algorithms. This observation makes the relationships between many commonly used algorithms explicit, and provides theoretical insight on previous experimental observations. In particular, even though the FOBOS composite mirror descent algorithm handles L1 regularization explicitly, it has been observed that the FTRL-style Regularized Dual Averaging (RDA) algorithm is even more e ective at producing sparsity. Our results demonstrate that the key di erence between these algorithms is how they handle the cumulative L1 penalty. While FOBOS handles the L1 term exactly on any given update, we show that it is e ectively using subgradient approximations to the L1 penalty from previous rounds, leading to less sparsity than RDA, which handles the cumulative penalty in closed form. The FTRL-Proximal algorithm, which we introduce, can be seen as a hybrid of these two algorithms, and signi cantly outperforms both on a large, realworld dataset.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    We prove that many mirror descent algorithms for online convex optimization (such as online gradient descent) have an equivalent interpretation as follow-the-regularizedleader (FTRL) algorithms. This observation makes the relationships between many commonly used algorithms explicit, and provides theoretical insight on previous experimental observations. In particular, even though the FOBOS composite mirror descent algorithm handles L1 regularization explicitly, it has been observed that the FTRL-style Regularized Dual Averaging (RDA) algorithm is even more e ective at producing sparsity. Our results demonstrate that the key di erence between these algorithms is how they handle the cumulative L1 penalty. While FOBOS handles the L1 term exactly on any given update, we show that it is e ectively using subgradient approximations to the L1 penalty from previous rounds, leading to less sparsity than RDA, which handles the cumulative penalty in closed form. The FTRL-Proximal algorithm, which we introduce, can be seen as a hybrid of these two algorithms, and signi cantly outperforms both on a large, realworld dataset.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>【译文】</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    我们证明了许多用于在线凸优化的镜像下降算法（例如在线梯度下降）具有与follow-the-regularizedleader (FTRL)算法等效的解释。该观察使许多常用算法之间的关系变得明确，并提供了对先前实验观察的理论见解。尤其是，即使FOBOS复合镜像下降算法可以明确处理L1正则化，也已经观察到FTRL样式的正则平均化（RDA）算法在产生稀疏性方面更为有效。我们的结果表明，这些算法之间的关键区别在于它们如何处理累积的L1损失。尽管FOBOS可以在任何给定的更新中精确地处理L1项，但我们证明它有效地使用了前几轮对L1罚分的次梯度近似，导致稀疏性低于RDA，后者以封闭形式处理累积罚分。我们介绍的FTRL-Proximal算法可以看作是这两种算法的混合体，在大型的真实数据集上均远胜过两者。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    我们证明了许多用于在线凸优化的镜像下降算法（例如在线梯度下降）具有与follow-the-regularizedleader (FTRL)算法等效的解释。该观察使许多常用算法之间的关系变得明确，并提供了对先前实验观察的理论见解。尤其是，即使FOBOS复合镜像下降算法可以明确处理L1正则化，也已经观察到FTRL样式的正则平均化（RDA）算法在产生稀疏性方面更为有效。我们的结果表明，这些算法之间的关键区别在于它们如何处理累积的L1损失。尽管FOBOS可以在任何给定的更新中精确地处理L1项，但我们证明它有效地使用了前几轮对L1罚分的次梯度近似，导致稀疏性低于RDA，后者以封闭形式处理累积罚分。我们介绍的FTRL-Proximal算法可以看作是这两种算法的混合体，在大型的真实数据集上均远胜过两者。
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h2><p>【原文】</p>
 <p><img src="/2020/06/04/ftrl/image-20200605145145754.png" alt="image-20200605145145754"></p>
 <p><img src="/2020/06/04/ftrl/image-20200605145210366.png" alt="image-20200605145210366"></p>
@@ -515,7 +519,7 @@ Abstract【原文】
 <p>【原文】</p>
 <p><img src="/2020/06/04/ftrl/image-20200605150155117.png" alt="image-20200605150155117"></p>
 <p>【译文】</p>
-<p>​    先前的工作已通过实验表明，采用L1正则化进行对偶平均比引入FOBOS更有效地引入稀疏性[Xiao,2009,Duchi et al.,2010a]。我们的等价定理对此提供了理论上的解释：RDA考虑了第t轮的累积L1惩罚$t\lambda{||x||<em>1}$，FOBOS（当使用等价定理视为全局优化时）考虑$\phi</em>{1:t-1}*x+\lambda||x||<em>1$，其中$\phi_s$是确定的$\lambda||x_s||_1$的次梯度近似（我们用$\phi</em>{1:t-1}$代表$\sum_{s=1}^{t-1}{\phi_s}$，并根据需要将表示法扩展为矩阵和函数的和）。</p>
+<p>​    先前的工作已通过实验表明，采用L1正则化进行对偶平均比引入FOBOS更有效地引入稀疏性[Xiao,2009,Duchi et al.,2010a]。我们的等价定理对此提供了理论上的解释：RDA考虑了第t轮的累积L1惩罚$ t\lambda ||x||_1 $，FOBOS（当使用等价定理视为全局优化时）考虑$\phi_{1:t-1}*x+\lambda||x||_1$，其中$\phi_s$是确定的$\lambda||x_s||_1$的次梯度近似（我们用$\phi_{1:t-1}$代表$\sum_{s=1}^{t-1}{\phi_s}$，并根据需要将表示法扩展为矩阵和函数的和）。</p>
 <p>【原文】</p>
 <p><img src="/2020/06/04/ftrl/image-20200605150209723.png" alt="image-20200605150209723"></p>
 <p><img src="/2020/06/04/ftrl/image-20200605150311078.png" alt="image-20200605150311078"></p>
@@ -524,11 +528,32 @@ Abstract【原文】
 <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>【原文】</p>
 <p><img src="/2020/06/04/ftrl/image-20200605162626080.png" alt="image-20200605162626080"></p>
 <p>【译文】</p>
-<p>​    我们首先建立符号并更正式地介绍我们考虑的算法。 虽然我们的定理适用于这些算法的更通用版本，但在这里我们集中于我们在实验中使用的特定实例。我们考虑损失函数$f_t(x)=l_t(x)+\Phi(x)$，其中$\Phi(x)$（通常不平滑）是固定的正则化函数。在典型的在线学习环境中，给定一个样本$(\theta_t,y_t)$，$\theta_t \in R^n$是特征向量，$y_t \in {-1,1}$是label，我们得到$l_t(x)=loss(\theta_t<em>x,y_t)$。例如，对逻辑回归来说用的是log-loss，$loss(\theta_t</em>x,y_t)=log(1+\exp(-y_t\theta_t*x))$。对线性函数我们使用标准规约法，令$g_t=\nabla{l_t(x_t)}$。我们考虑的所有算法都支持复合更新（显示考虑$\Phi$而不是通过梯度$\nabla{f_t(x_t)}$以及可自适应选择的正半定学习率矩阵Q（将这些矩阵解释为学习率将在第2节中有说明））</p>
+<p>​    我们首先建立符号并更正式地介绍我们考虑的算法。 虽然我们的定理适用于这些算法的更通用版本，但在这里我们集中于我们在实验中使用的特定实例。我们考虑损失函数$f_t(x)=l_t(x)+\Phi(x)$，其中$\Phi(x)$（通常不平滑）是固定的正则化函数。在典型的在线学习环境中，给定一个样本$(\theta_t,y_t)$，$\theta_t \in R^n$是特征向量，$y_t \in \{-1,1\}$是label，我们得到$l_t(x)=loss(\theta_tx,y_t)$。例如，对逻辑回归来说用的是log-loss，$loss(\theta_tx,y_t)=log(1+\exp(-y_t\theta_tx))$。对线性函数我们使用标准规约法，令$g_t=\nabla{l_t(x_t)}$。我们考虑的所有算法都支持复合更新（显示考虑$\Phi$而不是通过梯度$\nabla{f_t(x_t)}$以及可自适应选择的正半定学习率矩阵Q（将这些矩阵解释为学习率将在第2节中有说明））</p>
 <p>【原文】</p>
-<p><img src="/2020/06/04/ftrl/image-20200611093316088.png" alt="image-20200611093316088">)<img src="/2020/06/04/ftrl/image-20200611093355502.png" alt="image-20200611093355502"></p>
+<p><img src="/2020/06/04/ftrl/image-20200611093316088.png" alt="image-20200611093316088"><img src="/2020/06/04/ftrl/image-20200611093355502.png" alt="image-20200611093355502"></p>
 <p>【译文】</p>
-<p>​    我们考虑的第一个算法是来自梯度下降家族的<code>FOBOS</code>，如下：<br>$$<br>x_{t+1}=\arg_x \min {g_{1:t}*x+t\lambda||x||<em>1+\frac{1}{2}\sum</em>{s=1}^{t}{||Q_s^{1/2}(x-x_s)||_2^2}}<br>$$</p>
+<p>​    我们考虑的第一个算法是来自梯度下降家族的<code>FOBOS</code>，如下：</p>
+<script type="math/tex; mode=display">
+x_{t+1}=\arg_x \min {g_t*x+t\lambda||x||_1+\frac{1}{2}\sum_{s=1}^{t}{||Q_{1:t}^{1/2}(x-x_t)||_2^2}}</script><p>​    我们隐式地将该算法表述为一种优化，但也可以给出一种梯度下降式的封闭形式更新[Duchi和Singer, 2009]。Duchi等人将该算法描述为一种特殊的复合物镜下降(COMID)算法[2010b]。</p>
+<p>​    Xiao[2009]的正则对偶平均算法（<code>RDA</code>）如下：</p>
+<script type="math/tex; mode=display">
+x_{t+1}=\arg_x \min {g_{1:t}*x+t\lambda||x||_1+\frac{1}{2}\sum_{s=1}^{t}{||Q_s^{1/2}(x-0)||_2^2}}</script><p>​    对比<code>FOBOS</code>，<code>RDA</code>是用累积梯度$g_{1:t}$，而不仅仅是$g_t$。我们将在定理4证明当$\lambda=0$以及$l_t$不是强凸时，该算法（<code>RDA</code>）实际上等价于在线自适应梯度下降法（<code>AOGD</code>）[Bartlett et al., 2007]</p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200622094912113.png" alt="image-20200622094912113"></p>
+<p>【译文】</p>
+<p>​    FTRL-Proximal算法如下：</p>
+<script type="math/tex; mode=display">
+x_{t+1}=\arg_x \min {g_{1:t}*x+t\lambda||x||_1+\frac{1}{2}\sum_{s=1}^{t}{||Q_s^{1/2}(x-x_s)||_2^2}}</script><p>​    该算法在 [McMahan and Streeter, 2010]的论文中有介绍，但是没有支持显示的$\Phi$，而[McMahan, 2011]证明了处理固定$\Phi$函数的更一般算法的遗憾界</p>
+<p>​    我们的主要贡献之一就是展示了这四种算法之间的紧密联系;表1总结了定理2和定理4的关键结果，以使与RDA和FTRL-Proximal的关系显式的形式编写了AOGD和FOBOS。</p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200702143901089.png" alt="image-20200702143901089"></p>
+<p>【译文】</p>
+<p>​    在我们的分析中，我们将用任意凸函数$R_t$和$\hat{R_t}$来代替上面出现的$\frac{1}{2}||Q_t^{1/2}x||_2^2$和$\frac{1}{2}||Q_t^{1/2}(x-x_t)||_2^2$，同时用任意凸函数$\Phi(x)$代替$\lambda||x||_1$。对这些算法，矩阵$Q_t$被自适应的选择。我们在实验中使用<code>per-coordinate adaptation</code>例如$Q_t$是形如$Q_{1:t}=diag(\hat{\sigma_{t,1}},…,\hat{\sigma_{t,n}})$的对角矩阵，其中$\hat{\sigma_{t,i}}=\frac{1}{\gamma}\sqrt{\sum_{s=1}^t{g_{t,i}^2}}$，详情请见<code>McMahan and Streeter [2010] and Duchi et al. [2010a]</code>。由于所有算法都受益于这种方法，因此即使在大多数情况下以标量学习率引入它们，我们也使用原始算法的更熟悉的名称。 是学习率比例参数，我们在实验中对其进行了调整。</p>
+<p>【原文】</p>
+<p><img src="/2020/06/04/ftrl/image-20200702163652233.png" alt="image-20200702163652233"></p>
+<p>【译文】</p>
+<p><strong>高效的实施度：</strong>所有这些算法都可以有效实施，因为$g_t$的更新能在$O(K)$时间内完成，其中$K$非零。FTRL-Proximal和RDA可以通过存储每个属性的两个积分值，一个二次项和一个线性项来实现（对角学习率）。 当需要$x_{t,i}$时，可以用封闭形式的懒惰式求解（例如参见<code>[Xiao，2009]</code>）。</p>
+<p>对FOBOS来说，更新中$\lambda||x||_1$的存在意味着所有系数$x_{t.i}$（即使在$g_{t,i}=0$时也）需要更新。然而，但是，通过存储$g_{t,i}$不为零的最后一轮的索引<code>t</code>，L1 的一部分更新是懒惰的[Duchi and Singer，2009]`。</p>
 
             </div>
             <hr/>
@@ -596,12 +621,12 @@ Abstract【原文】
                                     <span class="chip bg-color">数据科学</span>
                                 </a>
                             
-                                <a href="/tags/Optimization-Method/">
-                                    <span class="chip bg-color">Optimization Method</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">读书笔记</span>
+                                </a>
+                            
+                                <a href="/tags/Optimization-Method/">
+                                    <span class="chip bg-color">Optimization Method</span>
                                 </a>
                             
                         </div>
@@ -888,12 +913,12 @@ Abstract【原文】
                         <span class="chip bg-color">数据科学</span>
                     </a>
                     
-                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">读书笔记</span>
-                    </a>
-                    
                     <a href="/tags/Hadoop/">
                         <span class="chip bg-color">Hadoop</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">读书笔记</span>
                     </a>
                     
                 </div>
@@ -1248,7 +1273,24 @@ $(function () {
     
     
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
 </body>

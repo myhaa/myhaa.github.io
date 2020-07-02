@@ -3,15 +3,17 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Hive笔记, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="一、Hive基础1、Hive数据类型（1）原始类型
+
 
 
 
 类型
 描述
 示例
+
 
 
 
@@ -30,8 +32,7 @@ SMALLINT
 1S
 
 
-INT
-">
+IN">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -54,11 +55,11 @@ INT
     
 <link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
@@ -519,129 +520,139 @@ INT
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="一、Hive基础"><a href="#一、Hive基础" class="headerlink" title="一、Hive基础"></a>一、Hive基础</h1><h2 id="1、Hive数据类型"><a href="#1、Hive数据类型" class="headerlink" title="1、Hive数据类型"></a>1、Hive数据类型</h2><p>（1）原始类型</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">类型</th>
-<th align="center">描述</th>
-<th align="center">示例</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>Boolean</code></td>
-<td align="center"><code>true</code>、<code>false</code></td>
-<td align="center"><code>TRUE</code></td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Boolean</code></td>
+<td style="text-align:center"><code>true</code>、<code>false</code></td>
+<td style="text-align:center"><code>TRUE</code></td>
 </tr>
 <tr>
-<td align="center"><code>TINYINT</code></td>
-<td align="center">-128~127</td>
-<td align="center"><code>1Y</code></td>
+<td style="text-align:center"><code>TINYINT</code></td>
+<td style="text-align:center">-128~127</td>
+<td style="text-align:center"><code>1Y</code></td>
 </tr>
 <tr>
-<td align="center"><code>SMALLINT</code></td>
-<td align="center">-32768~32767</td>
-<td align="center"><code>1S</code></td>
+<td style="text-align:center"><code>SMALLINT</code></td>
+<td style="text-align:center">-32768~32767</td>
+<td style="text-align:center"><code>1S</code></td>
 </tr>
 <tr>
-<td align="center"><code>INT</code></td>
-<td align="center">4个字节的带符号整数</td>
-<td align="center">1</td>
+<td style="text-align:center"><code>INT</code></td>
+<td style="text-align:center">4个字节的带符号整数</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center"><code>BIGINT</code></td>
-<td align="center">8字节带符号整数</td>
-<td align="center"><code>1L</code></td>
+<td style="text-align:center"><code>BIGINT</code></td>
+<td style="text-align:center">8字节带符号整数</td>
+<td style="text-align:center"><code>1L</code></td>
 </tr>
 <tr>
-<td align="center"><code>FLOAT</code></td>
-<td align="center">4字节单精度浮点数</td>
-<td align="center">1.0</td>
+<td style="text-align:center"><code>FLOAT</code></td>
+<td style="text-align:center">4字节单精度浮点数</td>
+<td style="text-align:center">1.0</td>
 </tr>
 <tr>
-<td align="center"><code>DOUBLE</code></td>
-<td align="center">8字节双精度浮点数</td>
-<td align="center">1.0</td>
+<td style="text-align:center"><code>DOUBLE</code></td>
+<td style="text-align:center">8字节双精度浮点数</td>
+<td style="text-align:center">1.0</td>
 </tr>
 <tr>
-<td align="center"><code>DECIMAL</code></td>
-<td align="center">任意精度的带符号小数</td>
-<td align="center">1.0</td>
+<td style="text-align:center"><code>DECIMAL</code></td>
+<td style="text-align:center">任意精度的带符号小数</td>
+<td style="text-align:center">1.0</td>
 </tr>
 <tr>
-<td align="center"><code>STRING</code></td>
-<td align="center">字符串</td>
-<td align="center"><code>‘ABC’</code></td>
+<td style="text-align:center"><code>STRING</code></td>
+<td style="text-align:center">字符串</td>
+<td style="text-align:center"><code>‘ABC’</code></td>
 </tr>
 <tr>
-<td align="center"><code>VARCHAR</code></td>
-<td align="center">长字符串</td>
-<td align="center"></td>
+<td style="text-align:center"><code>VARCHAR</code></td>
+<td style="text-align:center">长字符串</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>CHAR</code></td>
-<td align="center">固定长度字符串</td>
-<td align="center"></td>
+<td style="text-align:center"><code>CHAR</code></td>
+<td style="text-align:center">固定长度字符串</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>BINARY</code></td>
-<td align="center">字节数组</td>
-<td align="center"></td>
+<td style="text-align:center"><code>BINARY</code></td>
+<td style="text-align:center">字节数组</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>TIMESTAMP</code></td>
-<td align="center">时间戳，纳秒精度</td>
-<td align="center"></td>
+<td style="text-align:center"><code>TIMESTAMP</code></td>
+<td style="text-align:center">时间戳，纳秒精度</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>DATE</code></td>
-<td align="center">日期</td>
-<td align="center"><code>2019-10-08</code></td>
+<td style="text-align:center"><code>DATE</code></td>
+<td style="text-align:center">日期</td>
+<td style="text-align:center"><code>2019-10-08</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>（2）复杂类型</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">类型</th>
-<th align="center">描述</th>
-<th align="center">示例</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>ARRAY</code></td>
-<td align="center">有序的的同类型的集合</td>
-<td align="center"><code>array(1,2)</code></td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ARRAY</code></td>
+<td style="text-align:center">有序的的同类型的集合</td>
+<td style="text-align:center"><code>array(1,2)</code></td>
 </tr>
 <tr>
-<td align="center"><code>MAP</code></td>
-<td align="center">key-value<br>key必须为原始类型，value可以任意类型</td>
-<td align="center"><code>map(‘a’,1,’b’,2)</code></td>
+<td style="text-align:center"><code>MAP</code></td>
+<td style="text-align:center">key-value<br>key必须为原始类型，value可以任意类型</td>
+<td style="text-align:center"><code>map(‘a’,1,’b’,2)</code></td>
 </tr>
 <tr>
-<td align="center"><code>UNION</code></td>
-<td align="center">在有限取值范围内的一个值</td>
-<td align="center"><code>create_union(1,’a’,63)</code></td>
+<td style="text-align:center"><code>UNION</code></td>
+<td style="text-align:center">在有限取值范围内的一个值</td>
+<td style="text-align:center"><code>create_union(1,’a’,63)</code></td>
 </tr>
 <tr>
-<td align="center"><code>STRUCT</code></td>
-<td align="center">字段集合,类型可以不同</td>
-<td align="center"><code>struct(‘1’,1,1.0)</code></td>
+<td style="text-align:center"><code>STRUCT</code></td>
+<td style="text-align:center">字段集合,类型可以不同</td>
+<td style="text-align:center"><code>struct(‘1’,1,1.0)</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="2、Hive数据库操作"><a href="#2、Hive数据库操作" class="headerlink" title="2、Hive数据库操作"></a>2、Hive数据库操作</h2><p>（1）创建数据库</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 CREATE DATABASE|SCHEMA [IF NOT EXISTS] <database name>;
 
 -- 例子
-CREATE DATABASE IF NOT EXISTS database_name;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+CREATE DATABASE IF NOT EXISTS database_name;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）删除数据库</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 DROP DATABASE StatementDROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];
 
 -- 例子
-DROP DATABASE IF EXISTS userdb;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+DROP DATABASE IF EXISTS userdb;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="3、Hive表操作"><a href="#3、Hive表操作" class="headerlink" title="3、Hive表操作"></a>3、Hive表操作</h2><p>（1）创建表</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.] table_name
 [(col_name data_type [COMMENT col_comment], ...)]
 [COMMENT table_comment]
@@ -658,9 +669,10 @@ COMMENT ‘Employee details’
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ‘\t’
 LINES TERMINATED BY ‘\n’
-STORED AS TEXTFILE;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+STORED AS TEXTFILE;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）修改表</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 重命名表
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 重命名表
 ALTER TABLE name RENAME TO new_name
 
 ALTER TABLE employee RENAME TO emp;
@@ -684,55 +696,66 @@ ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
 
 ALTER TABLE employee REPLACE COLUMNS (
     eid INT empid Int,
-    ename STRING name String);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    ename STRING name String);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（3）删除表</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] table_name;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">DROP TABLE [IF EXISTS] table_name;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="4、Hive表数据操作"><a href="#4、Hive表数据操作" class="headerlink" title="4、Hive表数据操作"></a>4、Hive表数据操作</h2><p>（1）插入数据</p>
 <ul>
 <li><code>LOAD DATA</code>：从<code>HDFS</code>中加载数据会直接<code>move</code>！</li>
 </ul>
-<pre class="line-numbers language-mysql"><code class="language-mysql">--命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">--命令
 LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)]
 
 --例子
-LOAD DATA LOCAL INPATH '/home/user/sample.txt' OVERWRITE INTO TABLE employee;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+LOAD DATA LOCAL INPATH '/home/user/sample.txt' OVERWRITE INTO TABLE employee;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>INSERT INTO</code></li>
 </ul>
-<pre class="line-numbers language-mysql"><code class="language-mysql">insert into table account 
-select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">insert into table account 
+select id, age, name from account_tmp;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li><code>INSERT OVERWRITE</code></li>
 </ul>
-<pre class="line-numbers language-mysql"><code class="language-mysql">insert overwrite table account2 
-select id, age, name from account_tmp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">insert overwrite table account2 
+select id, age, name from account_tmp;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong><em>注意</em></strong>：</p>
 <p><code>insert overwrite</code>会覆盖已经存在的数据，假如原始表使用<code>overwrite</code>上述的数据，先现将原始表的数据<code>remove</code>，再插入新数据。</p>
 <p><code>insert into</code>只是简单的插入，不考虑原始表的数据，直接追加到表中。</p>
 <p>（2）修改数据</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">UPDATE tablename SET column = value [, column = value ...] [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">UPDATE tablename SET column = value [, column = value ...] [WHERE expression]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（3）删除数据</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">DELETE FROM tablename [WHERE expression]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">DELETE FROM tablename [WHERE expression]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="5、Hive分区操作"><a href="#5、Hive分区操作" class="headerlink" title="5、Hive分区操作"></a>5、Hive分区操作</h2><p>（1）添加分区</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 ALTER TABLE table_name ADD [IF NOT EXISTS] PARTITION (p_column = p_col_value, p_column = p_col_value, ...)
 [LOCATION 'location1'] (p2_column = p2_col_value, p2_column = p2_col_value, ...) [LOCATION 'location2'] ...;
 
 -- 例子
-ALTER TABLE employee ADD PARTITION (year=’2013’) location '/2012/part2012';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ALTER TABLE employee ADD PARTITION (year=’2013’) location '/2012/part2012';
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）重命名分区</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 ALTER TABLE table_name PARTITION partition_spec RENAME TO PARTITION partition_spec;
 
 -- 例子
-ALTER TABLE employee PARTITION (year=’1203’) RENAME TO PARTITION (Yoj=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ALTER TABLE employee PARTITION (year=’1203’) RENAME TO PARTITION (Yoj=’1203’);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（3）删除分区</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec, PARTITION partition_spec,...;
 
 -- 例子
-ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="6、Hive内置运算符"><a href="#6、Hive内置运算符" class="headerlink" title="6、Hive内置运算符"></a>6、Hive内置运算符</h2><p>（1）关系运算符</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -741,7 +764,8 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>A = B</td>
 <td>所有基本类型</td>
 <td></td>
@@ -796,8 +820,11 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <td>字符串</td>
 <td>等同于RLIKE.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>（2）算术运算符</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -806,7 +833,8 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>A + B</td>
 <td>所有数字类型</td>
 <td></td>
@@ -837,7 +865,8 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <td>A和B的按位与结果</td>
 </tr>
 <tr>
-<td>A | B</td>
+<td>A \</td>
+<td>B</td>
 <td>所有数字类型</td>
 <td>A和B的按位或结果</td>
 </tr>
@@ -851,8 +880,11 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <td>所有数字类型</td>
 <td>A按位非的结果</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>（3）逻辑运算符</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -861,7 +893,8 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>A AND B</td>
 <td>Boolean</td>
 <td>与</td>
@@ -877,7 +910,9 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <td>或</td>
 </tr>
 <tr>
-<td>A || B</td>
+<td>A \</td>
+<td>\</td>
+<td>B</td>
 <td>Boolean</td>
 <td></td>
 </tr>
@@ -889,10 +924,12 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <tr>
 <td>! A</td>
 <td>Boolean</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>（4）复杂运算符</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -901,14 +938,15 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>A[n]</td>
 <td>A是一个数组，n是一个int</td>
 <td>它返回数组A的第n+1个元素，第一个元素的索引0。</td>
 </tr>
 <tr>
 <td>M[Key]</td>
-<td>M 是一个 Map&lt;K, V&gt; 并 key 的类型为K</td>
+<td>M 是一个 Map<K, v> 并 key 的类型为K</K,></td>
 <td>它返回对应于映射中关键字的值。</td>
 </tr>
 <tr>
@@ -916,8 +954,10 @@ ALTER TABLE employee DROP [IF EXISTS] PARTITION (year=’1203’);<span aria-hid
 <td>S 是一个结构</td>
 <td>它返回S的s字段</td>
 </tr>
-</tbody></table>
-<h2 id="7、Hive内置函数"><a href="#7、Hive内置函数" class="headerlink" title="7、Hive内置函数"></a>7、Hive内置函数</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 返回BIGINT最近的double值。
+</tbody>
+</table>
+</div>
+<h2 id="7、Hive内置函数"><a href="#7、Hive内置函数" class="headerlink" title="7、Hive内置函数"></a>7、Hive内置函数</h2><pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 返回BIGINT最近的double值。
 round(double a)
 
 -- 返回最大BIGINT值等于或小于double。
@@ -1012,9 +1052,10 @@ avg(DISTINCT col)
 
 -- 返回该组中的列的最大最小值。
 min(col)
-max(col)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+max(col)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="8、Hive视图和索引"><a href="#8、Hive视图和索引" class="headerlink" title="8、Hive视图和索引"></a>8、Hive视图和索引</h2><p>（1）创建视图</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 CREATE VIEW [IF NOT EXISTS] view_name [(column_name [COMMENT column_comment], ...) ]
 [COMMENT table_comment]
 AS SELECT ...
@@ -1022,11 +1063,13 @@ AS SELECT ...
 -- 例子
 CREATE VIEW emp_30000 AS
 SELECT * FROM employee
-WHERE salary>30000;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+WHERE salary>30000;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（2）删除视图</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">DROP VIEW view_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">DROP VIEW view_name
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>（3）创建索引</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 命令
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 命令
 CREATE INDEX index_name
 ON TABLE base_table_name (col_name, ...)
 AS 'index.handler.class.name'
@@ -1043,19 +1086,23 @@ AS 'index.handler.class.name'
 
 -- 例子：使用字段 Id, Name, Salary, Designation, 和 Dept创建一个名为index_salary的索引，对employee 表的salary列索引。
 CREATE INDEX inedx_salary ON TABLE employee(salary)
-AS 'org.apache.hadoop.Hive.ql.index.compact.CompactIndexHandler';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+AS 'org.apache.hadoop.Hive.ql.index.compact.CompactIndexHandler';
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（4）删除索引</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">DROP INDEX <index_name> ON <table_name><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="二、Hive进阶"><a href="#二、Hive进阶" class="headerlink" title="二、Hive进阶"></a>二、Hive进阶</h1><h2 id="1、Hive-SELECT-数据"><a href="#1、Hive-SELECT-数据" class="headerlink" title="1、Hive SELECT 数据"></a>1、Hive SELECT 数据</h2><pre class="line-numbers language-mysql"><code class="language-mysql">SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">DROP INDEX <index_name> ON <table_name>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="二、Hive进阶"><a href="#二、Hive进阶" class="headerlink" title="二、Hive进阶"></a>二、Hive进阶</h1><h2 id="1、Hive-SELECT-数据"><a href="#1、Hive-SELECT-数据" class="headerlink" title="1、Hive SELECT 数据"></a>1、Hive SELECT 数据</h2><pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">SELECT [ALL | DISTINCT] select_expr, select_expr, ... 
 FROM table_reference 
 [WHERE where_condition] 
 [GROUP BY col_list] 
 [HAVING having_condition] 
 [CLUSTER BY col_list | [DISTRIBUTE BY col_list] [SORT BY col_list]] 
 [ORDER BY col_list]
-[LIMIT number];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2、命令执行顺序"><a href="#2、命令执行顺序" class="headerlink" title="2、命令执行顺序"></a>2、命令执行顺序</h2><pre class="line-numbers language-mysql"><code class="language-mysql">-- 大致顺序
-from... where.... select... group by... having ... order by...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+[LIMIT number];
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2、命令执行顺序"><a href="#2、命令执行顺序" class="headerlink" title="2、命令执行顺序"></a>2、命令执行顺序</h2><pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 大致顺序
+from... where.... select... group by... having ... order by...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>备注：</strong>Hive语句和mysql都可以通过explain查看执行计划，使用explain + Hive语句</p>
 <h1 id="三、Hive原理"><a href="#三、Hive原理" class="headerlink" title="三、Hive原理"></a>三、Hive原理</h1><h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="数据仓库概念"></a>数据仓库概念</h2><ul>
 <li>Hive是数据仓库</li>
@@ -1075,7 +1122,8 @@ from... where.... select... group by... having ... order by...<span aria-hidden=
 <li>用户通过HiveQL运行MapReduce任务</li>
 <li>Hive适用于<strong>BI报表</strong>，Pig适合ETL过程，HBase提供数据的实时访问</li>
 </ul>
-<h2 id="Hive与传统Sql对比"><a href="#Hive与传统Sql对比" class="headerlink" title="Hive与传统Sql对比"></a>Hive与传统Sql对比</h2><table>
+<h2 id="Hive与传统Sql对比"><a href="#Hive与传统Sql对比" class="headerlink" title="Hive与传统Sql对比"></a>Hive与传统Sql对比</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>对比项目</th>
@@ -1083,7 +1131,8 @@ from... where.... select... group by... having ... order by...<span aria-hidden=
 <th>传统Sql</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>数据插入</td>
 <td>支持批量导入</td>
 <td>支持单条和批量</td>
@@ -1113,7 +1162,9 @@ from... where.... select... group by... having ... order by...<span aria-hidden=
 <td>好</td>
 <td>有限</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="Hive系统架构"><a href="#Hive系统架构" class="headerlink" title="Hive系统架构"></a>Hive系统架构</h2><h3 id="用户接口模块"><a href="#用户接口模块" class="headerlink" title="用户接口模块"></a>用户接口模块</h3><h4 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h4><ul>
 <li>Shell命令行</li>
 <li>Karmasphere</li>
@@ -1165,16 +1216,18 @@ from... where.... select... group by... having ... order by...<span aria-hidden=
 </ul>
 <h1 id="六、疑难解答"><a href="#六、疑难解答" class="headerlink" title="六、疑难解答"></a>六、疑难解答</h1><h2 id="1、Hive-在指定位置添加字段"><a href="#1、Hive-在指定位置添加字段" class="headerlink" title="1、Hive 在指定位置添加字段"></a>1、Hive 在指定位置添加字段</h2><ul>
 <li><p>首先添加字段</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name add columns (c_time string comment '当前时间');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">alter table table_name add columns (c_time string comment '当前时间');
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>其次更改字段的顺序</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">alter table table_name change c_time c_time string after address;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">alter table table_name change c_time c_time string after address;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
 <h2 id="2、Hive创建表时指定文件格式"><a href="#2、Hive创建表时指定文件格式" class="headerlink" title="2、Hive创建表时指定文件格式"></a>2、Hive创建表时指定文件格式</h2><ul>
 <li><p><strong>TEXTFIEL</strong></p>
 <p>默认格式，数据不做压缩，磁盘开销大，数据解析开销大。<br>可结合Gzip、Bzip2使用（系统自动检查，执行查询时自动解压），但使用这种方式，Hive不会对数据进行切分，从而无法对数据进行并行操作。</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS TEXTFILE;
 
@@ -1182,11 +1235,12 @@ STORED AS TEXTFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveIgnoreKeyTextOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>SEQUENCEFILE</strong></p>
 <p>SequenceFile是Hadoop API提供的一种二进制文件支持，其具有使用方便、可分割、可压缩的特点。<br>SequenceFile支持三种压缩选择：NONE, RECORD, BLOCK。 Record压缩率低，一般建议使用BLOCK压缩。</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS SEQUENCEFILE;
 
@@ -1194,11 +1248,12 @@ STORED AS SEQUENCEFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.mapred.SequenceFileInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveSequenceFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.HiveSequenceFileOutputFormat'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>RCFILE</strong></p>
 <p>RCFILE是一种行列存储相结合的存储方式。首先，其将数据按行分块，保证同一个record在一个块上，避免读一个记录需要读取多个block。其次，块数据列式存储，有利于数据压缩和快速的列存取。</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">-- 固定格式
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">-- 固定格式
 create table test1(str STRING)  
 STORED AS RCFILE;
 
@@ -1206,7 +1261,8 @@ STORED AS RCFILE;
 create table test1(str STRING)  
 STORED AS
 INPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileInputFormat'
-OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h2 id="3、Hive同时拆分多列为多行"><a href="#3、Hive同时拆分多列为多行" class="headerlink" title="3、Hive同时拆分多列为多行"></a>3、Hive同时拆分多列为多行</h2><ul>
@@ -1214,22 +1270,26 @@ OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'<span aria-hidden=
 </ul>
 <p><strong>问题：</strong></p>
 <p>I’m Looking for a way to split the column based on comma delimited data. Below is my dataset</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">id  col1  col2
-1   5,6   7,8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">id  col1  col2
+1   5,6   7,8
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>I want to get the result</p>
-<pre class="line-numbers language-mysql"><code class="language-mysql">id col1 col2
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">id col1 col2
 1  5    7
-1  6    8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+1  6    8
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>答案：</strong></p>
 <p>You can use <code>posexplode()</code> to create position index columns for your split arrays. Then, select only those rows where the position indices are equal.</p>
 <pre><code>SELECT id, col3, col4
   FROM test
   lateral VIEW posexplode(split(col1,&#39;\002&#39;)) col1 AS pos3, col3
   lateral VIEW posexplode(split(col2,&#39;\002&#39;)) col2 AS pos4, col4
-  WHERE pos3 = pos4;</code></pre><p>Output:</p>
+  WHERE pos3 = pos4;
+</code></pre><p>Output:</p>
 <pre><code>id col3 col4
 1  5    7
-1  6    8</code></pre><h2 id="4、-Hive或spark中执行sql字符常量包含-时会报错"><a href="#4、-Hive或spark中执行sql字符常量包含-时会报错" class="headerlink" title="4、 Hive或spark中执行sql字符常量包含;时会报错"></a>4、 Hive或spark中执行sql字符常量包含<code>;</code>时会报错</h2><p>比如</p>
+1  6    8
+</code></pre><h2 id="4、-Hive或spark中执行sql字符常量包含-时会报错"><a href="#4、-Hive或spark中执行sql字符常量包含-时会报错" class="headerlink" title="4、 Hive或spark中执行sql字符常量包含;时会报错"></a>4、 Hive或spark中执行sql字符常量包含<code>;</code>时会报错</h2><p>比如</p>
 <blockquote>
 <p>select instr(‘abc;abc’, ‘;’);</p>
 </blockquote>
@@ -1241,15 +1301,18 @@ OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'<span aria-hidden=
 <blockquote>
 <p>select instr(‘abc\073abc’, ‘\073’);</p>
 </blockquote>
-<h2 id="5、如何在-Apache-Hive-中解析-Json-数组"><a href="#5、如何在-Apache-Hive-中解析-Json-数组" class="headerlink" title="5、如何在 Apache Hive 中解析 Json 数组"></a>5、如何在 Apache Hive 中解析 Json 数组</h2><h3 id="问题1：从json字符串中解析一个字段-get-json-object"><a href="#问题1：从json字符串中解析一个字段-get-json-object" class="headerlink" title="问题1：从json字符串中解析一个字段-get_json_object"></a>问题1：从<strong>json字符串</strong>中解析一个字段-get_json_object</h3><pre class="line-numbers language-hive"><code class="language-hive">hive>  SELECT get_json_object('{"website":"www.iteblog.com","name":"过往记忆"}', '$.website');
+<h2 id="5、如何在-Apache-Hive-中解析-Json-数组"><a href="#5、如何在-Apache-Hive-中解析-Json-数组" class="headerlink" title="5、如何在 Apache Hive 中解析 Json 数组"></a>5、如何在 Apache Hive 中解析 Json 数组</h2><h3 id="问题1：从json字符串中解析一个字段-get-json-object"><a href="#问题1：从json字符串中解析一个字段-get-json-object" class="headerlink" title="问题1：从json字符串中解析一个字段-get_json_object"></a>问题1：从<strong>json字符串</strong>中解析一个字段-get_json_object</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">hive>  SELECT get_json_object('{"website":"www.iteblog.com","name":"过往记忆"}', '$.website');
 OK
-www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题2：从json字符串中解析多个字段-json-tuple"><a href="#问题2：从json字符串中解析多个字段-json-tuple" class="headerlink" title="问题2：从json字符串中解析多个字段-json_tuple"></a>问题2：从<strong>json字符串</strong>中解析多个字段-json_tuple</h3><pre class="line-numbers language-hive"><code class="language-hive">hive> SELECT json_tuple('{"website":"www.iteblog.com","name":"过往记忆"}', 'website', 'name');
+www.iteblog.com
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="问题2：从json字符串中解析多个字段-json-tuple"><a href="#问题2：从json字符串中解析多个字段-json-tuple" class="headerlink" title="问题2：从json字符串中解析多个字段-json_tuple"></a>问题2：从<strong>json字符串</strong>中解析多个字段-json_tuple</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">hive> SELECT json_tuple('{"website":"www.iteblog.com","name":"过往记忆"}', 'website', 'name');
 OK
-www.iteblog.com 过往记忆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题3：从json数组中解析某一个字段-get-json-object"><a href="#问题3：从json数组中解析某一个字段-get-json-object" class="headerlink" title="问题3：从json数组中解析某一个字段-get_json_object"></a>问题3：从<strong>json数组</strong>中解析某一个字段-get_json_object</h3><pre class="line-numbers language-hive"><code class="language-hive">hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$[0].website');
+www.iteblog.com 过往记忆
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="问题3：从json数组中解析某一个字段-get-json-object"><a href="#问题3：从json数组中解析某一个字段-get-json-object" class="headerlink" title="问题3：从json数组中解析某一个字段-get_json_object"></a>问题3：从<strong>json数组</strong>中解析某一个字段-get_json_object</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">hive> SELECT get_json_object('[{"website":"www.iteblog.com","name":"过往记忆"}, {"website":"carbondata.iteblog.com","name":"carbondata 中文文档"}]', '$[0].website');
 OK
-www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+www.iteblog.com
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意：</strong>这里与参考链接<a href="https://www.iteblog.com/archives/2362.html" target="_blank" rel="noopener">如何在 Apache Hive 中解析 Json 数组</a>中不同的是，因为我用的是<code>sparkSql</code>，所以我用的是<code>$[0].website</code>，而参考链接使用的<code>$.[0].website</code>，我按照<strong>参考链接给的方法在Hive也select不出答案（可能是hive版本不同吧）</strong></p>
 <h3 id="问题4：从json数组中解析多个字段-先explode再get-json-object或json-tuple"><a href="#问题4：从json数组中解析多个字段-先explode再get-json-object或json-tuple" class="headerlink" title="问题4：从json数组中解析多个字段-先explode再get_json_object或json_tuple"></a>问题4：从<strong>json数组</strong>中解析多个字段-先explode再get_json_object或json_tuple</h3><ul>
 <li>explode将<strong>json数组</strong>用一行拆分成多行</li>
@@ -1264,15 +1327,18 @@ www.iteblog.com<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <li><p><a href="https://www.iteblog.com/archives/1996.html" target="_blank" rel="noopener">https://www.iteblog.com/archives/1996.html</a></p>
 </li>
 </ul>
-<pre class="line-numbers language-hiveql"><code class="language-hiveql">from (
+<pre class="line-numbers language-lang-hiveql"><code class="language-lang-hiveql">from (
  select *, (rand() * 100 <= x) as is_test_set from my_table
 ) t
 insert overwrite directory '/test_set' select * where is_test_set = true
-insert overwrite directory '/training_set' select * where is_test_set = false;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8、HIVE日期操作"><a href="#8、HIVE日期操作" class="headerlink" title="8、HIVE日期操作"></a>8、HIVE日期操作</h2><h3 id="获取时间戳"><a href="#获取时间戳" class="headerlink" title="获取时间戳"></a>获取时间戳</h3><pre class="line-numbers language-hive"><code class="language-hive">select unix_timestamp('2015-04-30 13:51:20');
-select unix_timestamp('2015-04-30');<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="转格式"><a href="#转格式" class="headerlink" title="转格式"></a>转格式</h3><pre class="line-numbers language-hive"><code class="language-hive">select from_unixtime(1323308943,'yyyyMMdd');
-select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+insert overwrite directory '/training_set' select * where is_test_set = false;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8、HIVE日期操作"><a href="#8、HIVE日期操作" class="headerlink" title="8、HIVE日期操作"></a>8、HIVE日期操作</h2><h3 id="获取时间戳"><a href="#获取时间戳" class="headerlink" title="获取时间戳"></a>获取时间戳</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select unix_timestamp('2015-04-30 13:51:20');
+select unix_timestamp('2015-04-30');
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="转格式"><a href="#转格式" class="headerlink" title="转格式"></a>转格式</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select from_unixtime(1323308943,'yyyyMMdd');
+select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1985,7 +2051,24 @@ $(function () {
     
     
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
 </body>

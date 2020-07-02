@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="HBase.md, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="HBase基础简介    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Had">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,11 +28,11 @@
     
 <link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
@@ -484,33 +484,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="HBase基础"><a href="#HBase基础" class="headerlink" title="HBase基础"></a>HBase基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Hadoop 提供类似于BigTable 规模的服务。因此，它可以对稀疏文件提供极高的容错率。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="HBase基础"><a href="#HBase基础" class="headerlink" title="HBase基础"></a>HBase基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Hadoop 提供类似于BigTable 规模的服务。因此，它可以对稀疏文件提供极高的容错率。
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><ul>
 <li>single-node</li>
 <li>standalone</li>
 </ul>
-<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h2><h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><pre class="line-numbers language-shell"><code class="language-shell">$ ./bin/hbase shell
-hbase(main):001:0><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h2><h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">$ ./bin/hbase shell
+hbase(main):001:0>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="2-2-建表"><a href="#2-2-建表" class="headerlink" title="2.2 建表"></a>2.2 建表</h3><ul>
 <li>必须指定表名<code>test</code>和列名<code>cf</code></li>
 </ul>
-<pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):001:0> create 'test', 'cf'
+<pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):001:0> create 'test', 'cf'
 0 row(s) in 0.4170 seconds
 
-=> Hbase::Table - test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-3-列出表信息"><a href="#2-3-列出表信息" class="headerlink" title="2.3 列出表信息"></a>2.3 列出表信息</h3><pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):002:0> list 'test'
+=> Hbase::Table - test
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-3-列出表信息"><a href="#2-3-列出表信息" class="headerlink" title="2.3 列出表信息"></a>2.3 列出表信息</h3><pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):002:0> list 'test'
 TABLE
 test
 1 row(s) in 0.0180 seconds
 
-=> ["test"]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-hbase"><code class="language-hbase">hbase(main):003:0> describe 'test'
+=> ["test"]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):003:0> describe 'test'
 Table test is ENABLED
 test
 COLUMN FAMILIES DESCRIPTION
 {NAME => 'cf', VERSIONS => '1', EVICT_BLOCKS_ON_CLOSE => 'false', NEW_VERSION_BEHAVIOR => 'false', KEEP_DELETED_CELLS => 'FALSE', CACHE_DATA_ON_WRITE => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', MIN_VERSIONS => '0', REPLICATION_SCOPE => '0', BLOOMFILTER => 'ROW', CACHE_INDEX_ON_WRITE => 'false', IN_MEMORY => 'false', CACHE_BLOOMS_ON_WRITE => 'false', PREFETCH_BLOCKS_ON_OPEN => 'false', COMPRESSION => 'NONE', BLOCKCACHE => 'true', BLOCKSIZE => '65536'}
 1 row(s)
-Took 0.9998 seconds<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Took 0.9998 seconds
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -868,12 +873,12 @@ Took 0.9998 seconds<span aria-hidden="true" class="line-numbers-rows"><span></sp
                         <span class="chip bg-color">数据科学</span>
                     </a>
                     
-                    <a href="/tags/Optimization-Method/">
-                        <span class="chip bg-color">Optimization Method</span>
-                    </a>
-                    
                     <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">读书笔记</span>
+                    </a>
+                    
+                    <a href="/tags/Optimization-Method/">
+                        <span class="chip bg-color">Optimization Method</span>
                     </a>
                     
                 </div>
@@ -1221,7 +1226,24 @@ $(function () {
     
     
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
 </body>

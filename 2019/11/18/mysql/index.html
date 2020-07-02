@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="MySql, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="一、MySql基础1、MySql简介（1）什么是MySql？
 MySql软件提供了一个非常快速、多线程、多用户和健壮的Sql数据库服务器（结构化查询）。MySql服务器适用于任务关键型、高负载的生产系统以及嵌入到大规模部署的软件中。
@@ -31,11 +31,11 @@ MySql软件提供了一个非常快速、多线程、多用户和健壮的Sql数
     
 <link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
@@ -497,9 +497,11 @@ MySql软件提供了一个非常快速、多线程、多用户和健壮的Sql数
 <h3 id="（2）安装"><a href="#（2）安装" class="headerlink" title="（2）安装"></a>（2）安装</h3><ul>
 <li><a href="https://dev.mysql.com/doc/refman/8.0/en/installing.html" target="_blank" rel="noopener">参考官网</a></li>
 </ul>
-<h3 id="（3）启动"><a href="#（3）启动" class="headerlink" title="（3）启动"></a>（3）启动</h3><pre class="line-numbers language-shell"><code class="language-shell">mysql -h host -u user -p
-# Enter password: ********<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="（4）退出"><a href="#（4）退出" class="headerlink" title="（4）退出"></a>（4）退出</h3><pre class="line-numbers language-mysql"><code class="language-mysql">QUIT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="（3）启动"><a href="#（3）启动" class="headerlink" title="（3）启动"></a>（3）启动</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">mysql -h host -u user -p
+# Enter password: ********
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="（4）退出"><a href="#（4）退出" class="headerlink" title="（4）退出"></a>（4）退出</h3><pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">QUIT
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h2><h1 id="二、MySql进阶"><a href="#二、MySql进阶" class="headerlink" title="二、MySql进阶"></a>二、MySql进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><ul>
 <li><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">官方教程</a></li>
 </ul>
@@ -1215,7 +1217,24 @@ $(function () {
     
     
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
 </body>
