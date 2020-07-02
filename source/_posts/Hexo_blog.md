@@ -269,3 +269,65 @@ tags:
 ### （3）修改dream
 
 ![图：修改dream](/Hexo_blog/xiugaidream.png)
+
+## 6、让HEXO搭建的博客支持Latex
+
+[参考](https://cps.ninja/2019/03/16/hexo-with-latex/)
+
+### 安装插件
+
+安装 [hexo-math](https://github.com/hexojs/hexo-math) 插件，该插件（plugin）可支持使用 [MathJax](https://www.mathjax.org/) 或 [KaTeX](https://katex.org/) 来实现 LaTeX 排版系统，进而在网页上渲染出数学表达式（本文以 MathJax 为例）。
+
+```bash
+## 打开终端，进入 hexo 博客所在文件夹
+$ cd ~/blog
+
+## 安装 hexo ； --save 参数会让 npm 在安装 hexo-math 之后自动将它写入 package.json 文件里，以便之后多电脑同步时使用
+$ npm install hexo-math --save
+```
+
+将 Hexo 默认的 markdown 渲染引擎 [hexo-renderer-marked](https://github.com/hexojs/hexo-renderer-marked) 更换为 [hexo-renderer-kramed](https://github.com/sun11/hexo-renderer-kramed) ，引擎是在默认的渲染引擎的基础上修改了一些 bug 而已。此处不更换也没问题，本文以更换为例。
+
+```bash
+## 卸载默认 markdown 渲染引擎 hexo-renderer-marked；若不卸载，会和新的引擎发生冲突（conflict）
+$ npm uninstall hexo-renderer-marked --save
+
+## 安装新引擎 hexo-renderer-kramed 
+$ npm install hexo-renderer-kramed --save
+```
+
+------
+
+### 修改 kramed 配置，解决语义冲突
+
+由于 LaTeX 与 Markdown 语法存在冲突（例如在 markdown 中，*斜体*可以用 `*` 或者 `_` 表示，而 LaTeX 也会用到 `_` ），所以我们要对 kramed 默认的语法规则进行修改，否则之后会出现很多奇怪的排版样式。
+
+打开 `~/blog/node_modules\kramed\lib\rules\inline.js` 文件（Hexo 博客所在文件夹的根目录下的 `node_modules` 文件夹），把第 11 行的 `escape` 变量的值修改为：
+
+```javascript
+escape: /^\\([`*\[\]()#$+\-.!_>])/,
+```
+
+同时把第 20 行的 `em` 变量修改为：
+
+```javascript
+em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+```
+
+### 设置 _config.yml 开启 MathJax 渲染引擎（==重要==）
+
+在 `~/blog/_config.yml` 文件（注意，是 Hexo 博客文件夹**根目录**中的 `/_config.yml` 而不是主题目录下的 `/themes/next/_config.yml`）中增加 MathJax 的支持，并手动设置下面的 src（这一步很重要，使用默认的 src 会导致数学表达式渲染显示失败。这里的关键是 src 中的 `?config=TeX-MML-AM_CHTML` 这个字段）
+
+```yml
+...
+...
+
+# MathJax
+math:
+  engine: 'mathjax'
+  mathjax:
+    src: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML   
+
+...
+...
+```
