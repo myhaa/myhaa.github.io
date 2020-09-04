@@ -176,3 +176,12 @@ pipreqs ./ --encoding=utf8
 1. mysql代码中将中文字段用`hex`函数转换
 2. python代码中用`bytes.fromhex(取出的字段).decode('utf-8')`来转换
 
+## 11、更新所有模块
+
+* [参考](https://pypi.org/project/pip-review/)
+
+```python
+pip3 install pip-review
+pip-review --interactive
+```
+
