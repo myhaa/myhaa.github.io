@@ -734,3 +734,10 @@ select from_unixtime(1323308943,'yyyyMMdd');
 select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');
 ```
 
+## 9、HIVE中`distinct`和`group by`的区别
+
+```markdown
+前者是去重，后者是分组
+reduce作业个数不同，distinct会在一个reduce中去重
+```
+
