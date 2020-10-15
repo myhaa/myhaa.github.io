@@ -1339,6 +1339,9 @@ select unix_timestamp('2015-04-30');
 <h3 id="转格式"><a href="#转格式" class="headerlink" title="转格式"></a>转格式</h3><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select from_unixtime(1323308943,'yyyyMMdd');
 select from_unixtime(unix_timestamp('2015-04-30', 'yyyy-MM-dd'), 'yyyyMMdd');
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="9、HIVE中distinct和group-by的区别"><a href="#9、HIVE中distinct和group-by的区别" class="headerlink" title="9、HIVE中distinct和group by的区别"></a>9、HIVE中<code>distinct</code>和<code>group by</code>的区别</h2><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">前者是去重，后者是分组
+reduce作业个数不同，distinct会在一个reduce中去重
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
