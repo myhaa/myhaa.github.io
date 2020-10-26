@@ -757,3 +757,24 @@ count(列名)只包括列名那一列，在统计结果的时候，会忽略列�
 如果表只有一个字段，则 select count(\*) 最优。
 ```
 
+## 11、求累计值
+
+### 例子
+
+| ds       | cash | 累加值 |
+| -------- | ---- | ------ |
+| 20200101 | 10   | 10     |
+| 20200102 | 20   | 30     |
+|          |      |        |
+
+```hive
+SELECT
+ds,
+sum(cash),
+sum(sum(cash)) over(distribute by substr(ds, 1, 6) sort by ds rows between UNBOUNDED PRECEDING AND CURRENT ROW) as cumulative
+from table_name
+WHERE ds BETWEEN '20200901' AND '20201020'
+group by ds
+order by ds
+```
+
