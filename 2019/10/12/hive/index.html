@@ -1354,6 +1354,42 @@ count(列名)只包括列名那一列，在统计结果的时候，会忽略列�
 如果有主键，则 select count(主键)的执行效率是最优的  
 如果表只有一个字段，则 select count(\*) 最优。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="11、求累计值"><a href="#11、求累计值" class="headerlink" title="11、求累计值"></a>11、求累计值</h2><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>ds</th>
+<th>cash</th>
+<th>累加值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20200101</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>20200102</td>
+<td>20</td>
+<td>30</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre class="line-numbers language-lang-hive"><code class="language-lang-hive">SELECT
+ds,
+sum(cash),
+sum(sum(cash)) over(distribute by substr(ds, 1, 6) sort by ds rows between UNBOUNDED PRECEDING AND CURRENT ROW) as cumulative
+from table_name
+WHERE ds BETWEEN '20200901' AND '20201020'
+group by ds
+order by ds
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
