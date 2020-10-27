@@ -728,3 +728,46 @@ git push origin --force --all
 ```
 
 * [参考链接](<https://stackoverflow.com/questions/872565/remove-sensitive-files-and-their-commits-from-git-history>)
+
+## 2、git commit 提交规范
+
+[参考](https://github.com/conventional-changelog/conventional-changelog/blob/v0.5.3/conventions/angular.md)
+
+```markdown
+* 模板如下：
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+
+* 说明
+1) type
+commit类型，包括以下几种：
+1. feat: 新功能
+2. fix: 修复问题
+3. docs: 修改文档
+4. style: 修改代码格式，不影响代码逻辑
+5. refactor: 重构代码，理论上不影响现有功能
+6. perf: 提升性能
+7. test: 增加修改测试用例
+8. chore: 修改工具相关（包括但不限于文档、代码生成等）
+
+2) scope
+修改文件的范围
+
+3) subject
+commit的简短描述：用一句话描述这次提交做了什么
+
+4) body
+subject的详细说明
+
+5 ) footer
+当有Breaking Change时必须在这里描述清楚
+关闭issue或是链接到相关文档，如 Closes #1, Closes #2, #3
+
+6 ) BLANK LINE 空一行
+
+7) IntelliJ IDEA 插件推荐使用：Git Commit Template
+```
+
