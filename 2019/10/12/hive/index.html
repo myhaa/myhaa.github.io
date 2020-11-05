@@ -496,7 +496,7 @@ IN">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    3.6k
                 </div>
                 
 
@@ -1289,7 +1289,41 @@ OUTPUTFORMAT 'org.apache.hadoop.Hive.ql.io.RCFileOutputFormat'
 <pre><code>id col3 col4
 1  5    7
 1  6    8
-</code></pre><h2 id="4、-Hive或spark中执行sql字符常量包含-时会报错"><a href="#4、-Hive或spark中执行sql字符常量包含-时会报错" class="headerlink" title="4、 Hive或spark中执行sql字符常量包含;时会报错"></a>4、 Hive或spark中执行sql字符常量包含<code>;</code>时会报错</h2><p>比如</p>
+</code></pre><p>==补充==</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/pyhKhXYzWMkdd3efyT5XPQ" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<ol>
+<li>单列explode</li>
+</ol>
+<pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select
+ class,student_name
+from
+default.classinfo
+lateral view explode(split(student,',')) t as student_name
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>单列posexplode</li>
+</ol>
+<pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select
+ class,student_index + 1 as student_index,student_name
+from
+default.classinfo
+lateral view posexplode(split(student,',')) t as student_index,student_name
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>多列explode</li>
+</ol>
+<pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select
+ class,student_name,student_score
+from
+default.classinfo
+lateral view posexplode(split(student,',')) sn as student_index_sn,student_name
+lateral view posexplode(split(score,',')) sc as student_index_sc,student_score
+where
+ student_index_sn = student_index_sc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="4、-Hive或spark中执行sql字符常量包含-时会报错"><a href="#4、-Hive或spark中执行sql字符常量包含-时会报错" class="headerlink" title="4、 Hive或spark中执行sql字符常量包含;时会报错"></a>4、 Hive或spark中执行sql字符常量包含<code>;</code>时会报错</h2><p>比如</p>
 <blockquote>
 <p>select instr(‘abc;abc’, ‘;’);</p>
 </blockquote>
@@ -1390,6 +1424,12 @@ WHERE ds BETWEEN '20200901' AND '20201020'
 group by ds
 order by ds
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="12、四舍五入"><a href="#12、四舍五入" class="headerlink" title="12、四舍五入"></a>12、四舍五入</h2><pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select
+round(cast(prob as double)),
+round(cast(prob as double), 2),
+floor(cast(prob as double)), --向下取整
+ceil(cast(prob as double)), --向上取整
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>

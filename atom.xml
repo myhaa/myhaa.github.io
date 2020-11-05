@@ -480,9 +480,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
+    
+      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -511,9 +511,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
-    
       <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
     
   </entry>
   
