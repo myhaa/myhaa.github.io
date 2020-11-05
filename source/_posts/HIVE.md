@@ -649,6 +649,45 @@ id col3 col4
 1  6    8
 ```
 
+==补充==
+
+* [参考](https://mp.weixin.qq.com/s/pyhKhXYzWMkdd3efyT5XPQ)
+
+1. 单列explode
+
+```hive
+select
+ class,student_name
+from
+default.classinfo
+lateral view explode(split(student,',')) t as student_name
+```
+
+2. 单列posexplode
+
+```hive
+select
+ class,student_index + 1 as student_index,student_name
+from
+default.classinfo
+lateral view posexplode(split(student,',')) t as student_index,student_name
+```
+
+3. 多列explode
+
+```hive
+select
+ class,student_name,student_score
+from
+default.classinfo
+lateral view posexplode(split(student,',')) sn as student_index_sn,student_name
+lateral view posexplode(split(score,',')) sc as student_index_sc,student_score
+where
+ student_index_sn = student_index_sc
+```
+
+
+
 ## 4、 Hive或spark中执行sql字符常量包含`;`时会报错
 
 比如
@@ -776,5 +815,15 @@ from table_name
 WHERE ds BETWEEN '20200901' AND '20201020'
 group by ds
 order by ds
+```
+
+## 12、四舍五入
+
+```hive
+select
+round(cast(prob as double)),
+round(cast(prob as double), 2),
+floor(cast(prob as double)), --向下取整
+ceil(cast(prob as double)), --向上取整
 ```
 
