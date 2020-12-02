@@ -512,7 +512,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11"]
+            data: ["2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12"]
         },
         yAxis: {
             type: 'value',
@@ -522,7 +522,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [9,2,1,0,1,3,1,3,0,0,0,0,0],
+                data: [2,1,0,1,3,1,3,0,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -564,7 +564,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"AI/数据科学","value":16},{"name":"学习","value":1},{"name":"编程与开发","value":5},{"name":"职场通用技能","value":2},{"name":"Google Three Papers","value":1},{"name":"读书笔记","value":2}],
+                data: [{"name":"AI/数据科学","value":16},{"name":"学习","value":1},{"name":"编程与开发","value":5},{"name":"Google Three Papers","value":1},{"name":"职场通用技能","value":2},{"name":"读书笔记","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -588,7 +588,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["数据科学","编程语言","Hadoop","计算广告","读书笔记","求职准备","数据库","人工智能","消息系统","Python"]
+                data: ["数据科学","编程语言","Hadoop","计算广告","读书笔记","求职准备","数据库","人工智能","Python","Sql"]
             }
         ],
         yAxis: [
@@ -735,6 +735,12 @@
             
             
             
+            <a href="/tags/HBase/">
+                <span class="chip center-align waves-effect waves-light chip-default">HBase</span>
+            </a>
+            
+            
+            
             <a href="/tags/Hadoop/">
                 <span class="chip center-align waves-effect waves-light chip-default">Hadoop</span>
             </a>
@@ -747,42 +753,8 @@
             
             
             
-            <a href="/tags/HBase/">
-                <span class="chip center-align waves-effect waves-light chip-default">HBase</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
                 <span class="chip center-align waves-effect waves-light chip-default">编程语言</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                <span class="chip center-align waves-effect waves-light chip-default">人工智能</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Storm/">
-                <span class="chip center-align waves-effect waves-light chip-default">Storm</span>
-            </a>
-            
-            
-            
-            <a href="/tags/web%E6%9C%8D%E5%8A%A1/">
-                <span class="chip center-align waves-effect waves-light chip-default">web服务</span>
             </a>
             
             
@@ -793,9 +765,17 @@
             
             
             
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/">
                 <span class="chip center-align waves-effect waves-light chip-default">推荐算法</span>
             </a>
+            
+            
             
             
             
@@ -811,8 +791,20 @@
             
             
             
-            <a href="/tags/%E6%B1%82%E8%81%8C%E5%87%86%E5%A4%87/">
-                <span class="chip center-align waves-effect waves-light chip-default">求职准备</span>
+            <a href="/tags/web%E6%9C%8D%E5%8A%A1/">
+                <span class="chip center-align waves-effect waves-light chip-default">web服务</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                <span class="chip center-align waves-effect waves-light chip-default">人工智能</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Storm/">
+                <span class="chip center-align waves-effect waves-light chip-default">Storm</span>
             </a>
             
             
@@ -823,11 +815,11 @@
             
             
             
-            
-            
-            <a href="/tags/Hexo/">
-                <span class="chip center-align waves-effect waves-light chip-default">Hexo</span>
+            <a href="/tags/%E6%B1%82%E8%81%8C%E5%87%86%E5%A4%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">求职准备</span>
             </a>
+            
+            
             
             
             
@@ -843,8 +835,10 @@
             
             
             
-            <a href="/tags/%E7%BB%86%E8%8A%82%E8%90%A5%E9%94%80/">
-                <span class="chip center-align waves-effect waves-light chip-default">细节营销</span>
+            
+            
+            <a href="/tags/Hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">Hexo</span>
             </a>
             
             
@@ -855,22 +849,16 @@
             
             
             
+            <a href="/tags/%E7%BB%86%E8%8A%82%E8%90%A5%E9%94%80/">
+                <span class="chip center-align waves-effect waves-light chip-default">细节营销</span>
+            </a>
+            
+            
+            
+            
+            
             <a href="/tags/Optimization-Method/">
                 <span class="chip center-align waves-effect waves-light chip-default">Optimization Method</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">
-                <span class="chip center-align waves-effect waves-light chip-default">数据仓库</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Hive/">
-                <span class="chip center-align waves-effect waves-light chip-default">Hive</span>
             </a>
             
             
@@ -883,6 +871,18 @@
             
             <a href="/tags/Spark/">
                 <span class="chip center-align waves-effect waves-light chip-default">Spark</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据仓库</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Hive/">
+                <span class="chip center-align waves-effect waves-light chip-default">Hive</span>
             </a>
             
             

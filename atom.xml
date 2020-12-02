@@ -257,7 +257,7 @@
     <link href="https://myhaa.github.io/2020/01/02/kafka/"/>
     <id>https://myhaa.github.io/2020/01/02/kafka/</id>
     <published>2020-01-02T08:46:47.000Z</published>
-    <updated>2020-01-17T09:14:07.570Z</updated>
+    <updated>2020-12-02T12:28:11.519Z</updated>
     
     <summary type="html">
     
@@ -480,9 +480,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
-    
       <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
     
   </entry>
   
@@ -511,9 +511,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
+    
+      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   

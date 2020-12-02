@@ -469,7 +469,7 @@ Kafka集群将记录流存储在称为主题Topic的类别中
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.8k
                 </div>
                 
 
@@ -619,8 +619,26 @@ Kafka集群将记录流存储在称为主题Topic的类别中
 <li>由于有许多分区，这仍然可以在许多消费者实例上平衡负载</li>
 <li>但是请注意，在一个消费者组中<strong>不能有比分区更多</strong>的消费者实例</li>
 </ul>
+<h1 id="Kafka操作"><a href="#Kafka操作" class="headerlink" title="Kafka操作"></a>Kafka操作</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="主题列表"><a href="#主题列表" class="headerlink" title="主题列表"></a>主题列表</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-topics.sh --list --zookeeper localhost:2181
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="消费topic"><a href="#消费topic" class="headerlink" title="消费topic"></a>消费topic</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic topic-name 
+--from-beginning
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="查看topic分区和副本情况"><a href="#查看topic分区和副本情况" class="headerlink" title="查看topic分区和副本情况"></a>查看topic分区和副本情况</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-topics.sh --describe --zookeeper 127.0.0.1:2181  --topic test0
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看topic消费到的offset"><a href="#查看topic消费到的offset" class="headerlink" title="查看topic消费到的offset"></a>查看topic消费到的offset</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 127.0.0.1:9092 --topic test0 --time -1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看topic各个分区的消息的信息"><a href="#查看topic各个分区的消息的信息" class="headerlink" title="查看topic各个分区的消息的信息"></a>查看topic各个分区的消息的信息</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group testgroup --topic test0 --zookeeper 127.0.0.1:2181
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><p>运行结果：</p>
+<p>| GROUP    | TOPIC     | PID          | OFFSET           | LOGSIZE | LAG          |<br>| ———— | ————- | —————— | ———————— | ———- | —————— |<br>| 消费者组 | topic名字 | partition id | 当前已消费的条数 | 总条数  | 未消费的条数 |<br>|          |           |              |                  |         |              |</p>
+</li>
+</ul>
 <h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
-<li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">官网文档</a></li>
+<li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">官网英文文档</a></li>
+<li><a href="https://kafka.apachecn.org/" target="_blank" rel="noopener">官网中文文档</a></li>
+<li><a href="https://www.w3cschool.cn/apache_kafka/" target="_blank" rel="noopener">w3school</a></li>
 </ul>
 <h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1>
             </div>
