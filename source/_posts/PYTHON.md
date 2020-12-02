@@ -185,3 +185,130 @@ pip3 install pip-review
 pip-review --interactive
 ```
 
+## 12、多进程与多线程
+
+* [参考](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/13.%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B.md)
+* 例子1：多进程
+
+```python
+    def processTask(self, role_data, index):
+        print('启动计算子进程，进程号[%d].' % os.getpid())
+        print(role_data.shape)
+
+        # post请求参数
+        url = ''
+        headers = {
+            'game_code': '',  # 游戏代号
+            'secret': '',  # secret key，线下提供
+            'Content-Type': 'application/json'
+        }
+
+        # 推荐结果写入结果文件
+        outputPath = 'g_role_item_test_result_multi_%s.txt' % str(index)
+        with open(outputPath, mode='w', encoding='utf-8') as f:
+            role_data.reset_index(drop=True, inplace=True)
+            for i in range(role_data.shape[0]):
+                role_id = role_data.role_id[i]
+                gender = role_data.gender[i]
+                purchased_items = role_data.item_set[i].replace('[', '').replace(']', '').replace('"', '').split(',')
+                current_amount = role_data.left_yuanbao[i]
+                argsData = {
+                    "role_id": role_id,  # 角色id
+                    "gender": int(gender) + 1,  # 角色性别：1-男，2-女
+                    "purchased_items": purchased_items,  # 角色已购买的道具id列表, e.g. ["123", "321"],
+                    "current_amount": int(current_amount)  # 角色当前账户剩余元宝
+                }
+                # print(i, argsData)
+                t1 = time.time()
+                try:
+                    result = self.getRecommendResultInit(url, headers, argsData)
+                except:
+                    result = []
+                t_diff = time.time() - t1
+
+                # 输出结果
+                result1 = {}
+                for i, x in enumerate(result):
+                    result1['R' + str(i)] = x
+                output1 = [role_id, json.dumps(argsData), str(round(t_diff, 5))] + [json.dumps(result1)]
+                f.write('\t'.join(output1) + '\n')
+
+    def getRecommendResultMulti(self):
+        """
+        给定数据，从接口获取推荐结果，多进程
+        :return:
+        """
+        # data参数获取
+        inputPath = "g_role_item_test_data.csv"
+        role_data = pd.read_csv(inputPath, sep=',', encoding='utf-8')
+        role_data.fillna('[]', inplace=True)
+        print(role_data.shape)
+
+        # 多进程
+        print('启动计算母进程，进程号[%d].' % os.getpid())
+        index = 0
+        processes = []
+        for _ in range(4):
+            p = Process(target=self.processTask,
+                        args=(role_data.loc[index:index+70000], index))
+            index += 70000
+            processes.append(p)
+            p.start()
+            # 开始记录所有进程执行完成花费的时间
+        start = time.time()
+        for p in processes:
+            p.join()
+        end = time.time()
+        print('Execution time: ', (end - start), 's', sep='')
+```
+
+* 例子2：多线程
+
+```python
+import time
+import tkinter
+import tkinter.messagebox
+from threading import Thread
+
+
+def main():
+
+    class DownloadTaskHandler(Thread):
+
+        def run(self):
+            time.sleep(10)
+            tkinter.messagebox.showinfo('提示', '下载完成!')
+            # 启用下载按钮
+            button1.config(state=tkinter.NORMAL)
+
+    def download():
+        # 禁用下载按钮
+        button1.config(state=tkinter.DISABLED)
+        # 通过daemon参数将线程设置为守护线程(主程序退出就不再保留执行)
+        # 在线程中处理耗时间的下载任务
+        DownloadTaskHandler(daemon=True).start()
+
+    def show_about():
+        tkinter.messagebox.showinfo('关于', '作者: 骆昊(v1.0)')
+
+    top = tkinter.Tk()
+    top.title('单线程')
+    top.geometry('200x150')
+    top.wm_attributes('-topmost', 1)
+
+    panel = tkinter.Frame(top)
+    button1 = tkinter.Button(panel, text='下载', command=download)
+    button1.pack(side='left')
+    button2 = tkinter.Button(panel, text='关于', command=show_about)
+    button2.pack(side='right')
+    panel.pack(side='bottom')
+
+    tkinter.mainloop()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+
+

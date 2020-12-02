@@ -175,8 +175,54 @@ summary: 有关Kafka的笔记
 * 由于有许多分区，这仍然可以在许多消费者实例上平衡负载
 * 但是请注意，在一个消费者组中**不能有比分区更多**的消费者实例
 
+# Kafka操作
+
+## 基本操作
+
+### 主题列表
+
+```shell
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+```
+
+### 消费topic
+
+```shell
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic topic-name 
+--from-beginning
+```
+
+### 查看topic分区和副本情况
+
+```shell
+bin/kafka-topics.sh --describe --zookeeper 127.0.0.1:2181  --topic test0
+```
+
+### 查看topic消费到的offset
+
+```shell
+bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 127.0.0.1:9092 --topic test0 --time -1
+```
+
+### 查看topic各个分区的消息的信息
+
+```shell
+bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group testgroup --topic test0 --zookeeper 127.0.0.1:2181
+```
+
+* 运行结果：
+
+  | GROUP    | TOPIC     | PID          | OFFSET           | LOGSIZE | LAG          |
+  | -------- | --------- | ------------ | ---------------- | ------- | ------------ |
+  | 消费者组 | topic名字 | partition id | 当前已消费的条数 | 总条数  | 未消费的条数 |
+  |          |           |              |                  |         |              |
+
+
+
 # 参考书籍
 
-* [官网文档](<https://kafka.apache.org/documentation/>)
+* [官网英文文档](<https://kafka.apache.org/documentation/>)
+* [官网中文文档](https://kafka.apachecn.org/)
+* [w3school](https://www.w3cschool.cn/apache_kafka/)
 
 # 疑难解答
