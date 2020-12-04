@@ -4,8 +4,26 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="HBase.md, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="HBase基础简介    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Had">
+    <meta name="keywords" content="工具汇总.md, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="工具汇总python
+python2
+python3
+pycharm
+pycharm配置
+
+java
+java
+Intellij Idea
+Intellij Idea配置
+maven
+
+go
+go
+go教程
+
+spark
+scala
+spa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +31,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HBase.md | Myhaa&#39;s Blog</title>
+    <title>工具汇总.md | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +323,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        HBase.md
+                        工具汇总.md
                     </div>
                 </div>
             </div>
@@ -427,10 +445,6 @@
                                 <span class="chip bg-color">数据科学</span>
                             </a>
                         
-                            <a href="/tags/HBase/">
-                                <span class="chip bg-color">HBase</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -452,7 +466,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-11
+                    2020-12-04
                 </div>
                 
 
@@ -461,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    229
+                    131
                 </div>
                 
 
@@ -484,38 +498,90 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="HBase基础"><a href="#HBase基础" class="headerlink" title="HBase基础"></a>HBase基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    HBase是一个开源的非关系型分布式数据库（NoSQL），它参考了谷歌的BigTable建模，实现的编程语言为 Java。它是Apache软件基金会的Hadoop项目的一部分，运行于HDFS文件系统之上，为 Hadoop 提供类似于BigTable 规模的服务。因此，它可以对稀疏文件提供极高的容错率。
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><ul>
-<li>single-node</li>
-<li>standalone</li>
-</ul>
-<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h2><h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">$ ./bin/hbase shell
-hbase(main):001:0>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="2-2-建表"><a href="#2-2-建表" class="headerlink" title="2.2 建表"></a>2.2 建表</h3><ul>
-<li>必须指定表名<code>test</code>和列名<code>cf</code></li>
-</ul>
-<pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):001:0> create 'test', 'cf'
-0 row(s) in 0.4170 seconds
-
-=> Hbase::Table - test
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-3-列出表信息"><a href="#2-3-列出表信息" class="headerlink" title="2.3 列出表信息"></a>2.3 列出表信息</h3><pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):002:0> list 'test'
-TABLE
-test
-1 row(s) in 0.0180 seconds
-
-=> ["test"]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lang-hbase"><code class="language-lang-hbase">hbase(main):003:0> describe 'test'
-Table test is ENABLED
-test
-COLUMN FAMILIES DESCRIPTION
-{NAME => 'cf', VERSIONS => '1', EVICT_BLOCKS_ON_CLOSE => 'false', NEW_VERSION_BEHAVIOR => 'false', KEEP_DELETED_CELLS => 'FALSE', CACHE_DATA_ON_WRITE => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', MIN_VERSIONS => '0', REPLICATION_SCOPE => '0', BLOOMFILTER => 'ROW', CACHE_INDEX_ON_WRITE => 'false', IN_MEMORY => 'false', CACHE_BLOOMS_ON_WRITE => 'false', PREFETCH_BLOCKS_ON_OPEN => 'false', COMPRESSION => 'NONE', BLOCKCACHE => 'true', BLOCKSIZE => '65536'}
-1 row(s)
-Took 0.9998 seconds
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="工具汇总"><a href="#工具汇总" class="headerlink" title="工具汇总"></a>工具汇总</h1><h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><ol>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python2</a></li>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python3</a></li>
+<li><a href="https://www.jetbrains.com/pycharm/download/#section=windows" target="_blank" rel="noopener">pycharm</a></li>
+<li><a href="https://www.jetbrains.com/help/pycharm/quick-start-guide.html" target="_blank" rel="noopener">pycharm配置</a></li>
+</ol>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><ol>
+<li><a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">java</a></li>
+<li><a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij Idea</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/discover-intellij-idea.html" target="_blank" rel="noopener">Intellij Idea配置</a></li>
+<li><a href="https://maven.apache.org/" target="_blank" rel="noopener">maven</a></li>
+</ol>
+<h2 id="go"><a href="#go" class="headerlink" title="go"></a>go</h2><ol>
+<li><a href="https://golang.org/" target="_blank" rel="noopener">go</a></li>
+<li><a href="https://golang.org/doc/" target="_blank" rel="noopener">go教程</a></li>
+</ol>
+<h2 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h2><ol>
+<li><a href="https://www.scala-lang.org/" target="_blank" rel="noopener">scala</a></li>
+<li><a href="https://spark.apache.org/" target="_blank" rel="noopener">spark</a></li>
+<li><a href="https://spark.apache.org/docs/latest/" target="_blank" rel="noopener">spark教程</a></li>
+</ol>
+<h2 id="R"><a href="#R" class="headerlink" title="R"></a>R</h2><ol>
+<li><a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a></li>
+<li><a href="https://rstudio.com/" target="_blank" rel="noopener">Rstudio</a></li>
+</ol>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><ol>
+<li><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li>
+<li><a href="https://git-scm.com/docs" target="_blank" rel="noopener">git教程</a></li>
+</ol>
+<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><ol>
+<li><a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener">MobaXterm</a></li>
+</ol>
+<h2 id="文本编辑与查看"><a href="#文本编辑与查看" class="headerlink" title="文本编辑与查看"></a>文本编辑与查看</h2><ol>
+<li><a href="https://typora.io/" target="_blank" rel="noopener">typora</a></li>
+<li><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">Nodepad++</a></li>
+<li><a href="https://www.emeditor.com/" target="_blank" rel="noopener">emeditor</a></li>
+<li><a href="https://www.gaaiho.cn/index.php/zh-cn/" target="_blank" rel="noopener">GaaihoReader</a></li>
+</ol>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><ol>
+<li><a href="https://www.xmind.net/" target="_blank" rel="noopener">xmind</a></li>
+</ol>
+<h2 id="爬虫相关"><a href="#爬虫相关" class="headerlink" title="爬虫相关"></a>爬虫相关</h2><ol>
+<li><a href="https://www.postman.com/downloads/" target="_blank" rel="noopener">postman</a></li>
+</ol>
+<h2 id="google"><a href="#google" class="headerlink" title="google"></a>google</h2><ol>
+<li><a href="https://www.google.com/intl/zh-CN/chrome/" target="_blank" rel="noopener">google</a></li>
+</ol>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><ol>
+<li><a href="http://pan.baidu.com/download" target="_blank" rel="noopener">百度网盘</a></li>
+<li><a href="http://note.youdao.com/WAP/intro/" target="_blank" rel="noopener">有道云笔记</a></li>
+</ol>
+<h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><ol>
+<li><a href="http://mail.163.com/dashi/" target="_blank" rel="noopener">网易邮箱</a></li>
+</ol>
+<h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><ol>
+<li><a href="https://cn.bandisoft.com/bandizip/" target="_blank" rel="noopener">bandzip</a></li>
+</ol>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><ol>
+<li><a href="https://zh.snipaste.com/" target="_blank" rel="noopener">snipaste</a></li>
+</ol>
+<h2 id="文件搜索和目录相关"><a href="#文件搜索和目录相关" class="headerlink" title="文件搜索和目录相关"></a>文件搜索和目录相关</h2><ol>
+<li><a href="https://www.voidtools.com/zh-cn/" target="_blank" rel="noopener">everything</a></li>
+<li><a href="http://qttabbar.wikidot.com/" target="_blank" rel="noopener">qttabbar</a></li>
+<li><a href="http://www.wox.one/" target="_blank" rel="noopener">Wox</a></li>
+</ol>
+<h2 id="保护眼睛"><a href="#保护眼睛" class="headerlink" title="保护眼睛"></a>保护眼睛</h2><ol>
+<li><a href="https://justgetflux.com/" target="_blank" rel="noopener">f.lux</a></li>
+</ol>
+<h2 id="时钟屏保"><a href="#时钟屏保" class="headerlink" title="时钟屏保"></a>时钟屏保</h2><ol>
+<li><a href="https://fliqlo.com/" target="_blank" rel="noopener">fliqo</a></li>
+</ol>
+<h2 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h2><ol>
+<li><a href="https://weixin.qq.com/" target="_blank" rel="noopener">wechat</a></li>
+</ol>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ol>
+<li><a href="https://www.xunlei.com/" target="_blank" rel="noopener">迅雷</a></li>
+</ol>
+<h2 id="goole扩展程序"><a href="#goole扩展程序" class="headerlink" title="goole扩展程序"></a>goole扩展程序</h2><ol>
+<li><a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="noopener">adblock</a></li>
+<li><a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="noopener">dark reader</a></li>
+<li><a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="noopener">onetab</a></li>
+<li><a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="noopener">沙拉查词</a></li>
+<li><a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="noopener">octotree</a></li>
+</ol>
 
             </div>
             <hr/>
@@ -541,7 +607,7 @@ Took 0.9998 seconds
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2020/06/11/hbase/">https://myhaa.github.io/2020/06/11/hbase/</a>
+                    <a href="https://myhaa.github.io/2020/12/04/gong-ju-hui-zong/">https://myhaa.github.io/2020/12/04/gong-ju-hui-zong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,10 +647,6 @@ Took 0.9998 seconds
                             
                                 <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
                                     <span class="chip bg-color">数据科学</span>
-                                </a>
-                            
-                                <a href="/tags/HBase/">
-                                    <span class="chip bg-color">HBase</span>
                                 </a>
                             
                         </div>
@@ -755,7 +817,7 @@ Took 0.9998 seconds
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2020-06-11T11-19-55',
+        id: '2020-12-04T15-32-08',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -776,9 +838,10 @@ Took 0.9998 seconds
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/12/04/gong-ju-hui-zong/">
                     <div class="card-image">
@@ -796,9 +859,9 @@ Took 0.9998 seconds
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -811,6 +874,7 @@ Took 0.9998 seconds
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -829,24 +893,24 @@ Took 0.9998 seconds
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/04/ftrl/">
+                <a href="/2020/06/11/hbase/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="FTRL">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="HBase.md">
                         
-                        <span class="card-title">FTRL</span>
+                        <span class="card-title">HBase.md</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            FTRL的原理介绍和工程实现
+                            HBase笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-11
                             </span>
                         <span class="publish-author">
                             
@@ -867,12 +931,8 @@ Took 0.9998 seconds
                         <span class="chip bg-color">数据科学</span>
                     </a>
                     
-                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">读书笔记</span>
-                    </a>
-                    
-                    <a href="/tags/Optimization-Method/">
-                        <span class="chip bg-color">Optimization Method</span>
+                    <a href="/tags/HBase/">
+                        <span class="chip bg-color">HBase</span>
                     </a>
                     
                 </div>
