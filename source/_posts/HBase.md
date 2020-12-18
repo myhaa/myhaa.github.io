@@ -28,7 +28,7 @@ summary: HBase笔记
 
 ## 体系结构
 
-![image-20201218163039823](HBase.assets/image-20201218163039823.png)
+![image-20201218163039823](HBase/image-20201218163039823.png)
 
 * 客户端
 
@@ -70,7 +70,7 @@ summary: HBase笔记
 
 ## 逻辑视图
 
-![image-20201218164935058](HBase.assets/image-20201218164935058.png)
+![image-20201218164935058](HBase/image-20201218164935058.png)
 
 * table
 
