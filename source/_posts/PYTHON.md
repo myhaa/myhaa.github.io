@@ -310,5 +310,8 @@ if __name__ == '__main__':
     main()
 ```
 
+## 13、文本相似度
 
+1. $similarity=\frac{|A\cap B|}{|A\cup B|}$
+2. 修正，对长度做出惩罚：$similarity=\frac{|A\cap B|}{|A\cup B|+\alpha \times abs{(len(A)-len(B)})}$
 
