@@ -693,6 +693,10 @@ def main():
 if __name__ == '__main__':
     main()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="13、文本相似度"><a href="#13、文本相似度" class="headerlink" title="13、文本相似度"></a>13、文本相似度</h2><ol>
+<li>$similarity=\frac{|A\cap B|}{|A\cup B|}$</li>
+<li>修正，对长度做出惩罚：$similarity=\frac{|A\cap B|}{|A\cup B|+\alpha \times abs{(len(A)-len(B)})}$</li>
+</ol>
 
             </div>
             <hr/>

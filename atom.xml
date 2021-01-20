@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2020-12-04T09:28:29.247Z</updated>
+  <updated>2021-01-20T07:51:51.675Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flink</title>
+    <link href="https://myhaa.github.io/2021/01/20/flink/"/>
+    <id>https://myhaa.github.io/2021/01/20/flink/</id>
+    <published>2021-01-20T02:32:54.000Z</published>
+    <updated>2021-01-20T07:51:51.675Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Flink基础&quot;&gt;&lt;a href=&quot;#Flink基础&quot; class=&quot;headerlink&quot; title=&quot;Flink基础&quot;&gt;&lt;/a&gt;Flink基础&lt;/h1&gt;&lt;h2 id=&quot;Flink是什么&quot;&gt;&lt;a href=&quot;#Flink是什么&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>工具汇总.md</title>
@@ -570,35 +597,6 @@
       <category term="编程语言" scheme="https://myhaa.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
       <category term="Git" scheme="https://myhaa.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop笔记</title>
-    <link href="https://myhaa.github.io/2019/11/12/hadoop/"/>
-    <id>https://myhaa.github.io/2019/11/12/hadoop/</id>
-    <published>2019-11-12T07:31:11.000Z</published>
-    <updated>2019-11-28T03:02:07.135Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Hadoop介绍&quot;&gt;&lt;a href=&quot;#Hadoop介绍&quot; class=&quot;headerlink&quot; title=&quot;Hadoop介绍&quot;&gt;&lt;/a&gt;Hadoop介绍&lt;/h1&gt;&lt;h2 id=&quot;第一部分-简介&quot;&gt;&lt;a href=&quot;#第一部分-简介&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
     
   </entry>
   
