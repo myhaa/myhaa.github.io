@@ -16,7 +16,13 @@ password:
 summary: python3建立轻量级web应用程序框架
 ---
 
-[参考链接](https://www.w3cschool.cn/flask/)
+# flask基础
 
-[参考链接2](https://www.yiibai.com/flask)——比较靠谱
+# flask进阶
 
+# 参考
+
+1. [参考链接](https://www.w3cschool.cn/flask/)
+2. [参考链接2](https://www.yiibai.com/flask)——比较靠谱
+
+# 疑难解答

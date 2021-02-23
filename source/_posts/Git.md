@@ -735,11 +735,11 @@ git push origin --force --all
 
 ```markdown
 * 模板如下：
-<type>(<scope>): <subject>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
+\<type>(\<scope>): \<subject>
+\<BLANK LINE>
+\<body>
+\<BLANK LINE>
+\<footer>
 
 * 说明
 1) type

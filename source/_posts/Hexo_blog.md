@@ -53,12 +53,20 @@ tags:
 
 ### （3）Hexo（Windows）
 
-1. 在Windows上选定一个目录作为博客目录，在该目录下右键点击`Git Bash Here`，接下来使用git控制台进行Hexo的安装
+1. 【安装到C盘】在Windows上选定一个目录作为博客目录，在该目录下右键点击`Git Bash Here`，接下来使用git控制台进行Hexo的安装
 
    ```shell
    npm i hexo-cli -g
    hexo -v  # 验证安装是否成功
    ```
+   
+2. 【安装到指定目录】在npm安装目录右键点击`Git Bash Here`，然后输入
+   
+   ```shell
+   npm install --prefix . hexo-cli -g
+   ```
+   
+   
 
 # 二、GitHub
 
