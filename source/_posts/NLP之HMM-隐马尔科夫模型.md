@@ -4,7 +4,7 @@ author: Myhaa
 top: false
 cover: false
 toc: true
-mathjax: false
+mathjax: true
 categories: AI/数据科学
 tags:
   - AI
