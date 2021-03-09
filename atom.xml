@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-09T02:20:25.033Z</updated>
+  <updated>2021-03-09T08:38:52.317Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>&#39;NLP之分词原理&#39;</title>
+    <link href="https://myhaa.github.io/2021/03/09/nlp-zhi-fen-ci-yuan-li/"/>
+    <id>https://myhaa.github.io/2021/03/09/nlp-zhi-fen-ci-yuan-li/</id>
+    <published>2021-03-09T02:29:55.000Z</published>
+    <updated>2021-03-09T08:38:52.317Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;分词的基本原理&quot;&gt;&lt;a href=&quot;#分词的基本原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
+    
+      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>&#39;NLP之HMM:隐马尔科夫模型&#39;</title>
     <link href="https://myhaa.github.io/2021/03/03/nlp-zhi-hmm-yin-ma-er-ke-fu-mo-xing/"/>
     <id>https://myhaa.github.io/2021/03/03/nlp-zhi-hmm-yin-ma-er-ke-fu-mo-xing/</id>
     <published>2021-03-03T02:52:24.000Z</published>
-    <updated>2021-03-09T02:20:25.033Z</updated>
+    <updated>2021-03-09T08:38:27.115Z</updated>
     
     <summary type="html">
     
@@ -565,37 +594,6 @@
       <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySql</title>
-    <link href="https://myhaa.github.io/2019/11/18/mysql/"/>
-    <id>https://myhaa.github.io/2019/11/18/mysql/</id>
-    <published>2019-11-18T11:36:26.000Z</published>
-    <updated>2019-11-29T07:59:52.807Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、MySql基础&quot;&gt;&lt;a href=&quot;#一、MySql基础&quot; class=&quot;headerlink&quot; title=&quot;一、MySql基础&quot;&gt;&lt;/a&gt;一、MySql基础&lt;/h1&gt;&lt;h2 id=&quot;1、MySql简介&quot;&gt;&lt;a href=&quot;#1、MySql简介&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="MySql" scheme="https://myhaa.github.io/tags/MySql/"/>
-    
-      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
