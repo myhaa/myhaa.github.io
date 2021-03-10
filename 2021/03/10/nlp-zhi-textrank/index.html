@@ -4,17 +4,16 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="数据挖掘之PageRank, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="keywords" content="NLP之TextRank, 统计学 数据挖掘 机器学习 计算广告">
     <meta name="description" content="基础问题
-如何给众多网页排名？
+如何对一篇文章的关键词进行提取
 
 解决
-一个解决办法：
-当很多网页都链接到同一个网页时，那这个网页应该排名靠前
-链接这个网页的众多网页中，排名越靠前的网页，其重要性应该更高
+使用类似网页排名算法PageRank的思路
+构建词与词之间的图，然后迭代计算词的排名
 
-PageRank
-PR_i = \sum_{(j,i) \in ">
+TextRank
+回顾PageRank的计算公式：$P=(1-d)\frac{I}{n}+dA^TP$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +21,7 @@ PR_i = \sum_{(j,i) \in ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>数据挖掘之PageRank | Myhaa&#39;s Blog</title>
+    <title>NLP之TextRank | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,13 +313,13 @@ PR_i = \sum_{(j,i) \in ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        数据挖掘之PageRank
+                        NLP之TextRank
                     </div>
                 </div>
             </div>
@@ -432,12 +431,12 @@ PR_i = \sum_{(j,i) \in ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
-                                <span class="chip bg-color">数据挖掘</span>
+                            <a href="/tags/NLP/">
+                                <span class="chip bg-color">NLP</span>
                             </a>
                         
-                            <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">十大算法</span>
+                            <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
+                                <span class="chip bg-color">关键词提取</span>
                             </a>
                         
                     </div>
@@ -470,14 +469,14 @@ PR_i = \sum_{(j,i) \in ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    633
+                    268
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -494,71 +493,45 @@ PR_i = \sum_{(j,i) \in ">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
-<li>如何给众多网页排名？</li>
+<li>如何对一篇文章的关键词进行提取</li>
 </ul>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ul>
-<li>一个解决办法：</li>
-<li>当很多网页都链接到同一个网页时，那这个网页应该排名靠前</li>
-<li>链接这个网页的众多网页中，排名越靠前的网页，其重要性应该更高</li>
+<li>使用类似网页排名算法<code>PageRank</code>的思路</li>
+<li>构建词与词之间的图，然后迭代计算词的排名</li>
 </ul>
-<h2 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a><code>PageRank</code></h2><script type="math/tex; mode=display">
-PR_i = \sum_{(j,i) \in V}{\frac{PR_j}{O_j}}</script><ul>
-<li>$PR_i$表示第$i$个网页的<code>PageRank</code>值，代表其网页排名依据</li>
-<li>$V$是所有网页集合</li>
-<li>$O_j$是第$j$个网页所存在的外链数，越多外链，它给$i$网页投票对应重要性越低</li>
+<h2 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a><code>TextRank</code></h2><ul>
+<li>回顾<code>PageRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dA^TP$</li>
+<li>直接说<code>TextRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dW^TP$<ul>
+<li>其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共线次数</li>
 </ul>
-<h2 id="使用图构建PageRank"><a href="#使用图构建PageRank" class="headerlink" title="使用图构建PageRank"></a>使用图构建<code>PageRank</code></h2><ul>
-<li><p>网页对应图的节点<code>node</code></p>
-</li>
-<li><p>网页$i$的外链有网页$j$代表$(i,j)$，即图的有向边<code>edge</code></p>
-</li>
-<li><p>如下图所示：</p>
-<p><img src="/2021/03/10/shu-ju-wa-jue-zhi-pagerank/image-20210310155933176.png" alt="图片来源参考链接"></p>
-</li>
-<li><p>表示为$G(V,E)$，上图的邻接矩阵表示为：</p>
-<script type="math/tex; mode=display">
-A = \left( \begin{array} {ccc} 
-    0 & 1/2 & 1/2 & 0 & 0 & 0 \\ 
-    1/2 & 0 & 1/2 & 0 & 0 & 0 \\ 
-    0 & 1 & 0 & 0 & 0 & 0 \\ 
-    0 & 0 & 1/3 & 0 & 1/3 & 1/3 \\ 
-    0 & 0 & 0 & 0 & 0 & 0 \\ 
-    0 & 0 & 0 & 1/2 & 1/2 & 0 \\ 
-\end{array} \right)</script></li>
-<li><p>用矩阵表示<code>式(1)</code>：$P=A^TP$</p>
-</li>
-<li><p>其中$P=[PR_1, PR_2, …, PR_n]^T$</p>
 </li>
 </ul>
-<h2 id="如何求解"><a href="#如何求解" class="headerlink" title="如何求解"></a>如何求解</h2><ul>
-<li><p>先给每个网页给定一个初始$PR$值，一般都是$1/n$</p>
+<h2 id="如何根据词构建图"><a href="#如何根据词构建图" class="headerlink" title="如何根据词构建图"></a>如何根据词构建图</h2><ol>
+<li><p>对文章$S$进行分词，得到词列表</p>
 </li>
-<li><p>然后使用$P=A^TP$进行迭代，直到$||P^k - P^{k-1}||&lt; \epsilon$，这是一个马尔可夫收敛过程</p>
-</li>
-<li><p>但是需要邻接矩阵$A$满足下面3个条件上式才有解：</p>
+<li><p>设定滑动窗口$k$的大小，统计滑动窗口内各词对的贡献次数</p>
 <ol>
-<li>转移概率矩阵<code>(stochastic matrix)</code>：即每行至少有一个非零值</li>
-<li>不可约性：矩阵A对应的有向图必须是强连通的，即任意两个节点，存在一条路径可达</li>
-<li>非周期性：即存在一个最小正整数$k$，使得从某节点$i$出发又回到状态$i$的所有路径长度是$k$的整数倍，这就需要阻尼系数<code>d</code></li>
+<li><p>例如：<code>淡黄的长裙，蓬松的头发</code>，分词后为[<code>淡黄</code>, <code>长裙</code>, <code>蓬松</code>, <code>头发</code>]</p>
+</li>
+<li><p>设定滑动窗口$k=2$，则得到词对：</p>
+<ol>
+<li><code>淡黄</code>,<code>长裙</code></li>
+<li><code>长裙</code>,<code>蓬松</code></li>
+<li><code>蓬松</code>,<code>头发</code></li>
 </ol>
 </li>
-<li><p>一般情况下矩阵$A$不满足上述三个条件，故需要对求解式作平滑处理，最终等式如下：</p>
-<script type="math/tex; mode=display">
-P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script></li>
-<li><p>其中：$d \in [0,1],I\text{是单位阵}$</p>
+<li><p>根据这些词对构建<code>无向图</code>，注意<code>PageRank</code>是<code>有向图</code></p>
+<p><img src="/2021/03/10/nlp-zhi-textrank/image-20210310171957155.png" alt="图片来源于参考链接1"></p>
 </li>
-</ul>
-<h2 id="最终求解式"><a href="#最终求解式" class="headerlink" title="最终求解式"></a>最终求解式</h2><script type="math/tex; mode=display">
-P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
-<li>缺点：旧的页面的排名往往会比新页面高<ul>
-<li>因为即使是质量很高的新页面也往往不会有很多外链，除非它是某个已经存在站点的子站点。这也是<code>PageRank</code>需要多项算法结合以保证其结果的准确性的原因</li>
-</ul>
+<li><p>然后使用公式计算</p>
 </li>
-</ul>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://www.cnblogs.com/en-heng/p/6124526.html" target="_blank" rel="noopener">【十大经典数据挖掘算法】PageRank</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">维基百科</a></li>
-</ul>
+</ol>
+</li>
+</ol>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf" target="_blank" rel="noopener">TextRank: Bringing Order into Texts</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/41091116" target="_blank" rel="noopener">（九）通俗易懂理解——TF-IDF与TextRank</a></li>
+</ol>
 
             </div>
             <hr/>
@@ -584,7 +557,7 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/03/10/shu-ju-wa-jue-zhi-pagerank/">https://myhaa.github.io/2021/03/10/shu-ju-wa-jue-zhi-pagerank/</a>
+                    <a href="https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/">https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -622,12 +595,12 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
-                                    <span class="chip bg-color">数据挖掘</span>
+                                <a href="/tags/NLP/">
+                                    <span class="chip bg-color">NLP</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">十大算法</span>
+                                <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
+                                    <span class="chip bg-color">关键词提取</span>
                                 </a>
                             
                         </div>
@@ -798,7 +771,7 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2021-03-10T15-13-33',
+        id: '2021-03-10T16-57-10',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -819,9 +792,10 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/10/nlp-zhi-textrank/">
                     <div class="card-image">
@@ -839,9 +813,9 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -854,6 +828,7 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -876,19 +851,19 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/10/nlp-zhi-tf-idf-suan-fa/">
+                <a href="/2021/03/10/shu-ju-wa-jue-zhi-pagerank/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="NLP之TF-IDF算法">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="数据挖掘之PageRank">
                         
-                        <span class="card-title">NLP之TF-IDF算法</span>
+                        <span class="card-title">数据挖掘之PageRank</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TF-IDF算法解释
+                            数据挖掘十大算法之PageRank
                         
                     </div>
                     <div class="publish-info">
@@ -910,16 +885,12 @@ P = \big ((1-d)\frac{I}{n} + dA^TP \big )</script><h2 id="优缺点"><a href="#�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
-                        <span class="chip bg-color">数据科学</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">数据挖掘</span>
                     </a>
                     
-                    <a href="/tags/NLP/">
-                        <span class="chip bg-color">NLP</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
-                        <span class="chip bg-color">关键词提取</span>
+                    <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">十大算法</span>
                     </a>
                     
                 </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-10T08:42:17.628Z</updated>
+  <updated>2021-03-10T09:20:42.940Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NLP之TextRank</title>
+    <link href="https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/"/>
+    <id>https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/</id>
+    <published>2021-03-10T08:57:10.000Z</published>
+    <updated>2021-03-10T09:20:42.940Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+      <category term="关键词提取" scheme="https://myhaa.github.io/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/"/>
+    
+  </entry>
   
   <entry>
     <title>数据挖掘之PageRank</title>
@@ -571,33 +600,6 @@
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
       <category term="计算广告" scheme="https://myhaa.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>职业规划</title>
-    <link href="https://myhaa.github.io/2019/11/21/zhi-ye-gui-hua/"/>
-    <id>https://myhaa.github.io/2019/11/21/zhi-ye-gui-hua/</id>
-    <published>2019-11-21T02:17:19.000Z</published>
-    <updated>2019-11-21T07:52:06.048Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、笔记&quot;&gt;&lt;a href=&quot;#一、笔记&quot; class=&quot;headerlink&quot; title=&quot;一、笔记&quot;&gt;&lt;/a&gt;一、笔记&lt;/h1&gt;&lt;h2 id=&quot;1、职业与职业生涯&quot;&gt;&lt;a href=&quot;#1、职业与职业生涯&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="职场通用技能" scheme="https://myhaa.github.io/categories/%E8%81%8C%E5%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="求职准备" scheme="https://myhaa.github.io/tags/%E6%B1%82%E8%81%8C%E5%87%86%E5%A4%87/"/>
     
   </entry>
   

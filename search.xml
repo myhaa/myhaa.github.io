@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>NLP之TextRank</title>
+      <link href="/2021/03/10/nlp-zhi-textrank/"/>
+      <url>/2021/03/10/nlp-zhi-textrank/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul><li>如何对一篇文章的关键词进行提取</li></ul><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ul><li>使用类似网页排名算法<code>PageRank</code>的思路</li><li>构建词与词之间的图，然后迭代计算词的排名</li></ul><h2 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a><code>TextRank</code></h2><ul><li>回顾<code>PageRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dA^TP$</li><li>直接说<code>TextRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dW^TP$<ul><li>其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共线次数</li></ul></li></ul><h2 id="如何根据词构建图"><a href="#如何根据词构建图" class="headerlink" title="如何根据词构建图"></a>如何根据词构建图</h2><ol><li><p>对文章$S$进行分词，得到词列表</p></li><li><p>设定滑动窗口$k$的大小，统计滑动窗口内各词对的贡献次数</p><ol><li><p>例如：<code>淡黄的长裙，蓬松的头发</code>，分词后为[<code>淡黄</code>, <code>长裙</code>, <code>蓬松</code>, <code>头发</code>]</p></li><li><p>设定滑动窗口$k=2$，则得到词对：</p><ol><li><code>淡黄</code>,<code>长裙</code></li><li><code>长裙</code>,<code>蓬松</code></li><li><code>蓬松</code>,<code>头发</code></li></ol></li><li><p>根据这些词对构建<code>无向图</code>，注意<code>PageRank</code>是<code>有向图</code></p><p><img src="/2021/03/10/nlp-zhi-textrank/image-20210310171957155.png" alt="图片来源于参考链接1"></p></li><li><p>然后使用公式计算</p></li></ol></li></ol><h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol><li><a href="http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf" target="_blank" rel="noopener">TextRank: Bringing Order into Texts</a></li><li><a href="https://zhuanlan.zhihu.com/p/41091116" target="_blank" rel="noopener">（九）通俗易懂理解——TF-IDF与TextRank</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI/数据科学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NLP </tag>
+            
+            <tag> 关键词提取 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据挖掘之PageRank</title>
       <link href="/2021/03/10/shu-ju-wa-jue-zhi-pagerank/"/>
       <url>/2021/03/10/shu-ju-wa-jue-zhi-pagerank/</url>
