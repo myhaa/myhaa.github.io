@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-09T09:16:11.968Z</updated>
+  <updated>2021-03-10T06:44:59.398Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NLP之TF-IDF算法</title>
+    <link href="https://myhaa.github.io/2021/03/10/nlp-zhi-tf-idf-suan-fa/"/>
+    <id>https://myhaa.github.io/2021/03/10/nlp-zhi-tf-idf-suan-fa/</id>
+    <published>2021-03-10T03:55:41.000Z</published>
+    <updated>2021-03-10T06:44:59.398Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+  </entry>
   
   <entry>
     <title>&#39;NLP之分词原理&#39;</title>
@@ -39,9 +68,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
-    
       <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
     
   </entry>
   
@@ -68,9 +97,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
-    
       <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
     
   </entry>
   
@@ -213,9 +242,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
+    
+      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -563,37 +592,6 @@
     
     
       <category term="求职准备" scheme="https://myhaa.github.io/tags/%E6%B1%82%E8%81%8C%E5%87%86%E5%A4%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sql</title>
-    <link href="https://myhaa.github.io/2019/11/19/sql/"/>
-    <id>https://myhaa.github.io/2019/11/19/sql/</id>
-    <published>2019-11-19T03:48:39.000Z</published>
-    <updated>2019-11-29T08:00:07.045Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、Sql基础&quot;&gt;&lt;a href=&quot;#一、Sql基础&quot; class=&quot;headerlink&quot; title=&quot;一、Sql基础&quot;&gt;&lt;/a&gt;一、Sql基础&lt;/h1&gt;&lt;p&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="数据库" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="Sql" scheme="https://myhaa.github.io/tags/Sql/"/>
     
   </entry>
   
