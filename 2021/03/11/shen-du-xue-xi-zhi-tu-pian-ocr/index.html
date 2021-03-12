@@ -4,15 +4,16 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="&#39;NLP之HMM:隐马尔科夫模型&#39;, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="基础什么样的问题可以用HMM模型
-可以用HMM的问题具备两个特征
-问题是基于序列的，例如：时间序列、状态序列等
-问题中有两类数据，可以观测的观测序列和无法观测的隐藏序列
+    <meta name="keywords" content="深度学习之图片OCR, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="基础视频截帧成一张张图片使用opencv
+参考opencv实现视频切割
 
-
-举个栗子
-打字的时候，键盘打出来的一系列字符是可以观测的观测序列，">
+# -*- coding:utf-8 _*-
+&#34;&#34;&#34;
+Author: meiyunhe
+Email: 
+Date: 2021/03/12
+File: opencv_t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>&#39;NLP之HMM:隐马尔科夫模型&#39; | Myhaa&#39;s Blog</title>
+    <title>深度学习之图片OCR | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,13 +313,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        &#39;NLP之HMM:隐马尔科夫模型&#39;
+                        深度学习之图片OCR
                     </div>
                 </div>
             </div>
@@ -430,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/NLP/">
-                                <span class="chip bg-color">NLP</span>
-                            </a>
-                        
                             <a href="/tags/AI/">
                                 <span class="chip bg-color">AI</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                                <span class="chip bg-color">图像识别</span>
                             </a>
                         
                     </div>
@@ -459,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-03
+                    2021-03-11
                 </div>
                 
 
@@ -468,14 +469,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    853
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    4 分
                 </div>
                 
 				
@@ -491,267 +492,219 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="什么样的问题可以用HMM模型"><a href="#什么样的问题可以用HMM模型" class="headerlink" title="什么样的问题可以用HMM模型"></a>什么样的问题可以用HMM模型</h2><ul>
-<li>可以用HMM的问题具备两个特征<ul>
-<li>问题是基于序列的，例如：时间序列、状态序列等</li>
-<li>问题中有两类数据，可以观测的观测序列和无法观测的隐藏序列</li>
+                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="视频截帧成一张张图片"><a href="#视频截帧成一张张图片" class="headerlink" title="视频截帧成一张张图片"></a>视频截帧成一张张图片</h2><h3 id="使用opencv"><a href="#使用opencv" class="headerlink" title="使用opencv"></a>使用<code>opencv</code></h3><ul>
+<li><a href="https://github.com/drsanwujiang/video-subtitle-recognize" target="_blank" rel="noopener">参考opencv实现视频切割</a></li>
 </ul>
-</li>
-<li>举个栗子<ol>
-<li>打字的时候，键盘打出来的一系列字符是可以观测的观测序列，而我脑子里想通过这些字符写的一段话是没法观测的隐藏序列</li>
-<li>说话的时候，声音是观测序列，而实际想表达的是隐藏序列，得通过声音来判断出想表达的隐藏序列</li>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># -*- coding:utf-8 _*-
+"""
+Author: meiyunhe
+Email: 
+Date: 2021/03/12
+File: opencv_test.py
+Software: PyCharm
+Description: 使用opencv将视频切成若干张静态图片（默认每秒1张）
+"""
+
+
+# load modules
+import shutil
+import time
+
+import cv2
+import os
+import sys
+
+
+# config类
+class Config:
+    Maps = {
+        # 以下请根据需要调整数值
+        "split_duration": 1.5,  # 切片间隔,每 split_duration 秒输出一帧
+        "jpg_quality": 40,  # 图片输出质量, 0~100
+        "probability": 0.66,  # OCR可信度下限, 0~1
+        "subtitle_top_rate": 0.66,  # 字幕范围倍率
+        "remove_duplicate": False,  # 强制去重
+
+        # 目录信息,在下方定义
+        "video_dir": "",
+        "video_path": "",
+        "video_frames": "",
+        "image_dir": "",
+        "output_dir": "",
+
+        # 视频信息,自动生成
+        "video_name": "",
+        "video_suffix": "",
+        "video_width": 0,
+        "video_height": 0,
+        "subtitle_top": 0,  # 字幕范围 = 字幕范围倍率 * 视频高度,此高度以下的文字被认为是字幕
+    }
+
+    @staticmethod
+    def set_path(video_name="", video_suffix=""):
+        current_path = sys.path[0]
+
+        Config.Maps["video_dir"] = '%s/video/' % current_path  # 视频源文件目录
+        Config.Maps["video_path"] = '%s/video/%s%s' % (current_path, video_name, video_suffix)  # 指定视频文件路径
+        Config.Maps["video_frames"] = '%s/video_frames/' % current_path  # 视频切片文件目录
+        Config.Maps["image_dir"] = '%s/video_frames/%s/' % (current_path, video_name)  # 指定视频切片文件目录
+        Config.Maps["output_dir"] = '%s/output/' % current_path  # 字幕输出目录
+
+        Config.Maps["video_name"] = video_name
+        Config.Maps["video_suffix"] = video_suffix
+
+    @staticmethod
+    def set_video_props(video_width, video_height):
+        Config.Maps["video_width"] = video_width
+        Config.Maps["video_height"] = video_height
+        Config.Maps["subtitle_top"] = Config.Maps["subtitle_top_rate"] * video_height
+
+    @staticmethod
+    def get_value(key):
+        return Config.Maps[key]
+
+
+# getFrame类
+class GetFrames:
+    @staticmethod
+    def main():
+        # 读取路径信息
+        video_path = Config.get_value("video_path")
+        image_dir = Config.get_value('image_dir')
+        jpg_quality = Config.get_value('jpg_quality')
+        split_duration = Config.get_value('split_duration')
+
+        if (os.path.exists(image_dir)):
+            shutil.rmtree(image_dir)  # 递归删除目录，os.rmdir只能删除空目录
+        os.mkdir(image_dir)
+
+        cv = cv2.VideoCapture(video_path)  # 读入视频文件
+        current_frame = 1
+        saved_frames = 1
+
+        if cv.isOpened():  # 判断是否正常打开
+            retval, frame = cv.read()
+        else:
+            cv.release()
+            print("Video open error")
+            return False
+
+        duration = int(cv.get(cv2.CAP_PROP_FPS) * split_duration)  # 间隔频率 = 帧率 * 切片时间间隔(四舍五入)
+        frame_count = int(cv.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频总帧数
+        video_width = int(cv.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+        video_height = int(cv.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+        Config.set_video_props(video_width, video_height)
+
+        while retval:  # 循环读取视频帧
+            retval, frame = cv.read()
+
+            if current_frame % duration == 0:  # 每 duration 帧进行存储操作
+                cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), jpg_quality])[1]. \
+                    tofile(image_dir + str(current_frame).zfill(6) + '.jpg')
+
+                print(("Now: frame %d, saved: %d frame(s), process: %d%%" %
+                       (current_frame, saved_frames, (current_frame * 100) // frame_count)).ljust(60, ' '))
+                saved_frames += 1
+
+            current_frame += 1
+            cv2.waitKey(1)
+
+        print(("Now: frame %d, saved: %d frame(s), process: %d%%" %
+               (current_frame, saved_frames, (current_frame * 100) // frame_count)).ljust(60, ' '))
+        cv.release()
+        print("\nSaved: %d frame(s)" % saved_frames)
+        return True
+
+
+# 主类
+class Main:
+    @staticmethod
+    def clear():
+        if sys.platform.find("win") > -1:
+            os.system("cls")
+        else:
+            print()
+
+    @staticmethod
+    def main():
+        # 配置路径
+        Config.set_path()
+
+        if not (os.path.exists(Config.get_value('video_dir'))):
+            os.mkdir(Config.get_value('video_dir'))
+
+        if not (os.path.exists(Config.get_value('video_frames'))):
+            os.mkdir(Config.get_value('video_frames'))
+
+        if not (os.path.exists(Config.get_value('output_dir'))):
+            os.mkdir(Config.get_value('output_dir'))
+
+        # 列出所有video
+        Main.clear()
+        print("\n")
+        print("-"*40)
+        print("List Video")
+        print("-" * 40)
+        video_list = os.listdir(Config.get_value('video_dir'))
+        print(video_list)
+
+        if len(video_list) < 1:
+            print("Nothing found\n\n")
+            print("Process finished")
+            input()
+            return
+
+        # 对所有video进行处理
+        start_all = time.time()
+        print("\n")
+        print("-" * 40)
+        print("All Video Division")
+        print("-" * 40)
+        print("Start All video division")
+        for video in video_list:
+            print("%d.%s" % (video_list.index(video) + 1, video))
+            video_name = video[: video.rfind(".")]
+            video_suffix = video[video.rfind("."):]
+
+            Config.set_path(video_name, video_suffix)
+
+            start = time.time()
+            print("\n")
+            print("-" * 40)
+            print("Video: %s Division" % video)
+            print("-" * 40)
+            print("Start video division")
+
+            if not GetFrames.main():
+                print("Video division FAILED!")
+                print("Process finished")
+                input()
+                return
+
+            print("Video: %s division finished" % video)
+            print("Time: %.2fs\n" % (time.time() - start))
+
+        print("All Video division finished")
+        print("Time: %.2fs\n" % (time.time() - start_all))
+        return
+
+
+if __name__ == "__main__":
+    Main.main()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://github.com/drsanwujiang/video-subtitle-recognize" target="_blank" rel="noopener">opencv实现视频切割</a><ol>
+<li><a href="https://www.kancloud.cn/aollo/aolloopencv" target="_blank" rel="noopener">OpenCV-Python中文教程</a></li>
 </ol>
 </li>
-</ul>
-<h2 id="HMM模型定义"><a href="#HMM模型定义" class="headerlink" title="HMM模型定义"></a>HMM模型定义</h2><h3 id="举个栗子说明"><a href="#举个栗子说明" class="headerlink" title="举个栗子说明"></a>举个栗子说明</h3><ul>
-<li>栗子来源于《统计学习方法=李航》</li>
-<li>栗子如下：</li>
-</ul>
-<p>假设有3个盒子，每个盒子有多个红白两种球，数量如下表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>盒子</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>红</td>
-<td>5</td>
-<td>4</td>
-<td>7</td>
-</tr>
-<tr>
-<td>白</td>
-<td>5</td>
-<td>6</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>有放回抽球3次，规则如下：</p>
-<ol>
-<li>第一次从盒1抽的概率0.2，盒2、盒3均是0.4</li>
-<li>接下来每一次的抽取规则：<ol>
-<li>如果当前抽的盒1，则按0.5、0.2、0.3进行盒1、2、3抽取</li>
-<li>如果当前抽的盒2，则按0.3、0.5、0.2进行盒1、2、3抽取</li>
-<li>如果当前抽的盒3，则按0.2、0.3、0.5进行盒1、2、3抽取</li>
+<li><a href="https://www.ruanyifeng.com/blog/2020/01/ffmpeg.html" target="_blank" rel="noopener">FFmpeg视频处理</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/chineseocr/darknet-ocr">darknet-ocr</a>：<code>star:851</code></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/chineseocr/chineseocr">chineseocr</a>：<code>star:3.9k</code></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/ouyanghuiyu/chineseocr_lite">https://github.com/ouyanghuiyu/chineseocr_litegithub.com</a>：<code>star:6.4k</code>，支持windows<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/111533615" target="_blank" rel="noopener">机器之心：实测超轻量中文OCR开源项目，总模型仅17Mzhuanlan.zhihu.com)</a></li>
 </ol>
 </li>
-<li>抽3次，得到观测序列：$O=\{\text{红、白、红}\}$，而隐藏序列是$Q=\{\text{盒子1、2、3}\}$，因为不知道每个球是从哪个盒子抽出的</li>
-</ol>
-<p>从上述规则可以提取出：</p>
-<ol>
-<li>观测序列集合$V=\{\text{红、白}\},M=2$</li>
-<li>隐藏序列集合$Q=\{\text{盒子1、2、3}\},N=3$</li>
-<li>隐藏序列初始状态分布$\Pi =(0.2,0.4,0.4)^T$</li>
-<li>隐藏序列转移分布矩阵$A = \left( \begin{array} {ccc} 0.5 &amp; 0.2 &amp; 0.3 \\ 0.3 &amp; 0.5 &amp; 0.2 \\ 0.2 &amp; 0.3 &amp;0.5 \end{array} \right)$</li>
-<li>观测序列概率矩阵$B = \left( \begin{array} {ccc} 0.5 &amp; 0.5 \\ 0.4 &amp; 0.6 \\ 0.7 &amp; 0.3 \end{array} \right)$，行是盒1、2、3，列是红、白</li>
-</ol>
-<h3 id="通俗定义"><a href="#通俗定义" class="headerlink" title="通俗定义"></a>通俗定义</h3><ul>
-<li>设$Q = \{q_1,q_2,…,q_N\}, \; V =\{v_1,v_2,…v_M\}$分别为隐藏序列集合、可观测序列集合</li>
-<li>设$I = \{i_1,i_2,…,i_T\}, \; O =\{o_1,o_2,…o_T\}$分别为隐藏序列列表、可观测序列列表</li>
-<li>其中任意一个$i_t \in Q$，任意一个$o_t \in V$</li>
-</ul>
-<h4 id="两个重要假设-一个隐藏序列集合初始分布"><a href="#两个重要假设-一个隐藏序列集合初始分布" class="headerlink" title="两个重要假设+一个隐藏序列集合初始分布"></a>两个重要假设+一个隐藏序列集合初始分布</h4><ol>
-<li>齐次马尔科夫链假设，即$i_t$只依赖于$i_{t-1}$，<ul>
-<li>这样转移概率矩阵表示成$A=\Big [a_{ij}\Big ]_{N \times N}$，其中$a_{ij} = P(i_{t+1} = q_j | i_t= q_i)$</li>
-</ul>
-</li>
-<li>观测独立性假设，即任意时刻的观测序列值仅依赖当前时刻的隐藏序列值<ul>
-<li>这样观测序列概率矩阵表示成$B = \Big [b_j(k) \Big ]_{N \times M}$，其中$b_j(k) = P(o_t = v_k | i_t= q_j)$</li>
-</ul>
-</li>
-<li>除此之外需要一组在时刻$t=1$的隐藏序列集合的概率分布$\Pi = \Big [ \pi(i)\Big ]_N \; 其中 \;\pi(i) = P(i_1 = q_i)$</li>
-</ol>
-<h4 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h4><ul>
-<li>则HMM表示为$\lambda = (A, B, \Pi)$</li>
-</ul>
-<h2 id="HMM观测序列的生成"><a href="#HMM观测序列的生成" class="headerlink" title="HMM观测序列的生成"></a>HMM观测序列的生成</h2><ul>
-<li>输入：$\lambda = (A, B, \Pi)$</li>
-<li>输出：$O =\{o_1,o_2,…o_T\}$，长度为$T$</li>
-<li>生成步骤：<ol>
-<li>根据初始状态概率分布$\Pi$生成隐藏状态$i_1$</li>
-<li>for t in range(1, T+1)<ol>
-<li>按照隐藏状态$i_t$的观测状态分布$b_{i_t}(k)$生成观测状态$o_t$</li>
-<li>按照隐藏状态$i_t$的转移概率分布$a_{i_t,i_{t+1}}$生成隐藏状态$i_{t+1}$</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="HMM模型需要解决的三个问题"><a href="#HMM模型需要解决的三个问题" class="headerlink" title="HMM模型需要解决的三个问题"></a>HMM模型需要解决的三个问题</h2><ol>
-<li>评估观测序列概率，给定模型和观测序列，计算观测序列出现的概率，前向后向算法</li>
-<li>模型参数学习，给定观测序列，估计模型的参数使观测序列出现的概率最大，基于EM算法的鲍姆-韦尔奇算法</li>
-<li>预测，给定模型和观测序列，求给定观测序列后，最可能出现的隐藏序列，基于动态规划的维特比算法</li>
-</ol>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="问题一：评估观测序列概率"><a href="#问题一：评估观测序列概率" class="headerlink" title="问题一：评估观测序列概率"></a>问题一：评估观测序列概率</h3><h4 id="暴力求解"><a href="#暴力求解" class="headerlink" title="暴力求解"></a>暴力求解</h4><h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ol>
-<li>我们可以列举出所有可能出现的长度为$T$的隐藏序列$I = \{i_1,i_2,…,i_T\}$，任意一个隐藏序列$I = \{i_1,i_2,…,i_T\}$出现的概率为：$P(I|\lambda) = \pi_{i_1} a_{i_1i_2} a_{i_2i_3}… a_{i_{T-1}\;\;i_T}$</li>
-<li>对于固定的隐藏序列$I = \{i_1,i_2,…,i_T\}$，我们要求的观测序列$O =\{o_1,o_2,…o_T\}$出现的概率为：$P(O|I, \lambda) = b_{i_1}(o_1)b_{i_2}(o_2)…b_{i_T}(o_T)$</li>
-<li>则$O,T$的联合概率为：$P(O,I|\lambda) = P(I|\lambda)P(O|I, \lambda) = \pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)…a_{i_{T-1}\;\;i_T}b_{i_T}(o_T)$</li>
-<li>最后求观测序列$O$在模型$\lambda$下出现的条件概率$P(O|\lambda)$为：$P(O|\lambda) = \sum\limits_{I}P(O,I|\lambda)  = \sum\limits_{i_1,i_2,…i_T}\pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)…a_{i_{T-1}\;\;i_T}b_{i_T}(o_T)$</li>
-</ol>
-<h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><ul>
-<li>暴力求解太耗时，当隐藏状态数$N$太大时</li>
-<li>时间复杂度：$O(TN^T)$</li>
-</ul>
-<h4 id="前向算法"><a href="#前向算法" class="headerlink" title="前向算法"></a>前向算法</h4><ul>
-<li>前向概率定义：$\alpha_t(i) = P(o_1,o_2,…o_t, i_t =q_i | \lambda)$</li>
-</ul>
-<h5 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h5><ol>
-<li>计算时刻1的各个隐藏状态前向概率：$\alpha_1(i) = \pi_ib_i(o_1),\; i=1,2,…N$</li>
-<li>from t=2 to T：<ol>
-<li>计算时刻$t$的各个隐藏状态前行概率：$\alpha_{t+1}(i) = \Big[\sum\limits_{j=1}^N\alpha_t(j)a_{ji}\Big]b_i(o_{t+1}),\; i=1,2,…N$</li>
-</ol>
-</li>
-<li>计算最终结果：$P(O|\lambda) = \sum\limits_{i=1}^N\alpha_T(i)$</li>
-</ol>
-<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
-<li>时间复杂度：$O(TN^2)$</li>
-</ul>
-<h4 id="后向算法"><a href="#后向算法" class="headerlink" title="后向算法"></a>后向算法</h4><ul>
-<li>后向概率定义：$\beta_t(i) = P(o_{t+1},o_{t+2},…o_T| i_t =q_i , \lambda)$</li>
-</ul>
-<h5 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h5><ol>
-<li>初始化时刻$T$各个隐藏状态后向概率：$\beta_T(i) = 1,\; i=1,2,…N$</li>
-<li>from t=T-1 to 1：<ol>
-<li>计算时刻$t$的后向概率：$\beta_{t}(i) = \sum\limits_{j=1}^{N}a_{ij}b_j(o_{t+1})\beta_{t+1}(j),\; i=1,2,…N$</li>
-</ol>
-</li>
-<li>计算最终结果：$P(O|\lambda) = \sum\limits_{i=1}^N\pi_ib_i(o_1)\beta_1(i)$</li>
-</ol>
-<h5 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h5><ul>
-<li>时间复杂度：$O(TN^2)$</li>
-</ul>
-<h3 id="问题二：模型参数学习：学习-A-B-lambda"><a href="#问题二：模型参数学习：学习-A-B-lambda" class="headerlink" title="问题二：模型参数学习：学习$A,B,\lambda$"></a>问题二：模型参数学习：学习$A,B,\lambda$</h3><h4 id="根据前向后向算法计算常用概率"><a href="#根据前向后向算法计算常用概率" class="headerlink" title="根据前向后向算法计算常用概率"></a>根据前向后向算法计算常用概率</h4><ol>
-<li>给定模型$\lambda$和观测序列$O$，在时刻$t$处于状态$q_i$的概率为：$\gamma_t(i) = P(i_t = q_i | O,\lambda) = \frac{P(i_t = q_i ,O|\lambda)}{P(O|\lambda)}= \frac{ \alpha_t(i)\beta_t(i)}{\sum\limits_{j=1}^N \alpha_t(j)\beta_t(j)}$</li>
-<li>给定模型$\lambda$和观测序列$O$，在时刻$t$处于状态$q_i$，且时刻$t+1$处于状态$q_j$的概率为：$\xi_t(i,j) = P(i_t = q_i, i_{t+1}=q_j | O,\lambda) = \frac{ P(i_t = q_i, i_{t+1}=q_j , O|\lambda)}{P(O|\lambda)}=\frac{\alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{\sum\limits_{r=1}^N\sum\limits_{s=1}^N\alpha_t(r)a_{rs}b_s(o_{t+1})\beta_{t+1}(s)}$</li>
-<li>由1、2可得：<ol>
-<li>在观测序列$O$下状态$i$出现的期望值为：$\sum\limits_{t=1}^T\gamma_t(i)$</li>
-<li>在观测序列$O$下状态$i$转移的期望值为：$\sum\limits_{t=1}^{T-1}\gamma_t(i)$</li>
-<li>在观测序列$O$下状态$i$转移到状态$j$的期望值为：$\sum\limits_{t=1}^{T-1}\xi_t(i,j)$</li>
-</ol>
-</li>
-</ol>
-<h4 id="求解模型参数：简单情况-隐藏序列已知"><a href="#求解模型参数：简单情况-隐藏序列已知" class="headerlink" title="求解模型参数：简单情况-隐藏序列已知"></a>求解模型参数：简单情况-隐藏序列已知</h4><p>已知$D$个长度为$T$的观测序列和对应的隐藏序列，即$\{(O_1, I_1), (O_2, I_2), …(O_D, I_D)\}$，求解如下：</p>
-<ol>
-<li>统计从隐藏状态$q_i$到$q_j$的频率计数为$A_{ij}$，那么可得隐藏状态转移矩阵$A$</li>
-<li>统计样本隐藏状态为$q_j$且观测状态为$v_k$的频率计数为$B_{jk}$，则观测状态矩阵为$B$</li>
-<li>统计样本初始隐藏状态为$q_i$的频率计数为$C(i)$，则初始概率分布为$\Pi$</li>
-</ol>
-<h4 id="求解模型参数：复杂情况-隐藏序列未知"><a href="#求解模型参数：复杂情况-隐藏序列未知" class="headerlink" title="求解模型参数：复杂情况-隐藏序列未知"></a>求解模型参数：复杂情况-隐藏序列未知</h4><p>已知$D$个长度为$T$的观测序列，即$\{(O_1), (O_2), …(O_D)\}$，</p>
-<p><strong>鲍姆-韦尔奇算法</strong></p>
-<ol>
-<li>E步：求出联合分布$P(O,I|\lambda)$基于条件概率$P(I|O,\overline{\lambda})$的期望表达式：$L(\lambda, \overline{\lambda}) = \sum\limits_{I}P(I|O,\overline{\lambda})logP(O,I|\lambda)$</li>
-<li>M步：极大化上式，更新参数：$\overline{\lambda} = arg\;\max_{\lambda}\sum\limits_{I}P(I|O,\overline{\lambda})logP(O,I|\lambda)$</li>
-<li>不断迭代EM步，直到收敛</li>
-</ol>
-<p><strong>具体步骤</strong></p>
-<ul>
-<li><p>输入：$\{(O_1), (O_2), …(O_D)\}$</p>
-</li>
-<li><p>输出：HMM模型参数</p>
-</li>
-<li><p>步骤：</p>
-<ol>
-<li><p>随机初始化所有的$\Pi,A,B$</p>
-</li>
-<li><p>对于每个样本，用前向后向算法计算$\gamma_t^{(d)}(i)，\xi_t^{(d)}(i,j), t =1,2…T$</p>
-</li>
-<li><p>更新模型参数：</p>
-<script type="math/tex; mode=display">
-\pi_i =  \frac{\sum\limits_{d=1}^D\gamma_1^{(d)}(i)}{D} \\
-a_{ij} = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\xi_t^{(d)}(i,j)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\gamma_t^{(d)}(i)} \\
-b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t^{(d)}(j)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T}\gamma_t^{(d)}(j)}</script></li>
-<li><p>如果$\Pi,A,B$已经收敛，则算法结束，否则从第二步开始继续迭代</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="问题三：预测-维特比算法"><a href="#问题三：预测-维特比算法" class="headerlink" title="问题三：预测-维特比算法"></a>问题三：预测-维特比算法</h3><h4 id="两个局部状态"><a href="#两个局部状态" class="headerlink" title="两个局部状态"></a>两个局部状态</h4><ol>
-<li><p>在时刻$t$隐藏状态为$i$所有可能的状态转移路径$i_1,i_2,…i_t$中的概率最大值，记为$\delta_t(i) = \max_{i_1,i_2,…i_{t-1}}\;P(i_t=i, i_1,i_2,…i_{t-1},o_t,o_{t-1},…o_1|\lambda),\; i =1,2,…N$，且递推表达式为：</p>
-<script type="math/tex; mode=display">
-\begin{align} \delta_{t+1}(i) & =  \max_{i_1,i_2,...i_{t}}\;P(i_{t+1}=i, i_1,i_2,...i_{t},o_{t+1},o_{t},...o_1|\lambda) \\ 
-& = \max_{1 \leq j \leq N}\;[\delta_t(j)a_{ji}]b_i(o_{t+1})\end{align}</script></li>
-<li><p>在时刻$t$隐藏状态为$i$所有单个状态转移路径$(i_1,i_2,…,i_{t-1},i)$中概率最大的转移路径中第$t-1$个节点的隐藏状态为$\Psi_t(i)$，其递推表达式为：</p>
-<script type="math/tex; mode=display">
-\Psi_t(i) = arg \; \max_{1 \leq j \leq N}\;[\delta_{t-1}(j)a_{ji}]</script></li>
-</ol>
-<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><ul>
-<li><p>输入：HMM模型$\lambda = (A,B,\Pi)$，观测序列$O=(o_1,o_2,…o_T)$</p>
-</li>
-<li><p>输出：最有可能的隐藏状态序列$I^<em>= \{i_1^</em>,i_2^<em>,…i_T^</em>\}$</p>
-</li>
-<li><p>步骤：</p>
-<ol>
-<li><p>初始化局部状态：</p>
-<script type="math/tex; mode=display">
-\delta_1(i) = \pi_ib_i(o_1),\;i=1,2...N \\
-\Psi_1(i)=0,\;i=1,2...N</script></li>
-<li><p>from t=2 to T：</p>
-<script type="math/tex; mode=display">
-\delta_{t}(i) = \max_{1 \leq j \leq N}\;[\delta_{t-1}(j)a_{ji}]b_i(o_{t}),\;i=1,2...N \\
-\Psi_t(i) = arg \; \max_{1 \leq j \leq N}\;[\delta_{t-1}(j)a_{ji}],\;i=1,2...N</script></li>
-<li><p>计算时刻$T$最大的$\delta_T(i)$以及对应的$\Psi_T(i)$，开始回溯得到最可能的隐藏状态序列$I^<em>= \{i_1^</em>,i_2^<em>,…i_T^</em>\}$</p>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><ul>
-<li><p>输入：</p>
-<script type="math/tex; mode=display">
-\Pi = (0.2,0.4,0.4)^T  \\
-A = \left( \begin{array} {ccc} 0.5 & 0.2 & 0.3 \\ 0.3 & 0.5 & 0.2 \\ 0.2 & 0.3 &0.5 \end{array} \right)  \\
-B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \right)  \\
-\text{观测序列：}O=\{红，白，红\}</script></li>
-<li><p>计算：</p>
-<ul>
-<li><p>观测状态为<code>红</code>：</p>
-<script type="math/tex; mode=display">
-\delta_1(1) = \pi_1b_1(o_1) = 0.2 \times 0.5 = 0.1  \\
-\delta_1(2) = \pi_2b_2(o_1) = 0.4 \times 0.4 = 0.16  \\
-\delta_1(3) = \pi_3b_3(o_1) = 0.4 \times 0.7 = 0.28  \\
-\Psi_1(1)=\Psi_1(2) =\Psi_1(3) =0</script></li>
-<li><p>然后观测状态为<code>白</code>：</p>
-<script type="math/tex; mode=display">
-\delta_2(1) = \max_{1\leq j \leq 3}[\delta_1(j)a_{j1}]b_1(o_2) = \max_{1\leq j \leq 3}[0.1 \times 0.5, 0.16 \times 0.3, 0.28\times 0.2] \times 0.5 = 0.028  \\
-\Psi_2(1)=\max_{1\leq j \leq 3}[0.1 \times 0.5, 0.16 \times 0.3, 0.28\times 0.2]=0.56, \text{对应的隐藏状态是3} \\
-\delta_2(2) = \max_{1\leq j \leq 3}[\delta_1(j)a_{j2}]b_2(o_2) = \max_{1\leq j \leq 3}[0.1 \times 0.2, 0.16 \times 0.5, 0.28\times 0.3] \times 0.6 = 0.0504  \\
-\Psi_2(2)=3  \\
-\delta_2(3) = \max_{1\leq j \leq 3}[\delta_1(j)a_{j3}]b_3(o_2) = \max_{1\leq j \leq 3}[0.1 \times 0.3, 0.16 \times 0.2, 0.28\times 0.5] \times 0.3 = 0.042  \\
-\Psi_2(3)=3</script></li>
-<li><p>然后观测状态为<code>红</code>：</p>
-<script type="math/tex; mode=display">
-\delta_3(1) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j1}]b_1(o_3) = \max_{1\leq j \leq 3}[0.028 \times 0.5, 0.0504 \times 0.3, 0.042\times 0.2] \times 0.5 = 0.00756  \\
-\Psi_3(1)=2 \\
-\delta_3(2) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j2}]b_2(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.2, 0.0504\times 0.5, 0.042\times 0.3] \times 0.4 = 0.01008 \\
-\Psi_3(2)=2  \\
-\delta_3(3) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j3}]b_3(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.3, 0.0504 \times 0.2, 0.042\times 0.5] \times 0.7 = 0.0147  \\
-\Psi_3(3)=3</script></li>
-<li><p>现在开始回溯，此时最大概率为$\delta_3(3)$，从而得到$i_3^* =3$</p>
-</li>
-<li><p>由于$\Psi_3(3)=3,\Psi_2(3)=3$，所以最终最可能的隐藏状态序列为$(3,3,3)$</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><ul>
-<li><h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1></li>
-</ul>
-<h2 id="为什么这里的维特比和中文分词那里不太相同？"><a href="#为什么这里的维特比和中文分词那里不太相同？" class="headerlink" title="为什么这里的维特比和中文分词那里不太相同？"></a>为什么这里的维特比和中文分词那里不太相同？</h2><ul>
-<li>中文分词时，我们没有观测序列和隐藏序列的区别，只有一种状态</li>
-</ul>
-<h2 id="维特比算法与dijkstra算法区别？"><a href="#维特比算法与dijkstra算法区别？" class="headerlink" title="维特比算法与dijkstra算法区别？"></a>维特比算法与dijkstra算法区别？</h2><ul>
-<li>维特比算法使用动态规划，而dijkstra是贪心算法</li>
-<li>维特比算法仅仅局限于求序列最短路径，而dijkstra是通用的求最短路径方法</li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://www.cnblogs.com/pinard/p/6945257.html" target="_blank" rel="noopener">隐马尔科夫模型HMM（一）HMM模型</a></li>
+<li>包括AlexNet、RCNN、ResNet、YOLO、SSD等。</li>
 </ol>
 
             </div>
@@ -778,7 +731,7 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/03/03/nlp-zhi-hmm-yin-ma-er-ke-fu-mo-xing/">https://myhaa.github.io/2021/03/03/nlp-zhi-hmm-yin-ma-er-ke-fu-mo-xing/</a>
+                    <a href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/">https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -816,12 +769,12 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/NLP/">
-                                    <span class="chip bg-color">NLP</span>
-                                </a>
-                            
                                 <a href="/tags/AI/">
                                     <span class="chip bg-color">AI</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                                    <span class="chip bg-color">图像识别</span>
                                 </a>
                             
                         </div>
@@ -992,7 +945,7 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2021-03-03T10-52-24',
+        id: '2021-03-11T15-45-18',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1013,29 +966,84 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/09/nlp-zhi-fen-ci-yuan-li/">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="'NLP之分词原理'">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="深度学习之图片OCR">
                         
-                        <span class="card-title">'NLP之分词原理'</span>
+                        <span class="card-title">深度学习之图片OCR</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文本挖掘之分词原理
+                            图片相关处理技术
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-09
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                    AI/数据科学
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">图像识别</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/10/nlp-zhi-textrank/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="NLP之TextRank">
+                        
+                        <span class="card-title">NLP之TextRank</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关键词提取之TextRank
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1055,61 +1063,8 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
                         <span class="chip bg-color">NLP</span>
                     </a>
                     
-                    <a href="/tags/AI/">
-                        <span class="chip bg-color">AI</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%88%86%E8%AF%8D/">
-                        <span class="chip bg-color">分词</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/01/20/flink/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Flink">
-                        
-                        <span class="card-title">Flink</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            flink从入门到放弃
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
-                                    AI/数据科学
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
-                        <span class="chip bg-color">数据科学</span>
+                    <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
+                        <span class="chip bg-color">关键词提取</span>
                     </a>
                     
                 </div>
@@ -1279,13 +1234,6 @@ B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
     <footer class="page-footer bg-color">

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-10T09:20:42.940Z</updated>
+  <updated>2021-03-12T08:49:25.186Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>深度学习之图片OCR</title>
+    <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/"/>
+    <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/</id>
+    <published>2021-03-11T07:45:18.000Z</published>
+    <updated>2021-03-12T08:49:25.186Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;视频截帧成一张张图片&quot;&gt;&lt;a href=&quot;#视频截帧成一张张图片&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
+    
+      <category term="图像识别" scheme="https://myhaa.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NLP之TextRank</title>
     <link href="https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/"/>
     <id>https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/</id>
     <published>2021-03-10T08:57:10.000Z</published>
-    <updated>2021-03-10T09:20:42.940Z</updated>
+    <updated>2021-03-10T09:27:09.714Z</updated>
     
     <summary type="html">
     
@@ -128,9 +157,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
-    
       <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
     
       <category term="分词" scheme="https://myhaa.github.io/tags/%E5%88%86%E8%AF%8D/"/>
     
@@ -159,9 +188,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
-    
       <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
+    
+      <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
     
   </entry>
   
@@ -304,9 +333,9 @@
     
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
+    
+      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -571,35 +600,6 @@
       <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
     
       <category term="HDFS" scheme="https://myhaa.github.io/tags/HDFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算广告学2.0</title>
-    <link href="https://myhaa.github.io/2019/11/22/ji-suan-guang-gao-xue-2-0/"/>
-    <id>https://myhaa.github.io/2019/11/22/ji-suan-guang-gao-xue-2-0/</id>
-    <published>2019-11-22T06:21:23.000Z</published>
-    <updated>2019-11-28T02:58:08.902Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;广告的基本知识&quot;&gt;&lt;a href=&quot;#广告的基本知识&quot; class=&quot;headerlink&quot; title=&quot;广告的基本知识&quot;&gt;&lt;/a&gt;广告的基本知识&lt;/h1&gt;&lt;h2 id=&quot;广告的目的&quot;&gt;&lt;a href=&quot;#广告的目的&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="计算广告" scheme="https://myhaa.github.io/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/"/>
     
   </entry>
   

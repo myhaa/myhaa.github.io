@@ -469,7 +469,7 @@ TextRank
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    268
+                    284
                 </div>
                 
 
@@ -502,7 +502,7 @@ TextRank
 <h2 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a><code>TextRank</code></h2><ul>
 <li>回顾<code>PageRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dA^TP$</li>
 <li>直接说<code>TextRank</code>的计算公式：$P=(1-d)\frac{I}{n}+dW^TP$<ul>
-<li>其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共线次数</li>
+<li>其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共现次数</li>
 </ul>
 </li>
 </ul>
@@ -528,7 +528,13 @@ TextRank
 </ol>
 </li>
 </ol>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
+<li><p><a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">Jieba</a></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">jieba.analyse.textrank(sentence, topK=20, withWeight=False, allowPOS=('ns', 'n', 'vn', 'v'))
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="http://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf" target="_blank" rel="noopener">TextRank: Bringing Order into Texts</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/41091116" target="_blank" rel="noopener">（九）通俗易懂理解——TF-IDF与TextRank</a></li>
 </ol>
@@ -792,30 +798,29 @@ TextRank
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/10/nlp-zhi-textrank/">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="NLP之TextRank">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="深度学习之图片OCR">
                         
-                        <span class="card-title">NLP之TextRank</span>
+                        <span class="card-title">深度学习之图片OCR</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            关键词提取之TextRank
+                            图片相关处理技术
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -828,16 +833,15 @@ TextRank
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/NLP/">
-                        <span class="chip bg-color">NLP</span>
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
-                        <span class="chip bg-color">关键词提取</span>
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">图像识别</span>
                     </a>
                     
                 </div>
