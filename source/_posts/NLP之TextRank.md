@@ -31,7 +31,7 @@ summary: 关键词提取之TextRank
 
 * 回顾`PageRank`的计算公式：$P=(1-d)\frac{I}{n}+dA^TP$
 * 直接说`TextRank`的计算公式：$P=(1-d)\frac{I}{n}+dW^TP$
-  * 其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共线次数
+  * 其中$W=(w_{ij})_{m\times n}$为词与词之间的权重，一般为词$i$与词$j$在滑动窗口$k$内的共现次数
 
 ## 如何根据词构建图
 
@@ -58,6 +58,18 @@ summary: 关键词提取之TextRank
 # 进阶
 
 # 疑难
+
+## 实现
+
+* [Jieba](https://github.com/fxsjy/jieba)
+
+  ```python
+  jieba.analyse.textrank(sentence, topK=20, withWeight=False, allowPOS=('ns', 'n', 'vn', 'v')) 
+  ```
+
+  
+
+
 
 # 参考
 
