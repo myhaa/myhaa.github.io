@@ -240,4 +240,6 @@ if __name__ == "__main__":
 5. [https://github.com/ouyanghuiyu/chineseocr_litegithub.com](https://link.zhihu.com/?target=https%3A//github.com/ouyanghuiyu/chineseocr_lite)：`star:6.4k`，支持windows
    1. [机器之心：实测超轻量中文OCR开源项目，总模型仅17Mzhuanlan.zhihu.com)](https://zhuanlan.zhihu.com/p/111533615)
 6. 包括AlexNet、RCNN、ResNet、YOLO、SSD等。
-
+7. [文本检测的资源汇总](https://github.com/hwalsuklee/awesome-deep-text-detection-recognition)
+   1. [Github：深度学习文本检测识别（OCR）精选资源汇总](https://zhuanlan.zhihu.com/p/71028209)
+8. [xiaofengshi：chinese-ocr](https://github.com/xiaofengShi/CHINESE-OCR)：`star:2.4k`
