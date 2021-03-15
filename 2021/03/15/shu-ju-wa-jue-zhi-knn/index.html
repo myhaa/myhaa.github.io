@@ -4,16 +4,13 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="深度学习之图片OCR, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="基础视频截帧成一张张图片使用opencv
-参考opencv实现视频切割
+    <meta name="keywords" content="数据挖掘之KNN, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="基础算法
+输入：
 
-# -*- coding:utf-8 _*-
-&#34;&#34;&#34;
-Author: meiyunhe
-Email: 
-Date: 2021/03/12
-File: opencv_t">
+$x$：待分类的预测样本，
+$k$：最近的$k$个作为标准
+$T = \lbrace (x_1,y_1),(x_2,y_2), \cdots ,(x_n,y_n) \rbrace$：训练集，是多维特征空间向量，其中每个训">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +18,7 @@ File: opencv_t">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>深度学习之图片OCR | Myhaa&#39;s Blog</title>
+    <title>数据挖掘之KNN | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,13 +310,13 @@ File: opencv_t">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        深度学习之图片OCR
+                        数据挖掘之KNN
                     </div>
                 </div>
             </div>
@@ -431,12 +428,12 @@ File: opencv_t">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/AI/">
-                                <span class="chip bg-color">AI</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+                                <span class="chip bg-color">数据挖掘</span>
                             </a>
                         
-                            <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
-                                <span class="chip bg-color">图像识别</span>
+                            <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">十大算法</span>
                             </a>
                         
                     </div>
@@ -460,7 +457,7 @@ File: opencv_t">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-11
+                    2021-03-15
                 </div>
                 
 
@@ -469,14 +466,14 @@ File: opencv_t">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    886
+                    550
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 				
@@ -492,225 +489,55 @@ File: opencv_t">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="视频截帧成一张张图片"><a href="#视频截帧成一张张图片" class="headerlink" title="视频截帧成一张张图片"></a>视频截帧成一张张图片</h2><h3 id="使用opencv"><a href="#使用opencv" class="headerlink" title="使用opencv"></a>使用<code>opencv</code></h3><ul>
-<li><a href="https://github.com/drsanwujiang/video-subtitle-recognize" target="_blank" rel="noopener">参考opencv实现视频切割</a></li>
+                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li><p>输入：</p>
+<ul>
+<li>$x$：待分类的预测样本，</li>
+<li>$k$：最近的$k$个作为标准</li>
+<li>$T = \lbrace (x_1,y_1),(x_2,y_2), \cdots ,(x_n,y_n) \rbrace$：训练集，是多维特征空间向量，其中每个训练样本带有一个类别标签</li>
+<li>距离度量：一般情况下，将<a href="https://zh.wikipedia.org/wiki/欧氏距离" target="_blank" rel="noopener">欧氏距离</a>作为距离度量，但是这是只适用于连续变量。在文本分类这种离散变量情况下，另一个度量——<strong>重叠度量</strong>（或<a href="https://zh.wikipedia.org/wiki/海明距离" target="_blank" rel="noopener">海明距离</a>）可以用来作为度量</li>
 </ul>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python"># -*- coding:utf-8 _*-
-"""
-Author: meiyunhe
-Email: 
-Date: 2021/03/12
-File: opencv_test.py
-Software: PyCharm
-Description: 使用opencv将视频切成若干张静态图片（默认每秒1张）
-"""
-
-
-# load modules
-import shutil
-import time
-
-import cv2
-import os
-import sys
-
-
-# config类
-class Config:
-    Maps = {
-        # 以下请根据需要调整数值
-        "split_duration": 1.5,  # 切片间隔,每 split_duration 秒输出一帧
-        "jpg_quality": 40,  # 图片输出质量, 0~100
-        "probability": 0.66,  # OCR可信度下限, 0~1
-        "subtitle_top_rate": 0.66,  # 字幕范围倍率
-        "remove_duplicate": False,  # 强制去重
-
-        # 目录信息,在下方定义
-        "video_dir": "",
-        "video_path": "",
-        "video_frames": "",
-        "image_dir": "",
-        "output_dir": "",
-
-        # 视频信息,自动生成
-        "video_name": "",
-        "video_suffix": "",
-        "video_width": 0,
-        "video_height": 0,
-        "subtitle_top": 0,  # 字幕范围 = 字幕范围倍率 * 视频高度,此高度以下的文字被认为是字幕
-    }
-
-    @staticmethod
-    def set_path(video_name="", video_suffix=""):
-        current_path = sys.path[0]
-
-        Config.Maps["video_dir"] = '%s/video/' % current_path  # 视频源文件目录
-        Config.Maps["video_path"] = '%s/video/%s%s' % (current_path, video_name, video_suffix)  # 指定视频文件路径
-        Config.Maps["video_frames"] = '%s/video_frames/' % current_path  # 视频切片文件目录
-        Config.Maps["image_dir"] = '%s/video_frames/%s/' % (current_path, video_name)  # 指定视频切片文件目录
-        Config.Maps["output_dir"] = '%s/output/' % current_path  # 字幕输出目录
-
-        Config.Maps["video_name"] = video_name
-        Config.Maps["video_suffix"] = video_suffix
-
-    @staticmethod
-    def set_video_props(video_width, video_height):
-        Config.Maps["video_width"] = video_width
-        Config.Maps["video_height"] = video_height
-        Config.Maps["subtitle_top"] = Config.Maps["subtitle_top_rate"] * video_height
-
-    @staticmethod
-    def get_value(key):
-        return Config.Maps[key]
-
-
-# getFrame类
-class GetFrames:
-    @staticmethod
-    def main():
-        # 读取路径信息
-        video_path = Config.get_value("video_path")
-        image_dir = Config.get_value('image_dir')
-        jpg_quality = Config.get_value('jpg_quality')
-        split_duration = Config.get_value('split_duration')
-
-        if (os.path.exists(image_dir)):
-            shutil.rmtree(image_dir)  # 递归删除目录，os.rmdir只能删除空目录
-        os.mkdir(image_dir)
-
-        cv = cv2.VideoCapture(video_path)  # 读入视频文件
-        current_frame = 1
-        saved_frames = 1
-
-        if cv.isOpened():  # 判断是否正常打开
-            retval, frame = cv.read()
-        else:
-            cv.release()
-            print("Video open error")
-            return False
-
-        duration = int(cv.get(cv2.CAP_PROP_FPS) * split_duration)  # 间隔频率 = 帧率 * 切片时间间隔(四舍五入)
-        frame_count = int(cv.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频总帧数
-        video_width = int(cv.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
-        video_height = int(cv.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
-        Config.set_video_props(video_width, video_height)
-
-        while retval:  # 循环读取视频帧
-            retval, frame = cv.read()
-
-            if current_frame % duration == 0:  # 每 duration 帧进行存储操作
-                cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), jpg_quality])[1]. \
-                    tofile(image_dir + str(current_frame).zfill(6) + '.jpg')
-
-                print(("Now: frame %d, saved: %d frame(s), process: %d%%" %
-                       (current_frame, saved_frames, (current_frame * 100) // frame_count)).ljust(60, ' '))
-                saved_frames += 1
-
-            current_frame += 1
-            cv2.waitKey(1)
-
-        print(("Now: frame %d, saved: %d frame(s), process: %d%%" %
-               (current_frame, saved_frames, (current_frame * 100) // frame_count)).ljust(60, ' '))
-        cv.release()
-        print("\nSaved: %d frame(s)" % saved_frames)
-        return True
-
-
-# 主类
-class Main:
-    @staticmethod
-    def clear():
-        if sys.platform.find("win") > -1:
-            os.system("cls")
-        else:
-            print()
-
-    @staticmethod
-    def main():
-        # 配置路径
-        Config.set_path()
-
-        if not (os.path.exists(Config.get_value('video_dir'))):
-            os.mkdir(Config.get_value('video_dir'))
-
-        if not (os.path.exists(Config.get_value('video_frames'))):
-            os.mkdir(Config.get_value('video_frames'))
-
-        if not (os.path.exists(Config.get_value('output_dir'))):
-            os.mkdir(Config.get_value('output_dir'))
-
-        # 列出所有video
-        Main.clear()
-        print("\n")
-        print("-"*40)
-        print("List Video")
-        print("-" * 40)
-        video_list = os.listdir(Config.get_value('video_dir'))
-        print(video_list)
-
-        if len(video_list) < 1:
-            print("Nothing found\n\n")
-            print("Process finished")
-            input()
-            return
-
-        # 对所有video进行处理
-        start_all = time.time()
-        print("\n")
-        print("-" * 40)
-        print("All Video Division")
-        print("-" * 40)
-        print("Start All video division")
-        for video in video_list:
-            print("%d.%s" % (video_list.index(video) + 1, video))
-            video_name = video[: video.rfind(".")]
-            video_suffix = video[video.rfind("."):]
-
-            Config.set_path(video_name, video_suffix)
-
-            start = time.time()
-            print("\n")
-            print("-" * 40)
-            print("Video: %s Division" % video)
-            print("-" * 40)
-            print("Start video division")
-
-            if not GetFrames.main():
-                print("Video division FAILED!")
-                print("Process finished")
-                input()
-                return
-
-            print("Video: %s division finished" % video)
-            print("Time: %.2fs\n" % (time.time() - start))
-
-        print("All Video division finished")
-        print("Time: %.2fs\n" % (time.time() - start_all))
-        return
-
-
-if __name__ == "__main__":
-    Main.main()
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://github.com/drsanwujiang/video-subtitle-recognize" target="_blank" rel="noopener">opencv实现视频切割</a><ol>
-<li><a href="https://www.kancloud.cn/aollo/aolloopencv" target="_blank" rel="noopener">OpenCV-Python中文教程</a></li>
-</ol>
 </li>
-<li><a href="https://www.ruanyifeng.com/blog/2020/01/ffmpeg.html" target="_blank" rel="noopener">FFmpeg视频处理</a></li>
-<li><a href="https://link.zhihu.com/?target=https%3A//github.com/chineseocr/darknet-ocr">darknet-ocr</a>：<code>star:851</code></li>
-<li><a href="https://link.zhihu.com/?target=https%3A//github.com/chineseocr/chineseocr">chineseocr</a>：<code>star:3.9k</code></li>
-<li><a href="https://link.zhihu.com/?target=https%3A//github.com/ouyanghuiyu/chineseocr_lite">https://github.com/ouyanghuiyu/chineseocr_litegithub.com</a>：<code>star:6.4k</code>，支持windows<ol>
-<li><a href="https://zhuanlan.zhihu.com/p/111533615" target="_blank" rel="noopener">机器之心：实测超轻量中文OCR开源项目，总模型仅17Mzhuanlan.zhihu.com)</a></li>
-</ol>
+<li><p>输出：</p>
+<ul>
+<li>$y$：待分类预测样本$x$对应的类别</li>
+</ul>
 </li>
-<li>包括AlexNet、RCNN、ResNet、YOLO、SSD等。</li>
-<li><a href="https://github.com/hwalsuklee/awesome-deep-text-detection-recognition" target="_blank" rel="noopener">文本检测的资源汇总</a><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/71028209" target="_blank" rel="noopener">Github：深度学习文本检测识别（OCR）精选资源汇总</a></li>
-</ol>
+<li><p>决策规则：</p>
+<script type="math/tex; mode=display">
+\begin{equation} 
+y = \arg \mathop {\max }\limits_{c_j} \sum\limits_{x_i \in n_k(x)} I(y_i = c_j),\ i = 1,2, \cdots ,n; \ j = 1,2, \cdots ,k 
+\label{eq:obj} 
+\end{equation}</script><ul>
+<li>找出训练样本集中与预测样本$x$距离相近的$k$个样本，根据这$k$个样本对应的类别，采取<strong>多数表决</strong>的规则来确定预测样本$x$的类别</li>
+</ul>
 </li>
-<li><a href="https://github.com/xiaofengShi/CHINESE-OCR" target="_blank" rel="noopener">xiaofengshi：chinese-ocr</a>：<code>star:2.4k</code></li>
-</ol>
+</ul>
+<h2 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h2><h3 id="k"><a href="#k" class="headerlink" title="$k$"></a>$k$</h3><ul>
+<li>在二元（两类）分类问题中，选取$k$为奇数有助于避免两个分类平票的情形</li>
+<li>在此问题下，选取最佳经验$k$值的方法是<a href="https://zh.wikipedia.org/wiki/自助法" target="_blank" rel="noopener">自助法</a></li>
+<li>常用的是交叉验证方法来选取$k$</li>
+</ul>
+<h3 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h3><ul>
+<li>一般情况下，将<a href="https://zh.wikipedia.org/wiki/欧氏距离" target="_blank" rel="noopener">欧氏距离</a>作为距离度量，但是这是只适用于连续变量。在文本分类这种离散变量情况下，另一个度量——<strong>重叠度量</strong>（或<a href="https://zh.wikipedia.org/wiki/海明距离" target="_blank" rel="noopener">海明距离</a>）可以用来作为度量</li>
+</ul>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="修正之加权KNN"><a href="#修正之加权KNN" class="headerlink" title="修正之加权KNN"></a>修正之加权<code>KNN</code></h2><ul>
+<li><p>上面提到的计算规则中，$k$邻域的样本点对预测结果的贡献度是相等的</p>
+</li>
+<li><p>但我们直观理解，距离更近的样本点应有更大的相似度，其贡献度应比距离更远的样本点大</p>
+</li>
+<li><p>所以可以加上权值$w_i = \frac{1}{\left| {x_i - x} \right|}$进行修正，则式(1)变成：</p>
+<script type="math/tex; mode=display">
+\begin{equation} 
+y = \arg \mathop {\max }\limits_{c_j} \sum\limits_{x_i \in n_k(x)} {w_i \times I(y_i = c_j)},\ i = 1,2, \cdots ,n; \ j = 1,2, \cdots ,k 
+\label{eq:obj1} 
+\end{equation}</script></li>
+</ul>
+<h2 id="加快计算之KD树"><a href="#加快计算之KD树" class="headerlink" title="加快计算之KD树"></a>加快计算之<code>KD</code>树</h2><h1 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href>Michael Steinbach and Pang-Ning Tan, The Top Ten Algorithms in Data Mining.</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">wiki-K近邻算法</a></li>
+<li><a href="https://www.cnblogs.com/en-heng/p/5000628.html" target="_blank" rel="noopener">【十大经典数据挖掘算法】kNN</a></li>
+</ul>
 
             </div>
             <hr/>
@@ -736,7 +563,7 @@ if __name__ == "__main__":
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/">https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/</a>
+                    <a href="https://myhaa.github.io/2021/03/15/shu-ju-wa-jue-zhi-knn/">https://myhaa.github.io/2021/03/15/shu-ju-wa-jue-zhi-knn/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -774,12 +601,12 @@ if __name__ == "__main__":
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/AI/">
-                                    <span class="chip bg-color">AI</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+                                    <span class="chip bg-color">数据挖掘</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
-                                    <span class="chip bg-color">图像识别</span>
+                                <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">十大算法</span>
                                 </a>
                             
                         </div>
@@ -950,7 +777,7 @@ if __name__ == "__main__":
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2021-03-11T15-45-18',
+        id: '2021-03-15T09-37-08',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -971,9 +798,10 @@ if __name__ == "__main__":
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/15/shu-ju-wa-jue-zhi-knn/">
                     <div class="card-image">
@@ -991,9 +819,9 @@ if __name__ == "__main__":
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1006,6 +834,7 @@ if __name__ == "__main__":
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1028,24 +857,24 @@ if __name__ == "__main__":
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/10/nlp-zhi-textrank/">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="NLP之TextRank">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="深度学习之图片OCR">
                         
-                        <span class="card-title">NLP之TextRank</span>
+                        <span class="card-title">深度学习之图片OCR</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            关键词提取之TextRank
+                            图片相关处理技术
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
                             </span>
                         <span class="publish-author">
                             
@@ -1062,12 +891,12 @@ if __name__ == "__main__":
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/NLP/">
-                        <span class="chip bg-color">NLP</span>
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/">
-                        <span class="chip bg-color">关键词提取</span>
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">图像识别</span>
                     </a>
                     
                 </div>
@@ -1237,6 +1066,13 @@ if __name__ == "__main__":
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
