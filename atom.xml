@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-15T02:04:59.737Z</updated>
+  <updated>2021-03-16T12:36:05.857Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据挖掘之决策树</title>
+    <link href="https://myhaa.github.io/2021/03/15/shu-ju-wa-jue-zhi-jue-ce-shu/"/>
+    <id>https://myhaa.github.io/2021/03/15/shu-ju-wa-jue-zhi-jue-ce-shu/</id>
+    <published>2021-03-15T11:39:45.000Z</published>
+    <updated>2021-03-16T12:36:05.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;决策树既可以分类、也可以回归&lt;/li&gt;
+&lt;li&gt;又适合集成学习如随机森林、GBDT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="数据挖掘" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="十大算法" scheme="https://myhaa.github.io/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>数据挖掘之KNN</title>
@@ -50,7 +83,7 @@
     <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/"/>
     <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-pian-ocr/</id>
     <published>2021-03-11T07:45:18.000Z</published>
-    <updated>2021-03-12T09:42:16.916Z</updated>
+    <updated>2021-03-16T08:15:50.710Z</updated>
     
     <summary type="html">
     
@@ -186,9 +219,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
-    
       <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
+    
+      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
     
       <category term="分词" scheme="https://myhaa.github.io/tags/%E5%88%86%E8%AF%8D/"/>
     
@@ -217,9 +250,9 @@
       <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
     
-      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
-    
       <category term="AI" scheme="https://myhaa.github.io/tags/AI/"/>
+    
+      <category term="NLP" scheme="https://myhaa.github.io/tags/NLP/"/>
     
   </entry>
   
@@ -569,35 +602,6 @@
       <category term="人工智能" scheme="https://myhaa.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
       <category term="Storm" scheme="https://myhaa.github.io/tags/Storm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spark</title>
-    <link href="https://myhaa.github.io/2019/12/12/spark/"/>
-    <id>https://myhaa.github.io/2019/12/12/spark/</id>
-    <published>2019-12-12T03:21:11.000Z</published>
-    <updated>2019-12-12T11:35:43.525Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Spark基础&quot;&gt;&lt;a href=&quot;#Spark基础&quot; class=&quot;headerlink&quot; title=&quot;Spark基础&quot;&gt;&lt;/a&gt;Spark基础&lt;/h1&gt;&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="Spark" scheme="https://myhaa.github.io/tags/Spark/"/>
     
   </entry>
   
