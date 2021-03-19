@@ -1,0 +1,2364 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="机器学习之一个完整项目, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="参考
+hands on machine learning with scikit-learn and tensorflow
+参考书代码
+参考书代码2
+
+一个完整的机器学习项目主要步骤
+项目概述
+获取数据
+发现并可视化数据，发现规律
+为机器学">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>机器学习之一个完整项目 | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        机器学习之一个完整项目
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                AI/数据科学
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-19
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="chrome-extension://cdonnmffkdaoajfknoeeecmchibpmkmg/assets/pdf/web/viewer.html?file=http%3A%2F%2Findex-of.es%2FVarios-2%2FHands%2520on%2520Machine%2520Learning%2520with%2520Scikit%2520Learn%2520and%2520Tensorflow.pdf" target="_blank" rel="noopener">hands on machine learning with scikit-learn and tensorflow</a></li>
+<li><a href="https://github.com/ageron/handson-ml" target="_blank" rel="noopener">参考书代码</a></li>
+<li><a href="https://github.com/ageron/handson-ml2" target="_blank" rel="noopener">参考书代码2</a></li>
+</ul>
+<h1 id="一个完整的机器学习项目"><a href="#一个完整的机器学习项目" class="headerlink" title="一个完整的机器学习项目"></a>一个完整的机器学习项目</h1><h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
+<li>项目概述</li>
+<li>获取数据</li>
+<li>发现并可视化数据，发现规律</li>
+<li>为机器学习算法准备数据</li>
+<li>选择模型，进行训练</li>
+<li>微调模型</li>
+<li>给出解决方案</li>
+<li>部署、监控、维护系统</li>
+</ol>
+<h2 id="使用真实数据"><a href="#使用真实数据" class="headerlink" title="使用真实数据"></a>使用真实数据</h2><ul>
+<li>流行的开源数据仓库<ul>
+<li><a href="http://archive.ics.uci.edu/ml/index.php" target="_blank" rel="noopener">UCI</a></li>
+<li><a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle</a></li>
+<li><a href="https://registry.opendata.aws/" target="_blank" rel="noopener">Amazon AWS</a></li>
+</ul>
+</li>
+<li>准入口（提供开源数据列表）<ul>
+<li><a href="http://dataportals.org/search" target="_blank" rel="noopener">dataportals</a></li>
+<li><a href="https://opendatamonitor.eu/frontend/web/index.php?r=dashboard%2Findex" target="_blank" rel="noopener">opendatamonitor</a></li>
+<li><a href="https://www.quandl.com/" target="_blank" rel="noopener">quandl</a></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><a href="https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research" target="_blank" rel="noopener">wikipedia</a></li>
+<li><a href="https://www.quora.com/Where-can-I-find-large-datasets-open-to-the-public" target="_blank" rel="noopener">quora</a></li>
+<li><a href="https://www.reddit.com/r/datasets/" target="_blank" rel="noopener">reddit</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="项目概览"><a href="#项目概览" class="headerlink" title="项目概览"></a>项目概览</h2><ul>
+<li>利用加州普查数据，建立一个加州房价模型。这个数据包含每个街区组的人口、收入中位数、房价中位数等指标。</li>
+</ul>
+<h3 id="划定问题"><a href="#划定问题" class="headerlink" title="划定问题"></a>划定问题</h3><h4 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h4><ul>
+<li>第一个问题：商业目标是什么？如何使用、并从模型受益？</li>
+<li>第二个问题：现在的解决方案效果如何？</li>
+</ul>
+<h4 id="划定问题-1"><a href="#划定问题-1" class="headerlink" title="划定问题"></a>划定问题</h4><ul>
+<li>监督或非监督或强化学习？</li>
+<li>分类或回归或其他？</li>
+<li>批量还是线上？</li>
+</ul>
+<h3 id="选择性能指标"><a href="#选择性能指标" class="headerlink" title="选择性能指标"></a>选择性能指标</h3><ul>
+<li>回归问题的典型指标：均方根误差（RMSE）、平方绝对误差（MAE）</li>
+</ul>
+<h3 id="核实假设"><a href="#核实假设" class="headerlink" title="核实假设"></a>核实假设</h3><ul>
+<li>首先列出并核对迄今（你或其他人）作出的假设</li>
+</ul>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><h3 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import os
+import tarfile
+from six.moves import urllib
+
+DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
+HOUSING_PATH = "datasets/housing"
+HOUSING_URL = DOWNLOAD_ROOT + HOUSING_PATH + "/housing.tgz"
+
+def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
+    if not os.path.isdir(housing_path):
+        os.makedirs(housing_path)
+    tgz_path = os.path.join(housing_path, "housing.tgz")
+    urllib.request.urlretrieve(housing_url, tgz_path)
+    housing_tgz = tarfile.open(tgz_path)
+    housing_tgz.extractall(path=housing_path)
+    housing_tgz.close()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># fetch_housing_data()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import pandas as pd
+
+def load_housing_data(housing_path=HOUSING_PATH):
+    csv_path = os.path.join(housing_path, "housing.csv")
+    return pd.read_csv(csv_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing = load_housing_data()
+housing.head()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>ocean_proximity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-122.23</td>
+      <td>37.88</td>
+      <td>41.0</td>
+      <td>880.0</td>
+      <td>129.0</td>
+      <td>322.0</td>
+      <td>126.0</td>
+      <td>8.3252</td>
+      <td>452600.0</td>
+      <td>NEAR BAY</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-122.22</td>
+      <td>37.86</td>
+      <td>21.0</td>
+      <td>7099.0</td>
+      <td>1106.0</td>
+      <td>2401.0</td>
+      <td>1138.0</td>
+      <td>8.3014</td>
+      <td>358500.0</td>
+      <td>NEAR BAY</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-122.24</td>
+      <td>37.85</td>
+      <td>52.0</td>
+      <td>1467.0</td>
+      <td>190.0</td>
+      <td>496.0</td>
+      <td>177.0</td>
+      <td>7.2574</td>
+      <td>352100.0</td>
+      <td>NEAR BAY</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-122.25</td>
+      <td>37.85</td>
+      <td>52.0</td>
+      <td>1274.0</td>
+      <td>235.0</td>
+      <td>558.0</td>
+      <td>219.0</td>
+      <td>5.6431</td>
+      <td>341300.0</td>
+      <td>NEAR BAY</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-122.25</td>
+      <td>37.85</td>
+      <td>52.0</td>
+      <td>1627.0</td>
+      <td>280.0</td>
+      <td>565.0</td>
+      <td>259.0</td>
+      <td>3.8462</td>
+      <td>342200.0</td>
+      <td>NEAR BAY</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing.info()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 20640 entries, 0 to 20639
+Data columns (total 10 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   longitude           20640 non-null  float64
+ 1   latitude            20640 non-null  float64
+ 2   housing_median_age  20640 non-null  float64
+ 3   total_rooms         20640 non-null  float64
+ 4   total_bedrooms      20433 non-null  float64
+ 5   population          20640 non-null  float64
+ 6   households          20640 non-null  float64
+ 7   median_income       20640 non-null  float64
+ 8   median_house_value  20640 non-null  float64
+ 9   ocean_proximity     20640 non-null  object 
+dtypes: float64(9), object(1)
+memory usage: 1.6+ MB
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">housing['ocean_proximity'].value_counts()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>&lt;1H OCEAN     9136
+INLAND        6551
+NEAR OCEAN    2658
+NEAR BAY      2290
+ISLAND           5
+Name: ocean_proximity, dtype: int64
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">housing.describe()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+      <td>20433.000000</td>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+      <td>20640.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-119.569704</td>
+      <td>35.631861</td>
+      <td>28.639486</td>
+      <td>2635.763081</td>
+      <td>537.870553</td>
+      <td>1425.476744</td>
+      <td>499.539680</td>
+      <td>3.870671</td>
+      <td>206855.816909</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.003532</td>
+      <td>2.135952</td>
+      <td>12.585558</td>
+      <td>2181.615252</td>
+      <td>421.385070</td>
+      <td>1132.462122</td>
+      <td>382.329753</td>
+      <td>1.899822</td>
+      <td>115395.615874</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-124.350000</td>
+      <td>32.540000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+      <td>0.499900</td>
+      <td>14999.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-121.800000</td>
+      <td>33.930000</td>
+      <td>18.000000</td>
+      <td>1447.750000</td>
+      <td>296.000000</td>
+      <td>787.000000</td>
+      <td>280.000000</td>
+      <td>2.563400</td>
+      <td>119600.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-118.490000</td>
+      <td>34.260000</td>
+      <td>29.000000</td>
+      <td>2127.000000</td>
+      <td>435.000000</td>
+      <td>1166.000000</td>
+      <td>409.000000</td>
+      <td>3.534800</td>
+      <td>179700.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>-118.010000</td>
+      <td>37.710000</td>
+      <td>37.000000</td>
+      <td>3148.000000</td>
+      <td>647.000000</td>
+      <td>1725.000000</td>
+      <td>605.000000</td>
+      <td>4.743250</td>
+      <td>264725.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>-114.310000</td>
+      <td>41.950000</td>
+      <td>52.000000</td>
+      <td>39320.000000</td>
+      <td>6445.000000</td>
+      <td>35682.000000</td>
+      <td>6082.000000</td>
+      <td>15.000100</td>
+      <td>500001.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%matplotlib inline
+import matplotlib.pyplot as plt
+housing.hist(bins=50, figsize=(20, 15))
+plt.tight_layout()
+plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/output_8_0.png" alt="output_8_0"></p>
+<h2 id="创建测试集"><a href="#创建测试集" class="headerlink" title="创建测试集"></a>创建测试集</h2><h3 id="随机采样"><a href="#随机采样" class="headerlink" title="随机采样"></a>随机采样</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+
+def train_test_split(data, test_ratio):
+    np.random.seed(0)  # 设置随机数种子以每次运行产生相同测试集，但是新数据加入就可能把之前训练集的加入到测试集
+    shuffled_indices = np.random.permutation(len(data))
+    test_set_size = int(len(data)*test_ratio)
+    test_indices = shuffled_indices[:test_set_size]
+    train_indices = shuffled_indices[test_set_size:]
+    return data.iloc[train_indices], data.iloc[test_indices]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set, test_set = train_test_split(housing, test_ratio=0.2)
+print(len(train_set), "train + ", len(test_set), "test")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>16512 train +  4128 test
+</code></pre><ul>
+<li>上述随机抽样如果新数据来，重新运行程序会将之前的训练样本有可能划分成测试样本</li>
+<li>解决办法：一个通常的解决办法是使用每个实例的ID来判定这个实例是否应该放入测试集（假设每个实例都有唯一并且不变的ID）【例如，你可以计算出每个实例ID的哈希值，只保留其最后一个字节，如果该值小于等于51（约为256 的20%），就将其放入测试集。这样可以保证在多次运行中，测试集保持不变，即使更新了数据集。新的测试集会包含新实例中的20%，但不会有之前位于训练集的实例。】</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import hashlib
+
+def test_set_check(identifier, test_ratio, hash):
+    return hash(np.int64(identifier)).digest()[-1]<256*test_ratio
+
+def split_train_test_by_id(data, test_ratio, id_column, hash=hashlib.md5):
+    ids = data[id_column]
+    in_test_set = ids.apply(lambda id_: test_set_check(id_, test_ratio, hash))
+    return data.loc[~in_test_set], data.loc[in_test_set]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 如果使用行索引作为唯一识别码，你需要保证新数据都放到现有数据的尾部，且没有行被删除
+housing_with_id = housing.reset_index()
+train_set, test_set = split_train_test_by_id(housing_with_id, 0.2, "index")
+print(len(train_set), "train + ", len(test_set), "test")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>16362 train +  4278 test
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 一个区的维度和经度在几百万年之内是不变的，所以可以将两者结合成一个ID
+housing_with_id["id"] = housing["longitude"] * 1000 + housing["latitude"]
+train_set, test_set = split_train_test_by_id(housing_with_id, 0.2, "id")
+print(len(train_set), "train + ", len(test_set), "test")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>16267 train +  4373 test
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 最简单的函数是train_test_split ，它的作用和之前的函数split_train_test 很像，并带有其它一些功能。首先，它有一个random_state 参数，可以设定前面讲过的随机生成器种子；第二，你可以将种子传递给多个行数相同的数据集，可以在相同的索引上分割数据集（这个功能非常有用，比如你的标签值是放在另一个DataFrame 里的）
+from sklearn.model_selection import train_test_split
+
+train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
+print(len(train_set), "train + ", len(test_set), "test")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>16512 train +  4128 test
+</code></pre><ul>
+<li>目前为止，我们采用的都是纯随机的取样方法。当你的数据集很大时（尤其是和属性数相比），这通常可行；但如果数据集不大，就会有采样偏差的风险。 </li>
+</ul>
+<h3 id="分层采样"><a href="#分层采样" class="headerlink" title="分层采样"></a>分层采样</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">housing["income_cat"] = np.ceil(housing["median_income"] / 1.5)
+housing["income_cat"].where(housing["income_cat"]<5, 5.0, inplace=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.model_selection import StratifiedShuffleSplit
+
+split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+
+for train_index, test_index in split.split(housing, housing["income_cat"]):
+    strat_train_set = housing.loc[train_index]
+    strat_test_set = housing.loc[test_index]
+print(len(strat_train_set), "train + ", len(strat_test_set), "test")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>16512 train +  4128 test
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">housing["income_cat"].value_counts() / len(housing)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>3.0    0.350581
+2.0    0.318847
+4.0    0.176308
+5.0    0.114438
+1.0    0.039826
+Name: income_cat, dtype: float64
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">strat_train_set["income_cat"].value_counts() / len(strat_train_set)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>3.0    0.350594
+2.0    0.318859
+4.0    0.176296
+5.0    0.114402
+1.0    0.039850
+Name: income_cat, dtype: float64
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">for set in (strat_train_set, strat_test_set):
+    set.drop(["income_cat"], axis=1, inplace=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="数据EDA"><a href="#数据EDA" class="headerlink" title="数据EDA"></a>数据EDA</h2><ul>
+<li>首先将测试集放一旁，只研究训练集</li>
+<li>如果训练集非常大，需要再采样一个探索集</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing = strat_train_set.copy()
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)  # alpha控制透明度
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>&lt;AxesSubplot:xlabel=&#39;longitude&#39;, ylabel=&#39;latitude&#39;&gt;
+</code></pre><p><img src="/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/output_24_1.png" alt="output_24_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing.plot(kind='scatter', x="longitude", y="latitude", alpha=0.4,
+            s=housing['population']/100, label='population',
+            c='median_house_value', cmap=plt.get_cmap('jet'), colorbar=True)
+plt.legend()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x1cb9a343b50&gt;
+</code></pre><p><img src="/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/output_25_1.png" alt="output_25_1"></p>
+<ul>
+<li>这张图说明房价和位置、人口密度联系密切</li>
+</ul>
+<h3 id="查找关联"><a href="#查找关联" class="headerlink" title="查找关联"></a>查找关联</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 相关系数
+corr_matrix = housing.corr()
+corr_matrix['median_house_value'].sort_values(ascending=False)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>median_house_value    1.000000
+median_income         0.687160
+total_rooms           0.135097
+housing_median_age    0.114110
+households            0.064506
+total_bedrooms        0.047689
+population           -0.026920
+longitude            -0.047432
+latitude             -0.142724
+Name: median_house_value, dtype: float64
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 相关系数图
+from pandas.plotting import scatter_matrix
+
+attributes = ['median_house_value', 'median_income', 'total_rooms', 'housing_median_age']
+scatter_matrix(housing[attributes], figsize=(12,8))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([[&lt;AxesSubplot:xlabel=&#39;median_house_value&#39;, ylabel=&#39;median_house_value&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;total_rooms&#39;, ylabel=&#39;median_house_value&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;housing_median_age&#39;, ylabel=&#39;median_house_value&#39;&gt;],
+       [&lt;AxesSubplot:xlabel=&#39;median_house_value&#39;, ylabel=&#39;median_income&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;median_income&#39;, ylabel=&#39;median_income&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;total_rooms&#39;, ylabel=&#39;median_income&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;housing_median_age&#39;, ylabel=&#39;median_income&#39;&gt;],
+       [&lt;AxesSubplot:xlabel=&#39;median_house_value&#39;, ylabel=&#39;total_rooms&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;median_income&#39;, ylabel=&#39;total_rooms&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;total_rooms&#39;, ylabel=&#39;total_rooms&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;housing_median_age&#39;, ylabel=&#39;total_rooms&#39;&gt;],
+       [&lt;AxesSubplot:xlabel=&#39;median_house_value&#39;, ylabel=&#39;housing_median_age&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;median_income&#39;, ylabel=&#39;housing_median_age&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;total_rooms&#39;, ylabel=&#39;housing_median_age&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;housing_median_age&#39;, ylabel=&#39;housing_median_age&#39;&gt;]],
+      dtype=object)
+</code></pre><p><img src="/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/output_28_1.png" alt="output_28_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 最有希望用来预测房价中位数的属性是收入中位数，因此将这张图放大
+housing.plot(kind='scatter', x='median_income', y='median_house_value', alpha=0.1)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>&lt;AxesSubplot:xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
+</code></pre><p><img src="/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/output_29_1.png" alt="output_29_1"></p>
+<ul>
+<li>会发现一些直线，希望去除这些直线对应的记录，以防止算法重复这些巧合</li>
+</ul>
+<h3 id="属性组合试验"><a href="#属性组合试验" class="headerlink" title="属性组合试验"></a>属性组合试验</h3><ol>
+<li>探索数据可能发现一些数据的巧合，需要将其去除</li>
+<li>发现一些属性间有趣的关联</li>
+<li>一些属性有长尾分布，将其转换</li>
+<li>……</li>
+</ol>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing['rooms_per_household'] = housing['total_rooms'] / housing['households']
+housing['bedrooms_per_room'] = housing['total_bedrooms'] / housing['total_rooms']
+housing['population_per_household'] = housing['population'] / housing['households']
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">corr_matrix = housing.corr()
+corr_matrix['median_house_value'].sort_values(ascending=False)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>median_house_value          1.000000
+median_income               0.687160
+rooms_per_household         0.146285
+total_rooms                 0.135097
+housing_median_age          0.114110
+households                  0.064506
+total_bedrooms              0.047689
+population_per_household   -0.021985
+population                 -0.026920
+longitude                  -0.047432
+latitude                   -0.142724
+bedrooms_per_room          -0.259984
+Name: median_house_value, dtype: float64
+</code></pre><h2 id="为机器学习算法准备数据"><a href="#为机器学习算法准备数据" class="headerlink" title="为机器学习算法准备数据"></a>为机器学习算法准备数据</h2><ul>
+<li>写函数的好处：<ol>
+<li>函数可以让你在任何数据集上方便的进行重复数据转换</li>
+<li>你能慢慢建立一个转换函数库，可以在未来的项目中复用</li>
+<li>在将数据传给算法之前，你可以在实时系统中使用这些函数</li>
+<li>这可以让你方便的尝试多种数据转换，查看哪些转换方法结合起来效果最好</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing = strat_train_set.drop('median_house_value', axis=1)
+housing_labels = strat_train_set['median_house_value'].copy()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><ul>
+<li>前面探索发现<code>total_bedrooms</code>有一些缺失值，有三个解决选项：<ol>
+<li>去掉对应行记录</li>
+<li>去掉这个属性</li>
+<li>进行赋值（0、平均值、中位数等等）</li>
+</ol>
+</li>
+<li>也可以使用sklearn里面的Imputer类来处理缺失值</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing.dropna(subset=['total_bedrooms'])  # 选项1
+housing.drop('total_bedrooms', axis=1)  # 选项2
+median = housing['total_bedrooms'].median()  # 选项3
+housing['total_bedrooms'].fillna(median)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>17606     351.0
+18632     108.0
+14650     471.0
+3230      371.0
+3555     1525.0
+          ...  
+6563      236.0
+12053     294.0
+13908     872.0
+11159     380.0
+15775     682.0
+Name: total_bedrooms, Length: 16512, dtype: float64
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(missing_values=np.nan, strategy='median')
+
+# 只有数值属性才能算出中位数
+housing_num = housing.drop('ocean_proximity', axis=1)
+imputer.fit(housing_num)
+print(imputer.statistics_)
+print(housing.median().values)
+
+# 对训练集进行转换
+X = imputer.transform(housing_num)
+housing_tr = pd.DataFrame(X, columns=housing_num.columns)
+housing_tr.head()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[-118.51     34.26     29.     2119.5     433.     1164.      408.
+    3.5409]
+[-118.51     34.26     29.     2119.5     433.     1164.      408.
+    3.5409]
+</code></pre><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-121.89</td>
+      <td>37.29</td>
+      <td>38.0</td>
+      <td>1568.0</td>
+      <td>351.0</td>
+      <td>710.0</td>
+      <td>339.0</td>
+      <td>2.7042</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-121.93</td>
+      <td>37.05</td>
+      <td>14.0</td>
+      <td>679.0</td>
+      <td>108.0</td>
+      <td>306.0</td>
+      <td>113.0</td>
+      <td>6.4214</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-117.20</td>
+      <td>32.77</td>
+      <td>31.0</td>
+      <td>1952.0</td>
+      <td>471.0</td>
+      <td>936.0</td>
+      <td>462.0</td>
+      <td>2.8621</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-119.61</td>
+      <td>36.31</td>
+      <td>25.0</td>
+      <td>1847.0</td>
+      <td>371.0</td>
+      <td>1460.0</td>
+      <td>353.0</td>
+      <td>1.8839</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-118.59</td>
+      <td>34.23</td>
+      <td>17.0</td>
+      <td>6592.0</td>
+      <td>1525.0</td>
+      <td>4459.0</td>
+      <td>1463.0</td>
+      <td>3.0347</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h4 id="处理文本和类别属性"><a href="#处理文本和类别属性" class="headerlink" title="处理文本和类别属性"></a>处理文本和类别属性</h4><ol>
+<li>将文本标签转换为数字：这样做的问题是：ML算法会认为两个临近值比两个疏远值更相似，但是对标签数据这样是不准确的<ul>
+<li>sklearn提供一个转换器：LabelEncoder</li>
+</ul>
+</li>
+<li>one-hot编码：每个属性弄成0-1<ul>
+<li>sklearn提供一个转换器：OneHotEncoder</li>
+</ul>
+</li>
+</ol>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.preprocessing import LabelEncoder
+
+encoder = LabelEncoder()
+housing_cat = housing['ocean_proximity']
+housing_cat_encoded = encoder.fit_transform(housing_cat)
+print(housing_cat_encoded)
+
+# 有多个文本特征列时，应使用factorize()方法
+housing_cat_encoded, housing_categories = housing_cat.factorize()
+print(housing_cat_encoded, housing_categories)
+print(encoder.classes_)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[0 0 4 ... 1 0 3]
+[0 0 1 ... 2 0 3] Index([&#39;&lt;1H OCEAN&#39;, &#39;NEAR OCEAN&#39;, &#39;INLAND&#39;, &#39;NEAR BAY&#39;, &#39;ISLAND&#39;], dtype=&#39;object&#39;)
+[&#39;&lt;1H OCEAN&#39; &#39;INLAND&#39; &#39;ISLAND&#39; &#39;NEAR BAY&#39; &#39;NEAR OCEAN&#39;]
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder()
+housing_cat_1hot = encoder.fit_transform(housing_cat_encoded.reshape(-1,1))
+print(housing_cat_1hot.toarray())
+housing_cat_1hot  # 稀疏矩阵
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[[1. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ ...
+ [0. 0. 1. 0. 0.]
+ [1. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0.]]
+
+
+
+
+
+&lt;16512x5 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+    with 16512 stored elements in Compressed Sparse Row format&gt;
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 使用LabelBinarize一步到位：获得稀疏矩阵+to array
+from sklearn.preprocessing import LabelBinarizer
+encoder = LabelBinarizer(sparse_output=False)
+housing_cat_1hot = encoder.fit_transform(housing_cat)
+print(housing_cat_1hot)
+
+# # 有多个文本特征列时，应使用sklearn中的CategoricalEncoder类
+# from sklearn.preprocessing import CategoricalEncoder
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[[1 0 0 0 0]
+ [1 0 0 0 0]
+ [0 0 0 0 1]
+ ...
+ [0 1 0 0 0]
+ [1 0 0 0 0]
+ [0 0 0 1 0]]
+</code></pre><h4 id="自定义转换器"><a href="#自定义转换器" class="headerlink" title="自定义转换器"></a>自定义转换器</h4><ul>
+<li>尽管Scikit-Learn 提供了许多有用的转换器，你还是需要自己动手写转换器执行任务，比如自定义的清理操作，或属性组合。你需要让自制的转换器与Scikit-Learn 组件（比如流水线）无缝衔接工作，因为Scikit-Learn 是依赖鸭子类型的（而不是继承），你所需要做的是创建一个类并执行三个方法：fit() （返回self ），transform() ，和fit_transform() 。</li>
+<li>鸭子类型（英语：duck typing）在程序设计中是动态类型的一种风格。在这种风格中，一个对象有效的语义，不是由继承自特定的类或实现特定的接口，而是由”当前方法和属性的集合”决定。</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.base import BaseEstimator, TransformerMixin
+rooms_ix, bedrooms_ix, population_ix, household_ix = 3, 4, 5, 6
+
+class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+    def __init__(self, add_bedrooms_pre_room=True):
+        self.add_bedrooms_pre_room = add_bedrooms_pre_room
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X, y=None):
+        rooms_pre_household = X[:, rooms_ix] / X[:, household_ix]
+        population_pre_household = X[:, population_ix] / X[:, household_ix]
+        if self.add_bedrooms_pre_room:
+            bedrooms_pre_room = X[:, bedrooms_ix] / X[:, rooms_ix]
+            return np.c_[X, rooms_pre_household, population_pre_household, bedrooms_pre_room]
+        else:
+            return np.c_[X, rooms_pre_household, population_pre_household]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">attr_adder = CombinedAttributesAdder(add_bedrooms_pre_room=False)
+housing_extra_attribs = attr_adder.transform(housing.values)
+housing_extra_attribs
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([[-121.89, 37.29, 38.0, ..., &#39;&lt;1H OCEAN&#39;, 4.625368731563422,
+        2.094395280235988],
+       [-121.93, 37.05, 14.0, ..., &#39;&lt;1H OCEAN&#39;, 6.008849557522124,
+        2.7079646017699117],
+       [-117.2, 32.77, 31.0, ..., &#39;NEAR OCEAN&#39;, 4.225108225108225,
+        2.0259740259740258],
+       ...,
+       [-116.4, 34.09, 9.0, ..., &#39;INLAND&#39;, 6.34640522875817,
+        2.742483660130719],
+       [-118.01, 33.82, 31.0, ..., &#39;&lt;1H OCEAN&#39;, 5.50561797752809,
+        3.808988764044944],
+       [-122.45, 37.77, 52.0, ..., &#39;NEAR BAY&#39;, 4.843505477308295,
+        1.9859154929577465]], dtype=object)
+</code></pre><h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><ul>
+<li>让所有属性具有相同量度：<ol>
+<li>线性归一化： MinMaxScaler()</li>
+<li>标准化: StandarScaler()</li>
+</ol>
+</li>
+<li>与所有的转换一样，缩放器只能向训练集拟合，而不是向完整的数据集（包括测试集）。只有这样，你才能用缩放器转换训练集和测试集（和新数据）</li>
+</ul>
+<h4 id="转换流水线"><a href="#转换流水线" class="headerlink" title="转换流水线"></a>转换流水线</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+num_pipline = Pipeline([('imputer', SimpleImputer(strategy='median')),
+                        ('attribs_addr', CombinedAttributesAdder()),
+                        ('std_scaler', StandardScaler()),
+                       ])
+housing_num_tr = num_pipline.fit_transform(housing_num)
+housing_num_tr
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([[-1.15604281,  0.77194962,  0.74333089, ..., -0.31205452,
+        -0.08649871,  0.15531753],
+       [-1.17602483,  0.6596948 , -1.1653172 , ...,  0.21768338,
+        -0.03353391, -0.83628902],
+       [ 1.18684903, -1.34218285,  0.18664186, ..., -0.46531516,
+        -0.09240499,  0.4222004 ],
+       ...,
+       [ 1.58648943, -0.72478134, -1.56295222, ...,  0.3469342 ,
+        -0.03055414, -0.52177644],
+       [ 0.78221312, -0.85106801,  0.18664186, ...,  0.02499488,
+         0.06150916, -0.30340741],
+       [-1.43579109,  0.99645926,  1.85670895, ..., -0.22852947,
+        -0.09586294,  0.10180567]])
+</code></pre><h4 id="将数值流水线和属性型流水线一起处理"><a href="#将数值流水线和属性型流水线一起处理" class="headerlink" title="将数值流水线和属性型流水线一起处理"></a>将数值流水线和属性型流水线一起处理</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.pipeline import FeatureUnion
+
+from sklearn.base import BaseEstimator, TransformerMixin
+
+class DataFrameSelector(BaseEstimator, TransformerMixin):
+    def __init__(self, attribute_names):
+        self.attribute_names=attribute_names
+    def fit(self, X, y=None):
+        return self
+    def transform(self, X):
+        return X[self.attribute_names].values
+
+class MyLabelBinarizer(BaseEstimator, TransformerMixin):
+    def __init__(self, *args, **kwargs):
+        self.encoder = LabelBinarizer(*args, **kwargs)
+    def fit(self, x, y=None):
+        self.encoder.fit(x)
+        return self
+    def transform(self, x, y=None):
+        return self.encoder.transform(x)
+
+
+num_attribs = list(housing_num)
+cat_attribs = ['ocean_proximity']
+
+num_pipline = Pipeline([('selector', DataFrameSelector(num_attribs)),
+                        ('imputer', SimpleImputer(strategy='median')),
+                        ('attribs_addr', CombinedAttributesAdder()),
+                        ('std_scaler', StandardScaler()),
+                       ])
+
+cat_pipline = Pipeline([('selector', DataFrameSelector(cat_attribs)),
+                        ('label_binarizer', MyLabelBinarizer()),
+                       ])
+
+full_pipeline = FeatureUnion(transformer_list=[('num_pipeline', num_pipline),
+                                               ('cat_pipeline', cat_pipline),
+                                              ])
+
+housing_prepared = full_pipeline.fit_transform(housing)
+housing_prepared.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(16512, 16)
+</code></pre><h3 id="选择并训练模型"><a href="#选择并训练模型" class="headerlink" title="选择并训练模型"></a>选择并训练模型</h3><ul>
+<li>前面已做<ol>
+<li>限定了问题</li>
+<li>获取数据</li>
+<li>探索数据</li>
+<li>采样测试集</li>
+<li>自动化的转换流水线：清理数据</li>
+</ol>
+</li>
+</ul>
+<h4 id="在训练集上训练和评估"><a href="#在训练集上训练和评估" class="headerlink" title="在训练集上训练和评估"></a>在训练集上训练和评估</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 回归模型
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression();
+lin_reg.fit(housing_prepared, housing_labels);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 用一些训练数据看看
+some_data = housing.iloc[:5]
+some_labels = housing_labels.iloc[:5]
+some_data_prepared = full_pipeline.transform(some_data)
+print(lin_reg.predict(some_data_prepared))
+print(list(some_labels))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[210644.60459286 317768.80697211 210956.43331178  59218.98886849
+ 189747.55849879]
+[286600.0, 340600.0, 196900.0, 46300.0, 254500.0]
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 计算RSME
+from sklearn.metrics import mean_squared_error
+housing_pred = lin_reg.predict(housing_prepared)
+lin_mse = mean_squared_error(housing_labels, housing_pred)
+lin_rmse = np.sqrt(lin_mse)
+lin_rmse
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>68628.19819848923
+</code></pre><ul>
+<li>显然回归模型欠拟合，特征没有提供足够多的信息来做一个好的预测，或者模型不够强大</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 决策树
+from sklearn.tree import DecisionTreeRegressor
+
+tree_reg = DecisionTreeRegressor();
+tree_reg.fit(housing_prepared, housing_labels);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">housing_pred = tree_reg.predict(housing_prepared)
+tree_mse = mean_squared_error(housing_labels, housing_pred)
+tree_rmse = np.sqrt(tree_mse)
+tree_rmse
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>0.0
+</code></pre><ul>
+<li>显然模型可能过拟合</li>
+</ul>
+<h4 id="使用交叉验证来做更佳的评估"><a href="#使用交叉验证来做更佳的评估" class="headerlink" title="使用交叉验证来做更佳的评估"></a>使用交叉验证来做更佳的评估</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(tree_reg, housing_prepared, housing_labels,
+                        scoring='neg_mean_squared_error', cv=10)
+tree_rmse_scores = np.sqrt(-scores)
+tree_rmse_scores
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([70402.31297471, 67320.10682085, 70223.47037104, 69614.92234167,
+       71787.54609682, 75496.45097963, 71048.37280966, 71597.08425246,
+       77043.79328191, 70578.37265691])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">def displayScores(scores):
+    print("Scores:", scores)
+    print("Mean:", scores.mean())
+    print("Std:", scores.std())
+
+displayScores(tree_rmse_scores)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Scores: [70402.31297471 67320.10682085 70223.47037104 69614.92234167
+ 71787.54609682 75496.45097963 71048.37280966 71597.08425246
+ 77043.79328191 70578.37265691]
+Mean: 71511.24325856709
+Std: 2677.852533862523
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">scores = cross_val_score(lin_reg, housing_prepared, housing_labels,
+                        scoring='neg_mean_squared_error', cv=10)
+lin_rmse_scores = np.sqrt(-scores)
+lin_rmse_scores
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([66782.73843989, 66960.118071  , 70347.95244419, 74739.57052552,
+       68031.13388938, 71193.84183426, 64969.63056405, 68281.61137997,
+       71552.91566558, 67665.10082067])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">displayScores(lin_rmse_scores)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>Scores: [66782.73843989 66960.118071   70347.95244419 74739.57052552
+ 68031.13388938 71193.84183426 64969.63056405 68281.61137997
+ 71552.91566558 67665.10082067]
+Mean: 69052.46136345083
+Std: 2731.6740017983425
+</code></pre><ul>
+<li>判断没错：决策树模型过拟合很严重，它的性能比线性回归模型还差</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 随机森林
+from sklearn.ensemble import RandomForestRegressor
+
+forest_reg = RandomForestRegressor()
+forest_reg.fit(housing_prepared, housing_labels)
+housing_pred = forest_reg.predict(housing_prepared)
+forest_mse = mean_squared_error(housing_labels, housing_pred)
+forest_rmse = np.sqrt(forest_mse)
+forest_rmse
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>18691.633224101523
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">scores = cross_val_score(forest_reg, housing_prepared, housing_labels,
+                        scoring='neg_mean_squared_error', cv=10)
+forest_rmse_scores = np.sqrt(-scores)
+forest_rmse_scores
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([49503.09765569, 47556.24185705, 49876.34879458, 52163.99071947,
+       49535.73021436, 53483.37725634, 48882.69703437, 47583.62724759,
+       53339.88235391, 49722.75212307])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">displayScores(forest_rmse_scores)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>Scores: [49503.09765569 47556.24185705 49876.34879458 52163.99071947
+ 49535.73021436 53483.37725634 48882.69703437 47583.62724759
+ 53339.88235391 49722.75212307]
+Mean: 50164.77452564256
+Std: 2032.5814147343965
+</code></pre><ul>
+<li>在继续深入前，应该尝试下不同模型，不要在调节超参数上花费太多时间，目标是列出一个可能的模型列表（2-5个）</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 保存模型
+import joblib
+
+output_path = 'model/'
+if not os.path.isdir(output_path):
+    os.makedirs(output_path)
+joblib.dump(forest_reg, output_path+'forest_reg.pkl');
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import gc
+del forest_reg
+gc.collect();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">forest_reg = joblib.load(output_path + 'forest_reg.pkl')
+forest_reg.predict(housing_prepared)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>array([267951.  , 323307.  , 221516.  , ..., 102155.  , 214044.  ,
+       464662.73])
+</code></pre><h3 id="模型微调"><a href="#模型微调" class="headerlink" title="模型微调"></a>模型微调</h3><ul>
+<li>假设有一个列表了，列表里面有几个有希望的模型了，现在对它们进行微调</li>
+</ul>
+<ol>
+<li>网格搜索</li>
+<li>随即搜索</li>
+<li>集成方法</li>
+</ol>
+<h4 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.model_selection import GridSearchCV
+
+param_grid = [
+    {'n_estimators': [3,10,30], 'max_features': [2,4,6,8]},
+    {'bootstrap': [False], 'n_estimators': [3,10], 'max_features': [2,3,4]},
+]
+
+forest_reg = RandomForestRegressor()
+grid_search = GridSearchCV(forest_reg, param_grid, cv=5, 
+                           scoring='neg_mean_squared_error')
+grid_search.fit(housing_prepared, housing_labels)
+(grid_search.best_params_)
+(grid_search.best_estimator_)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>RandomForestRegressor(max_features=6, n_estimators=30)
+</code></pre><ul>
+<li>param_grid 告诉Scikit-Learn 首先评估所有的列在第一个dict 中的n_estimators 和max_features 的3 × 4 = 12 种组合（不用担心这些超参数的含义，会在第7 章中解释）。然后尝试第二个dict 中超参数的2 × 3 = 6 种组合，这次会将超参数bootstrap 设为False 而不是True （后者是该超参数的默认值）。</li>
+<li>总之，网格搜索会探索12 + 6 = 18 种RandomForestRegressor 的超参数组合，会训练每个模型五次（因为用的是五折交叉验证）。换句话说，训练总共有18 × 5 = 90 轮！K 折将要花费大量时间，完成后，你就能获得参数的最佳组合</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 评估评分
+cvres = grid_search.cv_results_
+for mean_score, params in zip(cvres['mean_test_score'], cvres['params']):
+    print(np.sqrt(-mean_score), params)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>64484.368945438095 {&#39;max_features&#39;: 2, &#39;n_estimators&#39;: 3}
+55801.68474277632 {&#39;max_features&#39;: 2, &#39;n_estimators&#39;: 10}
+53103.397117972374 {&#39;max_features&#39;: 2, &#39;n_estimators&#39;: 30}
+60739.34011042108 {&#39;max_features&#39;: 4, &#39;n_estimators&#39;: 3}
+52606.55731138118 {&#39;max_features&#39;: 4, &#39;n_estimators&#39;: 10}
+50461.78456229793 {&#39;max_features&#39;: 4, &#39;n_estimators&#39;: 30}
+58694.1806275357 {&#39;max_features&#39;: 6, &#39;n_estimators&#39;: 3}
+52167.01603965681 {&#39;max_features&#39;: 6, &#39;n_estimators&#39;: 10}
+49789.76142728186 {&#39;max_features&#39;: 6, &#39;n_estimators&#39;: 30}
+59244.45170151536 {&#39;max_features&#39;: 8, &#39;n_estimators&#39;: 3}
+52471.88272318626 {&#39;max_features&#39;: 8, &#39;n_estimators&#39;: 10}
+50024.71009745971 {&#39;max_features&#39;: 8, &#39;n_estimators&#39;: 30}
+62288.45521151971 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 2, &#39;n_estimators&#39;: 3}
+54541.851530599495 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 2, &#39;n_estimators&#39;: 10}
+60763.31894922859 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 3, &#39;n_estimators&#39;: 3}
+52256.3308785951 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 3, &#39;n_estimators&#39;: 10}
+58006.11393494447 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 4, &#39;n_estimators&#39;: 3}
+51525.95227740632 {&#39;bootstrap&#39;: False, &#39;max_features&#39;: 4, &#39;n_estimators&#39;: 10}
+</code></pre><h4 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h4><ul>
+<li>当超参数的搜索空间很大时，最好使用<code>RandomizedSearchCV</code></li>
+<li>随机搜索通过选择每个超参数的一个随机值的特定数量的随机组合，两个优点：<ol>
+<li>如果你让随机搜索运行，比如1000 次，它会探索每个超参数的1000 个不同的值（而不是像网格搜索那样，只搜索每个超参数的几个值</li>
+<li>你可以方便地通过设定搜索次数，控制超参数搜索的计算量</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">from sklearn.model_selection import RandomizedSearchCV
+
+distributions = dict(n_estimators=[3,10,30], max_features=[2,4,6,8])
+
+forest_reg = RandomForestRegressor()
+grid_search = RandomizedSearchCV(forest_reg, distributions, 
+                                 random_state=0, cv=5,
+                                 scoring='neg_mean_squared_error')
+grid_search.fit(housing_prepared, housing_labels)
+(grid_search.best_params_)
+(grid_search.best_estimator_)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>RandomForestRegressor(max_features=8, n_estimators=30)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 评估评分
+cvres = grid_search.cv_results_
+for mean_score, params in zip(cvres['mean_test_score'], cvres['params']):
+    print(np.sqrt(-mean_score), params)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>60313.361125661046 {&#39;n_estimators&#39;: 3, &#39;max_features&#39;: 6}
+49834.72365719627 {&#39;n_estimators&#39;: 30, &#39;max_features&#39;: 8}
+52515.52121503662 {&#39;n_estimators&#39;: 10, &#39;max_features&#39;: 4}
+51547.81101848066 {&#39;n_estimators&#39;: 10, &#39;max_features&#39;: 8}
+52824.54605534015 {&#39;n_estimators&#39;: 30, &#39;max_features&#39;: 2}
+50011.013090069086 {&#39;n_estimators&#39;: 30, &#39;max_features&#39;: 6}
+55772.624674081875 {&#39;n_estimators&#39;: 10, &#39;max_features&#39;: 2}
+51994.5987814074 {&#39;n_estimators&#39;: 10, &#39;max_features&#39;: 6}
+58695.313520315474 {&#39;n_estimators&#39;: 3, &#39;max_features&#39;: 8}
+60144.83595308729 {&#39;n_estimators&#39;: 3, &#39;max_features&#39;: 4}
+</code></pre><h4 id="集成方法"><a href="#集成方法" class="headerlink" title="集成方法"></a>集成方法</h4><ul>
+<li>另一种微调系统的方法是将表现最好的模型组合起来。组合（集成）之后的性能通常要比单独的模型要好（就像随机森林要比单独的决策树要好），特别是当单独模型的误差类型不同时</li>
+</ul>
+<h3 id="分析最佳模型和它们的误差"><a href="#分析最佳模型和它们的误差" class="headerlink" title="分析最佳模型和它们的误差"></a>分析最佳模型和它们的误差</h3><ul>
+<li>根据特征重要性，丢弃一些无用特征</li>
+<li>观察系统误差，搞清为什么有这些误差，如何改正问题（添加、去掉、清洗异常值等措施）</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">feature_importances = grid_search.best_estimator_.feature_importances_
+feature_importances
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>array([6.54145890e-02, 6.11239658e-02, 4.68569762e-02, 1.57799553e-02,
+       1.47877860e-02, 1.52606278e-02, 1.45150045e-02, 3.56582379e-01,
+       5.46405542e-02, 1.14200534e-01, 7.60282167e-02, 7.53161308e-03,
+       1.52163827e-01, 3.13174862e-05, 2.25971757e-03, 2.82293596e-03])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">extra_attribs = ['rooms_per_hold', 'pop_per_hold', 'bedrooms_per_room']
+cat_ont_hot_attribs = list(encoder.classes_)
+attributes = num_attribs + extra_attribs + cat_ont_hot_attribs
+sorted(zip(feature_importances, attributes), reverse=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[(0.35658237869153536, &#39;median_income&#39;),
+ (0.1521638272583547, &#39;INLAND&#39;),
+ (0.11420053447156554, &#39;pop_per_hold&#39;),
+ (0.07602821669031448, &#39;bedrooms_per_room&#39;),
+ (0.06541458900157228, &#39;longitude&#39;),
+ (0.06112396584108679, &#39;latitude&#39;),
+ (0.05464055415192507, &#39;rooms_per_hold&#39;),
+ (0.04685697616305872, &#39;housing_median_age&#39;),
+ (0.015779955349765996, &#39;total_rooms&#39;),
+ (0.015260627821204058, &#39;population&#39;),
+ (0.01478778596813993, &#39;total_bedrooms&#39;),
+ (0.014515004497103572, &#39;households&#39;),
+ (0.007531613076317472, &#39;&lt;1H OCEAN&#39;),
+ (0.0028229359597008235, &#39;NEAR OCEAN&#39;),
+ (0.0022597175721814156, &#39;NEAR BAY&#39;),
+ (3.131748617381553e-05, &#39;ISLAND&#39;)]
+</code></pre><h2 id="用测试集评估系统"><a href="#用测试集评估系统" class="headerlink" title="用测试集评估系统"></a>用测试集评估系统</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">final_model = grid_search.best_estimator_
+X_test = strat_test_set.drop('median_house_value', axis=1)
+y_test = strat_test_set['median_house_value'].copy()
+
+X_test_prepared = full_pipeline.transform(X_test)
+
+final_predictions = final_model.predict(X_test_prepared)
+
+final_mse = mean_squared_error(y_test, final_predictions)
+final_rmse = np.sqrt(final_mse)
+final_rmse
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>48237.045259350096
+</code></pre><h2 id="项目预上线阶段"><a href="#项目预上线阶段" class="headerlink" title="项目预上线阶段"></a>项目预上线阶段</h2><ol>
+<li>展示方案<ol>
+<li>学到了什么</li>
+<li>做了什么</li>
+<li>没做什么</li>
+<li>做过什么假设</li>
+<li>系统的限制是什么</li>
+<li>……</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>用漂亮的图表和容易记住的表达</li>
+</ul>
+<h2 id="启动、监控、维护系统"><a href="#启动、监控、维护系统" class="headerlink" title="启动、监控、维护系统"></a>启动、监控、维护系统</h2><ol>
+<li>接入输入数据，编写测试</li>
+<li>编写监控代码</li>
+<li>编写评估系统</li>
+</ol>
+<h2 id="实践！"><a href="#实践！" class="headerlink" title="实践！"></a>实践！</h2>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/">https://myhaa.github.io/2021/03/19/ji-qi-xue-xi-zhi-yi-ge-wan-zheng-xiang-mu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2021-03-19T17-37-08',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/03/19/ji-qi-xue-xi-zhi-fen-lei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="机器学习之分类">
+                        
+                        <span class="card-title">机器学习之分类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            机器学习之分类
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%86%E7%B1%BB/">
+                        <span class="chip bg-color">分类</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/17/shu-ju-wa-jue-zhi-ju-lei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="数据挖掘之聚类">
+                        
+                        <span class="card-title">数据挖掘之聚类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            聚类算法介绍
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" class="post-category">
+                                    AI/数据科学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
+                        <span class="chip bg-color">数据科学</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">数据挖掘</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">十大算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
