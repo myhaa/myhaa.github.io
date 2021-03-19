@@ -244,5 +244,7 @@ if __name__ == "__main__":
    1. [Github：深度学习文本检测识别（OCR）精选资源汇总](https://zhuanlan.zhihu.com/p/71028209)
 8. [xiaofengshi：chinese-ocr](https://github.com/xiaofengShi/CHINESE-OCR)：`star:2.4k`
 9. [场景文字检测—CTPN原理与实现](https://zhuanlan.zhihu.com/p/34757009)
+   1. [CTPN论文](https://github.com/yizt/cv-papers/blob/master/CTPN.md)
 10. [一文读懂CRNN+CTC文字识别](https://zhuanlan.zhihu.com/p/43534801)
 11. [视频标签算法解析](https://zhuanlan.zhihu.com/p/55118990)
+12. [text-detection](https://github.com/topics/text-detection)
