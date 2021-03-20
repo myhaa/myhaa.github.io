@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>深度学习之TF安装</title>
+      <link href="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/"/>
+      <url>/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="https://zhuanlan.zhihu.com/p/35717544" target="_blank" rel="noopener">windows tensorflow-gpu的安装</a></li><li><a href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows" target="_blank" rel="noopener">官网</a></li></ul><h1 id="windows安装"><a href="#windows安装" class="headerlink" title="windows安装"></a>windows安装</h1><h2 id="先更新显卡驱动"><a href="#先更新显卡驱动" class="headerlink" title="先更新显卡驱动"></a>先更新显卡驱动</h2><ul><li><p>右键更新显卡驱动</p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320115932959.png" alt="image-20210320115932959"></p></li></ul><h2 id="查看显卡驱动对应cuda版本"><a href="#查看显卡驱动对应cuda版本" class="headerlink" title="查看显卡驱动对应cuda版本"></a>查看显卡驱动对应<code>cuda</code>版本</h2><ul><li><p>桌面右键显卡控制面板</p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320120246190.png" alt="image-20210320120246190"></p></li></ul><h2 id="下载安装cuda"><a href="#下载安装cuda" class="headerlink" title="下载安装cuda"></a>下载安装<code>cuda</code></h2><ul><li><p><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">下载地址</a>：非常之慢</p></li><li><p><a href="https://developer.nvidia.com/zh-cn/cuda-downloads" target="_blank" rel="noopener">下载地址2</a></p></li><li><p><a href="https://blog.csdn.net/XunCiy/article/details/89070315" target="_blank" rel="noopener">安装参考地址</a></p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320153609006.png" alt="image-20210320153609006"></p></li><li><p>以下两个地方注意比选就行</p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320122925046.png" alt="image-20210320122925046"></p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320122936325.png" alt="image-20210320122936325"></p></li></ul><h2 id="查看cuda对应的cudnn版本"><a href="#查看cuda对应的cudnn版本" class="headerlink" title="查看cuda对应的cudnn版本"></a>查看<code>cuda</code>对应的<code>cudnn</code>版本</h2><ul><li><p><a href="https://www.tensorflow.org/install/source_windows#gpu" target="_blank" rel="noopener">地址</a></p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320121040837.png" alt="image-20210320121040837"></p></li></ul><h2 id="下载安装cudnn"><a href="#下载安装cudnn" class="headerlink" title="下载安装cudnn"></a>下载安装<code>cudnn</code></h2><ul><li><p><a href="https://developer.nvidia.com/zh-cn/cudnn" target="_blank" rel="noopener">下载地址</a>：需要登录</p></li><li><p><a href="https://developer.nvidia.cn/rdp/cudnn-download" target="_blank" rel="noopener">下载地址2</a></p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320162205564.png" alt="image-20210320162205564"></p></li><li><p>安装</p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320163021436.png" alt="image-20210320163021436"></p></li></ul><h2 id="安装tensorflow-gpu"><a href="#安装tensorflow-gpu" class="headerlink" title="安装tensorflow-gpu"></a>安装<code>tensorflow-gpu</code></h2><ul><li><p>根据<code>cuda</code>对应版本安装<code>tf</code>的对应版本，使用<code>pycharm</code>安装</p><p><img src="/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/image-20210320163946401.png" alt="image-20210320163946401"></p></li></ul><h2 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import tensorflow as tfprint(tf.__version__)print('GPU', tf.test.is_gpu_available())# output# GPU [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>出现以下报错时：</p><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">2021-03-20 16:51:38.885475: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'cusolver64_10.dll'; dlerror: cusolver64_10.dll not found<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>将<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\vx.x\bin</code>目录下的<code>cusolver64_11.dll</code>复制，并将副本改名为<code>cusolver64_10.dll</code></p></li></ul><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol><li>显卡有对应的显卡驱动</li><li>显卡驱动对应<code>cuda</code>的版本</li><li>根据<code>cuda</code>的版本对应<code>cudnn</code>、<code>tf</code>版本</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI/数据科学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> 安装教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习之分类</title>
       <link href="/2021/03/19/ji-qi-xue-xi-zhi-fen-lei/"/>
       <url>/2021/03/19/ji-qi-xue-xi-zhi-fen-lei/</url>

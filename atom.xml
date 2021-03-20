@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-03-19T10:04:43.639Z</updated>
+  <updated>2021-03-20T08:59:26.461Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习之TF安装</title>
+    <link href="https://myhaa.github.io/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/"/>
+    <id>https://myhaa.github.io/2021/03/20/shen-du-xue-xi-zhi-tf-an-zhuang/</id>
+    <published>2021-03-20T03:56:00.000Z</published>
+    <updated>2021-03-20T08:59:26.461Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/35717544&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="安装教程" scheme="https://myhaa.github.io/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习之分类</title>
@@ -575,33 +605,6 @@
       <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
       <category term="细节营销" scheme="https://myhaa.github.io/tags/%E7%BB%86%E8%8A%82%E8%90%A5%E9%94%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>富爸爸穷爸爸读书笔记</title>
-    <link href="https://myhaa.github.io/2020/04/07/fu-ba-ba-qiong-ba-ba-du-shu-bi-ji/"/>
-    <id>https://myhaa.github.io/2020/04/07/fu-ba-ba-qiong-ba-ba-du-shu-bi-ji/</id>
-    <published>2020-04-07T01:55:17.000Z</published>
-    <updated>2020-04-14T01:16:01.765Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一章：富人不为钱工作&quot;&gt;&lt;a href=&quot;#第一章：富人不为钱工作&quot; class=&quot;headerlink&quot; title=&quot;第一章：富人不为钱工作&quot;&gt;&lt;/a&gt;第一章：富人不为钱工作&lt;/h1&gt;&lt;h2 id=&quot;本章小结&quot;&gt;&lt;a href=&quot;#本章小结&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="读书笔记" scheme="https://myhaa.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="理财" scheme="https://myhaa.github.io/tags/%E7%90%86%E8%B4%A2/"/>
     
   </entry>
   
