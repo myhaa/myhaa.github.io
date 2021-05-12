@@ -1,5 +1,5 @@
 ---
-title: Linux笔记
+title: 实用工具之Linux
 date: 2019-10-14 15:21:11
 author: Myhaa
 img:
@@ -10,10 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: 有关Linux的笔记
-categories: 编程与开发
+categories: 实用工具
 tags:
   - Linux
-  - 网络安全
 ---
 
 # 一、Linux基础

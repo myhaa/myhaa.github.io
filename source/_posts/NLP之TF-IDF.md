@@ -1,14 +1,12 @@
 ---
-title: NLP之TF-IDF算法
+title: NLP之TF-IDF
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: NLP
 tags:
-  - 数据科学
-  - NLP
   - 关键词提取
 date: 2021-03-10 11:55:41
 img:

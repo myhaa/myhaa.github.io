@@ -1,14 +1,13 @@
 ---
-title: '''NLP之HMM:隐马尔科夫模型'''
+title: NLP之HMM
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: NLP
 tags:
-  - AI
-  - NLP
+  - HMM
 date: 2021-03-03 10:52:24
 img:
 coverImg:

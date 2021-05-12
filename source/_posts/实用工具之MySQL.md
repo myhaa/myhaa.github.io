@@ -1,5 +1,5 @@
 ---
-title: MySql
+title: 实用工具之MySQL
 date: 2019-11-18 19:36:26
 author: Myhaa
 img:
@@ -10,11 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: 有关MySql的笔记
-categories: AI/数据科学
+categories: 实用工具
 tags:
   - MySql
-  - 数据科学
-  - 数据库
 ---
 
 # 一、MySql基础

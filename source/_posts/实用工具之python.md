@@ -1,5 +1,5 @@
 ---
-title: Python笔记
+title: 实用工具之python
 date: 2019-10-15 15:21:11
 author: Myhaa
 img:
@@ -10,9 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: 有关Python的笔记
-categories: 编程与开发
+categories: 实用工具
 tags:
-  - Python
+  - python
   - 编程语言
 ---
 

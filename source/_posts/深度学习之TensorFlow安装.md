@@ -1,13 +1,12 @@
 ---
-title: 深度学习之TF安装
+title: 深度学习之TensorFlow安装
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 深度学习
 tags:
-  - 深度学习
   - 安装教程
 date: 2021-03-20 11:56:00
 img:

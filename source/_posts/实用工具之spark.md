@@ -1,5 +1,5 @@
 ---
-title: Spark
+title: 实用工具之spark
 date: 2019-12-12 11:21:11
 author: Myhaa
 img:
@@ -10,10 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: Spark自学笔记
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - Spark
-  - 数据科学
+  - spark
 ---
 
 # Spark基础

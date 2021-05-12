@@ -1,11 +1,11 @@
 ---
-title: 数据挖掘之KNN
+title: 机器学习之KNN
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: 机器学习
 tags:
   - 数据挖掘
   - 十大算法
@@ -68,11 +68,12 @@ summary: 数据挖掘十大算法之KNN
   \label{eq:obj1} 
   \end{equation}
   $$
-  
 
 ## 加快计算之`KD`树
 
 
+
+# 实践
 
 # 疑难
 

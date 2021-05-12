@@ -1,14 +1,12 @@
 ---
-title: '''NLP之分词原理'''
+title: NLP之分词原理
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: NLP
 tags:
-  - AI
-  - NLP
   - 分词
 date: 2021-03-09 10:29:55
 img:

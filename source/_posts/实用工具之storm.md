@@ -1,14 +1,13 @@
 ---
-title: Storm
+title: 实用工具之storm
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 人工智能
-  - Storm
+  - storm
 date: 2019-12-17 20:03:40
 img:
 coverImg:

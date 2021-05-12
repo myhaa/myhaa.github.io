@@ -5,9 +5,8 @@ top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: NLP
 tags:
-  - NLP
   - 关键词提取
 date: 2021-03-10 16:57:10
 img:

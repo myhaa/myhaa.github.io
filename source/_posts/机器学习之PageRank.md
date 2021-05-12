@@ -1,11 +1,11 @@
 ---
-title: 数据挖掘之PageRank
+title: 机器学习之PageRank
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: 机器学习
 tags:
   - 数据挖掘
   - 十大算法
@@ -95,6 +95,8 @@ $$
   * 因为即使是质量很高的新页面也往往不会有很多外链，除非它是某个已经存在站点的子站点。这也是`PageRank`需要多项算法结合以保证其结果的准确性的原因
 
 # 进阶
+
+# 实践
 
 # 疑难
 
