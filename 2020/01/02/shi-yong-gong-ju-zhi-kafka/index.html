@@ -1,0 +1,1349 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="实用工具之Kafka, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="Kafka基础简介Kafka是什么？
+Apache Kafka是一个分布式流平台
+Kafka作为一个集群运行在一个或多个服务器上，这些服务器可以跨越多个数据中心
+Kafka集群将记录流存储在称为主题Topic的类别中
+每个记录由一个键key">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>实用工具之Kafka | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        实用工具之Kafka
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kafka/">
+                                <span class="chip bg-color">Kafka</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" class="post-category">
+                                实用工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-02
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    9 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Kafka基础"><a href="#Kafka基础" class="headerlink" title="Kafka基础"></a>Kafka基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="Kafka是什么？"><a href="#Kafka是什么？" class="headerlink" title="Kafka是什么？"></a>Kafka是什么？</h3><ul>
+<li>Apache Kafka是一个分布式流平台</li>
+<li>Kafka作为一个集群运行在一个或多个服务器上，这些服务器可以跨越多个数据中心</li>
+<li>Kafka集群将记录流存储在称为主题<code>Topic</code>的类别中</li>
+<li><strong>每个记录由一个键<code>key</code>、一个值<code>value</code>和一个时间戳<code>timestamp</code>组成</strong></li>
+</ul>
+<h3 id="流平台的关键特性"><a href="#流平台的关键特性" class="headerlink" title="流平台的关键特性"></a>流平台的关键特性</h3><ul>
+<li>发布和订阅记录流，类似于消息队列或企业消息传递系统</li>
+<li>以容错的持久方式存储记录流</li>
+<li>处理记录流（当它们发生时）</li>
+</ul>
+<h3 id="Kafka的应用领域"><a href="#Kafka的应用领域" class="headerlink" title="Kafka的应用领域"></a>Kafka的应用领域</h3><ul>
+<li>构建实时流数据管道，在系统或应用程序之间可靠地获取数据</li>
+<li>构建转换或响应数据流的实时流应用程序</li>
+</ul>
+<h3 id="Kafka的四个核心API"><a href="#Kafka的四个核心API" class="headerlink" title="Kafka的四个核心API"></a>Kafka的四个核心API</h3><p><img src="/2020/01/02/shi-yong-gong-ju-zhi-kafka/kafka-apis.png" alt="Kafka-APIs"></p>
+<ul>
+<li><a href="https://kafka.apache.org/documentation.html#producerapi" target="_blank" rel="noopener">Producer API</a>：允许应用程序将记录流发布到一个或多个Kafka主题<code>Topic</code></li>
+<li><a href="https://kafka.apache.org/documentation.html#consumerapi" target="_blank" rel="noopener">Consumer API</a>：允许应用程序订阅一个或多个主题<code>Topic</code>，并处理产生给它们的记录流。</li>
+<li><a href="https://kafka.apache.org/documentation.html#connectapi" target="_blank" rel="noopener">Streams API</a>：允许应用程序充当流处理器，使用一个或多个主题<code>Topic</code>的输入流，并生成一个或多个输出主题<code>Topic</code>的输出流，从而有效地将输入流转换为输出流</li>
+<li><a href="https://kafka.apache.org/documentation.html#connectapi" target="_blank" rel="noopener">Connector API</a>：允许构建和运行将Kafka主题<code>Topic</code>连接到现有应用程序或数据库的可重用生产者或消费者。例如，到关系数据库的连接器可能捕获对表的每个更改。</li>
+</ul>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><ul>
+<li>在Kafka中，客户端和服务器之间的通信是通过一个简单的、高性能的、语言无关的<code>TCP</code>协议来完成的。此协议经过版本控制，并保持与旧版本的向后兼容性</li>
+</ul>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="主题-Topics"><a href="#主题-Topics" class="headerlink" title="主题[Topics]"></a>主题<code>[Topics]</code></h3><ul>
+<li>主题是被发布记录所属类别或订阅源的名词</li>
+<li>一个主题可以有零个，一个或多个消费者来订阅写入该主题的数据</li>
+</ul>
+<h3 id="日志-Logs"><a href="#日志-Logs" class="headerlink" title="日志[Logs]"></a>日志<code>[Logs]</code></h3><ul>
+<li>对于每个主题，Kafka集群维护一个类似下图的分区日志</li>
+</ul>
+<p><img src="/2020/01/02/shi-yong-gong-ju-zhi-kafka/log_anatomy.png" alt="log_anatomy"></p>
+<ul>
+<li>每个分区都是有序的，不可变的记录序列，这些记录连续地附加到结构化的提交日志中</li>
+<li>每个分区中的记录都分配有一个称为<strong>偏移</strong>的顺序ID号，该ID唯一地标识分区中的每个记录</li>
+<li>Kafka集群使用可配置的保留期限持久保留所有已发布记录（无论是否已使用它们），超过保留期限后，记录将被丢弃以释放空间</li>
+<li><p>Kafka的性能在数据大小方面是稳定的，所以<strong>长时间存储数据不是问题</strong></p>
+</li>
+<li><p>如下图，偏移量由使用者控制：通常，使用者在读取记录时会线性地推进其偏移量，但是实际上，由于位置是由使用者控制的，因此它可以按喜欢的任何顺序使用记录。 例如，使用者可以重置到较旧的偏移量以重新处理过去的数据，或者跳到最近的记录并从“现在”开始使用。</p>
+</li>
+</ul>
+<p><img src="/2020/01/02/shi-yong-gong-ju-zhi-kafka/log_consumer.png" alt="log_consumer"></p>
+<ul>
+<li>这些特性的组合意味着Kafka消费者非常便宜，他们可以来去自如，对集群或其他消费者没有太大影响。例如，您可以使用命令行工具“跟踪”任何主题的内容，而不需要更改任何现有使用者所使用的内容</li>
+<li>日志中的分区有多种用途。 首先，它们允许日志扩展到超出单个服务器所能容纳的大小。 每个单独的分区都必须适合托管它的服务器，但是一个主题可能有很多分区，因此它可以处理任意数量的数据。 其次，它们充当并行性的单元</li>
+</ul>
+<h3 id="分布-Distribution"><a href="#分布-Distribution" class="headerlink" title="分布[Distribution]"></a>分布<code>[Distribution]</code></h3><ul>
+<li>日志的分区分布在Kafka群集中的服务器上，每个服务器处理数据并要求共享分区。 </li>
+<li>每个分区都在可配置数量的服务器之间复制，以实现容错功能</li>
+<li>每个分区有一个充当“领导者”的服务器和零个或多个充当“追随者”的服务器</li>
+<li>领导者处理该分区的所有读写请求，而追随者则被动复制领导者</li>
+<li>如果领导者失败，则追随者之一将自动成为新领导者</li>
+<li>每个服务器既充当某些分区的领导者，又充当其他分区的追随者，这样集群中的负载得到了很好的平衡</li>
+</ul>
+<h3 id="异地备份-Geo-Replication"><a href="#异地备份-Geo-Replication" class="headerlink" title="异地备份[Geo-Replication]"></a>异地备份<code>[Geo-Replication]</code></h3><ul>
+<li>Kafka MirrorMaker为集群提供异地备份支持</li>
+<li>使用MirrorMaker，消息可以跨多个数据中心或云区域进行备份</li>
+<li>您可以在主动/被动方案中使用它进行备份和恢复，或在主动/主动方案中将数据放置在离您的用户更近的位置，或支持本地数据需求</li>
+</ul>
+<h3 id="生产者-Producers"><a href="#生产者-Producers" class="headerlink" title="生产者[Producers]"></a>生产者<code>[Producers]</code></h3><ul>
+<li>生产者将数据发布到他们选择的主题</li>
+<li>生产者负责选择将哪个记录分配给主题中的哪个分区</li>
+<li>这可以以循环的方式来完成，只是为了平衡负载，也可以根据某种语义划分函数来完成(比如基于记录中的某个键)</li>
+</ul>
+<h3 id="消费者-Consumers"><a href="#消费者-Consumers" class="headerlink" title="消费者[Consumers]"></a>消费者<code>[Consumers]</code></h3><ul>
+<li>消费者使用消费者组名称标记自己，并且发布到主题的每条记录都会传递到每个订阅消费者组中的一个消费者实例</li>
+<li>消费者实例可以在单独的进程中或在单独的机器上</li>
+<li>如果所有消费者实例具有相同的消费者组，那么记录将有效地在消费者实例上进行负载平衡</li>
+<li>如果所有消费者实例都有不同的消费者组，那么每个记录将被广播到所有消费者进程</li>
+</ul>
+<p><strong>举例如下图：</strong></p>
+<p><img src="/2020/01/02/shi-yong-gong-ju-zhi-kafka/consumer-groups.png" alt="log_consumer"></p>
+<ul>
+<li>一个包含四个分区（P0-P3）和两个消费者组的两台服务器【Kafka集群】</li>
+<li>消费者组A有两个消费者实例（C1、C2），而组B有四个（C3-C6）</li>
+<li>Kafka中实现消费的方法是在消费者实例的日志中划分分区，这样每个实例在任何时候都是分区“公平共享”的唯一消费者</li>
+<li>这个保持组成员身份的过程是由Kafka协议动态处理的</li>
+<li>如果新的实例加入组，它们将从组的其他成员那里接管一些分区</li>
+<li>如果一个实例死亡，它的分区将分配给其余的实例</li>
+<li>如图中：消费者组A中C1负责P0\P3，C2负责P1\P2；消费者组B中每个实例负责一个分区</li>
+<li>Kafka只提供分区内记录的总顺序，而不提供主题中不同分区之间的总顺序</li>
+<li>对大多数应用程序来说，按分区排序和按键分区数据的能力已经足够</li>
+<li>但是，如果需要记录的总顺序，则可以使用只有一个分区的主题来实现</li>
+<li>尽管这意味着每个使用者组只有一个使用者进程（一个使用者实例？）</li>
+</ul>
+<h3 id="多租户-Multi-tenancy"><a href="#多租户-Multi-tenancy" class="headerlink" title="多租户[Multi-tenancy]"></a>多租户<code>[Multi-tenancy]</code></h3><ul>
+<li>可以将Kafka部署为多租户解决方案</li>
+<li>通过配置哪些主题可以生成或使用数据，可以启用多租户</li>
+<li>还有对限额的操作支持</li>
+<li>管理员可以对请求定义和强制配额，以控制客户端使用的代理资源</li>
+<li>有关更多信息，请参阅<a href="https://kafka.apache.org/documentation/#security" target="_blank" rel="noopener">安全文档</a></li>
+</ul>
+<h3 id="保证性-Guarantees"><a href="#保证性-Guarantees" class="headerlink" title="保证性[Guarantees]"></a>保证性<code>[Guarantees]</code></h3><p>在较高级别上，Kafka提供以下保证：</p>
+<ul>
+<li>生产者发送到特定主题分区的消息将按照发送的顺序追加<ol>
+<li>也就是说，如果记录M1是由与记录M2相同的生产者发送的，并且M1是先发送的，那么M1的偏移量将比M2低，并出现在日志的前面</li>
+</ol>
+</li>
+<li>消费者实例按【记录在日志中存储的顺序】查看记录</li>
+<li>对于具有复制因子N的主题，我们将容忍至多N-1个服务器故障，而不会丢失提交到日志的任何记录</li>
+</ul>
+<h1 id="Kafka进阶"><a href="#Kafka进阶" class="headerlink" title="Kafka进阶"></a>Kafka进阶</h1><h2 id="Kafka作为消息传递系统-Kafka-as-a-Messaging-System"><a href="#Kafka作为消息传递系统-Kafka-as-a-Messaging-System" class="headerlink" title="Kafka作为消息传递系统[Kafka as a Messaging System]"></a>Kafka作为消息传递系统<code>[Kafka as a Messaging System]</code></h2><h3 id="传统的企业消息传递系统"><a href="#传统的企业消息传递系统" class="headerlink" title="传统的企业消息传递系统"></a>传统的企业消息传递系统</h3><p>传统的消息传递系统拥有两个模块：</p>
+<h4 id="队列-queuing"><a href="#队列-queuing" class="headerlink" title="队列-queuing"></a>队列-queuing</h4><ul>
+<li>在队列中，消费者池可以从服务器读取数据，而每条记录都将被发送到其中的一位消费者</li>
+<li>队列的优点是它允许在多个消费者实例上划分数据处理</li>
+<li>不幸的是，队列不是多用户的：一旦一个进程读取了数据，其他用户就读取不了了</li>
+<li>传统队列在服务器上按顺序保留记录，如果多个使用者从队列中消费，则服务器按存储记录的顺序分发记录</li>
+<li>然而，尽管服务器按顺序分发记录，但这些记录是异步传递给消费者的，因此它们可能在不同的消费者上不按顺序到达</li>
+<li>这实际上意味着记录的顺序在并行使用时丢失</li>
+<li>消息传递系统通常通过“独占消费者”的概念来解决这个问题，该概念只允许一个进程从队列中消费，但这当然意味着处理中不存在并行性</li>
+</ul>
+<h4 id="发布-订阅-publish-subscribe"><a href="#发布-订阅-publish-subscribe" class="headerlink" title="发布-订阅-publish-subscribe"></a>发布-订阅-publish-subscribe</h4><ul>
+<li>在发布-订阅中，记录被广播给所有消费者</li>
+<li>发布-订阅允许将数据广播到多个进程，但是由于每个消息都传递到每个订阅者，因此无法扩展处理</li>
+</ul>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><ul>
+<li>Kafka中的消费者组概念概括了队列＆发布-订阅</li>
+<li>与队列一样，消费者组允许将处理划分到一组进程(消费者组的成员)上</li>
+<li>与发布-订阅一样，Kafka允许向多个消费者组广播消息</li>
+<li>Kafka也比传统的消息传递系统有更强的订购保证</li>
+<li>通过对主题内分区的并行性的概念，Kafka能够在用户进程池上提供<strong>排序保证</strong>和<strong>负载平衡</strong></li>
+<li>这是通过将主题中的分区分配给消费者组中的消费者实例来实现的，这样每个分区正好由组中的一个消费者使用</li>
+<li>通过这样做，我们可以确保消费者是该分区的唯一读取者，并按顺序使用数据</li>
+<li>由于有许多分区，这仍然可以在许多消费者实例上平衡负载</li>
+<li>但是请注意，在一个消费者组中<strong>不能有比分区更多</strong>的消费者实例</li>
+</ul>
+<h1 id="Kafka操作"><a href="#Kafka操作" class="headerlink" title="Kafka操作"></a>Kafka操作</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="主题列表"><a href="#主题列表" class="headerlink" title="主题列表"></a>主题列表</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-topics.sh --list --zookeeper localhost:2181
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="消费topic"><a href="#消费topic" class="headerlink" title="消费topic"></a>消费topic</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic topic-name 
+--from-beginning
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="查看topic分区和副本情况"><a href="#查看topic分区和副本情况" class="headerlink" title="查看topic分区和副本情况"></a>查看topic分区和副本情况</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-topics.sh --describe --zookeeper 127.0.0.1:2181  --topic test0
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看topic消费到的offset"><a href="#查看topic消费到的offset" class="headerlink" title="查看topic消费到的offset"></a>查看topic消费到的offset</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 127.0.0.1:9092 --topic test0 --time -1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看topic各个分区的消息的信息"><a href="#查看topic各个分区的消息的信息" class="headerlink" title="查看topic各个分区的消息的信息"></a>查看topic各个分区的消息的信息</h3><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group testgroup --topic test0 --zookeeper 127.0.0.1:2181
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><p>运行结果：</p>
+<p>| GROUP    | TOPIC     | PID          | OFFSET           | LOGSIZE | LAG          |<br>| ———— | ————- | —————— | ———————— | ———- | —————— |<br>| 消费者组 | topic名字 | partition id | 当前已消费的条数 | 总条数  | 未消费的条数 |<br>|          |           |              |                  |         |              |</p>
+</li>
+</ul>
+<h1 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h1><ul>
+<li><a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener">官网英文文档</a></li>
+<li><a href="https://kafka.apachecn.org/" target="_blank" rel="noopener">官网中文文档</a></li>
+<li><a href="https://www.w3cschool.cn/apache_kafka/" target="_blank" rel="noopener">w3school</a></li>
+</ul>
+<h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2020/01/02/shi-yong-gong-ju-zhi-kafka/">https://myhaa.github.io/2020/01/02/shi-yong-gong-ju-zhi-kafka/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Kafka/">
+                                    <span class="chip bg-color">Kafka</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2020-01-02T16-46-47',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/03/20/ji-suan-guang-gao-zhi-ye-wu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="计算广告之业务">
+                        
+                        <span class="card-title">计算广告之业务</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关于计算广告流量分配、出价、竞价成功率等笔记
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" class="post-category">
+                                    计算广告
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%9A%E5%8A%A1/">
+                        <span class="chip bg-color">业务</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/17/shi-yong-gong-ju-zhi-storm/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="实用工具之storm">
+                        
+                        <span class="card-title">实用工具之storm</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            有关Storm的笔记
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    实用工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/storm/">
+                        <span class="chip bg-color">storm</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>

@@ -446,11 +446,11 @@
   </entry>
   
   <entry>
-    <title>Flink</title>
-    <link href="https://myhaa.github.io/2021/01/20/flink/"/>
-    <id>https://myhaa.github.io/2021/01/20/flink/</id>
+    <title>实用工具之Flink</title>
+    <link href="https://myhaa.github.io/2021/01/20/shi-yong-gong-ju-zhi-flink/"/>
+    <id>https://myhaa.github.io/2021/01/20/shi-yong-gong-ju-zhi-flink/</id>
     <published>2021-01-20T02:32:54.000Z</published>
-    <updated>2021-01-20T07:51:51.675Z</updated>
+    <updated>2021-05-13T12:11:26.463Z</updated>
     
     <summary type="html">
     
@@ -465,10 +465,10 @@
     </summary>
     
     
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+      <category term="实用工具" scheme="https://myhaa.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+      <category term="Flink" scheme="https://myhaa.github.io/tags/Flink/"/>
     
   </entry>
   
@@ -500,11 +500,11 @@
   </entry>
   
   <entry>
-    <title>HBase.md</title>
-    <link href="https://myhaa.github.io/2020/06/11/hbase/"/>
-    <id>https://myhaa.github.io/2020/06/11/hbase/</id>
+    <title>实用工具之HBase</title>
+    <link href="https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/"/>
+    <id>https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/</id>
     <published>2020-06-11T03:19:55.000Z</published>
-    <updated>2020-12-18T09:20:33.295Z</updated>
+    <updated>2021-05-13T12:05:14.961Z</updated>
     
     <summary type="html">
     
@@ -519,21 +519,19 @@
     </summary>
     
     
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+      <category term="实用工具" scheme="https://myhaa.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
-    
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
       <category term="HBase" scheme="https://myhaa.github.io/tags/HBase/"/>
     
   </entry>
   
   <entry>
-    <title>FTRL</title>
-    <link href="https://myhaa.github.io/2020/06/04/ftrl/"/>
-    <id>https://myhaa.github.io/2020/06/04/ftrl/</id>
+    <title>机器学习之FTRL方法</title>
+    <link href="https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/"/>
+    <id>https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/</id>
     <published>2020-06-04T02:57:11.000Z</published>
-    <updated>2020-07-07T09:55:54.487Z</updated>
+    <updated>2021-05-13T12:10:43.865Z</updated>
     
     <summary type="html">
     
@@ -548,23 +546,19 @@
     </summary>
     
     
-      <category term="AI/数据科学" scheme="https://myhaa.github.io/categories/AI-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+      <category term="机器学习" scheme="https://myhaa.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="Optimization Method" scheme="https://myhaa.github.io/tags/Optimization-Method/"/>
-    
-      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="FTRL" scheme="https://myhaa.github.io/tags/FTRL/"/>
     
   </entry>
   
   <entry>
-    <title>google-MapReduce</title>
-    <link href="https://myhaa.github.io/2020/06/03/google-mapreduce/"/>
-    <id>https://myhaa.github.io/2020/06/03/google-mapreduce/</id>
+    <title>实用工具之MapReduce</title>
+    <link href="https://myhaa.github.io/2020/06/03/shi-yong-gong-ju-zhi-mapreduce/"/>
+    <id>https://myhaa.github.io/2020/06/03/shi-yong-gong-ju-zhi-mapreduce/</id>
     <published>2020-06-03T01:25:31.000Z</published>
-    <updated>2020-06-04T03:03:24.252Z</updated>
+    <updated>2021-05-13T12:07:02.906Z</updated>
     
     <summary type="html">
     
@@ -579,14 +573,10 @@
     </summary>
     
     
-      <category term="Google Three Papers" scheme="https://myhaa.github.io/categories/Google-Three-Papers/"/>
+      <category term="实用工具" scheme="https://myhaa.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="数据科学" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Hadoop" scheme="https://myhaa.github.io/tags/Hadoop/"/>
+      <category term="MapReduce" scheme="https://myhaa.github.io/tags/MapReduce/"/>
     
   </entry>
   
