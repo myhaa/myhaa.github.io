@@ -1,14 +1,13 @@
 ---
-title: flask
+title: 实用工具之flask
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
-  - web服务
+  - flask
 date: 2020-05-18 14:15:08
 img:
 coverImg:

@@ -1,15 +1,13 @@
 ---
-title: FTRL
+title: 机器学习之FTRL方法
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: true
-categories: AI/数据科学
+categories: 机器学习
 tags:
-  - 数据科学
-  - Optimization Method
-  - 读书笔记
+  - FTRL
 date: 2020-06-04 10:57:11
 img:
 coverImg:
@@ -347,7 +345,6 @@ $$
   x_{t+1}=x_t-Q_{1:t}^{-1}{g_t}
   $$
   
-
 * FTRL算法
 
 $$

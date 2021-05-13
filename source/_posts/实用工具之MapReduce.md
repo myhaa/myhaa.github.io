@@ -1,15 +1,13 @@
 ---
-title: google-MapReduce
+title: 实用工具之MapReduce
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: Google Three Papers
+categories: 实用工具
 tags:
-  - 数据科学
-  - 读书笔记
-  - Hadoop
+  - MapReduce
 date: 2020-06-03 09:25:31
 img:
 coverImg:

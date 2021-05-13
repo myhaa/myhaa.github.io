@@ -1,5 +1,5 @@
 ---
-title: Java笔记
+title: 实用工具之Java
 date: 2019-10-13 15:21:11
 author: Myhaa
 img:
@@ -10,7 +10,7 @@ password:
 toc: true
 mathjax: false
 summary: 有关Java的笔记
-categories: 编程与开发
+categories: 实用工具
 tags:
   - Java
   - 编程语言

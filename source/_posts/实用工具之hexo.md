@@ -1,5 +1,5 @@
 ---
-title: Hexo创建个人博客
+title: 实用工具之hexo
 date: 2019-11-12 11:21:11
 author: Myhaa
 img:
@@ -10,10 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: 运用Hexo+GitHub搭建个人博客详细教程
-categories: 编程与开发
+categories: 实用工具
 tags:
   - Hexo
-  - 编程语言
 ---
 
 # 一、Hexo介绍

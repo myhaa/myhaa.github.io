@@ -1,5 +1,5 @@
 ---
-title: Hive笔记
+title: 实用工具之hive
 date: 2019-10-12 17:21:11
 author: Myhaa
 img:
@@ -10,12 +10,9 @@ password:
 toc: true
 mathjax: false
 summary: 有关Hive的笔记
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
-  - 数据仓库
-  - Hadoop
-  - Hive
+  - hive
 ---
 
 # 一、Hive基础

@@ -1,14 +1,12 @@
 ---
-title: HDFS
+title: 实用工具之HDFS
 author: Myhaa
-top: true
+top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
-  - Hadoop
   - HDFS
 date: 2019-11-27 15:47:42
 img:

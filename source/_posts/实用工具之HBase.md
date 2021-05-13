@@ -1,13 +1,12 @@
 ---
-title: HBase.md
+title: 实用工具之HBase
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
   - HBase
 date: 2020-06-11 11:19:55
 img:

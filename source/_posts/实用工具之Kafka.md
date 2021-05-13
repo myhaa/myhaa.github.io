@@ -1,14 +1,12 @@
 ---
-title: Kafka
+title: 实用工具之Kafka
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 人工智能
-  - 消息系统
   - Kafka
 date: 2020-01-02 16:46:47
 img:

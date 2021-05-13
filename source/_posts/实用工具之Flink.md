@@ -1,13 +1,13 @@
 ---
-title: Flink
+title: 实用工具之Flink
 author: Myhaa
 top: false
 cover: false
 toc: true
 mathjax: false
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
+  - Flink
 date: 2021-01-20 10:32:54
 img:
 coverImg:

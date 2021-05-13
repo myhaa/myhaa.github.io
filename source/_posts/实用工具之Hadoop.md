@@ -1,18 +1,17 @@
 ---
-title: Hadoop笔记
+title: 实用工具之Hadoop
 date: 2019-11-12 15:31:11
 author: Myhaa
 img:
-top: true
+top: false
 cover: false
 coverImg:
 password:
 toc: true
 mathjax: false
 summary: 有关Hadoop的笔记
-categories: AI/数据科学
+categories: 实用工具
 tags:
-  - 数据科学
   - Hadoop
 ---
 
