@@ -5,10 +5,10 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="机器学习之FTRL方法, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="原理介绍Title    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
+    <meta name="description" content="
+原理介绍Title    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
 
-Abstract【原文】
-">
+Abstract【原文】">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -483,7 +483,8 @@ Abstract【原文】
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><h2 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h2><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
+                <p><img src="/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/image-20210621161112518.png" alt="image-20210621161112518"></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><h2 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h2><pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>【原文】</p>
 <pre class="line-numbers language-lang-markdown"><code class="language-lang-markdown">    We prove that many mirror descent algorithms for online convex optimization (such as online gradient descent) have an equivalent interpretation as follow-the-regularizedleader (FTRL) algorithms. This observation makes the relationships between many commonly used algorithms explicit, and provides theoretical insight on previous experimental observations. In particular, even though the FOBOS composite mirror descent algorithm handles L1 regularization explicitly, it has been observed that the FTRL-style Regularized Dual Averaging (RDA) algorithm is even more e ective at producing sparsity. Our results demonstrate that the key di erence between these algorithms is how they handle the cumulative L1 penalty. While FOBOS handles the L1 term exactly on any given update, we show that it is e ectively using subgradient approximations to the L1 penalty from previous rounds, leading to less sparsity than RDA, which handles the cumulative penalty in closed form. The FTRL-Proximal algorithm, which we introduce, can be seen as a hybrid of these two algorithms, and signi cantly outperforms both on a large, realworld dataset.

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-05-12T11:59:50.355Z</updated>
+  <updated>2021-06-21T06:40:22.626Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://myhaa.github.io/2021/04/23/zi-yuan-zheng-he-zhi-gu-ge-shu-qian/"/>
     <id>https://myhaa.github.io/2021/04/23/zi-yuan-zheng-he-zhi-gu-ge-shu-qian/</id>
     <published>2021-04-23T07:56:08.000Z</published>
-    <updated>2021-05-12T11:59:50.355Z</updated>
+    <updated>2021-06-21T06:40:22.626Z</updated>
     
     <summary type="html">
     
@@ -32,7 +32,7 @@
           &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://msdn.itellyou.cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;msdn下载&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;中大&quot;&gt;&lt;a href=&quot;#中大&quot;
+&lt;p&gt;&lt;img
         
       
     
@@ -109,7 +109,7 @@
     <link href="https://myhaa.github.io/2021/03/20/shen-du-xue-xi-zhi-tensorflow-an-zhuang/"/>
     <id>https://myhaa.github.io/2021/03/20/shen-du-xue-xi-zhi-tensorflow-an-zhuang/</id>
     <published>2021-03-20T03:56:00.000Z</published>
-    <updated>2021-05-12T12:10:41.999Z</updated>
+    <updated>2021-06-21T07:36:49.769Z</updated>
     
     <summary type="html">
     
@@ -117,8 +117,8 @@
       
         
         
-          &lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/35717544&quot; target=&quot;_blank&quot;
+          &lt;p&gt;&lt;img src=&quot;/2021/03/20/shen-du-xue-xi-zhi-tensorflow-an-zhuang/image-20210621153613138.png&quot; alt=&quot;image-20210621153613138&quot;&gt;&lt;/p&gt;
+&lt;h1
         
       
     
@@ -195,7 +195,7 @@
     <link href="https://myhaa.github.io/2021/03/17/ji-qi-xue-xi-zhi-ju-lei/"/>
     <id>https://myhaa.github.io/2021/03/17/ji-qi-xue-xi-zhi-ju-lei/</id>
     <published>2021-03-17T01:41:33.000Z</published>
-    <updated>2021-05-12T12:19:07.803Z</updated>
+    <updated>2021-06-21T08:08:26.582Z</updated>
     
     <summary type="html">
     
@@ -224,7 +224,7 @@
     <link href="https://myhaa.github.io/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/"/>
     <id>https://myhaa.github.io/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/</id>
     <published>2021-03-15T11:39:45.000Z</published>
-    <updated>2021-05-12T12:18:50.501Z</updated>
+    <updated>2021-06-21T08:07:45.209Z</updated>
     
     <summary type="html">
     
@@ -232,11 +232,8 @@
       
         
         
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;决策树既可以分类、也可以回归&lt;/li&gt;
-&lt;li&gt;又适合集成学习如随机森林、GBDT&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2
+          &lt;p&gt;&lt;img src=&quot;/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/image-20210621160625825.png&quot; alt=&quot;image-20210621160625825&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基础&quot;&gt;&lt;a
         
       
     
@@ -286,7 +283,7 @@
     <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/"/>
     <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/</id>
     <published>2021-03-11T07:45:18.000Z</published>
-    <updated>2021-05-12T12:09:54.518Z</updated>
+    <updated>2021-06-21T07:35:22.013Z</updated>
     
     <summary type="html">
     
@@ -294,7 +291,8 @@
       
         
         
-          &lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;h2 id=&quot;OCR&quot;&gt;&lt;a href=&quot;#OCR&quot;
+          &lt;p&gt;&lt;img src=&quot;/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/image-20210621153410307.png&quot; alt=&quot;image-20210621153410307&quot;&gt;&lt;/p&gt;
+&lt;h1
         
       
     
@@ -340,7 +338,7 @@
     <link href="https://myhaa.github.io/2021/03/10/ji-qi-xue-xi-zhi-pagerank/"/>
     <id>https://myhaa.github.io/2021/03/10/ji-qi-xue-xi-zhi-pagerank/</id>
     <published>2021-03-10T07:13:33.000Z</published>
-    <updated>2021-05-12T12:20:02.963Z</updated>
+    <updated>2021-06-21T08:09:25.196Z</updated>
     
     <summary type="html">
     
@@ -348,7 +346,8 @@
       
         
         
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;/2021/03/10/ji-qi-xue-xi-zhi-pagerank/image-20210621160912259.png&quot; alt=&quot;image-20210621160912259&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基础&quot;&gt;&lt;a
         
       
     
@@ -477,7 +476,7 @@
     <link href="https://myhaa.github.io/2020/12/04/zi-yuan-zheng-he-zhi-shi-yong-gong-ju/"/>
     <id>https://myhaa.github.io/2020/12/04/zi-yuan-zheng-he-zhi-shi-yong-gong-ju/</id>
     <published>2020-12-04T07:32:08.000Z</published>
-    <updated>2021-05-12T12:21:21.379Z</updated>
+    <updated>2021-06-21T06:39:31.680Z</updated>
     
     <summary type="html">
     
@@ -485,7 +484,8 @@
       
         
         
-          &lt;h1 id=&quot;工具汇总&quot;&gt;&lt;a href=&quot;#工具汇总&quot; class=&quot;headerlink&quot; title=&quot;工具汇总&quot;&gt;&lt;/a&gt;工具汇总&lt;/h1&gt;&lt;h2 id=&quot;python&quot;&gt;&lt;a href=&quot;#python&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;/2020/12/04/zi-yuan-zheng-he-zhi-shi-yong-gong-ju/image-20210621143931618.png&quot; alt=&quot;image-20210621143931618&quot;&gt;&lt;/p&gt;
+&lt;h1
         
       
     
@@ -504,7 +504,7 @@
     <link href="https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/"/>
     <id>https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/</id>
     <published>2020-06-11T03:19:55.000Z</published>
-    <updated>2021-05-13T12:05:14.961Z</updated>
+    <updated>2021-06-21T07:27:38.556Z</updated>
     
     <summary type="html">
     
@@ -512,7 +512,8 @@
       
         
         
-          &lt;h1 id=&quot;HBase基础&quot;&gt;&lt;a href=&quot;#HBase基础&quot; class=&quot;headerlink&quot; title=&quot;HBase基础&quot;&gt;&lt;/a&gt;HBase基础&lt;/h1&gt;&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;/2020/06/11/shi-yong-gong-ju-zhi-hbase/image-20210621152645053.png&quot; alt=&quot;image-20210621152645053&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;HBase基础&quot;&gt;&lt;a
         
       
     
@@ -531,7 +532,7 @@
     <link href="https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/"/>
     <id>https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/</id>
     <published>2020-06-04T02:57:11.000Z</published>
-    <updated>2021-05-13T12:10:43.865Z</updated>
+    <updated>2021-06-21T08:11:28.591Z</updated>
     
     <summary type="html">
     
@@ -539,7 +540,8 @@
       
         
         
-          &lt;h1 id=&quot;原理介绍&quot;&gt;&lt;a href=&quot;#原理介绍&quot; class=&quot;headerlink&quot; title=&quot;原理介绍&quot;&gt;&lt;/a&gt;原理介绍&lt;/h1&gt;&lt;h2 id=&quot;Title&quot;&gt;&lt;a href=&quot;#Title&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;&lt;img src=&quot;/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/image-20210621161112518.png&quot; alt=&quot;image-20210621161112518&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;原理介绍&quot;&gt;&lt;a
         
       
     
@@ -558,7 +560,7 @@
     <link href="https://myhaa.github.io/2020/06/03/shi-yong-gong-ju-zhi-mapreduce/"/>
     <id>https://myhaa.github.io/2020/06/03/shi-yong-gong-ju-zhi-mapreduce/</id>
     <published>2020-06-03T01:25:31.000Z</published>
-    <updated>2021-05-13T12:07:02.906Z</updated>
+    <updated>2021-06-21T06:52:00.697Z</updated>
     
     <summary type="html">
     
@@ -566,7 +568,8 @@
       
         
         
-          &lt;h1 id=&quot;Title&quot;&gt;&lt;a href=&quot;#Title&quot; class=&quot;headerlink&quot; title=&quot;Title&quot;&gt;&lt;/a&gt;Title&lt;/h1&gt;&lt;p&gt;&lt;img
+          &lt;p&gt;&lt;img src=&quot;/2020/06/03/shi-yong-gong-ju-zhi-mapreduce/image-20210621145110769.png&quot; alt=&quot;image-20210621145110769&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Title&quot;&gt;&lt;a
         
       
     
