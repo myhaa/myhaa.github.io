@@ -15,6 +15,8 @@ tags:
   - Hadoop
 ---
 
+![image-20210621152803717](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/image-20210621152803717.png)
+
 # Hadoop介绍
 
 ## 第一部分-简介
@@ -39,15 +41,15 @@ tags:
 
 ### 企业应用架构
 
-![图：Hadoop在企业应用结构](/Hadoop/hadoop_structure.png)
+![图：Hadoop在企业应用结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/hadoop_structure.png)
 
 ### 各种版本
 
-![图：Hadoop版本](/Hadoop/hadoop_version.png)
+![图：Hadoop版本](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/hadoop_version.png)
 
 ### 项目结构
 
-![图：Hadoop项目结构](/Hadoop/hadoop_project_structure.jpg)
+![图：Hadoop项目结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/hadoop_project_structure.jpg)
 
 * 分布式存储系统-HDFS：怎么用成百上千的机器去存储文件，详情请见{% post_link HDFS HDFS笔记 %}
 * 分布式计算框架-YARN：负责计算资源调度，内存、CPU、带宽等等
@@ -79,7 +81,7 @@ tags:
 
 ### 集群节点类型及硬件配置
 
-![图：HDFS结构](/Hadoop/hdfs_architecture.png)
+![图：HDFS结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/hdfs_architecture.png)
 
 * NameNode：负责协调集群中的数据存储，获得数据的地址信息，哪块在哪个机器这样子（HDFS节点）
 * DataNode：存储被拆分的数据块（HDFS节点）
@@ -107,7 +109,7 @@ SecondaryNameNode在小型集群可以和NameNode共用一台机器，较大的�
 
 ### 集群网络拓扑
 
-![图：网络拓扑](/Hadoop/network_tuo.png)
+![图：网络拓扑](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHadoop/network_tuo.png)
 
 ### 集群建立与安装
 

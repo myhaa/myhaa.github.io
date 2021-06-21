@@ -16,6 +16,8 @@ password:
 summary: 数据挖掘十大算法之PageRank
 ---
 
+![image-20210621160912259](%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPageRank/image-20210621160912259.png)
+
 # 基础
 
 ## 问题
@@ -46,7 +48,7 @@ $$
 
 * 如下图所示：
 
-  ![图片来源参考链接](%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B9%8BPageRank/image-20210310155933176.png)
+  ![图片来源参考链接](%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BPageRank/image-20210310155933176.png)
 
 * 表示为$G(V,E)$，上图的邻接矩阵表示为：
   $$

@@ -15,6 +15,8 @@ tags:
   - Linux
 ---
 
+![image-20210621145304764](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BLinux/image-20210621145304764.png)
+
 # 一、Linux基础
 
 ## 常用命令
@@ -191,6 +193,6 @@ done
 ## 4、将代码输出重定向到log文件-不覆盖的形式
 
 ```shell
-0 11 * * * /usr/bin/python3 /home/meiyunhe/adsp_new/orientation.py >> /home/meiyunhe/adsp_new/logs1_ori.txt 2>&1
+0 11 * * * /usr/bin/python3 /home/user/adsp_new/orientation.py >> /home/user/adsp_new/logs1_ori.txt 2>&1
 ```
 

@@ -15,6 +15,8 @@ tags:
   - hive
 ---
 
+![image-20210621150214191](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhive/image-20210621150214191.png)
+
 # 一、Hive基础
 
 ## 1、Hive数据类型
@@ -445,7 +447,7 @@ from... where.... select... group by... having ... order by...
   1. 数据库：传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易。
   2. 数据仓库：数据仓库系统的应用主要是OLAP（On-Line Analytical Processing），支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。
 
-![图：数据仓库结构](/HIVE/hive_data_warehouse.png)
+![图：数据仓库结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhive/hive_data_warehouse.png)
 
 ## Hive简介
 
@@ -514,7 +516,7 @@ from... where.... select... group by... having ... order by...
 
 * [HQL解析原理](<http://www.aboutyun.com/thread-20461-1-1.html>)
 
-![图：hive_to_mapreduce](/HIVE/hive_to_mapreduce.png)
+![图：hive_to_mapreduce](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhive/hive_to_mapreduce.png)
 
 **注意：**
 
@@ -523,7 +525,7 @@ from... where.... select... group by... having ... order by...
 
 ### Hive HA基本原理
 
-![图：hiveHA](/HIVE/hiveHA.png)
+![图：hiveHA](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhive/hiveHA.png)
 
 # 四、impala
 

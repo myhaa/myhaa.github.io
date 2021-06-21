@@ -15,9 +15,11 @@ password:
 summary: MapReduce的原理介绍
 ---
 
+![image-20210621145110769](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BMapReduce/image-20210621145110769.png)
+
 # Title
 
-![image-20200603093104618](google_MapReduce/image-20200603093104618.png)
+![image-20200603093104618](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BMapReduce/image-20200603093104618.png)
 
 【译文】
 

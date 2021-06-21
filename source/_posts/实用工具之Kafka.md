@@ -15,6 +15,8 @@ password:
 summary: 有关Kafka的笔记
 ---
 
+![image-20210621145318002](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BKafka/image-20210621145318002.png)
+
 # Kafka基础
 
 ## 简介
@@ -39,7 +41,7 @@ summary: 有关Kafka的笔记
 
 ### Kafka的四个核心API
 
-![Kafka-APIs](/Kafka/kafka-apis.png)
+![Kafka-APIs](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BKafka/kafka-apis.png)
 
 * [Producer API](<https://kafka.apache.org/documentation.html#producerapi>)：允许应用程序将记录流发布到一个或多个Kafka主题`Topic`
 * [Consumer API](<https://kafka.apache.org/documentation.html#consumerapi>)：允许应用程序订阅一个或多个主题`Topic`，并处理产生给它们的记录流。
@@ -61,7 +63,7 @@ summary: 有关Kafka的笔记
 
 * 对于每个主题，Kafka集群维护一个类似下图的分区日志
 
-![log_anatomy](/Kafka/log_anatomy.png)
+![log_anatomy](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BKafka/log_anatomy.png)
 
 * 每个分区都是有序的，不可变的记录序列，这些记录连续地附加到结构化的提交日志中
 * 每个分区中的记录都分配有一个称为**偏移**的顺序ID号，该ID唯一地标识分区中的每个记录
@@ -70,7 +72,7 @@ summary: 有关Kafka的笔记
 
 * 如下图，偏移量由使用者控制：通常，使用者在读取记录时会线性地推进其偏移量，但是实际上，由于位置是由使用者控制的，因此它可以按喜欢的任何顺序使用记录。 例如，使用者可以重置到较旧的偏移量以重新处理过去的数据，或者跳到最近的记录并从“现在”开始使用。
 
-![log_consumer](/Kafka/log_consumer.png)
+![log_consumer](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BKafka/log_consumer.png)
 
 * 这些特性的组合意味着Kafka消费者非常便宜，他们可以来去自如，对集群或其他消费者没有太大影响。例如，您可以使用命令行工具“跟踪”任何主题的内容，而不需要更改任何现有使用者所使用的内容
 * 日志中的分区有多种用途。 首先，它们允许日志扩展到超出单个服务器所能容纳的大小。 每个单独的分区都必须适合托管它的服务器，但是一个主题可能有很多分区，因此它可以处理任意数量的数据。 其次，它们充当并行性的单元
@@ -105,7 +107,7 @@ summary: 有关Kafka的笔记
 
 **举例如下图：**
 
-![log_consumer](/Kafka/consumer-groups.png)
+![log_consumer](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BKafka/consumer-groups.png)
 
 * 一个包含四个分区（P0-P3）和两个消费者组的两台服务器【Kafka集群】
 * 消费者组A有两个消费者实例（C1、C2），而组B有四个（C3-C6）

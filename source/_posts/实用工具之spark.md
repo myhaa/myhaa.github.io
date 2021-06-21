@@ -15,6 +15,8 @@ tags:
   - spark
 ---
 
+![image-20210621144836787](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bspark/image-20210621144836787.png)
+
 # Spark基础
 
 ## 简介

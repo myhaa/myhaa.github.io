@@ -15,6 +15,8 @@ tags:
   - Hexo
 ---
 
+![image-20210621151156147](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/image-20210621151156147.png)
+
 # 一、Hexo介绍
 
 ## 1、官网
@@ -81,9 +83,9 @@ tags:
 
 ### （1）如图操作
 
-![图1](/Hexo_blog/create1.png)
+![图1](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/create1.png)
 
-![图2](/Hexo_blog/create2.png)
+![图2](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/create2.png)
 
 ### （2）注意事项
 
@@ -93,9 +95,9 @@ tags:
 
 ### （1）如图操作
 
-![图3](/Hexo_blog/create3.png)
+![图3](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/create3.png)
 
-![图4](/Hexo_blog/create4.png)
+![图4](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/create4.png)
 
 # 三、写博客并发布到GitHub
 
@@ -148,7 +150,7 @@ ctrl c
 
 2. 如图
 
-![图5](/Hexo_blog/create5.png)
+![图5](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/create5.png)
 
 3. 注意：修改图中标红的地方就OK，换成你自己的name
 
@@ -269,13 +271,13 @@ tags:
 
 ### （2）修改subtitle
 
-![图：修改subtitle](/Hexo_blog/xiugaisubtitle.png)
+![图：修改subtitle](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/xiugaisubtitle.png)
 
 **注意：**第一步修改应该是在`bg-cover-content.ejs`中
 
 ### （3）修改dream
 
-![图：修改dream](/Hexo_blog/xiugaidream.png)
+![图：修改dream](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bhexo/xiugaidream.png)
 
 ## 6、让HEXO搭建的博客支持Latex
 

@@ -15,6 +15,8 @@ password:
 summary: HBase笔记
 ---
 
+![image-20210621152645053](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHBase/image-20210621152645053.png)
+
 # HBase基础
 
 ## 简介
@@ -27,7 +29,7 @@ summary: HBase笔记
 
 ## 体系结构
 
-![image-20201218163039823](HBase/image-20201218163039823.png)
+![image-20201218163039823](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHBase/image-20201218163039823.png)
 
 * 客户端
 
@@ -69,7 +71,7 @@ summary: HBase笔记
 
 ## 逻辑视图
 
-![image-20201218164935058](HBase/image-20201218164935058.png)
+![image-20201218164935058](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHBase/image-20201218164935058.png)
 
 * table
 

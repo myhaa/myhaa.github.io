@@ -17,6 +17,8 @@ tags:
 
 
 
+![image-20210621152942100](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/image-20210621152942100.png)
+
 # Git基础
 
 ## 1、Git简介
@@ -141,7 +143,7 @@ cd How-To-Ask-Questions-The-Smart-Way  # 进入clone的版本库文件夹
    - 暂存（staged）：Changes to be committed:
 3. 详情如下图（图来自：<https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository>）
 
-![图1：版本库中的文件状态](/Git/lifecycle.png)
+![图1：版本库中的文件状态](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/lifecycle.png)
 
 ### （2）Tracking New Files(untracked)
 
@@ -417,7 +419,7 @@ git push origin --delete <tagname>
 * 如下图，master是默认分支，testing是其他分支。
 * 分支的存在是让你可以把master作为正式环境，把testing作为开发环境，当开发环境的代码需要上线时就将其合并到正式环境master。
 
-![图2：分支](/Git/branch.png)
+![图2：分支](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/branch.png)
 
 ### （2）默认分支
 
@@ -492,25 +494,25 @@ git branch --no-merged
 
 ### （1）克隆远程仓库
 
-![图3：克隆后的远程仓库和本地仓库](/Git/remote_branch.png)
+![图3：克隆后的远程仓库和本地仓库](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/remote_branch.png)
 
 * 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
 
 ### （2）当远程仓库被修改后
 
-![图4：被别人修改后的远程仓库和本地仓库](/Git/remote_branch1.png)
+![图4：被别人修改后的远程仓库和本地仓库](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/remote_branch1.png)
 
 * 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
 
 ### （3）git fetch origin后的远程仓库和本地仓库
 
-![图5：fetch过后的仓库](/Git/remote_branch2.png)
+![图5：fetch过后的仓库](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/remote_branch2.png)
 
 * 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
 
 ### （4）多个远程仓库
 
-![图6：多个远程仓库](/Git/remote_branch3.png)
+![图6：多个远程仓库](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/remote_branch3.png)
 
 * 图片来源于[官网](<https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches>)
 
@@ -554,11 +556,11 @@ git push origin --delete serverfix
 
 ### （2）merge
 
-![图7：merge](/Git/merge.png)
+![图7：merge](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/merge.png)
 
 ### （3）Rebasing
 
-![图8：rebasing](/Git/rebasing.png)
+![图8：rebasing](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/rebasing.png)
 
 * 如上图，rebasing相当于是把c4这个commit_id抹去，这样会导致这个提交信息被清除，**有利也有弊**。
 
@@ -629,7 +631,7 @@ git-flow会预设两个主分支在仓库中，也就是说要同时维护两个
 * hotfix：bug修复分支
 * release：版本发布分支
 
-![图：git-flow分支模式](/Git/git_flow_branch.png)
+![图：git-flow分支模式](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bgit/git_flow_branch.png)
 
 ### 功能开发分支-feature
 

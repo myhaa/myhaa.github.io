@@ -15,6 +15,8 @@ password:
 summary: 深度学习之TF安装
 ---
 
+![image-20210621153613138](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210621153613138.png)
+
 # 参考
 
 * [windows tensorflow-gpu的安装](https://zhuanlan.zhihu.com/p/35717544)
@@ -26,13 +28,13 @@ summary: 深度学习之TF安装
 
 * 右键更新显卡驱动
 
-  ![image-20210320115932959](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320115932959.png)
+  ![image-20210320115932959](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320115932959.png)
 
 ## 查看显卡驱动对应`cuda`版本
 
 * 桌面右键显卡控制面板
 
-  ![image-20210320120246190](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320120246190.png)
+  ![image-20210320120246190](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320120246190.png)
 
 ## 下载安装`cuda`
 
@@ -42,13 +44,13 @@ summary: 深度学习之TF安装
 
 * [安装参考地址](https://blog.csdn.net/XunCiy/article/details/89070315)
 
-  ![image-20210320153609006](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320153609006.png)
+  ![image-20210320153609006](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320153609006.png)
 
 * 以下两个地方注意比选就行
 
-  ![image-20210320122925046](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320122925046.png)
+  ![image-20210320122925046](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320122925046.png)
 
-  ![image-20210320122936325](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320122936325.png)
+  ![image-20210320122936325](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320122936325.png)
 
 
 
@@ -56,7 +58,7 @@ summary: 深度学习之TF安装
 
 * [地址](https://www.tensorflow.org/install/source_windows#gpu)
 
-  ![image-20210320121040837](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320121040837.png)
+  ![image-20210320121040837](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320121040837.png)
 
 ## 下载安装`cudnn`
 
@@ -64,17 +66,17 @@ summary: 深度学习之TF安装
 
 * [下载地址2](https://developer.nvidia.cn/rdp/cudnn-download)
 
-  ![image-20210320162205564](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320162205564.png)
+  ![image-20210320162205564](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320162205564.png)
 
 * 安装
 
-  ![image-20210320163021436](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320163021436.png)
+  ![image-20210320163021436](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320163021436.png)
 
 ## 安装`tensorflow-gpu`
 
 * 根据`cuda`对应版本安装`tf`的对应版本，使用`pycharm`安装
 
-  ![image-20210320163946401](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTF%E5%AE%89%E8%A3%85/image-20210320163946401.png)
+  ![image-20210320163946401](%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BTensorFlow%E5%AE%89%E8%A3%85/image-20210320163946401.png)
 
 ## 测试是否安装成功
 

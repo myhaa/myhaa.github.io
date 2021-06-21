@@ -15,6 +15,8 @@ password:
 summary: 有关HDFS的笔记
 ---
 
+![image-20210621151650243](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/image-20210621151650243.png)
+
 # HDFS基础
 
 ## 分布式文件系统
@@ -60,7 +62,7 @@ summary: 有关HDFS的笔记
 
 ##### 数据结构
 
-![图：DataNode数据结构](/HDFS/namenode_architecture.png)
+![图：DataNode数据结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/namenode_architecture.png)
 
 * FsImage：维护系统文件树以及所有元数据，包含文件的复制等级、修改、访问时间、访问权限、块大小以及组成文件的块，目录的存储修改时间、权限和配额。没有记录块存储在哪个DataNode，而是存储映射关系到内存。每次增加DataNode到集群时，DataNode都会把自己包含的块列表告知NameNode，确保映射是最新
 * EditLog：记录创建、删除、重命名等操作
@@ -73,11 +75,11 @@ summary: 有关HDFS的笔记
 * 因为FsImage文件一般很大（GB常见），如果所有的更新操作都往里加，则会导致系统变慢，所以需要一个不断更新的EditLog
 * 但是随着对文件不断的更新，EditLog也会不断的增大，怎么解决这个问题呢？***使用SecondaryNameNode***，详情如下：
 
-![图：EditLog解决](/HDFS/editlog.png)
+![图：EditLog解决](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/editlog.png)
 
 ##### 内存全景
 
-![图：DataNode内存全景](/HDFS/namenode_memory.png)
+![图：DataNode内存全景](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/namenode_memory.png)
 
 * 参考[HDFS NameNode内存全景](https://tech.meituan.com/2016/08/26/namenode.html)
 
@@ -91,7 +93,7 @@ summary: 有关HDFS的笔记
 
 ## HDFS结构
 
-![图：hdfs结构](/HDFS/hdfs_architecture.png)
+![图：hdfs结构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/hdfs_architecture.png)
 
 ### HDFS命名空间管理
 
@@ -164,13 +166,13 @@ summary: 有关HDFS的笔记
 
 * JAVA读过程
 
-![图：JAVA读HDFS过程](/HDFS/java_read_hdfs.png)
+![图：JAVA读HDFS过程](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/java_read_hdfs.png)
 
 ### 写过程-JAVA
 
 * JAVA写过程
 
-![图：JAVA写HDFS过程](/HDFS/java_write_hdfs.png)
+![图：JAVA写HDFS过程](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BHDFS/java_write_hdfs.png)
 
 # HDFS进阶
 

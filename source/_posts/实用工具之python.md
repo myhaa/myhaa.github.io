@@ -18,6 +18,8 @@ tags:
 
 
 
+![image-20210621144956956](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bpython/image-20210621144956956.png)
+
 # 一、Python基础
 
 

@@ -15,6 +15,8 @@ password:
 summary: 有关Storm的笔记
 ---
 
+![image-20210621144322474](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bstorm/image-20210621144322474.png)
+
 # 基础
 
 ## 简介
@@ -34,7 +36,7 @@ summary: 有关Storm的笔记
 
 ### 组件
 
-![图：storm拓扑](/Storm/core_concept.jpg)
+![图：storm拓扑](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bstorm/core_concept.jpg)
 
 #### Tuple
 
@@ -102,7 +104,7 @@ summary: 有关Storm的笔记
 
 ### 架构图
 
-![图：storm集群架构](/Storm/storm_structure.jpg)
+![图：storm集群架构](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bstorm/storm_structure.jpg)
 
 ### 组件
 
@@ -145,7 +147,7 @@ summary: 有关Storm的笔记
 
 ### 流程图
 
-![图：storm工作流程](/Storm/storm_job_process.jpg)
+![图：storm工作流程](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8Bstorm/storm_job_process.jpg)
 
 ### 详细流程介绍
 
