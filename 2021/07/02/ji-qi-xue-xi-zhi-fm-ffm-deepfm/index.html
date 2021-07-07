@@ -4,10 +4,20 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="深度学习之语音识别, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="参考
-nobody132/masr: 中文语音识别; Mandarin Automatic … - GitHubgithub.com › nobody132 › masr
-nl8590687/ASRT_SpeechRecognition: ">
+    <meta name="keywords" content="机器学习之FM_FFM_DeepFM, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="介绍
+CTR-CVR预估任务上，常用的模型介绍
+
+FM
+Factorization machines
+
+FFM
+Fields Factorization machines
+
+DeepFMDeepFFM参考
+hrwhisper.me的博客
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +25,7 @@ nl8590687/ASRT_SpeechRecognition: ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>深度学习之语音识别 | Myhaa&#39;s Blog</title>
+    <title>机器学习之FM_FFM_DeepFM | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,13 +317,13 @@ nl8590687/ASRT_SpeechRecognition: ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        深度学习之语音识别
+                        机器学习之FM_FFM_DeepFM
                     </div>
                 </div>
             </div>
@@ -425,8 +435,12 @@ nl8590687/ASRT_SpeechRecognition: ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/">
-                                <span class="chip bg-color">语音识别</span>
+                            <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                                <span class="chip bg-color">CTR预估</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B9%BF%E5%91%8A%E6%8E%A8%E8%8D%90/">
+                                <span class="chip bg-color">广告推荐</span>
                             </a>
                         
                     </div>
@@ -437,8 +451,8 @@ nl8590687/ASRT_SpeechRecognition: ">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                深度学习
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
                             </a>
                         
                     </div>
@@ -450,7 +464,7 @@ nl8590687/ASRT_SpeechRecognition: ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-23
+                    2021-07-02
                 </div>
                 
 
@@ -459,7 +473,7 @@ nl8590687/ASRT_SpeechRecognition: ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    334
+                    35
                 </div>
                 
 
@@ -482,71 +496,19 @@ nl8590687/ASRT_SpeechRecognition: ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://github.com/nobody132/masr" target="_blank" rel="noopener">nobody132/masr: 中文语音识别; Mandarin Automatic … - GitHubgithub.com › nobody132 › masr</a></li>
-<li><a href="https://github.com/nl8590687/ASRT_SpeechRecognition" target="_blank" rel="noopener">nl8590687/ASRT_SpeechRecognition: A Deep … - GitHubgithub.com › ASRT_SpeechRecognition</a></li>
-<li><a href="https://github.com/audier/DeepSpeechRecognition" target="_blank" rel="noopener">audier/DeepSpeechRecognition: A Chinese Deep … - GitHubgithub.com › audier › DeepSpeechRecognition</a></li>
-<li><a href="https://github.com/xxbb1234021/speech_recognition" target="_blank" rel="noopener">xxbb1234021/speech_recognition: 中文语音识别 - GitHubgithub.com › xxbb1234021 › speech_recognition</a></li>
-<li><a href="https://www.pythonf.cn/read/138089" target="_blank" rel="noopener">从视频中提取音频——Python三行程序,的,python,搞定www.pythonf.cn › read</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/32085405" target="_blank" rel="noopener">人人都能看懂的LSTM - 知乎zhuanlan.zhihu.com › …</a></li>
-<li><a href="https://deepspeech.readthedocs.io/en/v0.9.3/?badge=latest" target="_blank" rel="noopener">deepspeech项目</a>：<code>star:16.9k</code></li>
-<li>使用<code>google</code>接口进行语音识别：<a href="https://github.com/Uberi/speech_recognition" target="_blank" rel="noopener">speech_recognition</a></li>
-<li>相关paper: <a href="https://github.com/zzw922cn/awesome-speech-recognition-speech-synthesis-papers#Automatic-Speech-Recognition" target="_blank" rel="noopener">GitHub</a></li>
-<li><a href="https://github.com/topics/speech-recognition?o=desc&amp;s=stars" target="_blank" rel="noopener">github speech recognition topics排行榜</a></li>
-<li><a href="https://github.com/athena-team/athena" target="_blank" rel="noopener">滴滴语音识别开源</a></li>
-<li><a href="https://github.com/wenet-e2e/wenet" target="_blank" rel="noopener">2021最新语音识别开源WENET</a></li>
-</ol>
-<h1 id="不OK的项目"><a href="#不OK的项目" class="headerlink" title="不OK的项目"></a>不OK的项目</h1><ol>
-<li><a href="https://github.com/xxbb1234021/speech_recognition" target="_blank" rel="noopener">speech_recognition</a></li>
-</ol>
-<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="视频提取音频"><a href="#视频提取音频" class="headerlink" title="视频提取音频"></a>视频提取音频</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python"># -*- coding:utf-8 _*-
-"""
-Author: 
-Email: 
-Date: 2021/03/23
-File: audio_test.py
-Software: PyCharm
-Description: 音频识别
-"""
-
-
-# load modules
-import os
-import sys
-from moviepy.editor import AudioFileClip
-
-current_path = sys.path[0]
-video_path = '%s/video/' % current_path  # 视频源文件目录
-video_name = os.listdir(video_path)[0]
-audio_path = '%s/audio_extracts/' % current_path  # 音频提取文件目录
-if not os.path.exists(audio_path):
-    os.mkdir(audio_path)
-audio_name = video_name.split('.')[0] + '.wav'
-
-# 音频提取
-my_audio_clip = AudioFileClip(video_path+video_name)
-my_audio_clip.write_audiofile(audio_path+audio_name)
-
-# 音频分析
-import numpy as np
-import librosa
-audio, freq = librosa.load(audio_path+audio_name)
-time = np.arange(0, len(audio)) / freq
-print(len(audio), type(audio), freq, sep="\t")
-
-# 画信号增强图
-import librosa.display
-import matplotlib.pyplot as plt
-audio, _ = librosa.effects.trim(audio)  # Trim leading and trailing #silence from an audio signal.
-librosa.display.waveplot(audio, sr=freq)
-plt.show()
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="音频识别"><a href="#音频识别" class="headerlink" title="音频识别"></a>音频识别</h2><h3 id="使用接口"><a href="#使用接口" class="headerlink" title="使用接口"></a>使用接口</h3><ul>
-<li><a href="https://app.xunjiepdf.com/voice2text/" target="_blank" rel="noopener">迅捷PDF转换器</a>：免费，效果还行</li>
-<li><a href="https://jianwai.youdao.com/index/0" target="_blank" rel="noopener">网易见外</a>：免费，效果一般</li>
+                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ul>
+<li>CTR-CVR预估任务上，常用的模型介绍</li>
 </ul>
-<p><a href="https://github.com/topics/speech-recognition" target="_blank" rel="noopener">speech-recognition</a>：音频识别相关topic</p>
-
+<h1 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h1><ul>
+<li>Factorization machines</li>
+</ul>
+<h1 id="FFM"><a href="#FFM" class="headerlink" title="FFM"></a>FFM</h1><ul>
+<li>Fields Factorization machines</li>
+</ul>
+<h1 id="DeepFM"><a href="#DeepFM" class="headerlink" title="DeepFM"></a>DeepFM</h1><h1 id="DeepFFM"><a href="#DeepFFM" class="headerlink" title="DeepFFM"></a>DeepFFM</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.hrwhisper.me/machine-learning-fm-ffm-deepfm-deepffm/" target="_blank" rel="noopener">hrwhisper.me的博客</a></li>
+</ul>
+<h1 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h1>
             </div>
             <hr/>
 
@@ -571,7 +533,7 @@ plt.show()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/03/23/shen-du-xue-xi-zhi-yu-yin-shi-bie/">https://myhaa.github.io/2021/03/23/shen-du-xue-xi-zhi-yu-yin-shi-bie/</a>
+                    <a href="https://myhaa.github.io/2021/07/02/ji-qi-xue-xi-zhi-fm-ffm-deepfm/">https://myhaa.github.io/2021/07/02/ji-qi-xue-xi-zhi-fm-ffm-deepfm/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -609,8 +571,12 @@ plt.show()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/">
-                                    <span class="chip bg-color">语音识别</span>
+                                <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                                    <span class="chip bg-color">CTR预估</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B9%BF%E5%91%8A%E6%8E%A8%E8%8D%90/">
+                                    <span class="chip bg-color">广告推荐</span>
                                 </a>
                             
                         </div>
@@ -781,7 +747,7 @@ plt.show()
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2021-03-23T16-09-59',
+        id: '2021-07-02T11-17-30',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -802,9 +768,64 @@ plt.show()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/07/02/ji-qi-xue-xi-zhi-fm-ffm-deepfm/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="机器学习之FM_FFM_DeepFM">
+                        
+                        <span class="card-title">机器学习之FM_FFM_DeepFM</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            FM_FFM_DeepFM算法介绍
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                        <span class="chip bg-color">CTR预估</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B9%BF%E5%91%8A%E6%8E%A8%E8%8D%90/">
+                        <span class="chip bg-color">广告推荐</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/04/23/zi-yuan-zheng-he-zhi-gu-ge-shu-qian/">
                     <div class="card-image">
@@ -822,9 +843,9 @@ plt.show()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -842,59 +863,6 @@ plt.show()
                     
                     <a href="/tags/%E8%B0%B7%E6%AD%8C%E4%B9%A6%E7%AD%BE/">
                         <span class="chip bg-color">谷歌书签</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/22/shen-du-xue-xi-zhi-cnn/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="深度学习之CNN">
-                        
-                        <span class="card-title">深度学习之CNN</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            深度学习之CNN
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                    <a href="/tags/CNN/">
-                        <span class="chip bg-color">CNN</span>
                     </a>
                     
                 </div>
@@ -1064,6 +1032,13 @@ plt.show()
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">

@@ -466,7 +466,7 @@ Python3编码问题
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -699,6 +699,15 @@ if __name__ == '__main__':
 <li>$similarity=\frac{|A\cap B|}{|A\cup B|}$</li>
 <li>修正，对长度做出惩罚：$similarity=\frac{|A\cap B|}{|A\cup B|+\alpha \times abs{(len(A)-len(B)})}$</li>
 </ol>
+<h2 id="14、one-hot-编码-multiple-values"><a href="#14、one-hot-编码-multiple-values" class="headerlink" title="14、one hot 编码=multiple values"></a>14、one hot 编码=multiple values</h2><ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get_dummies.html#pandas.Series.str.get_dummies" target="_blank" rel="noopener">pandas-Series.str.get_dummiers</a></li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pd.Series(['80001,800002', '150001,150002', '80001,80002,150001,150002']).str.get_dummies(sep=',')
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" target="_blank" rel="noopener">sklearn-MultiLabelBinarizer</a></li>
+<li><a href="https://stackoverflow.com/questions/63544536/convert-pd-get-dummies-result-to-df-str-get-dummies" target="_blank" rel="noopener">one-hot过后压缩矩阵（稀疏矩阵）</a></li>
+</ul>
 
             </div>
             <hr/>

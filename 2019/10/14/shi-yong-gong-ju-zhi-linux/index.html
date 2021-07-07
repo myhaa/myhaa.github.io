@@ -463,14 +463,14 @@ rsync [OPTION]... [USER@]HOS">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
 				
@@ -568,10 +568,127 @@ rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]
 --bwlimit=KBPS 限制I/O带宽，KBytes per second。
 -h, --help 显示帮助信息。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="二、Linux进阶"><a href="#二、Linux进阶" class="headerlink" title="二、Linux进阶"></a>二、Linux进阶</h1><h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、修改文件或目录的权限"><a href="#1、修改文件或目录的权限" class="headerlink" title="1、修改文件或目录的权限"></a>1、修改文件或目录的权限</h2><p>（1）语法</p>
-<pre class="line-numbers language-lang-shell"><code class="language-lang-shell">chmod [-cfvR] [--help] [--version] mode file...
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>（2）参数说明</p>
+<h1 id="二、Linux进阶"><a href="#二、Linux进阶" class="headerlink" title="二、Linux进阶"></a>二、Linux进阶</h1><h2 id="linux配置conda环境及搭建深度学习环境"><a href="#linux配置conda环境及搭建深度学习环境" class="headerlink" title="linux配置conda环境及搭建深度学习环境"></a>linux配置conda环境及搭建深度学习环境</h2><h3 id="安装minconda3"><a href="#安装minconda3" class="headerlink" title="安装minconda3"></a>安装minconda3</h3><ul>
+<li><a href="https://docs.anaconda.com/anaconda/install/linux/" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># 安装miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+# 校验hash值
+sha256sum Miniconda3-latest-Linux-x86_64.sh
+
+# 更改执行权限
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+
+# 安装
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# 安装完成后配置任意位置启动conda
+source <path to conda>/bin/activate
+conda init
+conda deactivate
+
+source ~/.bashrc
+conda config --set auto_activate_base False
+
+# 验证
+conda --version
+
+# 装好conda之后，确定一个你放软件的地方
+mkdir ~/conda_software
+conda create -p ~/conda_software
+
+# 配置环境变量，可以加到.bashrc或者.zshrc文件，这样每次登录不用再设置
+export PATH=$HOME/conda_software/bin${PATH:+:${PATH}}
+
+# 安装软件
+conda activate ~/softwares/conda_software
+conda config --add channels conda-forge
+
+# 以下举几个例子：
+# conda install zsh
+# conda install htop
+# conda install tmux
+# conda install openssl
+
+# 查看安装了哪些包
+conda list
+
+# 查看当前存在哪些虚拟环境
+conda env list
+# conda info -e
+
+# 检查更新
+conda update conda
+
+# 创建python虚拟环境
+conda create -n python38 python=3.8
+
+# 激活
+conda activate python38
+
+# 安装包
+# 指定环境安装包
+conda install -n python38 numpy
+# 在环境内安装包
+conda install numpy
+
+# 关闭虚拟环境
+conda deactivate
+
+# 删除虚拟环境
+conda remove -n python38 --all
+
+# 删除环境中的包
+conda remove -n python38 numpy
+
+# 设置国内镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn
+
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+
+# 恢复默认镜像
+conda config --remove-key channels
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="配置服务器jupyter环境"><a href="#配置服务器jupyter环境" class="headerlink" title="配置服务器jupyter环境"></a>配置服务器jupyter环境</h3><ul>
+<li><a href="https://blog.lihj.me/post/conda-jupyter-installation.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># 安装jupyter lab
+conda install jupyterlab
+
+# jupyter 配置
+
+# 生成配置文件
+jupyter notebook --generate-config
+
+ipython
+
+​```ipython
+from notebook.auth import passwd
+passwd()
+​
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="复制生成的密文"><a href="#复制生成的密文" class="headerlink" title="复制生成的密文"></a>复制生成的密文</h1><h1 id="修改默认配置文件"><a href="#修改默认配置文件" class="headerlink" title="修改默认配置文件"></a>修改默认配置文件</h1><p>vim ~/.jupyter/jupyter_notebook_config.py</p>
+<h1 id="修改以下内容"><a href="#修改以下内容" class="headerlink" title="修改以下内容"></a>修改以下内容</h1><p>c.NotebookApp.allow_remote_access = True<br>c.NotebookApp.ip = ‘*’<br>c.NotebookApp.open_browser = False<br>c.NotebookApp.password = u’sha1:…刚才复制的密文’<br>c.NotebookApp.port = 8888 # 指定一个访问端口</p>
+<h1 id="启动jupyter"><a href="#启动jupyter" class="headerlink" title="启动jupyter"></a>启动jupyter</h1><h1 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h1><p>jupyter lab</p>
+<h1 id="远程访问"><a href="#远程访问" class="headerlink" title="远程访问"></a>远程访问</h1><h1 id="在本地浏览器输入-address-of-remote-8888-进入jupyter-的登陆界面"><a href="#在本地浏览器输入-address-of-remote-8888-进入jupyter-的登陆界面" class="headerlink" title="在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面"></a>在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面</h1><h1 id="安装-jupyter-使用的-python-可直接被-jupyter-调用，不需额外配置。"><a href="#安装-jupyter-使用的-python-可直接被-jupyter-调用，不需额外配置。" class="headerlink" title="安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。"></a>安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。</h1><h1 id="为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的-jupyter-kernel-供-jupyter-调用"><a href="#为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的-jupyter-kernel-供-jupyter-调用" class="headerlink" title="为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用"></a>为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用</h1><h1 id="进入环境"><a href="#进入环境" class="headerlink" title="进入环境"></a>进入环境</h1><p>conda activate python38</p>
+<h1 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h1><p>conda install notebook ipykernel</p>
+<h1 id="安装python-kernel"><a href="#安装python-kernel" class="headerlink" title="安装python kernel"></a>安装python kernel</h1><p>which ipython # should show ~/miniconda3/envs/python38/bin/ipython<br>ipython kernel install —user —name “python38” —display-name “Python38”</p>
+<h1 id="kernel-文件保存在-local-share-python38-kernels-python37。"><a href="#kernel-文件保存在-local-share-python38-kernels-python37。" class="headerlink" title="kernel 文件保存在 ~/.local/share/python38/kernels/python37。"></a>kernel 文件保存在 ~/.local/share/python38/kernels/python37。</h1><h1 id="此时安装的是新环境中-ipython-所属的-python-3-8-miniconda3-envs-python38-bin-python-为-jupyter-kernel。"><a href="#此时安装的是新环境中-ipython-所属的-python-3-8-miniconda3-envs-python38-bin-python-为-jupyter-kernel。" class="headerlink" title="此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。"></a>此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。</h1><h1 id="其他位置或环境的-python-可用相同方法安装为-jupyter-kernel"><a href="#其他位置或环境的-python-可用相同方法安装为-jupyter-kernel" class="headerlink" title="其他位置或环境的 python 可用相同方法安装为 jupyter kernel"></a>其他位置或环境的 python 可用相同方法安装为 jupyter kernel</h1><pre><code>
+
+
+# 三、参考书籍
+
+# 四、疑难解答
+
+## 1、修改文件或目录的权限
+
+（1）语法
+
+```shell
+chmod [-cfvR] [--help] [--version] mode file...
+</code></pre><p>（2）参数说明</p>
 <p><strong>mode :</strong> 权限设定字串，格式如下 :</p>
 <pre class="line-numbers language-lang-shell"><code class="language-lang-shell">[ugoa...][[+-=][rwxX]...][,...]
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -619,6 +736,10 @@ done
 <li>参考<a href="https://sjq597.github.io/2015/11/03/Shell-按日期循环执行/" target="_blank" rel="noopener">日期循环</a></li>
 </ul>
 <h2 id="4、将代码输出重定向到log文件-不覆盖的形式"><a href="#4、将代码输出重定向到log文件-不覆盖的形式" class="headerlink" title="4、将代码输出重定向到log文件-不覆盖的形式"></a>4、将代码输出重定向到log文件-不覆盖的形式</h2><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">0 11 * * * /usr/bin/python3 /home/user/adsp_new/orientation.py >> /home/user/adsp_new/logs1_ori.txt 2>&1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="5、查看系统版本"><a href="#5、查看系统版本" class="headerlink" title="5、查看系统版本"></a>5、查看系统版本</h2><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">lsb_release -a
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="6、查看显卡信息"><a href="#6、查看显卡信息" class="headerlink" title="6、查看显卡信息"></a>6、查看显卡信息</h2><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">lspci | grep -i nvidia
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
