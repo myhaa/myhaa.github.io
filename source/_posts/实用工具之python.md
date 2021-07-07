@@ -317,3 +317,13 @@ if __name__ == '__main__':
 1. $similarity=\frac{|A\cap B|}{|A\cup B|}$
 2. 修正，对长度做出惩罚：$similarity=\frac{|A\cap B|}{|A\cup B|+\alpha \times abs{(len(A)-len(B)})}$
 
+## 14、one hot 编码=multiple values
+
+* [pandas-Series.str.get_dummiers](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get_dummies.html#pandas.Series.str.get_dummies)
+
+```python
+pd.Series(['80001,800002', '150001,150002', '80001,80002,150001,150002']).str.get_dummies(sep=',')
+```
+
+* [sklearn-MultiLabelBinarizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer)
+* [one-hot过后压缩矩阵（稀疏矩阵）](https://stackoverflow.com/questions/63544536/convert-pd-get-dummies-result-to-df-str-get-dummies)

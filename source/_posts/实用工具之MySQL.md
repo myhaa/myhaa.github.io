@@ -52,3 +52,9 @@ QUIT
 
 # 四、疑难解答
 
+## MySQL写出文件
+
+```mysql
+mysql -hhost -uuser -ppassword db -A --default-character-set=latin1 -e 'mysql' >> ~/dongtai.xls
+```
+

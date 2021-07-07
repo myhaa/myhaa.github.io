@@ -115,6 +115,156 @@ rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]
 
 # 二、Linux进阶
 
+## linux配置conda环境及搭建深度学习环境
+
+### 安装minconda3
+
+* [参考](https://docs.anaconda.com/anaconda/install/linux/)
+
+```shell
+# 安装miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+# 校验hash值
+sha256sum Miniconda3-latest-Linux-x86_64.sh
+
+# 更改执行权限
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+
+# 安装
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# 安装完成后配置任意位置启动conda
+source <path to conda>/bin/activate
+conda init
+conda deactivate
+
+source ~/.bashrc
+conda config --set auto_activate_base False
+
+# 验证
+conda --version
+
+# 装好conda之后，确定一个你放软件的地方
+mkdir ~/conda_software
+conda create -p ~/conda_software
+
+# 配置环境变量，可以加到.bashrc或者.zshrc文件，这样每次登录不用再设置
+export PATH=$HOME/conda_software/bin${PATH:+:${PATH}}
+
+# 安装软件
+conda activate ~/softwares/conda_software
+conda config --add channels conda-forge
+
+# 以下举几个例子：
+# conda install zsh
+# conda install htop
+# conda install tmux
+# conda install openssl
+
+# 查看安装了哪些包
+conda list
+
+# 查看当前存在哪些虚拟环境
+conda env list
+# conda info -e
+
+# 检查更新
+conda update conda
+
+# 创建python虚拟环境
+conda create -n python38 python=3.8
+
+# 激活
+conda activate python38
+
+# 安装包
+# 指定环境安装包
+conda install -n python38 numpy
+# 在环境内安装包
+conda install numpy
+
+# 关闭虚拟环境
+conda deactivate
+
+# 删除虚拟环境
+conda remove -n python38 --all
+
+# 删除环境中的包
+conda remove -n python38 numpy
+
+# 设置国内镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn
+
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+
+# 恢复默认镜像
+conda config --remove-key channels
+```
+
+### 配置服务器jupyter环境
+
+* [参考](https://blog.lihj.me/post/conda-jupyter-installation.html)
+
+```shell
+# 安装jupyter lab
+conda install jupyterlab
+
+# jupyter 配置
+
+# 生成配置文件
+jupyter notebook --generate-config
+
+ipython
+
+​```ipython
+from notebook.auth import passwd
+passwd()
+​```
+
+# 复制生成的密文
+
+
+# 修改默认配置文件
+vim ~/.jupyter/jupyter_notebook_config.py
+
+# 修改以下内容
+c.NotebookApp.allow_remote_access = True
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.password = u'sha1:...刚才复制的密文'
+c.NotebookApp.port = 8888 # 指定一个访问端口
+
+# 启动jupyter
+# jupyter notebook
+jupyter lab
+
+# 远程访问
+# 在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面
+
+
+# 安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。
+# 为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用
+# 进入环境
+conda activate python38
+
+# 安装依赖包
+conda install notebook ipykernel
+
+# 安装python kernel
+which ipython # should show ~/miniconda3/envs/python38/bin/ipython
+ipython kernel install --user --name "python38" --display-name "Python38"
+
+# kernel 文件保存在 ~/.local/share/python38/kernels/python37。
+
+# 此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。
+
+# 其他位置或环境的 python 可用相同方法安装为 jupyter kernel
+```
+
+
+
 # 三、参考书籍
 
 # 四、疑难解答
@@ -194,5 +344,17 @@ done
 
 ```shell
 0 11 * * * /usr/bin/python3 /home/user/adsp_new/orientation.py >> /home/user/adsp_new/logs1_ori.txt 2>&1
+```
+
+## 5、查看系统版本
+
+```shell
+lsb_release -a
+```
+
+## 6、查看显卡信息
+
+```shell
+lspci | grep -i nvidia
 ```
 
