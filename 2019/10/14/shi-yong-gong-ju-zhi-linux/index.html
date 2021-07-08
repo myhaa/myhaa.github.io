@@ -664,10 +664,10 @@ jupyter notebook --generate-config
 
 ipython
 
-​```ipython
+#```ipython
 from notebook.auth import passwd
 passwd()
-​
+#
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="复制生成的密文"><a href="#复制生成的密文" class="headerlink" title="复制生成的密文"></a>复制生成的密文</h1><h1 id="修改默认配置文件"><a href="#修改默认配置文件" class="headerlink" title="修改默认配置文件"></a>修改默认配置文件</h1><p>vim ~/.jupyter/jupyter_notebook_config.py</p>
 <h1 id="修改以下内容"><a href="#修改以下内容" class="headerlink" title="修改以下内容"></a>修改以下内容</h1><p>c.NotebookApp.allow_remote_access = True<br>c.NotebookApp.ip = ‘*’<br>c.NotebookApp.open_browser = False<br>c.NotebookApp.password = u’sha1:…刚才复制的密文’<br>c.NotebookApp.port = 8888 # 指定一个访问端口</p>
