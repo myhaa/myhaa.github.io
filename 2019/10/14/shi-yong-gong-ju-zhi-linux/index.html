@@ -5,13 +5,12 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="实用工具之Linux, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="
-一、Linux基础常用命令rsync
+    <meta name="description" content="一、Linux基础常用命令rsync
 参考
 
 语法rsync [OPTION]... SRC DEST
 rsync [OPTION]... SRC [USER@]host:DEST
-rsync [OPTION]... [USER@]HOS">
+rsync [OPTION]... [USER@]HOST">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -463,14 +462,14 @@ rsync [OPTION]... [USER@]HOS">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    17 分
                 </div>
                 
 				
@@ -486,8 +485,7 @@ rsync [OPTION]... [USER@]HOS">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/2019/10/14/shi-yong-gong-ju-zhi-linux/image-20210621145304764.png" alt="image-20210621145304764"></p>
-<h1 id="一、Linux基础"><a href="#一、Linux基础" class="headerlink" title="一、Linux基础"></a>一、Linux基础</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h3><ul>
+                <h1 id="一、Linux基础"><a href="#一、Linux基础" class="headerlink" title="一、Linux基础"></a>一、Linux基础</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h3><ul>
 <li><a href="https://man.linuxde.net/rsync" target="_blank" rel="noopener">参考</a></li>
 </ul>
 <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">rsync [OPTION]... SRC DEST
@@ -664,31 +662,242 @@ jupyter notebook --generate-config
 
 ipython
 
-#```ipython
+# ipython
 from notebook.auth import passwd
 passwd()
-#
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="复制生成的密文"><a href="#复制生成的密文" class="headerlink" title="复制生成的密文"></a>复制生成的密文</h1><h1 id="修改默认配置文件"><a href="#修改默认配置文件" class="headerlink" title="修改默认配置文件"></a>修改默认配置文件</h1><p>vim ~/.jupyter/jupyter_notebook_config.py</p>
-<h1 id="修改以下内容"><a href="#修改以下内容" class="headerlink" title="修改以下内容"></a>修改以下内容</h1><p>c.NotebookApp.allow_remote_access = True<br>c.NotebookApp.ip = ‘*’<br>c.NotebookApp.open_browser = False<br>c.NotebookApp.password = u’sha1:…刚才复制的密文’<br>c.NotebookApp.port = 8888 # 指定一个访问端口</p>
-<h1 id="启动jupyter"><a href="#启动jupyter" class="headerlink" title="启动jupyter"></a>启动jupyter</h1><h1 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h1><p>jupyter lab</p>
-<h1 id="远程访问"><a href="#远程访问" class="headerlink" title="远程访问"></a>远程访问</h1><h1 id="在本地浏览器输入-address-of-remote-8888-进入jupyter-的登陆界面"><a href="#在本地浏览器输入-address-of-remote-8888-进入jupyter-的登陆界面" class="headerlink" title="在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面"></a>在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面</h1><h1 id="安装-jupyter-使用的-python-可直接被-jupyter-调用，不需额外配置。"><a href="#安装-jupyter-使用的-python-可直接被-jupyter-调用，不需额外配置。" class="headerlink" title="安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。"></a>安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。</h1><h1 id="为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的-jupyter-kernel-供-jupyter-调用"><a href="#为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的-jupyter-kernel-供-jupyter-调用" class="headerlink" title="为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用"></a>为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用</h1><h1 id="进入环境"><a href="#进入环境" class="headerlink" title="进入环境"></a>进入环境</h1><p>conda activate python38</p>
-<h1 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h1><p>conda install notebook ipykernel</p>
-<h1 id="安装python-kernel"><a href="#安装python-kernel" class="headerlink" title="安装python kernel"></a>安装python kernel</h1><p>which ipython # should show ~/miniconda3/envs/python38/bin/ipython<br>ipython kernel install —user —name “python38” —display-name “Python38”</p>
-<h1 id="kernel-文件保存在-local-share-python38-kernels-python37。"><a href="#kernel-文件保存在-local-share-python38-kernels-python37。" class="headerlink" title="kernel 文件保存在 ~/.local/share/python38/kernels/python37。"></a>kernel 文件保存在 ~/.local/share/python38/kernels/python37。</h1><h1 id="此时安装的是新环境中-ipython-所属的-python-3-8-miniconda3-envs-python38-bin-python-为-jupyter-kernel。"><a href="#此时安装的是新环境中-ipython-所属的-python-3-8-miniconda3-envs-python38-bin-python-为-jupyter-kernel。" class="headerlink" title="此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。"></a>此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。</h1><h1 id="其他位置或环境的-python-可用相同方法安装为-jupyter-kernel"><a href="#其他位置或环境的-python-可用相同方法安装为-jupyter-kernel" class="headerlink" title="其他位置或环境的 python 可用相同方法安装为 jupyter kernel"></a>其他位置或环境的 python 可用相同方法安装为 jupyter kernel</h1><pre><code>
+
+# 复制生成的密文
 
 
-# 三、参考书籍
+# 修改默认配置文件
+vim ~/.jupyter/jupyter_notebook_config.py
 
-# 四、疑难解答
+# 修改以下内容
+c.NotebookApp.allow_remote_access = True
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.password = u'sha1:...刚才复制的密文'
+c.NotebookApp.port = 8888 # 指定一个访问端口
 
-## 1、修改文件或目录的权限
+# 启动jupyter
+# jupyter notebook
+jupyter lab
 
-（1）语法
+# 远程访问
+# 在本地浏览器输入 address_of_remote:8888 进入jupyter 的登陆界面
 
-```shell
-chmod [-cfvR] [--help] [--version] mode file...
-</code></pre><p>（2）参数说明</p>
+
+# 安装 jupyter 使用的 python 可直接被 jupyter 调用，不需额外配置。
+# 为了使用其他语言或者新环境中的某种语言，需要单独安装该语言的 jupyter kernel 供 jupyter 调用
+# 进入环境
+conda activate python38
+
+# 安装依赖包
+conda install notebook ipykernel
+
+# 安装python kernel
+which ipython # should show ~/miniconda3/envs/python38/bin/ipython
+ipython kernel install --user --name "python38" --display-name "Python38"
+
+# kernel 文件保存在 ~/.local/share/python38/kernels/python37。
+
+# 此时安装的是新环境中 ipython 所属的 python 3.8 (~/miniconda3/envs/python38/bin/python) 为 jupyter kernel。
+
+# 其他位置或环境的 python 可用相同方法安装为 jupyter kernel
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="升级cuda"><a href="#升级cuda" class="headerlink" title="升级cuda"></a>升级cuda</h3><ul>
+<li><a href="https://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">各显卡驱动下载地址</a></li>
+<li><a href="https://developer.nvidia.com/zh-cn/cuda-toolkit" target="_blank" rel="noopener">CUDA下载地址</a></li>
+<li><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cudnn下载地址</a>：会让登录和比较慢，耐心等待</li>
+<li><a href="https://www.tensorflow.org/install/source#linux" target="_blank" rel="noopener">tensorflow各版本对比</a></li>
+</ul>
+<h4 id="删除历史cuda版本信息"><a href="#删除历史cuda版本信息" class="headerlink" title="删除历史cuda版本信息"></a>删除历史cuda版本信息</h4><pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># sudo rm /etc/apt/sources.list.d/cuda*
+# sudo apt-get --purge remove "*cublas*" "cuda*" "nsight*" 
+# sudo apt-get --purge remove "*nvidia*"
+# sudo apt-get autoremove
+# sudo apt-get autoclean
+# sudo rm -rf /usr/local/cuda*
+# 卸载所有N卡驱动
+sudo apt-get remove --purge nvidia-\*
+sudo apt-get remove --purge cuda-\*
+sudo apt-get remove --purge *cudnn*
+sudo apt autoremove
+sudo apt-get autoclean
+
+
+# 查看已安装的东西
+sudo dpkg --list | grep nvidia*
+ubuntu1604_1.0.0-1_amd64.deb  # 可安装的显卡驱动
+lspci | grep -i nvidia  # 查看显卡
+nvidia-smi  # 查看显卡
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Linux系统信息查看"><a href="#Linux系统信息查看" class="headerlink" title="Linux系统信息查看"></a><a href="https://blog.csdn.net/weixin_41010198/article/details/109166131" target="_blank" rel="noopener">Linux系统信息查看</a></h4><pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># 查看内核版本
+cat /proc/version
+uname -a
+uname -r
+
+# 查看linux版本信息
+lsb_release -a
+cat /etc/issue
+
+# 查看linux是64为还是32位
+getconf LONG_BIT
+file /bin/ls
+
+# 直接查看系统的架构
+dpkg --print-architecture
+arch
+file /lib/systemd/systemd
+
+# 查看Mint系统对应的Ubuntu系统
+cat /etc/os-release
+cat /etc/upstream-release/lsb-release
+
+gcc --version  # 查看gcc版本
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="知乎教程"><a href="#知乎教程" class="headerlink" title="知乎教程"></a><a href="https://zhuanlan.zhihu.com/p/143429249" target="_blank" rel="noopener">知乎教程</a></h4><ul>
+<li>安装教程来几乎没问题</li>
+</ul>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># 安装显卡驱动
+sudo add-apt-repository ppa:graphics-drivers  #添加NVIDA显卡驱动库
+sudo apt update
+ubuntu-drivers devices  #显示可安装驱动
+
+#sudo ubuntu-drivers autoinstall  #让Ubuntu自动帮你选择版本并安装
+sudo apt install nvidia-driver-450  #安装450驱动
+sudo reboot
+nvidia-smi  #查看GPU信息,需先重启
+
+# 安装cuda
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+sudo apt-get update
+sudo apt list cuda* # 查看所有，名字以cuda开头的，可以用apt install安装的packages
+
+sudo apt install cuda-toolkit-10-2  #只安装CUDA 10.2
+#sudo apt install cuda-10-2  #安装CUDA 10.2。包含驱动，版本自动选择。
+
+# 安装cudnn
+# 官网下载符合版本的三个deb
+cd ~/Downloads  #进入下载好的三个文件的路径
+sudo dpkg -i libcudnn*  #同时安装
+#sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb  #逐个安装
+#sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb
+#sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.2_amd64.deb
+
+# 测试
+cp -r /usr/src/cudnn_samples_v7/ $HOME  #复制样本文件到$HOME文件夹下
+cd  $HOME/cudnn_samples_v7/mnistCUDNN  #进入样本目录
+make clean && make  #编译
+./mnistCUDNN  #执行cuDNN测试
+# 输出“Test Passed”说明cuDNN安装成功。
+
+# 安装tensorflow
+pip install tensorflow-gpu==2.4.0
+
+# 测试
+import tensorflow as tf
+tf.test.is_gpu_avaiable()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="tensorflow官网教程：GPU支持"><a href="#tensorflow官网教程：GPU支持" class="headerlink" title="tensorflow官网教程：GPU支持"></a><a href="https://www.tensorflow.org/install/gpu" target="_blank" rel="noopener">tensorflow官网教程：GPU支持</a></h4><ul>
+<li>Ubuntu 16.04(CUDA 11.0)</li>
+</ul>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell"># Add NVIDIA package repositories
+# Add HTTPS support for apt-key
+sudo apt-get install gnupg-curl
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-ubuntu1604.pin
+sudo mv cuda-ubuntu1604.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+# apt-get install software-properties-common
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/ /"
+# apt-get install apt-transport-https ca-certificates
+sudo apt-get update
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt-get update
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt install ./libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt-get update
+
+# Install NVIDIA driver
+# Issue with driver install requires creating /usr/lib/nvidia
+sudo mkdir /usr/lib/nvidia
+ubuntu-drivers devices  # 查看显卡和推荐驱动
+sudo apt-get install --no-install-recommends nvidia-450
+# sudo apt-get install --no-install-recommends nvidia-driver-450
+# Reboot. Check that GPUs are visible using the command: nvidia-smi
+
+# Install development and runtime libraries (~4GB)
+# sudo apt install cuda-toolkit-11-0  #只安装CUDA 10.2
+# sudo apt install cuda-10-2  #安装CUDA 10.2。包含驱动，版本自动选择。
+sudo apt-get install --no-install-recommends \
+    cuda-11-0 \
+    libcudnn8=8.0.4.30-1+cuda11.0  \
+    libcudnn8-dev=8.0.4.30-1+cuda11.0
+
+
+# Install TensorRT. Requires that libcudnn7 is installed above.
+sudo apt-get install -y --no-install-recommends \
+    libnvinfer7=7.1.3-1+cuda11.0 \
+    libnvinfer-dev=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin7=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin-dev=7.1.3-1+cuda11.0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="导师教程"><a href="#导师教程" class="headerlink" title="导师教程"></a>导师教程</h4><pre class="line-numbers language-lang-shell"><code class="language-lang-shell">1、安装CUDA及cuDNN
+TENSORFLOW对CUDA的要求：https://www.tensorflow.org/install/install_linux?hl=zh-cn
+nvdia的官方文档：http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#handle-uninstallation
+（1）tensorflow1.8的版本要求为：
+* CUDA9.0，不支持8.0
+* cuDNN7.0.x，不支持7.1.x
+
+（2）卸载 CUDA 8.0：如果原来没有安装CUDA8.0，则可以忽略这一步
+/usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl
+比如：
+/usr/local/cuda-8.0/bin/uninstall_cuda_8.0.pl
+【可选】驱动也一并卸掉，因为新版 CUDA 通常需要装一个新驱动。
+$ sudo /usr/bin/nvidia-uninstall
+
+（3）下载CUDA9.0 与 cuDNN7.0
+下载 CUDA Toolkit 现在需要注册一个 NVIDIA 官方账号。注册完成后在 https://developer.nvidia.com/cuda-release-candidate-download 按照系统、版本选择要下载的包。cuDNN 的安装类似，地址在 https://developer.nvidia.com/rdp/cudnn-download 。不过官方文档表示 cuDNN 的升级不会冲突，直接安装就好。 
+
+（4）安装CUDA9.0
+sudo dpkg -i cuda-repo-ubuntu1704-9-0-local-rc_9.0.103-1_amd64.deb
+sudo apt-key add /var/cuda-repo-9-0-local-rc/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda
+
+在装新 CUDA 的时候系统会安装新版驱动。
+
+（5）安装完后运行 nvidia-smi 试一下，如果提示 mismatch 就重启。 
+
+（6）配置环境变量
+$ export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+$ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+（7）安装cuDNN7.0.x
+dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+
+（8）安装cuda-command-line-tools
+apt-get install cuda-command-line-tools
+
+2、安装tensorflow
+pip3 install tensorflow-gpu
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="安装时遇到的问题"><a href="#安装时遇到的问题" class="headerlink" title="安装时遇到的问题"></a>安装时遇到的问题</h4><ol>
+<li><a href="https://blog.csdn.net/missyoudaisy/article/details/104432746" target="_blank" rel="noopener">nvidia-smi报错：NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver._missyoudaisy的博客-CSDN博客</a></li>
+<li><a href="https://blog.csdn.net/wangyezi19930928/article/details/54928201" target="_blank" rel="noopener">apt-get update ，upgarde 和dist-upgrade 的区别_wangyezi19930928的专栏-CSDN博客</a></li>
+<li><a href="https://askubuntu.com/questions/227258/error-could-not-locate-dkms-conf-file" target="_blank" rel="noopener"><code>Error! Could not locate dkms.conf file</code> - Ask Ubuntu</a></li>
+<li><a href="https://blog.csdn.net/xiaoaid01/article/details/41862487" target="_blank" rel="noopener">更新Linux内核头文件(linux headers)_xiaoaide01的专栏-CSDN博客</a></li>
+<li><a href="https://www.google.com.hk/search?q=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&amp;rlz=1C1GCEU_zh-CNCN866CN866&amp;oq=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&amp;aqs=chrome..69i57.681j0j4&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">Error! Your kernel headers for kernel 4.4.0-210-generic cannot be found - Google 搜索</a></li>
+<li><a href="https://askubuntu.com/questions/951046/unable-to-install-nvidia-drivers-unable-to-locate-package" target="_blank" rel="noopener">17.04 - Unable to install nvidia drivers - unable to locate package - Ask Ubuntu</a></li>
+<li></li>
+</ol>
+<h1 id="三、参考书籍"><a href="#三、参考书籍" class="headerlink" title="三、参考书籍"></a>三、参考书籍</h1><h1 id="四、疑难解答"><a href="#四、疑难解答" class="headerlink" title="四、疑难解答"></a>四、疑难解答</h1><h2 id="1、修改文件或目录的权限"><a href="#1、修改文件或目录的权限" class="headerlink" title="1、修改文件或目录的权限"></a>1、修改文件或目录的权限</h2><p>（1）语法</p>
+<pre class="line-numbers language-lang-shell"><code class="language-lang-shell">chmod [-cfvR] [--help] [--version] mode file...
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（2）参数说明</p>
 <p><strong>mode :</strong> 权限设定字串，格式如下 :</p>
 <pre class="line-numbers language-lang-shell"><code class="language-lang-shell">[ugoa...][[+-=][rwxX]...][,...]
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
