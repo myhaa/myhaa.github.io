@@ -15,7 +15,7 @@ tags:
   - Linux
 ---
 
-![image-20210621145304764](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BLinux/image-20210621145304764.png)
+
 
 # 一、Linux基础
 
@@ -218,10 +218,9 @@ jupyter notebook --generate-config
 
 ipython
 
-​```ipython
+# ipython
 from notebook.auth import passwd
 passwd()
-​```
 
 # 复制生成的密文
 
@@ -263,7 +262,225 @@ ipython kernel install --user --name "python38" --display-name "Python38"
 # 其他位置或环境的 python 可用相同方法安装为 jupyter kernel
 ```
 
+### 升级cuda
 
+* [各显卡驱动下载地址](https://www.nvidia.cn/Download/index.aspx?lang=cn)
+* [CUDA下载地址](https://developer.nvidia.com/zh-cn/cuda-toolkit)
+* [cudnn下载地址](https://developer.nvidia.com/rdp/cudnn-archive)：会让登录和比较慢，耐心等待
+* [tensorflow各版本对比](https://www.tensorflow.org/install/source#linux)
+
+#### 删除历史cuda版本信息
+
+```shell
+# sudo rm /etc/apt/sources.list.d/cuda*
+# sudo apt-get --purge remove "*cublas*" "cuda*" "nsight*" 
+# sudo apt-get --purge remove "*nvidia*"
+# sudo apt-get autoremove
+# sudo apt-get autoclean
+# sudo rm -rf /usr/local/cuda*
+# 卸载所有N卡驱动
+sudo apt-get remove --purge nvidia-\*
+sudo apt-get remove --purge cuda-\*
+sudo apt-get remove --purge *cudnn*
+sudo apt autoremove
+sudo apt-get autoclean
+
+
+# 查看已安装的东西
+sudo dpkg --list | grep nvidia*
+ubuntu1604_1.0.0-1_amd64.deb  # 可安装的显卡驱动
+lspci | grep -i nvidia  # 查看显卡
+nvidia-smi  # 查看显卡
+```
+
+
+
+#### [Linux系统信息查看](https://blog.csdn.net/weixin_41010198/article/details/109166131)
+
+```shell
+# 查看内核版本
+cat /proc/version
+uname -a
+uname -r
+
+# 查看linux版本信息
+lsb_release -a
+cat /etc/issue
+
+# 查看linux是64为还是32位
+getconf LONG_BIT
+file /bin/ls
+
+# 直接查看系统的架构
+dpkg --print-architecture
+arch
+file /lib/systemd/systemd
+
+# 查看Mint系统对应的Ubuntu系统
+cat /etc/os-release
+cat /etc/upstream-release/lsb-release
+
+gcc --version  # 查看gcc版本
+```
+
+
+
+#### [知乎教程](https://zhuanlan.zhihu.com/p/143429249)
+
+* 安装教程来几乎没问题
+
+```shell
+# 安装显卡驱动
+sudo add-apt-repository ppa:graphics-drivers  #添加NVIDA显卡驱动库
+sudo apt update
+ubuntu-drivers devices  #显示可安装驱动
+
+#sudo ubuntu-drivers autoinstall  #让Ubuntu自动帮你选择版本并安装
+sudo apt install nvidia-driver-450  #安装450驱动
+sudo reboot
+nvidia-smi  #查看GPU信息,需先重启
+
+# 安装cuda
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+sudo apt-get update
+sudo apt list cuda* # 查看所有，名字以cuda开头的，可以用apt install安装的packages
+
+sudo apt install cuda-toolkit-10-2  #只安装CUDA 10.2
+#sudo apt install cuda-10-2  #安装CUDA 10.2。包含驱动，版本自动选择。
+
+# 安装cudnn
+# 官网下载符合版本的三个deb
+cd ~/Downloads  #进入下载好的三个文件的路径
+sudo dpkg -i libcudnn*  #同时安装
+#sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb  #逐个安装
+#sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb
+#sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.2_amd64.deb
+
+# 测试
+cp -r /usr/src/cudnn_samples_v7/ $HOME  #复制样本文件到$HOME文件夹下
+cd  $HOME/cudnn_samples_v7/mnistCUDNN  #进入样本目录
+make clean && make  #编译
+./mnistCUDNN  #执行cuDNN测试
+# 输出“Test Passed”说明cuDNN安装成功。
+
+# 安装tensorflow
+pip install tensorflow-gpu==2.4.0
+
+# 测试
+import tensorflow as tf
+tf.test.is_gpu_avaiable()
+```
+
+
+
+#### [tensorflow官网教程：GPU支持](https://www.tensorflow.org/install/gpu)
+
+* Ubuntu 16.04(CUDA 11.0)
+
+```shell
+# Add NVIDIA package repositories
+# Add HTTPS support for apt-key
+sudo apt-get install gnupg-curl
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-ubuntu1604.pin
+sudo mv cuda-ubuntu1604.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+# apt-get install software-properties-common
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/ /"
+# apt-get install apt-transport-https ca-certificates
+sudo apt-get update
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt-get update
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt install ./libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt-get update
+
+# Install NVIDIA driver
+# Issue with driver install requires creating /usr/lib/nvidia
+sudo mkdir /usr/lib/nvidia
+ubuntu-drivers devices  # 查看显卡和推荐驱动
+sudo apt-get install --no-install-recommends nvidia-450
+# sudo apt-get install --no-install-recommends nvidia-driver-450
+# Reboot. Check that GPUs are visible using the command: nvidia-smi
+
+# Install development and runtime libraries (~4GB)
+# sudo apt install cuda-toolkit-11-0  #只安装CUDA 10.2
+# sudo apt install cuda-10-2  #安装CUDA 10.2。包含驱动，版本自动选择。
+sudo apt-get install --no-install-recommends \
+    cuda-11-0 \
+    libcudnn8=8.0.4.30-1+cuda11.0  \
+    libcudnn8-dev=8.0.4.30-1+cuda11.0
+
+
+# Install TensorRT. Requires that libcudnn7 is installed above.
+sudo apt-get install -y --no-install-recommends \
+    libnvinfer7=7.1.3-1+cuda11.0 \
+    libnvinfer-dev=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin7=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin-dev=7.1.3-1+cuda11.0
+
+```
+
+
+
+#### 导师教程
+
+```shell
+1、安装CUDA及cuDNN
+TENSORFLOW对CUDA的要求：https://www.tensorflow.org/install/install_linux?hl=zh-cn
+nvdia的官方文档：http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#handle-uninstallation
+（1）tensorflow1.8的版本要求为：
+* CUDA9.0，不支持8.0
+* cuDNN7.0.x，不支持7.1.x
+
+（2）卸载 CUDA 8.0：如果原来没有安装CUDA8.0，则可以忽略这一步
+/usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl
+比如：
+/usr/local/cuda-8.0/bin/uninstall_cuda_8.0.pl
+【可选】驱动也一并卸掉，因为新版 CUDA 通常需要装一个新驱动。
+$ sudo /usr/bin/nvidia-uninstall
+
+（3）下载CUDA9.0 与 cuDNN7.0
+下载 CUDA Toolkit 现在需要注册一个 NVIDIA 官方账号。注册完成后在 https://developer.nvidia.com/cuda-release-candidate-download 按照系统、版本选择要下载的包。cuDNN 的安装类似，地址在 https://developer.nvidia.com/rdp/cudnn-download 。不过官方文档表示 cuDNN 的升级不会冲突，直接安装就好。 
+
+（4）安装CUDA9.0
+sudo dpkg -i cuda-repo-ubuntu1704-9-0-local-rc_9.0.103-1_amd64.deb
+sudo apt-key add /var/cuda-repo-9-0-local-rc/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda
+
+在装新 CUDA 的时候系统会安装新版驱动。
+
+（5）安装完后运行 nvidia-smi 试一下，如果提示 mismatch 就重启。 
+
+（6）配置环境变量
+$ export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+$ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+（7）安装cuDNN7.0.x
+dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+
+（8）安装cuda-command-line-tools
+apt-get install cuda-command-line-tools
+
+2、安装tensorflow
+pip3 install tensorflow-gpu
+```
+
+
+
+#### 安装时遇到的问题
+
+1. [nvidia-smi报错：NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver._missyoudaisy的博客-CSDN博客](https://blog.csdn.net/missyoudaisy/article/details/104432746)
+2. [apt-get update ，upgarde 和dist-upgrade 的区别_wangyezi19930928的专栏-CSDN博客](https://blog.csdn.net/wangyezi19930928/article/details/54928201)
+3. [`Error! Could not locate dkms.conf file` - Ask Ubuntu](https://askubuntu.com/questions/227258/error-could-not-locate-dkms-conf-file)
+4. [更新Linux内核头文件(linux headers)_xiaoaide01的专栏-CSDN博客](https://blog.csdn.net/xiaoaid01/article/details/41862487)
+5. [Error! Your kernel headers for kernel 4.4.0-210-generic cannot be found - Google 搜索](https://www.google.com.hk/search?q=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&rlz=1C1GCEU_zh-CNCN866CN866&oq=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&aqs=chrome..69i57.681j0j4&sourceid=chrome&ie=UTF-8)
+6. [17.04 - Unable to install nvidia drivers - unable to locate package - Ask Ubuntu](https://askubuntu.com/questions/951046/unable-to-install-nvidia-drivers-unable-to-locate-package)
+7. 
 
 # 三、参考书籍
 
@@ -357,4 +574,3 @@ lsb_release -a
 ```shell
 lspci | grep -i nvidia
 ```
-

@@ -327,3 +327,8 @@ pd.Series(['80001,800002', '150001,150002', '80001,80002,150001,150002']).str.ge
 
 * [sklearn-MultiLabelBinarizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer)
 * [one-hot过后压缩矩阵（稀疏矩阵）](https://stackoverflow.com/questions/63544536/convert-pd-get-dummies-result-to-df-str-get-dummies)
+
+## 15、pandas使用apply返回多列
+
+* [参考](https://stackoverflow.com/questions/23586510/return-multiple-columns-from-pandas-apply)
+
