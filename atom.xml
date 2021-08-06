@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-07-02T03:31:04.189Z</updated>
+  <updated>2021-08-06T12:05:42.856Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>求职必备之各大官网</title>
+    <link href="https://myhaa.github.io/2021/08/06/qiu-zhi-bi-bei-zhi-ge-da-guan-wang/"/>
+    <id>https://myhaa.github.io/2021/08/06/qiu-zhi-bi-bei-zhi-ge-da-guan-wang/</id>
+    <published>2021-08-06T09:56:57.000Z</published>
+    <updated>2021-08-06T12:05:42.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;官网&quot;&gt;&lt;a href=&quot;#官网&quot; class=&quot;headerlink&quot; title=&quot;官网&quot;&gt;&lt;/a&gt;官网&lt;/h1&gt;&lt;h2 id=&quot;国企&quot;&gt;&lt;a href=&quot;#国企&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="求职必备" scheme="https://myhaa.github.io/categories/%E6%B1%82%E8%81%8C%E5%BF%85%E5%A4%87/"/>
+    
+    
+      <category term="官网" scheme="https://myhaa.github.io/tags/%E5%AE%98%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习之FM_FFM_DeepFM</title>
@@ -556,34 +583,6 @@
     
     
       <category term="HBase" scheme="https://myhaa.github.io/tags/HBase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习之FTRL方法</title>
-    <link href="https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/"/>
-    <id>https://myhaa.github.io/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/</id>
-    <published>2020-06-04T02:57:11.000Z</published>
-    <updated>2021-06-21T08:11:28.591Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/2020/06/04/ji-qi-xue-xi-zhi-ftrl-fang-fa/image-20210621161112518.png&quot; alt=&quot;image-20210621161112518&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;原理介绍&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="https://myhaa.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="FTRL" scheme="https://myhaa.github.io/tags/FTRL/"/>
     
   </entry>
   
