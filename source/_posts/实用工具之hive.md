@@ -826,3 +826,10 @@ floor(cast(prob as double)), --向下取整
 ceil(cast(prob as double)), --向上取整
 ```
 
+## 13、设置任务优先级
+
+```hive
+SET mapreduce.job.priority=VERY_HIGH;
+```
+
+* [参考链接：yarn设置优先级](https://blog.csdn.net/yisun123456/article/details/82857150)
