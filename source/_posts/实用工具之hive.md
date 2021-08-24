@@ -554,6 +554,17 @@ from... where.... select... group by... having ... order by...
   ```mysql
   alter table table_name change c_time c_time string after address;
   ```
+  
+* 添加字段后，重写表数据后，查询新字段为null的情况
+
+  * [参考](https://blog.csdn.net/lzxlfly/article/details/116788104)
+
+  ```mysql
+  alter table table_name drop partition(date_id='20210101')
+  alter table table_name add partition(date_id='20210101')
+  ```
+
+  
 
 ## 2、Hive创建表时指定文件格式
 

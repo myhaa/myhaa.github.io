@@ -480,7 +480,8 @@ pip3 install tensorflow-gpu
 4. [更新Linux内核头文件(linux headers)_xiaoaide01的专栏-CSDN博客](https://blog.csdn.net/xiaoaid01/article/details/41862487)
 5. [Error! Your kernel headers for kernel 4.4.0-210-generic cannot be found - Google 搜索](https://www.google.com.hk/search?q=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&rlz=1C1GCEU_zh-CNCN866CN866&oq=Error!+Your+kernel+headers+for+kernel+4.4.0-210-generic+cannot+be+found&aqs=chrome..69i57.681j0j4&sourceid=chrome&ie=UTF-8)
 6. [17.04 - Unable to install nvidia drivers - unable to locate package - Ask Ubuntu](https://askubuntu.com/questions/951046/unable-to-install-nvidia-drivers-unable-to-locate-package)
-7. 
+7. [Ubuntu报错software-properties-common : Depends: python3-software-properties](https://blog.csdn.net/qq_34168515/article/details/107410732)
+8. [ubuntu-drivers: command not found](https://askubuntu.com/questions/361862/nvidia-drivers-synaptic)
 
 # 三、参考书籍
 
