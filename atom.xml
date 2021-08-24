@@ -338,11 +338,11 @@
   </entry>
   
   <entry>
-    <title>深度学习之图像识别</title>
-    <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/"/>
-    <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/</id>
+    <title>深度学习之吴恩达课程作业1</title>
+    <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/"/>
+    <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/</id>
     <published>2021-03-11T07:45:18.000Z</published>
-    <updated>2021-06-24T07:45:10.745Z</updated>
+    <updated>2021-08-24T12:32:43.590Z</updated>
     
     <summary type="html">
     
@@ -350,8 +350,38 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/image-20210621153410307.png&quot; alt=&quot;image-20210621153410307&quot;&gt;&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;吴恩达深度学习课程作业L1W2HW1-numpy入门&quot;&gt;&lt;a href=&quot;#吴恩达深度学习课程作业L1W2HW1-numpy入门&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="numpy" scheme="https://myhaa.github.io/tags/numpy/"/>
+    
+      <category term="逻辑回归" scheme="https://myhaa.github.io/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
+    
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习之图像识别</title>
+    <link href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/"/>
+    <id>https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/</id>
+    <published>2021-03-11T07:45:18.000Z</published>
+    <updated>2021-08-24T12:28:30.434Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;h2 id=&quot;OCR&quot;&gt;&lt;a href=&quot;#OCR&quot;
         
       
     
@@ -555,34 +585,6 @@
     
     
       <category term="实用工具" scheme="https://myhaa.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实用工具之HBase</title>
-    <link href="https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/"/>
-    <id>https://myhaa.github.io/2020/06/11/shi-yong-gong-ju-zhi-hbase/</id>
-    <published>2020-06-11T03:19:55.000Z</published>
-    <updated>2021-06-21T07:27:38.556Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/2020/06/11/shi-yong-gong-ju-zhi-hbase/image-20210621152645053.png&quot; alt=&quot;image-20210621152645053&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;HBase基础&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="实用工具" scheme="https://myhaa.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="HBase" scheme="https://myhaa.github.io/tags/HBase/"/>
     
   </entry>
   

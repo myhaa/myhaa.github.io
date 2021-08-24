@@ -1213,6 +1213,14 @@ from... where.... select... group by... having ... order by...
 <pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">alter table table_name change c_time c_time string after address;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
+<li><p>添加字段后，重写表数据后，查询新字段为null的情况</p>
+<ul>
+<li><a href="https://blog.csdn.net/lzxlfly/article/details/116788104" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<pre class="line-numbers language-lang-mysql"><code class="language-lang-mysql">alter table table_name drop partition(date_id='20210101')
+alter table table_name add partition(date_id='20210101')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 </ul>
 <h2 id="2、Hive创建表时指定文件格式"><a href="#2、Hive创建表时指定文件格式" class="headerlink" title="2、Hive创建表时指定文件格式"></a>2、Hive创建表时指定文件格式</h2><ul>
 <li><p><strong>TEXTFIEL</strong></p>

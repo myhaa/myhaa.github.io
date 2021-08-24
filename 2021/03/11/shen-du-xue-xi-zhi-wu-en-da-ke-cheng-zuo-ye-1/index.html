@@ -1,0 +1,2004 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="深度学习之吴恩达课程作业1, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="吴恩达深度学习课程作业L1W2HW1=numpy入门参考
+视频链接
+作业链接
+
+Numpy基础1-使用numpy构建基本函数1-1 sigmoid函数和np.exp()
+sigmoid函数公式
+
+
+\sigma(x) = \frac{1}{">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>深度学习之吴恩达课程作业1 | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        深度学习之吴恩达课程作业1
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/numpy/">
+                                <span class="chip bg-color">numpy</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+                                <span class="chip bg-color">逻辑回归</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">神经网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-11
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="吴恩达深度学习课程作业L1W2HW1-numpy入门"><a href="#吴恩达深度学习课程作业L1W2HW1-numpy入门" class="headerlink" title="吴恩达深度学习课程作业L1W2HW1=numpy入门"></a>吴恩达深度学习课程作业L1W2HW1=numpy入门</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">视频链接</a></li>
+<li><a href="https://www.heywhale.com/mw/project/5dd236a800b0b900365eca9b" target="_blank" rel="noopener">作业链接</a></li>
+</ol>
+<h2 id="Numpy基础"><a href="#Numpy基础" class="headerlink" title="Numpy基础"></a>Numpy基础</h2><h3 id="1-使用numpy构建基本函数"><a href="#1-使用numpy构建基本函数" class="headerlink" title="1-使用numpy构建基本函数"></a>1-使用numpy构建基本函数</h3><h4 id="1-1-sigmoid函数和np-exp"><a href="#1-1-sigmoid函数和np-exp" class="headerlink" title="1-1 sigmoid函数和np.exp()"></a>1-1 sigmoid函数和np.exp()</h4><ul>
+<li>sigmoid函数公式</li>
+</ul>
+<script type="math/tex; mode=display">
+\sigma(x) = \frac{1}{1+exp(-x)}</script><ul>
+<li>为什么np.exp()比math.exp()更可取？<ol>
+<li>深度学习中主要使用的是矩阵和向量，因此numpy更为实用</li>
+<li>math.exp()只适用于输入是实数</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import math
+
+def func_basic_sigmoid(x):
+    """
+    使用math.exp构建sigmoid函数
+    :param x: a scaler
+    :return sigmoid(x)
+    """
+    return 1 / (1 + math.exp(-x))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_basic_sigmoid(3)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>0.9525741268224334
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># func_basic_sigmoid([1,2,3])
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+
+x = np.array([1,2,3])
+np.exp(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([ 2.71828183,  7.3890561 , 20.08553692])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+
+def func_numpy_sigmoid(x):
+    """
+    使用np.exp构建sigmoid函数
+    :param x: a scaler or numpy array of any size
+    :return sigmoid(x)
+    """
+    return 1 / (1 + np.exp(-x))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">x = np.array([1,2,3])
+func_numpy_sigmoid(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>array([0.73105858, 0.88079708, 0.95257413])
+</code></pre><h4 id="1-2-simoid函数的梯度"><a href="#1-2-simoid函数的梯度" class="headerlink" title="1-2 simoid函数的梯度"></a>1-2 simoid函数的梯度</h4><ul>
+<li>梯度求解公式</li>
+</ul>
+<script type="math/tex; mode=display">
+\sigma^{'}(x) = \sigma(x)(1-\sigma(x))</script><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_numpy_sigmoid_derivative(x):
+    """
+    计算sigmoid函数在x处的梯度
+    :param x: a scaler or numpy array of any size
+    :return 梯度
+    """
+    s = func_numpy_sigmoid(x)
+    return s * (1 - s)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">x = np.array([0,1,2,3,100])
+func_numpy_sigmoid_derivative(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>array([0.25      , 0.19661193, 0.10499359, 0.04517666, 0.        ])
+</code></pre><h4 id="1-3重塑数组"><a href="#1-3重塑数组" class="headerlink" title="1-3重塑数组"></a>1-3重塑数组</h4><ul>
+<li>np.shape: 获取矩阵或者向量的维度</li>
+<li>np.reshape(): 将矩阵或者向量重塑成其他shape</li>
+<li>例如实现image2vector()，将输入(length, height, depth)的3D数组输入，转换成(length<em>height</em>depth, 1)的1D数组</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_image2vector(image):
+    """
+    图像输入转换成vector
+    :param image: a numpy array of shape (length, height, depth)
+    :return v: a vector of shape (length*height*depth, 1)
+    """
+    return image.reshape(image.shape[0] * image.shape[1] * image.shape[2], 1)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">image = np.array([[[ 0.67826139,  0.29380381],
+                    [ 0.90714982,  0.52835647],
+                    [ 0.4215251 ,  0.45017551]],
+
+                   [[ 0.92814219,  0.96677647],
+                    [ 0.85304703,  0.52351845],
+                    [ 0.19981397,  0.27417313]],
+
+                   [[ 0.60659855,  0.00533165],
+                    [ 0.10820313,  0.49978937],
+                    [ 0.34144279,  0.94630077]]])
+image.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(3, 3, 2)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">v = func_image2vector(image)
+v.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>(18, 1)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">v
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([[0.67826139],
+       [0.29380381],
+       [0.90714982],
+       [0.52835647],
+       [0.4215251 ],
+       [0.45017551],
+       [0.92814219],
+       [0.96677647],
+       [0.85304703],
+       [0.52351845],
+       [0.19981397],
+       [0.27417313],
+       [0.60659855],
+       [0.00533165],
+       [0.10820313],
+       [0.49978937],
+       [0.34144279],
+       [0.94630077]])
+</code></pre><h4 id="1-4-行标准化"><a href="#1-4-行标准化" class="headerlink" title="1-4 行标准化"></a>1-4 行标准化</h4><ul>
+<li>为什么标准化？<ol>
+<li>数据归一化后，梯度下降的收敛速度更快，通常会表现出更好的效果</li>
+</ol>
+</li>
+<li>练习：构建normalize_rows()函数来标准化矩阵的行</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_normalize_rows(x):
+    """
+    行标准化
+    :param: x: a numpy matrix of shape (n, m)
+    :return x: 行标准化后的矩阵
+    """
+    x_norm = np.linalg.norm(x, axis=1, ord=2, keepdims=True)  # Matrix or vector norm
+    print(x_norm, x_norm.shape)
+
+    return x / x_norm
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">x = np.array([[0,3,4], 
+              [1,6,4]])
+x
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([[0, 3, 4],
+       [1, 6, 4]])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_normalize_rows(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>[[5.        ]
+ [7.28010989]] (2, 1)
+
+
+
+
+
+array([[0.        , 0.6       , 0.8       ],
+       [0.13736056, 0.82416338, 0.54944226]])
+</code></pre><h4 id="1-5-broadcast-and-softmax"><a href="#1-5-broadcast-and-softmax" class="headerlink" title="1-5 broadcast and softmax"></a>1-5 broadcast and softmax</h4><ul>
+<li>broadcast: 广播，数组+标量，会将标量自动broadcast成和数组一样维度再相加</li>
+<li>softmax:</li>
+</ul>
+<script type="math/tex; mode=display">
+softmax(x) = \frac{exp(x_i)}{\sum{exp(x_j)}}</script><ul>
+<li>练习：实现softmax函数</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_softmax_rows(x):
+    """
+    softmax函数， 按行
+    :param x: a matrix of shape (n, m)
+    :return x: softmax过后的矩阵
+    """
+    x_exp = np.exp(x)
+    x_row_sum = np.sum(x_exp, axis=1, keepdims=True)
+    return x_exp/ x_row_sum
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">x = np.array([
+    [9, 2, 5, 0, 0],
+    [7, 5, 0, 0 ,0]])
+x
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>array([[9, 2, 5, 0, 0],
+       [7, 5, 0, 0, 0]])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_softmax_rows(x)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([[9.80897665e-01, 8.94462891e-04, 1.79657674e-02, 1.21052389e-04,
+        1.21052389e-04],
+       [8.78679856e-01, 1.18916387e-01, 8.01252314e-04, 8.01252314e-04,
+        8.01252314e-04]])
+</code></pre><h3 id="2-向量化"><a href="#2-向量化" class="headerlink" title="2-向量化"></a>2-向量化</h3><ul>
+<li>为了确保代码的高效计算，我们将使用向量化</li>
+<li>例如：尝试区分点，外部，元素乘积之间的区别</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import time
+
+x1 = [9, 2, 5, 0, 0, 7, 5, 0, 0, 0, 9, 2, 5, 0, 0]
+x2 = [9, 2, 2, 9, 0, 9, 2, 5, 0, 0, 9, 2, 5, 0, 0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>经典点乘-dot product</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+dot = 0
+for i in range(len(x1)):
+    dot += x1[i]*x2[i]
+toc = time.process_time()
+print(dot, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>278 0.2324579999997134
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+dot = np.dot(x1, x2)
+print(dot, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>278 -10.069867000000343
+</code></pre><ul>
+<li>经典外乘-outer product</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+outer = np.zeros((len(x1), len(x2)))
+for i in range(len(x1)):
+    for j in range(len(x2)):
+        outer[i, j] = x1[i] * x2[j]
+toc = time.process_time()
+print(outer, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[[81. 18. 18. 81.  0. 81. 18. 45.  0.  0. 81. 18. 45.  0.  0.]
+ [18.  4.  4. 18.  0. 18.  4. 10.  0.  0. 18.  4. 10.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [63. 14. 14. 63.  0. 63. 14. 35.  0.  0. 63. 14. 35.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [81. 18. 18. 81.  0. 81. 18. 45.  0.  0. 81. 18. 45.  0.  0.]
+ [18.  4.  4. 18.  0. 18.  4. 10.  0.  0. 18.  4. 10.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]] 0.4756360000000015
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+outer = np.outer(x1, x2)
+print(outer, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>[[81 18 18 81  0 81 18 45  0  0 81 18 45  0  0]
+ [18  4  4 18  0 18  4 10  0  0 18  4 10  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [63 14 14 63  0 63 14 35  0  0 63 14 35  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [81 18 18 81  0 81 18 45  0  0 81 18 45  0  0]
+ [18  4  4 18  0 18  4 10  0  0 18  4 10  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]] -12.807576000000154
+</code></pre><ul>
+<li>元素相乘-elementwise product</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+mul = np.zeros(len(x1))
+for i in range(len(x1)):
+    mul[i] = x1[i] * x2[i]
+toc = time.process_time()
+print(mul, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[81.  4. 10.  0.  0. 63. 10.  0.  0.  0. 81.  4. 25.  0.  0.] 0.2550199999999947
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+mul = np.multiply(x1, x2)
+print(mul, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>[81  4 10  0  0 63 10  0  0  0 81  4 25  0  0] -9.051946999999672
+</code></pre><ul>
+<li>矩阵相乘-general dot product</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">np.random.seed(2030)
+W = np.random.rand(3, len(x1))
+tic = time.process_time()
+gdot = np.zeros(W.shape[0])
+for i in range(W.shape[0]):
+    for j in range(len(x1)):
+        gdot[i] += W[i, j]*x1[j]
+toc = time.process_time()
+print(gdot, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>[23.51513471 26.17443232 12.03612207] 0.3430280000000785
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">tic = time.process_time()
+gdot = np.dot(W, x1)
+print(gdot, (toc-tic)*1000)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>[23.51513471 26.17443232 12.03612207] -9.034191000000025
+</code></pre><h4 id="2-1-实现l1和l2损失函数"><a href="#2-1-实现l1和l2损失函数" class="headerlink" title="2-1 实现l1和l2损失函数"></a>2-1 实现l1和l2损失函数</h4><ul>
+<li>向量化版本</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_l1_l2(y_hat, y):
+    """
+    l1损失函数
+    :param y_hat: 预测值
+    :param y: 实际值
+    return l1_loss, l2_loss:
+    """
+    return np.sum(np.abs(y-y_hat)), np.dot((y-y_hat), (y-y_hat).T)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">y_hat = np.array([.9, 0.2, 0.1, .4, .9])
+y = np.array([1, 0, 0, 1, 1])
+
+func_l1_l2(y_hat, y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(1.1, 0.43)
+</code></pre><h1 id="吴恩达深度学习课程作业L1W2HW2-神经网络实现逻辑回归"><a href="#吴恩达深度学习课程作业L1W2HW2-神经网络实现逻辑回归" class="headerlink" title="吴恩达深度学习课程作业L1W2HW2=神经网络实现逻辑回归"></a>吴恩达深度学习课程作业L1W2HW2=神经网络实现逻辑回归</h1><h2 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">视频链接</a></li>
+<li><a href="https://www.heywhale.com/mw/project/5dd23dbf00b0b900365ecef1" target="_blank" rel="noopener">作业链接</a></li>
+</ol>
+<h2 id="神经网络实现逻辑回归"><a href="#神经网络实现逻辑回归" class="headerlink" title="神经网络实现逻辑回归"></a>神经网络实现逻辑回归</h2><ul>
+<li>建立学习算法的一般步骤<ol>
+<li>初始化参数</li>
+<li>计算损失函数及梯度</li>
+<li>使用优化算法（梯度下降）</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-导入模块"><a href="#1-导入模块" class="headerlink" title="1-导入模块"></a>1-导入模块</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np  # python科学计算的基本包
+import matplotlib.pyplot as plt  # python图形库
+import h5py  # 处理存储为h5文件格式的数据集
+import scipy  # python算法库和数学工具包
+from PIL import Image  # 图像处理库
+from scipy import ndimage  # 图像处理
+# from lr_utils import load_dataset
+
+%matplotlib inline
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_load_dataset():
+    """
+    from lr_utils import load_dataset
+    :return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
+    """
+    train_dataset = h5py.File('./L1W2/train_catvnoncat.h5', "r")
+    train_set_x_orig = np.array(train_dataset["train_set_x"][:]) # your train set features
+    train_set_y_orig = np.array(train_dataset["train_set_y"][:]) # your train set labels
+
+    test_dataset = h5py.File('./L1W2/test_catvnoncat.h5', "r")
+    test_set_x_orig = np.array(test_dataset["test_set_x"][:]) # your test set features
+    test_set_y_orig = np.array(test_dataset["test_set_y"][:]) # your test set labels
+
+    classes = np.array(test_dataset["list_classes"][:]) # the list of classes
+
+    train_set_y_orig = train_set_y_orig.reshape((1, train_set_y_orig.shape[0]))
+    test_set_y_orig = test_set_y_orig.reshape((1, test_set_y_orig.shape[0]))
+
+    return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-问题描述"><a href="#2-问题描述" class="headerlink" title="2-问题描述"></a>2-问题描述</h3><ul>
+<li><p>问题说明：</p>
+<ol>
+<li>label为cat(y=1)或非cat(y=0)的图像集</li>
+<li>图像维度为(length, height, 3)</li>
+<li>构建一个简单的图像识别算法，对图片进行分类</li>
+</ol>
+</li>
+<li><p>数据EDA</p>
+<ol>
+<li>深度学习中许多报错都来自于矩阵/向量尺寸不匹配，如果可以保持他们不变，则可以消除很多错误</li>
+<li>机器学习常见的数据预处理是对数据集进行居中和标准化，即减去均值除以标准差。但是图片数据集只需要将每一行除以255，效果差不多</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes = func_load_dataset()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print(train_set_x_orig.shape)
+print(test_set_x_orig.shape)
+print(train_set_y_orig.shape)
+print(test_set_y_orig.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(209, 64, 64, 3)
+(50, 64, 64, 3)
+(1, 209)
+(1, 50)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">index = 5
+plt.imshow(train_set_x_orig[index])
+print('y=' + str(train_set_y_orig[:, index]) + ' it is a ' + classes[np.squeeze(train_set_y_orig[:, index])].decode('utf-8'))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>y=[0] it is a non-cat
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_49_1.png" alt="output_49_1"></p>
+<ul>
+<li>重塑数据集，将大小(n, length, height, 3)的重塑为(length*height*3, n)</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0], -1).T
+test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[0], -1).T
+
+print(train_set_x_flatten.shape)
+print(test_set_x_flatten.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(12288, 209)
+(12288, 50)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x_flatten[:5, 0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([17, 31, 56, 22, 33], dtype=uint8)
+</code></pre><ul>
+<li>数据预处理</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x = train_set_x_flatten / 255.
+test_set_x = test_set_x_flatten / 255.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x[:5, 0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([0.06666667, 0.12156863, 0.21960784, 0.08627451, 0.12941176])
+</code></pre><h3 id="3-学习算法的一般架构"><a href="#3-学习算法的一般架构" class="headerlink" title="3-学习算法的一般架构"></a>3-学习算法的一般架构</h3><ul>
+<li>逻辑回归实际是一个简单的神经网络，如下图</li>
+</ul>
+<p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/LogReg_network.png" alt="./L1W2/LogReg.png"></p>
+<ul>
+<li>算法的数学表达式</li>
+</ul>
+<script type="math/tex; mode=display">
+z^{(i)} = w^Tx^{(i)}+b \\
+\hat{y}^{(i)} = a^{(i)} = \sigma(z^{(i)})  \\
+\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)})</script><ul>
+<li>关键步骤<ol>
+<li>初始化模型参数</li>
+<li>最小化损失函数来学习参数</li>
+<li>使用学习到的参数进行预测（在测试集上）</li>
+<li>分析结果并得出结论</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-构建算法的各个部分"><a href="#4-构建算法的各个部分" class="headerlink" title="4-构建算法的各个部分"></a>4-构建算法的各个部分</h3><ul>
+<li>构建神经网络主要步骤：<ol>
+<li>定义模型架构</li>
+<li>初始化模型参数</li>
+<li>循环：<ol>
+<li>计算当前损失（正向传播）</li>
+<li>计算当前梯度（反向传播）</li>
+<li>更新参数（梯度下降）</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-1-辅助函数-sigmoid"><a href="#4-1-辅助函数-sigmoid" class="headerlink" title="4-1 辅助函数=sigmoid"></a>4-1 辅助函数=sigmoid</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_numpy_sigmoid(x):
+    """
+    sigmoid函数
+    :param x: a scalar or numpy array of any size
+    :return s: sigmoid(x)
+    """
+    return 1 / (1 + np.exp(-x))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_numpy_sigmoid(np.array([0, 2]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([0.5       , 0.88079708])
+</code></pre><h4 id="4-2-初始化参数"><a href="#4-2-初始化参数" class="headerlink" title="4-2 初始化参数"></a>4-2 初始化参数</h4><ul>
+<li>将w初始化为0的向量</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_initial_parameters(dim):
+    """
+    This function creates a vector of zeros of shape (dim, 1) for w and initializes b to 0.
+    :param dim: w参数的维度
+    :return w, b
+    """
+    w = np.zeros((dim, 1))
+    b = 0
+
+    assert(w.shape==(dim, 1))
+    assert(isinstance(b, float) or isinstance(b, int))
+    return w, b
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">w, b = func_initial_parameters(2)
+print(w, b)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>[[0.]
+ [0.]] 0
+</code></pre><h4 id="4-3-前向，后向传播"><a href="#4-3-前向，后向传播" class="headerlink" title="4-3 前向，后向传播"></a>4-3 前向，后向传播</h4><ul>
+<li>前向传播：</li>
+</ul>
+<script type="math/tex; mode=display">
+A = \sigma(W^TX+b)=(a^{(0)},...,a^{(m)})  \\
+J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})</script><ul>
+<li>后向传播</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T  \\
+\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})</script><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_propagate(w, b, X, Y):
+    """
+    前向后向传播
+    :param w: weights of size(length*height*3, 1)
+    :param b: bias
+    :param X: data of size(length*height*3, num_samples)
+    :param Y: target of size(1, num_samples)
+    """
+    m = X.shape[1]
+
+    # forward
+    A = func_numpy_sigmoid(np.dot(w.T, X) + b)
+#     print('A: \n', A, '\n', A.shape)
+#     J = -1 / m * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))
+    J = -1 / m * np.sum(np.multiply(Y, np.log(A)) + np.multiply((1 - Y), np.log(1 - A)))
+#     print('J: \n', J, '\n', J.shape)
+
+    # backward
+    dw = 1 / m * np.dot(X, (A-Y).T)
+    db = 1 / m * np.sum(A-Y)
+
+    assert(dw.shape == w.shape)
+    assert(db.dtype == float)
+    J = np.squeeze(J)
+    assert(J.shape == ())
+
+    grads = {
+        'dw': dw,
+        'db': db
+    }
+    return grads, J
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">w, b, X, Y = np.array([[1],[2]]), 2, np.array([[1,2],[3,4]]), np.array([[1,0]])
+print(w.shape, b, X.shape, Y.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>(2, 1) 2 (2, 2) (1, 2)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">grads, cost = func_propagate(w, b, X, Y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print ("dw = " + str(grads["dw"]))
+print ("db = " + str(grads["db"]))
+print ("cost = " + str(cost))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>dw = [[0.99993216]
+ [1.99980262]]
+db = 0.49993523062470574
+cost = 6.000064773192205
+</code></pre><h4 id="4-4-优化函数"><a href="#4-4-优化函数" class="headerlink" title="4-4 优化函数"></a>4-4 优化函数</h4><ul>
+<li>最小化J来学习w,b</li>
+<li>参数的更新规则：</li>
+</ul>
+<script type="math/tex; mode=display">
+\theta = \theta - \alpha * d\theta</script><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_optimizer(w, b, X, Y, epochs, lr, print_cost=False):
+    """
+    优化函数，求解w,b
+    :param w: (length*height*3, 1)
+    :param b:
+    :param X: (length*height*3, num_samples)
+    :param Y: (1, num_samples)
+    :param epochs: num_iterations
+    :param lr: learning_rate
+    :param print_cost: True to print the loss every 100 steps
+    :return params, grads, costs
+    """
+    costs = []
+    for i in range(epochs):
+        grads, cost = func_propagate(w, b, X, Y)
+
+        dw = grads['dw']
+        db = grads['db']
+
+        w = w - lr * dw
+        b = b - lr * db
+
+        if i % 100 == 0:
+            costs.append(cost)
+            if print_cost:
+                print('cost after epoch %i: %f' % (i, cost))
+    params = {
+        'w': w,
+        'b': b
+    }
+    grads = {
+        'dw': dw,
+        'db': db
+    }
+    return params, grads, costs
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">w, b, X, Y = np.array([[1],[2]]), 2, np.array([[1,2],[3,4]]), np.array([[1,0]])
+print(w.shape, b, X.shape, Y.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>(2, 1) 2 (2, 2) (1, 2)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">params, grads, costs = func_optimizer(w, b, X, Y, epochs=100, lr=0.009, print_cost=False)
+
+print('w=', params['w'])
+print('b=', params['b'])
+print('dw=', grads['dw'])
+print('db=', grads['db'])
+print(costs)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>w= [[0.1124579 ]
+ [0.23106775]]
+b= 1.5593049248448891
+dw= [[0.90158428]
+ [1.76250842]]
+db= 0.4304620716786828
+[6.000064773192205]
+</code></pre><ul>
+<li>predict</li>
+<li>预测公式</li>
+</ul>
+<script type="math/tex; mode=display">
+\hat{Y} = A = \sigma(w^TX + b)</script><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_predict(w, b, X):
+    """
+    predict
+    :param w: (length*height*3, 1)
+    :param b:
+    :param X: (length*height*3, num_samples)
+    :return y_pred
+    """
+    m = X.shape[1]
+#     y_pred = np.zeros((1, m))
+    w = w.reshape(X.shape[0], 1)
+    A = func_numpy_sigmoid(np.dot(w.T, X) + b)  # predict
+
+    y_pred = [0 if A[0, i] <= 0.5 else 1 for i in range(A.shape[1])]
+    y_pred = np.expand_dims(y_pred, 0)
+
+
+    assert(y_pred.shape==(1, m))
+    return y_pred
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">y_pred = func_predict(w, b, X)
+print('y_pred=', y_pred)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>y_pred= [[1 1]]
+</code></pre><h4 id="5-将所有功能合并到模型中"><a href="#5-将所有功能合并到模型中" class="headerlink" title="5-将所有功能合并到模型中"></a>5-将所有功能合并到模型中</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_model(x_train, y_train, x_test, y_test, epochs=2000, lr=0.5, print_cost=False):
+    """
+    构建logistic regression
+    :param x_train:
+    :param y_train:
+    :param x_test:
+    :param y_test:
+    :param epochs:
+    :param lr:
+    :param print_cost:
+    :return d: dictionary containing information about the model.
+    """
+    w, b = func_initial_parameters(x_train.shape[0])
+
+    params, grads, costs = func_optimizer(w, b, x_train, y_train, epochs, lr, print_cost=print_cost)
+
+    w = params['w']
+    b = params['b']
+
+    y_pred_train = func_predict(w, b, x_train)
+    y_pred_test = func_predict(w, b, x_test)
+
+    print('train acc: {} %'.format(100-np.mean(np.abs(y_pred_train - y_train))*100))
+    print('test acc: {} %'.format(100-np.mean(np.abs(y_pred_test - y_test))*100))
+
+    d = {
+        'costs': costs,
+        'y_pred_train': y_pred_train,
+        'y_pred_test': y_pred_test,
+        'w': w,
+        'b': b,
+        'lr': lr,
+        'epochs': epochs
+    }
+    return d
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">d = func_model(train_set_x, train_set_y_orig, test_set_x, test_set_y_orig, epochs=2000, lr=0.005, print_cost=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>cost after epoch 0: 0.693147
+cost after epoch 100: 0.584508
+cost after epoch 200: 0.466949
+cost after epoch 300: 0.376007
+cost after epoch 400: 0.331463
+cost after epoch 500: 0.303273
+cost after epoch 600: 0.279880
+cost after epoch 700: 0.260042
+cost after epoch 800: 0.242941
+cost after epoch 900: 0.228004
+cost after epoch 1000: 0.214820
+cost after epoch 1100: 0.203078
+cost after epoch 1200: 0.192544
+cost after epoch 1300: 0.183033
+cost after epoch 1400: 0.174399
+cost after epoch 1500: 0.166521
+cost after epoch 1600: 0.159305
+cost after epoch 1700: 0.152667
+cost after epoch 1800: 0.146542
+cost after epoch 1900: 0.140872
+train acc: 99.04306220095694 %
+test acc: 70.0 %
+</code></pre><ul>
+<li>结果分析：<ol>
+<li>训练acc接近100%，测试acc为70%</li>
+<li>该模型明显适合训练数据，有些过拟合</li>
+</ol>
+</li>
+<li>使用下面代码可以查看预测结果</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">index = 1
+plt.imshow(test_set_x[:, index].reshape(test_set_x_orig.shape[1], test_set_x_orig.shape[1], 3))
+print('y=', test_set_y_orig[0, index], 'pred=', d['y_pred_test'][0, index])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>y= 1 pred= 1
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_80_1.png" alt="output_80_1"></p>
+<ul>
+<li>绘制损失函数和梯度</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">costs = np.array(d['costs'])
+plt.plot(costs)
+plt.ylabel('cost')
+plt.xlabel('epochs')
+plt.title('lr='+str(d['lr']))
+plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_82_0.png" alt="output_82_0"></p>
+<h4 id="6-学习率的选择"><a href="#6-学习率的选择" class="headerlink" title="6-学习率的选择"></a>6-学习率的选择</h4><ul>
+<li>lr决定我们更新参数的速度</li>
+<li>如果太大，可能会超出最佳值</li>
+<li>如果太小，可能需要更多的迭代才能收敛到最佳值</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">lr_list = [0.01, 0.001, 0.0001]
+models = {}
+for lr in lr_list:
+    print('lr=', lr)
+    models[str(lr)] = func_model(train_set_x, train_set_y_orig, test_set_x, test_set_y_orig, 
+                                 epochs=1500, lr=lr, print_cost=False)
+    print('-'*52)
+
+for lr in lr_list:
+    plt.plot(np.array(models[str(lr)]['costs']), label=str(models[str(lr)]['lr']))
+
+plt.ylabel('cost')
+plt.xlabel('epochs')
+
+legend = plt.legend(loc='upper center', shadow=True)
+frame = legend.get_frame()
+frame.set_facecolor('0.90')
+plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>lr= 0.01
+train acc: 99.52153110047847 %
+test acc: 68.0 %
+----------------------------------------------------
+lr= 0.001
+train acc: 88.99521531100478 %
+test acc: 64.0 %
+----------------------------------------------------
+lr= 0.0001
+train acc: 68.42105263157895 %
+test acc: 36.0 %
+----------------------------------------------------
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_84_1.png" alt="output_84_1"></p>
+<ul>
+<li>分析<ol>
+<li>不同的学习率带来不同损失</li>
+<li>学习率太大，损失上下波动，甚至可能会发散</li>
+<li>较低损失并不意味着模型效果好，当训练精度比测试精度高很多时，会发生过拟合情况</li>
+</ol>
+</li>
+<li>深度学习中，通常建议<ol>
+<li>选择好学习率</li>
+<li>如果过拟合，则使用其他方法减少过拟合</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-预测自己的图像"><a href="#7-预测自己的图像" class="headerlink" title="7-预测自己的图像"></a>7-预测自己的图像</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">image_path = './L1W2/cat_in_iran.jpg'
+image = np.array(plt.imread(image_path))
+image.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>(1115, 1114, 3)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">num_px = train_set_x_orig.shape[1]
+my_image = np.array(Image.fromarray(image).resize((num_px, num_px))).reshape((1, num_px*num_px*3)).T
+my_image.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>(12288, 1)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">my_pred_image = func_predict(d['w'], d['b'], my_image)
+my_pred_image
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>array([[1]])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">plt.imshow(image)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f12aa284e20&gt;
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_90_1.png" alt="output_90_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print('y_pred=', np.squeeze(my_pred_image), ", your algorithm predicts a \"" + classes[int(np.squeeze(my_pred_image)),].decode("utf-8") +  "\" picture.")
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>y_pred= 1 , your algorithm predicts a &quot;cat&quot; picture.
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/">https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/numpy/">
+                                    <span class="chip bg-color">numpy</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+                                    <span class="chip bg-color">逻辑回归</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">神经网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2021-03-11T15-45-18',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/03/15/ji-qi-xue-xi-zhi-knn/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="机器学习之KNN">
+                        
+                        <span class="card-title">机器学习之KNN</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据挖掘十大算法之KNN
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">数据挖掘</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">十大算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="深度学习之图像识别">
+                        
+                        <span class="card-title">深度学习之图像识别</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            图片相关处理技术
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">图像识别</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
