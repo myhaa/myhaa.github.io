@@ -16,7 +16,7 @@ tags:
   - 编程语言
 ---
 
-![image-20210621150123202](%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E4%B9%8BJava/image-20210621150123202.png)
+
 
 # 一、Java基础
 
@@ -736,3 +736,14 @@ public class Main {
 * 变量：对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象
 
   
+
+## 4、一行代码判断String字符串是否为纯符号
+
+* [参考](https://blog.csdn.net/qq_39731011/article/details/85159476)
+
+```java
+if (term.trim().replaceAll("\\p{P}", "").length() == 0){
+                    continue;
+                }
+```
+
