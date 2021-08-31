@@ -429,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">神经网络</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -443,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-31
+                    2021-03-11
                 </div>
                 
 
@@ -740,7 +753,7 @@ print(X.shape, Y.shape)
 plt.scatter(X[0, :], X[1, :], c=Y.reshape(X[0, :].shape), s=40, cmap=plt.cm.Spectral)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>&lt;matplotlib.collections.PathCollection at 0x7f58a99ab670&gt;
-</code></pre><p><img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_11_1.png" alt="output_11_1"></p>
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_11_1.png" alt="output_11_1"></p>
 <h3 id="2-3-深入了解"><a href="#2-3-深入了解" class="headerlink" title="2.3-深入了解"></a>2.3-深入了解</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">shape_X = X.shape
 shape_Y = Y.shape
 m = shape_X[1]
@@ -765,7 +778,7 @@ clf.fit(X.T, Y.ravel())
 plt.title('sklearn logistic regression')
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre><code>Text(0.5, 1.0, &#39;sklearn logistic regression&#39;)
-</code></pre><p><img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_18_1.png" alt="output_18_1"></p>
+</code></pre><p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_18_1.png" alt="output_18_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred_lr = clf.predict(X.T)
 print('acc: ', float((np.dot(Y, pred_lr)) + np.dot(1-Y, 1-pred_lr)) / float(Y.size)*100)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -776,7 +789,7 @@ print('acc: ', float((np.dot(Y, pred_lr)) + np.dot(1-Y, 1-pred_lr)) / float(Y.si
 </ul>
 <h2 id="4-DNN结构实现"><a href="#4-DNN结构实现" class="headerlink" title="4-DNN结构实现"></a>4-DNN结构实现</h2><h3 id="4-1-理论介绍"><a href="#4-1-理论介绍" class="headerlink" title="4.1-理论介绍"></a>4.1-理论介绍</h3><ol>
 <li><p>模型结构</p>
-<p> <img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17ipqoyrg.png" alt="模型结构"></p>
+<p> <img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17ipqoyrg.png" alt="模型结构"></p>
 </li>
 <li><p>数学原理</p>
 <p> 输入$x^{(i)}$</p>
@@ -1070,7 +1083,7 @@ shape (1, 1)
 </ol>
 </li>
 <li>说明<ol>
-<li>反向传播通常是DNN中最难（最数学）的部分，详情见下图<br> <img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hcd4yra.png" alt="反向传播过程"></li>
+<li>反向传播通常是DNN中最难（最数学）的部分，详情见下图<br> <img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hcd4yra.png" alt="反向传播过程"></li>
 <li>由于激活函数是<code>tanh</code>，所以$g^{[1]’}(z) = 1-a^2$</li>
 </ol>
 </li>
@@ -1173,7 +1186,7 @@ db1 [[-0.0116354 ]
 </ol>
 </li>
 <li>提示<ol>
-<li>具有良好的学习速率（收敛）图和较差的学习速率（发散）的图如下<br> <img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hh4otzu.gif" alt="良好"><br> <img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hharbth.gif" alt="较差"></li>
+<li>具有良好的学习速率（收敛）图和较差的学习速率（发散）的图如下<br> <img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hh4otzu.gif" alt="良好"><br> <img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hharbth.gif" alt="较差"></li>
 </ol>
 </li>
 </ul>
@@ -1363,7 +1376,7 @@ cost after iter 9000: 0.215573
 plt.title('decision boundary for hidden layer size %i' % 4)
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_70_0.png" alt="output_70_0"></p>
+<p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_70_0.png" alt="output_70_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">preds = func_predict(parameters, X)
 print('acc: ', (np.dot(Y, preds.T)+np.dot(1-Y, (1-preds).T))/float(Y.size)*100)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1385,7 +1398,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
 #     print ("Accuracy for {} hidden units: {} %".format(n_h, acc))
     plt.title("Accuracy for {} hidden units: {} %".format(n_h, acc))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_74_0.png" alt="output_74_0"></p>
+<p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_74_0.png" alt="output_74_0"></p>
 <ul>
 <li>较大的模型能够更好的拟合训练集</li>
 <li>隐藏层units数量也不是越多越好</li>
@@ -1429,7 +1442,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">func_train_predict_extra_dataset()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_78_0.png" alt="output_78_0"></p>
+<p><img src="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_78_0.png" alt="output_78_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1458,7 +1471,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">https://myhaa.github.io/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/</a>
+                    <a href="https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">https://myhaa.github.io/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1495,7 +1508,11 @@ for i, n_h in enumerate(hidden_layer_sizes):
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">神经网络</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1664,7 +1681,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2021-08-31T17-59-28',
+        id: '2021-03-11T15-45-18',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1685,47 +1702,57 @@ for i, n_h in enumerate(hidden_layer_sizes):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/31/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业2">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业1">
                         
-                        <span class="card-title">深度学习之吴恩达课程作业2</span>
+                        <span class="card-title">深度学习之吴恩达课程作业1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            吴恩达深度学习课程作业L1W3一层隐藏层神经网络参考
-视频链接
-作业链接
-
-本节目的
-建立一个含一层隐藏层的神经网络，观察其和逻辑回归实现之间的差异
-实现单个隐藏层的2分类神经网络
-使用具有非线性激活函数的神经元，例如tanh
-计算交叉熵损
+                            numpy入门和神经网络实现逻辑回归
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Myhaa
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/numpy/">
+                        <span class="chip bg-color">numpy</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
+                        <span class="chip bg-color">逻辑回归</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1736,31 +1763,31 @@ for i, n_h in enumerate(hidden_layer_sizes):
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/06/qiu-zhi-bi-bei-zhi-ge-da-guan-wang/">
+                <a href="/2021/03/11/shen-du-xue-xi-zhi-tu-xiang-shi-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="求职必备之各大官网">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="深度学习之图像识别">
                         
-                        <span class="card-title">求职必备之各大官网</span>
+                        <span class="card-title">深度学习之图像识别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            各大官网收集
+                            图片相关处理技术
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B1%82%E8%81%8C%E5%BF%85%E5%A4%87/" class="post-category">
-                                    求职必备
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
@@ -1770,8 +1797,8 @@ for i, n_h in enumerate(hidden_layer_sizes):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%98%E7%BD%91/">
-                        <span class="chip bg-color">官网</span>
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">
+                        <span class="chip bg-color">图像识别</span>
                     </a>
                     
                 </div>
@@ -1941,6 +1968,13 @@ for i, n_h in enumerate(hidden_layer_sizes):
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
