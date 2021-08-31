@@ -5,12 +5,11 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="实用工具之Java, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="
-一、Java基础安装名词解释
+    <meta name="description" content="一、Java基础安装名词解释
 JDK：Java Development Kit
 如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器JavaC、调试器JDB等开发工具
 
-JRE：Java R">
+JRE：Java Ru">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -489,8 +488,7 @@ JRE：Java R">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/2019/10/13/shi-yong-gong-ju-zhi-java/image-20210621150123202.png" alt="image-20210621150123202"></p>
-<h1 id="一、Java基础"><a href="#一、Java基础" class="headerlink" title="一、Java基础"></a>一、Java基础</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><ul>
+                <h1 id="一、Java基础"><a href="#一、Java基础" class="headerlink" title="一、Java基础"></a>一、Java基础</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><ul>
 <li><p><code>JDK</code>：Java Development Kit</p>
 <p>如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器JavaC、调试器JDB等开发工具</p>
 </li>
@@ -1099,6 +1097,13 @@ class Student extends Person {
 <li><p>变量：对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象</p>
 </li>
 </ul>
+<h2 id="4、一行代码判断String字符串是否为纯符号"><a href="#4、一行代码判断String字符串是否为纯符号" class="headerlink" title="4、一行代码判断String字符串是否为纯符号"></a>4、一行代码判断String字符串是否为纯符号</h2><ul>
+<li><a href="https://blog.csdn.net/qq_39731011/article/details/85159476" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<pre class="line-numbers language-lang-java"><code class="language-lang-java">if (term.trim().replaceAll("\\p{P}", "").length() == 0){
+                    continue;
+                }
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
