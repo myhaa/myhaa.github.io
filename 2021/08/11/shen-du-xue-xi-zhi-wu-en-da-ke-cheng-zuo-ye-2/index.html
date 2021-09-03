@@ -1252,12 +1252,13 @@ b2 [[9.69415948e-05]]
 </ol>
 </li>
 </ul>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_nn_model(X, Y, n_h, num_epochs=10000, print_cost=False):
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_nn_model(X, Y, n_h, lr, num_epochs=10000, print_cost=False):
     """
     DNN模型结构
     :param X:
     :param Y:
     :param n_h: size of hidden layer
+    :param lr: learning rate
     :param num_epochs:
     :param print_cost:
     :return params
@@ -1274,12 +1275,12 @@ b2 [[9.69415948e-05]]
 
         grads = func_backward_propagation(parameters, cache, X, Y)
 
-        parameters = func_update_parameters(parameters, grads)
+        parameters = func_update_parameters(parameters, grads, lr)
 
         if print_cost and i % 1000 == 0:
             print('cost after iter %i: %f' % (i, cost))
     return parameters
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">X_assess, Y_assess = func_nn_model_test_case()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters = func_nn_model(X_assess, Y_assess, n_h=4, print_cost=True)
@@ -1702,30 +1703,29 @@ for i, n_h in enumerate(hidden_layer_sizes):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">
+                <a href="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业2">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业3">
                         
-                        <span class="card-title">深度学习之吴恩达课程作业2</span>
+                        <span class="card-title">深度学习之吴恩达课程作业3</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一层隐藏层神经网络
+                            深层神经网络构建及应用
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1738,7 +1738,6 @@ for i, n_h in enumerate(hidden_layer_sizes):
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
