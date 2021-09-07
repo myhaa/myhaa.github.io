@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-09-03T01:50:05.957Z</updated>
+  <updated>2021-09-07T03:32:40.395Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实用工具之FFmpeg</title>
+    <link href="https://myhaa.github.io/2021/09/06/shi-yong-gong-ju-zhi-ffmpeg/"/>
+    <id>https://myhaa.github.io/2021/09/06/shi-yong-gong-ju-zhi-ffmpeg/</id>
+    <published>2021-09-06T10:16:11.000Z</published>
+    <updated>2021-09-07T03:32:40.395Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;FFmpeg视频处理工具&quot;&gt;&lt;a href=&quot;#FFmpeg视频处理工具&quot; class=&quot;headerlink&quot; title=&quot;FFmpeg视频处理工具&quot;&gt;&lt;/a&gt;FFmpeg视频处理工具&lt;/h1&gt;&lt;h2 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="实用工具" scheme="https://myhaa.github.io/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="FFmpeg" scheme="https://myhaa.github.io/tags/FFmpeg/"/>
+    
+  </entry>
   
   <entry>
     <title>深度学习之吴恩达课程作业3</title>
@@ -93,11 +120,11 @@
       <category term="深度学习" scheme="https://myhaa.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
       <category term="numpy" scheme="https://myhaa.github.io/tags/numpy/"/>
     
       <category term="逻辑回归" scheme="https://myhaa.github.io/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
-    
-      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -557,33 +584,6 @@
     
     
       <category term="分词" scheme="https://myhaa.github.io/tags/%E5%88%86%E8%AF%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NLP之HMM</title>
-    <link href="https://myhaa.github.io/2021/03/03/nlp-zhi-hmm/"/>
-    <id>https://myhaa.github.io/2021/03/03/nlp-zhi-hmm/</id>
-    <published>2021-03-03T02:52:24.000Z</published>
-    <updated>2021-05-12T12:30:09.309Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;什么样的问题可以用HMM模型&quot;&gt;&lt;a href=&quot;#什么样的问题可以用HMM模型&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="NLP" scheme="https://myhaa.github.io/categories/NLP/"/>
-    
-    
-      <category term="HMM" scheme="https://myhaa.github.io/tags/HMM/"/>
     
   </entry>
   
