@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-09-07T03:32:40.395Z</updated>
+  <updated>2021-09-14T10:33:13.163Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TensorFlow学习之不平衡数据的分类</title>
+    <link href="https://myhaa.github.io/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/"/>
+    <id>https://myhaa.github.io/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/</id>
+    <published>2021-09-13T01:19:18.000Z</published>
+    <updated>2021-09-14T10:33:13.163Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;TensorFlow学习之不平衡数据的分类&quot;&gt;&lt;a href=&quot;#TensorFlow学习之不平衡数据的分类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="TensorFlow学习" scheme="https://myhaa.github.io/categories/TensorFlow%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="分类" scheme="https://myhaa.github.io/tags/%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="不平衡数据" scheme="https://myhaa.github.io/tags/%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>实用工具之FFmpeg</title>
@@ -120,11 +151,11 @@
       <category term="深度学习" scheme="https://myhaa.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
       <category term="numpy" scheme="https://myhaa.github.io/tags/numpy/"/>
     
       <category term="逻辑回归" scheme="https://myhaa.github.io/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
-    
-      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -557,33 +588,6 @@
     
     
       <category term="关键词提取" scheme="https://myhaa.github.io/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NLP之分词原理</title>
-    <link href="https://myhaa.github.io/2021/03/09/nlp-zhi-fen-ci-yuan-li/"/>
-    <id>https://myhaa.github.io/2021/03/09/nlp-zhi-fen-ci-yuan-li/</id>
-    <published>2021-03-09T02:29:55.000Z</published>
-    <updated>2021-05-12T12:28:14.586Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;分词的基本原理&quot;&gt;&lt;a href=&quot;#分词的基本原理&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="NLP" scheme="https://myhaa.github.io/categories/NLP/"/>
-    
-    
-      <category term="分词" scheme="https://myhaa.github.io/tags/%E5%88%86%E8%AF%8D/"/>
     
   </entry>
   

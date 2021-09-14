@@ -1,0 +1,3330 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="TensorFlow学习之不平衡数据的分类, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="TensorFlow学习之不平衡数据的分类参考
+官网例子
+
+导入模块import tensorflow as tf
+from tensorflow import keras
+
+import os
+import datetime
+import">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>TensorFlow学习之不平衡数据的分类 | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        TensorFlow学习之不平衡数据的分类
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                <span class="chip bg-color">分类</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">神经网络</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%95%B0%E6%8D%AE/">
+                                <span class="chip bg-color">不平衡数据</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/TensorFlow%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                TensorFlow学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-13
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    62 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="TensorFlow学习之不平衡数据的分类"><a href="#TensorFlow学习之不平衡数据的分类" class="headerlink" title="TensorFlow学习之不平衡数据的分类"></a>TensorFlow学习之不平衡数据的分类</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.tensorflow.org/tutorials/structured_data/imbalanced_data" target="_blank" rel="noopener">官网例子</a></li>
+</ul>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import tensorflow as tf
+from tensorflow import keras
+
+import os
+import datetime
+import tempfile
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+import sklearn
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>2021-09-14 15:38:33.691409: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">mpl.rcParams['figure.figsize'] = (12, 10)
+colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
+colors
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>[&#39;#1f77b4&#39;,
+ &#39;#ff7f0e&#39;,
+ &#39;#2ca02c&#39;,
+ &#39;#d62728&#39;,
+ &#39;#9467bd&#39;,
+ &#39;#8c564b&#39;,
+ &#39;#e377c2&#39;,
+ &#39;#7f7f7f&#39;,
+ &#39;#bcbd22&#39;,
+ &#39;#17becf&#39;]
+</code></pre><h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><ul>
+<li>将预测数据是否会信用卡欺诈</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">train_path = './TensorFlow学习之不平衡数据的分类/creditcard.csv'
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">raw_data = pd.read_csv(train_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">raw_data.head()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>...</th>
+      <th>V21</th>
+      <th>V22</th>
+      <th>V23</th>
+      <th>V24</th>
+      <th>V25</th>
+      <th>V26</th>
+      <th>V27</th>
+      <th>V28</th>
+      <th>Amount</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>-1.359807</td>
+      <td>-0.072781</td>
+      <td>2.536347</td>
+      <td>1.378155</td>
+      <td>-0.338321</td>
+      <td>0.462388</td>
+      <td>0.239599</td>
+      <td>0.098698</td>
+      <td>0.363787</td>
+      <td>...</td>
+      <td>-0.018307</td>
+      <td>0.277838</td>
+      <td>-0.110474</td>
+      <td>0.066928</td>
+      <td>0.128539</td>
+      <td>-0.189115</td>
+      <td>0.133558</td>
+      <td>-0.021053</td>
+      <td>149.62</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>1.191857</td>
+      <td>0.266151</td>
+      <td>0.166480</td>
+      <td>0.448154</td>
+      <td>0.060018</td>
+      <td>-0.082361</td>
+      <td>-0.078803</td>
+      <td>0.085102</td>
+      <td>-0.255425</td>
+      <td>...</td>
+      <td>-0.225775</td>
+      <td>-0.638672</td>
+      <td>0.101288</td>
+      <td>-0.339846</td>
+      <td>0.167170</td>
+      <td>0.125895</td>
+      <td>-0.008983</td>
+      <td>0.014724</td>
+      <td>2.69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>-1.358354</td>
+      <td>-1.340163</td>
+      <td>1.773209</td>
+      <td>0.379780</td>
+      <td>-0.503198</td>
+      <td>1.800499</td>
+      <td>0.791461</td>
+      <td>0.247676</td>
+      <td>-1.514654</td>
+      <td>...</td>
+      <td>0.247998</td>
+      <td>0.771679</td>
+      <td>0.909412</td>
+      <td>-0.689281</td>
+      <td>-0.327642</td>
+      <td>-0.139097</td>
+      <td>-0.055353</td>
+      <td>-0.059752</td>
+      <td>378.66</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>-0.966272</td>
+      <td>-0.185226</td>
+      <td>1.792993</td>
+      <td>-0.863291</td>
+      <td>-0.010309</td>
+      <td>1.247203</td>
+      <td>0.237609</td>
+      <td>0.377436</td>
+      <td>-1.387024</td>
+      <td>...</td>
+      <td>-0.108300</td>
+      <td>0.005274</td>
+      <td>-0.190321</td>
+      <td>-1.175575</td>
+      <td>0.647376</td>
+      <td>-0.221929</td>
+      <td>0.062723</td>
+      <td>0.061458</td>
+      <td>123.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>-1.158233</td>
+      <td>0.877737</td>
+      <td>1.548718</td>
+      <td>0.403034</td>
+      <td>-0.407193</td>
+      <td>0.095921</td>
+      <td>0.592941</td>
+      <td>-0.270533</td>
+      <td>0.817739</td>
+      <td>...</td>
+      <td>-0.009431</td>
+      <td>0.798278</td>
+      <td>-0.137458</td>
+      <td>0.141267</td>
+      <td>-0.206010</td>
+      <td>0.502292</td>
+      <td>0.219422</td>
+      <td>0.215153</td>
+      <td>69.99</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div>
+
+
+
+
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">raw_data.info(show_counts=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 284807 entries, 0 to 284806
+Data columns (total 31 columns):
+ #   Column  Non-Null Count   Dtype  
+---  ------  --------------   -----  
+ 0   Time    284807 non-null  float64
+ 1   V1      284807 non-null  float64
+ 2   V2      284807 non-null  float64
+ 3   V3      284807 non-null  float64
+ 4   V4      284807 non-null  float64
+ 5   V5      284807 non-null  float64
+ 6   V6      284807 non-null  float64
+ 7   V7      284807 non-null  float64
+ 8   V8      284807 non-null  float64
+ 9   V9      284807 non-null  float64
+ 10  V10     284807 non-null  float64
+ 11  V11     284807 non-null  float64
+ 12  V12     284807 non-null  float64
+ 13  V13     284807 non-null  float64
+ 14  V14     284807 non-null  float64
+ 15  V15     284807 non-null  float64
+ 16  V16     284807 non-null  float64
+ 17  V17     284807 non-null  float64
+ 18  V18     284807 non-null  float64
+ 19  V19     284807 non-null  float64
+ 20  V20     284807 non-null  float64
+ 21  V21     284807 non-null  float64
+ 22  V22     284807 non-null  float64
+ 23  V23     284807 non-null  float64
+ 24  V24     284807 non-null  float64
+ 25  V25     284807 non-null  float64
+ 26  V26     284807 non-null  float64
+ 27  V27     284807 non-null  float64
+ 28  V28     284807 non-null  float64
+ 29  Amount  284807 non-null  float64
+ 30  Class   284807 non-null  int64  
+dtypes: float64(30), int64(1)
+memory usage: 67.4 MB
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">raw_data.describe(include='all').T
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Time</th>
+      <td>284807.0</td>
+      <td>9.481386e+04</td>
+      <td>47488.145955</td>
+      <td>0.000000</td>
+      <td>54201.500000</td>
+      <td>84692.000000</td>
+      <td>139320.500000</td>
+      <td>172792.000000</td>
+    </tr>
+    <tr>
+      <th>V1</th>
+      <td>284807.0</td>
+      <td>1.168375e-15</td>
+      <td>1.958696</td>
+      <td>-56.407510</td>
+      <td>-0.920373</td>
+      <td>0.018109</td>
+      <td>1.315642</td>
+      <td>2.454930</td>
+    </tr>
+    <tr>
+      <th>V2</th>
+      <td>284807.0</td>
+      <td>3.416908e-16</td>
+      <td>1.651309</td>
+      <td>-72.715728</td>
+      <td>-0.598550</td>
+      <td>0.065486</td>
+      <td>0.803724</td>
+      <td>22.057729</td>
+    </tr>
+    <tr>
+      <th>V3</th>
+      <td>284807.0</td>
+      <td>-1.379537e-15</td>
+      <td>1.516255</td>
+      <td>-48.325589</td>
+      <td>-0.890365</td>
+      <td>0.179846</td>
+      <td>1.027196</td>
+      <td>9.382558</td>
+    </tr>
+    <tr>
+      <th>V4</th>
+      <td>284807.0</td>
+      <td>2.074095e-15</td>
+      <td>1.415869</td>
+      <td>-5.683171</td>
+      <td>-0.848640</td>
+      <td>-0.019847</td>
+      <td>0.743341</td>
+      <td>16.875344</td>
+    </tr>
+    <tr>
+      <th>V5</th>
+      <td>284807.0</td>
+      <td>9.604066e-16</td>
+      <td>1.380247</td>
+      <td>-113.743307</td>
+      <td>-0.691597</td>
+      <td>-0.054336</td>
+      <td>0.611926</td>
+      <td>34.801666</td>
+    </tr>
+    <tr>
+      <th>V6</th>
+      <td>284807.0</td>
+      <td>1.487313e-15</td>
+      <td>1.332271</td>
+      <td>-26.160506</td>
+      <td>-0.768296</td>
+      <td>-0.274187</td>
+      <td>0.398565</td>
+      <td>73.301626</td>
+    </tr>
+    <tr>
+      <th>V7</th>
+      <td>284807.0</td>
+      <td>-5.556467e-16</td>
+      <td>1.237094</td>
+      <td>-43.557242</td>
+      <td>-0.554076</td>
+      <td>0.040103</td>
+      <td>0.570436</td>
+      <td>120.589494</td>
+    </tr>
+    <tr>
+      <th>V8</th>
+      <td>284807.0</td>
+      <td>1.213481e-16</td>
+      <td>1.194353</td>
+      <td>-73.216718</td>
+      <td>-0.208630</td>
+      <td>0.022358</td>
+      <td>0.327346</td>
+      <td>20.007208</td>
+    </tr>
+    <tr>
+      <th>V9</th>
+      <td>284807.0</td>
+      <td>-2.406331e-15</td>
+      <td>1.098632</td>
+      <td>-13.434066</td>
+      <td>-0.643098</td>
+      <td>-0.051429</td>
+      <td>0.597139</td>
+      <td>15.594995</td>
+    </tr>
+    <tr>
+      <th>V10</th>
+      <td>284807.0</td>
+      <td>2.239053e-15</td>
+      <td>1.088850</td>
+      <td>-24.588262</td>
+      <td>-0.535426</td>
+      <td>-0.092917</td>
+      <td>0.453923</td>
+      <td>23.745136</td>
+    </tr>
+    <tr>
+      <th>V11</th>
+      <td>284807.0</td>
+      <td>1.673327e-15</td>
+      <td>1.020713</td>
+      <td>-4.797473</td>
+      <td>-0.762494</td>
+      <td>-0.032757</td>
+      <td>0.739593</td>
+      <td>12.018913</td>
+    </tr>
+    <tr>
+      <th>V12</th>
+      <td>284807.0</td>
+      <td>-1.247012e-15</td>
+      <td>0.999201</td>
+      <td>-18.683715</td>
+      <td>-0.405571</td>
+      <td>0.140033</td>
+      <td>0.618238</td>
+      <td>7.848392</td>
+    </tr>
+    <tr>
+      <th>V13</th>
+      <td>284807.0</td>
+      <td>8.190001e-16</td>
+      <td>0.995274</td>
+      <td>-5.791881</td>
+      <td>-0.648539</td>
+      <td>-0.013568</td>
+      <td>0.662505</td>
+      <td>7.126883</td>
+    </tr>
+    <tr>
+      <th>V14</th>
+      <td>284807.0</td>
+      <td>1.207294e-15</td>
+      <td>0.958596</td>
+      <td>-19.214325</td>
+      <td>-0.425574</td>
+      <td>0.050601</td>
+      <td>0.493150</td>
+      <td>10.526766</td>
+    </tr>
+    <tr>
+      <th>V15</th>
+      <td>284807.0</td>
+      <td>4.887456e-15</td>
+      <td>0.915316</td>
+      <td>-4.498945</td>
+      <td>-0.582884</td>
+      <td>0.048072</td>
+      <td>0.648821</td>
+      <td>8.877742</td>
+    </tr>
+    <tr>
+      <th>V16</th>
+      <td>284807.0</td>
+      <td>1.437716e-15</td>
+      <td>0.876253</td>
+      <td>-14.129855</td>
+      <td>-0.468037</td>
+      <td>0.066413</td>
+      <td>0.523296</td>
+      <td>17.315112</td>
+    </tr>
+    <tr>
+      <th>V17</th>
+      <td>284807.0</td>
+      <td>-3.772171e-16</td>
+      <td>0.849337</td>
+      <td>-25.162799</td>
+      <td>-0.483748</td>
+      <td>-0.065676</td>
+      <td>0.399675</td>
+      <td>9.253526</td>
+    </tr>
+    <tr>
+      <th>V18</th>
+      <td>284807.0</td>
+      <td>9.564149e-16</td>
+      <td>0.838176</td>
+      <td>-9.498746</td>
+      <td>-0.498850</td>
+      <td>-0.003636</td>
+      <td>0.500807</td>
+      <td>5.041069</td>
+    </tr>
+    <tr>
+      <th>V19</th>
+      <td>284807.0</td>
+      <td>1.039917e-15</td>
+      <td>0.814041</td>
+      <td>-7.213527</td>
+      <td>-0.456299</td>
+      <td>0.003735</td>
+      <td>0.458949</td>
+      <td>5.591971</td>
+    </tr>
+    <tr>
+      <th>V20</th>
+      <td>284807.0</td>
+      <td>6.406204e-16</td>
+      <td>0.770925</td>
+      <td>-54.497720</td>
+      <td>-0.211721</td>
+      <td>-0.062481</td>
+      <td>0.133041</td>
+      <td>39.420904</td>
+    </tr>
+    <tr>
+      <th>V21</th>
+      <td>284807.0</td>
+      <td>1.654067e-16</td>
+      <td>0.734524</td>
+      <td>-34.830382</td>
+      <td>-0.228395</td>
+      <td>-0.029450</td>
+      <td>0.186377</td>
+      <td>27.202839</td>
+    </tr>
+    <tr>
+      <th>V22</th>
+      <td>284807.0</td>
+      <td>-3.568593e-16</td>
+      <td>0.725702</td>
+      <td>-10.933144</td>
+      <td>-0.542350</td>
+      <td>0.006782</td>
+      <td>0.528554</td>
+      <td>10.503090</td>
+    </tr>
+    <tr>
+      <th>V23</th>
+      <td>284807.0</td>
+      <td>2.578648e-16</td>
+      <td>0.624460</td>
+      <td>-44.807735</td>
+      <td>-0.161846</td>
+      <td>-0.011193</td>
+      <td>0.147642</td>
+      <td>22.528412</td>
+    </tr>
+    <tr>
+      <th>V24</th>
+      <td>284807.0</td>
+      <td>4.473266e-15</td>
+      <td>0.605647</td>
+      <td>-2.836627</td>
+      <td>-0.354586</td>
+      <td>0.040976</td>
+      <td>0.439527</td>
+      <td>4.584549</td>
+    </tr>
+    <tr>
+      <th>V25</th>
+      <td>284807.0</td>
+      <td>5.340915e-16</td>
+      <td>0.521278</td>
+      <td>-10.295397</td>
+      <td>-0.317145</td>
+      <td>0.016594</td>
+      <td>0.350716</td>
+      <td>7.519589</td>
+    </tr>
+    <tr>
+      <th>V26</th>
+      <td>284807.0</td>
+      <td>1.683437e-15</td>
+      <td>0.482227</td>
+      <td>-2.604551</td>
+      <td>-0.326984</td>
+      <td>-0.052139</td>
+      <td>0.240952</td>
+      <td>3.517346</td>
+    </tr>
+    <tr>
+      <th>V27</th>
+      <td>284807.0</td>
+      <td>-3.660091e-16</td>
+      <td>0.403632</td>
+      <td>-22.565679</td>
+      <td>-0.070840</td>
+      <td>0.001342</td>
+      <td>0.091045</td>
+      <td>31.612198</td>
+    </tr>
+    <tr>
+      <th>V28</th>
+      <td>284807.0</td>
+      <td>-1.227390e-16</td>
+      <td>0.330083</td>
+      <td>-15.430084</td>
+      <td>-0.052960</td>
+      <td>0.011244</td>
+      <td>0.078280</td>
+      <td>33.847808</td>
+    </tr>
+    <tr>
+      <th>Amount</th>
+      <td>284807.0</td>
+      <td>8.834962e+01</td>
+      <td>250.120109</td>
+      <td>0.000000</td>
+      <td>5.600000</td>
+      <td>22.000000</td>
+      <td>77.165000</td>
+      <td>25691.160000</td>
+    </tr>
+    <tr>
+      <th>Class</th>
+      <td>284807.0</td>
+      <td>1.727486e-03</td>
+      <td>0.041527</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="检查平衡性"><a href="#检查平衡性" class="headerlink" title="检查平衡性"></a>检查平衡性</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">target = 'Class'
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">raw_data.groupby(target, as_index=False)['Time'].count()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Class</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>284315</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>492</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">neg, pos = np.bincount(raw_data[target])
+total = neg + pos
+print('Examples:\n    Total: {}\n    Positive: {} ({:.2f}% of total)\n'.format(
+    total, pos, 100 * pos / total))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Examples:
+    Total: 284807
+    Positive: 492 (0.17% of total)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">dataframe = raw_data.copy()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ol>
+<li>剔除无用特征，对Amount进行log变换</li>
+<li>数据标准化</li>
+<li>截断</li>
+</ol>
+<h3 id="log变换"><a href="#log变换" class="headerlink" title="log变换"></a>log变换</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dataframe.pop('Time')
+
+eps = 0.001 # 0 => 0.1¢
+for feature in ['Amount']:
+    dataframe[feature+'_log'] = np.log(dataframe.pop(feature)+eps)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="划分训练集、验证集、测试集"><a href="#划分训练集、验证集、测试集" class="headerlink" title="划分训练集、验证集、测试集"></a>划分训练集、验证集、测试集</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train, test = train_test_split(dataframe, test_size=0.2, stratify=dataframe[target], random_state=2030)
+train, val = train_test_split(train, test_size=0.2, stratify=train[target], random_state=2030)
+print(len(train), 'train examples')
+print(len(val), 'validation examples')
+print(len(test), 'test examples')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>182276 train examples
+45569 validation examples
+56962 test examples
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># Form np arrays of labels and features.
+train_labels = np.array(train.pop(target))
+bool_train_labels = train_labels != 0
+val_labels = np.array(val.pop(target))
+test_labels = np.array(test.pop(target))
+
+train_features = np.array(train)
+val_features = np.array(val)
+test_features = np.array(test)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><ul>
+<li>注意用训练集的数据来fit transform验证集、测试集</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">scaler = StandardScaler()
+train_features = scaler.fit_transform(train_features)
+
+val_features = scaler.transform(val_features)
+test_features = scaler.transform(test_features)
+
+train_features = np.clip(train_features, -5, 5)
+val_features = np.clip(val_features, -5, 5)
+test_features = np.clip(test_features, -5, 5)
+
+
+print('Training labels shape:', train_labels.shape)
+print('Validation labels shape:', val_labels.shape)
+print('Test labels shape:', test_labels.shape)
+
+print('Training features shape:', train_features.shape)
+print('Validation features shape:', val_features.shape)
+print('Test features shape:', test_features.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Training labels shape: (182276,)
+Validation labels shape: (45569,)
+Test labels shape: (56962,)
+Training features shape: (182276, 29)
+Validation features shape: (45569, 29)
+Test features shape: (56962, 29)
+</code></pre><h3 id="观察数据分布"><a href="#观察数据分布" class="headerlink" title="观察数据分布"></a>观察数据分布</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">pos_df = pd.DataFrame(train_features[ bool_train_labels], columns=train.columns)
+neg_df = pd.DataFrame(train_features[~bool_train_labels], columns=train.columns)
+
+sns.jointplot(pos_df['V5'], pos_df['V6'],
+              kind='hex', xlim=(-5,5), ylim=(-5,5))
+plt.suptitle("Positive distribution")
+
+sns.jointplot(neg_df['V5'], neg_df['V6'],
+              kind='hex', xlim=(-5,5), ylim=(-5,5))
+_ = plt.suptitle("Negative distribution")
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>/home/meiyunhe/softwares/miniconda3/envs/env_tensorflow/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(
+/home/meiyunhe/softwares/miniconda3/envs/env_tensorflow/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_25_1.png" alt="output_25_1"></p>
+<p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_25_2.png" alt="output_25_2"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pos_df.describe().T
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>V1</th>
+      <td>315.0</td>
+      <td>-1.760906</td>
+      <td>1.909379</td>
+      <td>-5.000000</td>
+      <td>-2.995964</td>
+      <td>-1.194895</td>
+      <td>-0.232911</td>
+      <td>1.087466</td>
+    </tr>
+    <tr>
+      <th>V2</th>
+      <td>315.0</td>
+      <td>1.821280</td>
+      <td>1.886729</td>
+      <td>-5.000000</td>
+      <td>0.708689</td>
+      <td>1.566040</td>
+      <td>3.037499</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V3</th>
+      <td>315.0</td>
+      <td>-2.966703</td>
+      <td>1.843923</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-3.302910</td>
+      <td>-1.408258</td>
+      <td>1.486048</td>
+    </tr>
+    <tr>
+      <th>V4</th>
+      <td>315.0</td>
+      <td>2.940414</td>
+      <td>1.616449</td>
+      <td>-0.924989</td>
+      <td>1.633506</td>
+      <td>2.848541</td>
+      <td>4.487645</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V5</th>
+      <td>315.0</td>
+      <td>-1.514576</td>
+      <td>2.295449</td>
+      <td>-5.000000</td>
+      <td>-3.413844</td>
+      <td>-1.120011</td>
+      <td>0.140397</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V6</th>
+      <td>315.0</td>
+      <td>-1.041315</td>
+      <td>1.378416</td>
+      <td>-4.764846</td>
+      <td>-1.883094</td>
+      <td>-1.055371</td>
+      <td>-0.242898</td>
+      <td>4.816880</td>
+    </tr>
+    <tr>
+      <th>V7</th>
+      <td>315.0</td>
+      <td>-2.473715</td>
+      <td>2.118062</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-2.385480</td>
+      <td>-0.803709</td>
+      <td>3.008926</td>
+    </tr>
+    <tr>
+      <th>V8</th>
+      <td>315.0</td>
+      <td>0.661945</td>
+      <td>2.325665</td>
+      <td>-5.000000</td>
+      <td>-0.136614</td>
+      <td>0.471054</td>
+      <td>1.472319</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V9</th>
+      <td>315.0</td>
+      <td>-2.107191</td>
+      <td>1.819530</td>
+      <td>-5.000000</td>
+      <td>-3.521353</td>
+      <td>-2.012870</td>
+      <td>-0.719422</td>
+      <td>3.049323</td>
+    </tr>
+    <tr>
+      <th>V10</th>
+      <td>315.0</td>
+      <td>-3.418757</td>
+      <td>1.897714</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-4.057184</td>
+      <td>-2.573482</td>
+      <td>3.691563</td>
+    </tr>
+    <tr>
+      <th>V11</th>
+      <td>315.0</td>
+      <td>3.202421</td>
+      <td>1.776641</td>
+      <td>-1.665756</td>
+      <td>2.001885</td>
+      <td>3.536426</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V12</th>
+      <td>315.0</td>
+      <td>-3.778767</td>
+      <td>1.782103</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-2.989429</td>
+      <td>1.234618</td>
+    </tr>
+    <tr>
+      <th>V13</th>
+      <td>315.0</td>
+      <td>-0.122043</td>
+      <td>1.112873</td>
+      <td>-3.142507</td>
+      <td>-0.973313</td>
+      <td>-0.067780</td>
+      <td>0.622709</td>
+      <td>2.828751</td>
+    </tr>
+    <tr>
+      <th>V14</th>
+      <td>315.0</td>
+      <td>-4.120755</td>
+      <td>1.711212</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-4.441194</td>
+      <td>1.639314</td>
+    </tr>
+    <tr>
+      <th>V15</th>
+      <td>315.0</td>
+      <td>-0.127527</td>
+      <td>1.146112</td>
+      <td>-3.382938</td>
+      <td>-0.759891</td>
+      <td>-0.073017</td>
+      <td>0.701528</td>
+      <td>2.697669</td>
+    </tr>
+    <tr>
+      <th>V16</th>
+      <td>315.0</td>
+      <td>-3.043271</td>
+      <td>2.275678</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-3.836717</td>
+      <td>-1.316847</td>
+      <td>2.841122</td>
+    </tr>
+    <tr>
+      <th>V17</th>
+      <td>315.0</td>
+      <td>-3.171004</td>
+      <td>2.850112</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-1.612624</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V18</th>
+      <td>315.0</td>
+      <td>-2.069377</td>
+      <td>2.456956</td>
+      <td>-5.000000</td>
+      <td>-5.000000</td>
+      <td>-1.969603</td>
+      <td>-0.060276</td>
+      <td>3.926839</td>
+    </tr>
+    <tr>
+      <th>V19</th>
+      <td>315.0</td>
+      <td>0.875712</td>
+      <td>1.872091</td>
+      <td>-4.032744</td>
+      <td>-0.339676</td>
+      <td>0.841347</td>
+      <td>1.961852</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V20</th>
+      <td>315.0</td>
+      <td>0.486428</td>
+      <td>1.460203</td>
+      <td>-5.000000</td>
+      <td>-0.160274</td>
+      <td>0.370908</td>
+      <td>1.086496</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V21</th>
+      <td>315.0</td>
+      <td>0.798396</td>
+      <td>1.932013</td>
+      <td>-5.000000</td>
+      <td>0.032131</td>
+      <td>0.790971</td>
+      <td>1.855851</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V22</th>
+      <td>315.0</td>
+      <td>0.137193</td>
+      <td>1.411641</td>
+      <td>-5.000000</td>
+      <td>-0.657904</td>
+      <td>0.159077</td>
+      <td>0.897130</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V23</th>
+      <td>315.0</td>
+      <td>0.019576</td>
+      <td>1.377033</td>
+      <td>-5.000000</td>
+      <td>-0.546028</td>
+      <td>-0.127559</td>
+      <td>0.525010</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V24</th>
+      <td>315.0</td>
+      <td>-0.124175</td>
+      <td>0.838200</td>
+      <td>-3.342668</td>
+      <td>-0.666720</td>
+      <td>-0.042600</td>
+      <td>0.534642</td>
+      <td>1.799373</td>
+    </tr>
+    <tr>
+      <th>V25</th>
+      <td>315.0</td>
+      <td>0.084645</td>
+      <td>1.419304</td>
+      <td>-4.153589</td>
+      <td>-0.605800</td>
+      <td>0.145072</td>
+      <td>0.876187</td>
+      <td>4.132529</td>
+    </tr>
+    <tr>
+      <th>V26</th>
+      <td>315.0</td>
+      <td>0.072469</td>
+      <td>0.977484</td>
+      <td>-2.388598</td>
+      <td>-0.543418</td>
+      <td>0.000739</td>
+      <td>0.760928</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V27</th>
+      <td>315.0</td>
+      <td>0.675460</td>
+      <td>2.413487</td>
+      <td>-5.000000</td>
+      <td>-0.045323</td>
+      <td>0.923004</td>
+      <td>2.036083</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V28</th>
+      <td>315.0</td>
+      <td>0.239053</td>
+      <td>1.653805</td>
+      <td>-5.000000</td>
+      <td>-0.355816</td>
+      <td>0.465788</td>
+      <td>1.105123</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>Amount_log</th>
+      <td>315.0</td>
+      <td>-0.382619</td>
+      <td>1.617817</td>
+      <td>-4.855759</td>
+      <td>-1.450333</td>
+      <td>-0.356358</td>
+      <td>0.847578</td>
+      <td>2.325855</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">neg_df.describe().T
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>V1</th>
+      <td>181961.0</td>
+      <td>0.012509</td>
+      <td>0.915748</td>
+      <td>-5.000000</td>
+      <td>-0.465855</td>
+      <td>0.011296</td>
+      <td>0.672076</td>
+      <td>1.251724</td>
+    </tr>
+    <tr>
+      <th>V2</th>
+      <td>181961.0</td>
+      <td>0.008627</td>
+      <td>0.856092</td>
+      <td>-5.000000</td>
+      <td>-0.359485</td>
+      <td>0.040111</td>
+      <td>0.481902</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V3</th>
+      <td>181961.0</td>
+      <td>0.011040</td>
+      <td>0.936744</td>
+      <td>-5.000000</td>
+      <td>-0.584617</td>
+      <td>0.120097</td>
+      <td>0.678324</td>
+      <td>2.790418</td>
+    </tr>
+    <tr>
+      <th>V4</th>
+      <td>181961.0</td>
+      <td>-0.006194</td>
+      <td>0.983917</td>
+      <td>-3.924999</td>
+      <td>-0.600361</td>
+      <td>-0.017643</td>
+      <td>0.521791</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V5</th>
+      <td>181961.0</td>
+      <td>0.005026</td>
+      <td>0.882939</td>
+      <td>-5.000000</td>
+      <td>-0.493601</td>
+      <td>-0.038049</td>
+      <td>0.438492</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V6</th>
+      <td>181961.0</td>
+      <td>0.001449</td>
+      <td>0.965131</td>
+      <td>-5.000000</td>
+      <td>-0.570013</td>
+      <td>-0.203485</td>
+      <td>0.298300</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V7</th>
+      <td>181961.0</td>
+      <td>0.005842</td>
+      <td>0.818787</td>
+      <td>-5.000000</td>
+      <td>-0.437768</td>
+      <td>0.031821</td>
+      <td>0.452537</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V8</th>
+      <td>181961.0</td>
+      <td>0.017644</td>
+      <td>0.745925</td>
+      <td>-5.000000</td>
+      <td>-0.172570</td>
+      <td>0.019889</td>
+      <td>0.272858</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V9</th>
+      <td>181961.0</td>
+      <td>0.002619</td>
+      <td>0.983578</td>
+      <td>-5.000000</td>
+      <td>-0.583394</td>
+      <td>-0.045386</td>
+      <td>0.543770</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V10</th>
+      <td>181961.0</td>
+      <td>0.000444</td>
+      <td>0.884508</td>
+      <td>-5.000000</td>
+      <td>-0.488516</td>
+      <td>-0.085221</td>
+      <td>0.419347</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V11</th>
+      <td>181961.0</td>
+      <td>-0.006827</td>
+      <td>0.980387</td>
+      <td>-4.583258</td>
+      <td>-0.747892</td>
+      <td>-0.032732</td>
+      <td>0.720054</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V12</th>
+      <td>181961.0</td>
+      <td>0.011853</td>
+      <td>0.936165</td>
+      <td>-5.000000</td>
+      <td>-0.402320</td>
+      <td>0.141804</td>
+      <td>0.617894</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V13</th>
+      <td>181961.0</td>
+      <td>0.000204</td>
+      <td>0.999690</td>
+      <td>-5.000000</td>
+      <td>-0.650306</td>
+      <td>-0.012781</td>
+      <td>0.666657</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V14</th>
+      <td>181961.0</td>
+      <td>0.013696</td>
+      <td>0.919757</td>
+      <td>-5.000000</td>
+      <td>-0.441005</td>
+      <td>0.055106</td>
+      <td>0.513936</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V15</th>
+      <td>181961.0</td>
+      <td>0.000164</td>
+      <td>0.999363</td>
+      <td>-4.793884</td>
+      <td>-0.638472</td>
+      <td>0.053209</td>
+      <td>0.708801</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V16</th>
+      <td>181961.0</td>
+      <td>0.008581</td>
+      <td>0.957594</td>
+      <td>-5.000000</td>
+      <td>-0.530996</td>
+      <td>0.077795</td>
+      <td>0.596470</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V17</th>
+      <td>181961.0</td>
+      <td>0.014459</td>
+      <td>0.855516</td>
+      <td>-5.000000</td>
+      <td>-0.566987</td>
+      <td>-0.076122</td>
+      <td>0.470954</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V18</th>
+      <td>181961.0</td>
+      <td>0.004775</td>
+      <td>0.983692</td>
+      <td>-5.000000</td>
+      <td>-0.595008</td>
+      <td>-0.002535</td>
+      <td>0.599786</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V19</th>
+      <td>181961.0</td>
+      <td>-0.001509</td>
+      <td>0.996377</td>
+      <td>-5.000000</td>
+      <td>-0.562193</td>
+      <td>0.003682</td>
+      <td>0.561334</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V20</th>
+      <td>181961.0</td>
+      <td>0.001119</td>
+      <td>0.768444</td>
+      <td>-5.000000</td>
+      <td>-0.273441</td>
+      <td>-0.082090</td>
+      <td>0.168334</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V21</th>
+      <td>181961.0</td>
+      <td>-0.009335</td>
+      <td>0.713355</td>
+      <td>-5.000000</td>
+      <td>-0.306948</td>
+      <td>-0.039843</td>
+      <td>0.251401</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V22</th>
+      <td>181961.0</td>
+      <td>0.000416</td>
+      <td>0.988440</td>
+      <td>-5.000000</td>
+      <td>-0.743404</td>
+      <td>0.007948</td>
+      <td>0.728703</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V23</th>
+      <td>181961.0</td>
+      <td>0.003516</td>
+      <td>0.695287</td>
+      <td>-5.000000</td>
+      <td>-0.258290</td>
+      <td>-0.019468</td>
+      <td>0.233072</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V24</th>
+      <td>181961.0</td>
+      <td>-0.000064</td>
+      <td>0.998703</td>
+      <td>-4.656135</td>
+      <td>-0.583868</td>
+      <td>0.067759</td>
+      <td>0.725433</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V25</th>
+      <td>181961.0</td>
+      <td>0.000240</td>
+      <td>0.989529</td>
+      <td>-5.000000</td>
+      <td>-0.609040</td>
+      <td>0.032075</td>
+      <td>0.672402</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V26</th>
+      <td>181961.0</td>
+      <td>-0.000407</td>
+      <td>0.998447</td>
+      <td>-5.000000</td>
+      <td>-0.677797</td>
+      <td>-0.109895</td>
+      <td>0.498649</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V27</th>
+      <td>181961.0</td>
+      <td>0.005844</td>
+      <td>0.799027</td>
+      <td>-5.000000</td>
+      <td>-0.176850</td>
+      <td>0.002015</td>
+      <td>0.224085</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>V28</th>
+      <td>181961.0</td>
+      <td>-0.001089</td>
+      <td>0.700654</td>
+      <td>-5.000000</td>
+      <td>-0.161470</td>
+      <td>0.034111</td>
+      <td>0.239486</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>Amount_log</th>
+      <td>181961.0</td>
+      <td>0.000662</td>
+      <td>0.998482</td>
+      <td>-4.855759</td>
+      <td>-0.587677</td>
+      <td>0.075498</td>
+      <td>0.691266</td>
+      <td>3.554182</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="定义模型和metrics"><a href="#定义模型和metrics" class="headerlink" title="定义模型和metrics"></a>定义模型和metrics</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">METRICS = [
+    keras.metrics.TruePositives(name='tp'),
+    keras.metrics.FalsePositives(name='fp'),
+    keras.metrics.TrueNegatives(name='tn'),
+    keras.metrics.FalseNegatives(name='fn'),
+    keras.metrics.BinaryAccuracy(name='acc'),
+    keras.metrics.Precision(name='precision'),
+    keras.metrics.Recall(name='recall'),
+    keras.metrics.AUC(name='auc'),
+    keras.metrics.AUC(name='prc', curve='PR'),
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>2021-09-14 15:38:41.927807: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-09-14 15:38:41.929747: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-09-14 15:38:42.132272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:06:00.0 name: Tesla P40 computeCapability: 6.1
+coreClock: 1.531GHz coreCount: 30 deviceMemorySize: 22.38GiB deviceMemoryBandwidth: 323.21GiB/s
+2021-09-14 15:38:42.132316: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-09-14 15:38:42.135128: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-09-14 15:38:42.135177: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-09-14 15:38:42.136258: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-09-14 15:38:42.136515: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-09-14 15:38:42.138962: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-09-14 15:38:42.139484: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-09-14 15:38:42.139633: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-09-14 15:38:42.142269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-09-14 15:38:42.145697: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-09-14 15:38:42.148120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:06:00.0 name: Tesla P40 computeCapability: 6.1
+coreClock: 1.531GHz coreCount: 30 deviceMemorySize: 22.38GiB deviceMemoryBandwidth: 323.21GiB/s
+2021-09-14 15:38:42.148158: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-09-14 15:38:42.148193: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-09-14 15:38:42.148224: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-09-14 15:38:42.148252: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-09-14 15:38:42.148280: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-09-14 15:38:42.148308: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-09-14 15:38:42.148336: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-09-14 15:38:42.148364: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-09-14 15:38:42.152837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-09-14 15:38:42.152897: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-09-14 15:38:42.781704: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-09-14 15:38:42.781748: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-09-14 15:38:42.781756: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-09-14 15:38:42.785308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 21298 MB memory) -&gt; physical GPU (device: 0, name: Tesla P40, pci bus id: 0000:06:00.0, compute capability: 6.1)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_make_model(n_x, metrics=None, output_bias=None):
+    """
+    :param n_x: 输入特征维度
+    :param metrics:
+    :param output_bias:
+    :return model
+    """
+    if metrics is None:
+        metrics = [keras.metrics.BinaryAccuracy(name='acc')]
+    if output_bias is not None:
+        output_bias = tf.keras.initializers.Constant(output_bias)
+
+    model = keras.Sequential([
+        keras.layers.Dense(16, activation='relu', input_shape=(n_x, )),
+        keras.layers.Dropout(0.5),
+        keras.layers.Dense(1, activation='sigmoid', bias_initializer=output_bias),
+    ])
+
+    model.compile(optimizer=keras.optimizers.Adam(learning_rate=1e-3),
+                  loss=keras.losses.BinaryCrossentropy(),
+                  metrics=metrics)
+    return model
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="baseline-model"><a href="#baseline-model" class="headerlink" title="baseline model"></a>baseline model</h2><h3 id="build-the-model"><a href="#build-the-model" class="headerlink" title="build the model"></a>build the model</h3><ul>
+<li><code>restore_best_weights</code>: Whether to restore model weights from the epoch with the best value of the monitored quantity. If False, the model weights obtained at the last step of training are used.</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">EPOCHS = 100
+BATCH_SIZE = 2048
+
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_prc',
+                                                  verbose=1,
+                                                  patience=10,
+                                                  mode='max',
+                                                  restore_best_weights=True)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline.summary()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>Model: &quot;sequential&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dense (Dense)                (None, 16)                480       
+_________________________________________________________________
+dropout (Dropout)            (None, 16)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 17        
+=================================================================
+Total params: 497
+Trainable params: 497
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline.predict(train_features[:10])
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>2021-09-14 15:38:43.448415: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-09-14 15:38:43.449074: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2394435000 Hz
+2021-09-14 15:38:43.566365: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-09-14 15:38:43.851378: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+
+
+
+
+
+array([[0.7945324 ],
+       [0.9206671 ],
+       [0.7186621 ],
+       [0.8676042 ],
+       [0.86442024],
+       [0.820997  ],
+       [0.8121756 ],
+       [0.8080936 ],
+       [0.820931  ],
+       [0.9337303 ]], dtype=float32)
+</code></pre><h3 id="set-the-correct-initial-bias"><a href="#set-the-correct-initial-bias" class="headerlink" title="set the correct initial bias"></a>set the correct initial bias</h3><p>参考<a href="http://karpathy.github.io/2019/04/25/recipe/#2-set-up-the-end-to-end-trainingevaluation-skeleton--get-dumb-baselines" target="_blank" rel="noopener">训练神经网络的方法</a></p>
+<ol>
+<li>With the default bias initialization the loss should be about <code>math.log(2)=0.69314</code></li>
+<li>The correct bias to set can be derived from:</li>
+</ol>
+<script type="math/tex; mode=display">
+p_0 = pos/(pos + neg) = 1/(1+e^{-b_0}) \\
+b_0 = -log_e(1/p_0 - 1) \\
+b_0 = log_e(pos/neg)</script><ol>
+<li>with correct bias the loss should be about:</li>
+</ol>
+<script type="math/tex; mode=display">
+-p_0log(p_0)-(1-p_0)log(1-p_0)</script><pre class="line-numbers language-lang-python"><code class="language-lang-python">## 1
+results = model_baseline.evaluate(train_features, train_labels, batch_size=BATCH_SIZE, verbose=0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print(results[0])
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>1.9581257104873657
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">## 2
+correct_initial_bias = np.log([pos/neg])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">correct_initial_bias
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([-6.35935934])
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline = func_make_model(n_x=train_features.shape[-1], metrics=METRICS, output_bias=correct_initial_bias)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline.predict(train_features[:10])
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>array([[0.00340313],
+       [0.00266778],
+       [0.00226334],
+       [0.00272266],
+       [0.00042819],
+       [0.00054607],
+       [0.00602424],
+       [0.00321096],
+       [0.0007532 ],
+       [0.00322443]], dtype=float32)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">## 3
+p_0 = pos / (pos+neg)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">-1*p_0*np.log(p_0) - (1-p_0)*np.log(1-p_0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>0.012714681335936208
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">results = model_baseline.evaluate(train_features, train_labels, batch_size=BATCH_SIZE, verbose=0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print(results[0])
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>0.015545893460512161
+</code></pre><h3 id="checkpoint-the-initial-weights"><a href="#checkpoint-the-initial-weights" class="headerlink" title="checkpoint the initial weights"></a>checkpoint the initial weights</h3><ul>
+<li>为了方便之后几个模型的参数初始化，故将这次纠正过的初始化参数保存下来</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># os.path.join(tempfile.mkdtemp(), 'initial_weights')
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">correct_initial_bias_path = './tmp/correct_initial_bias/correct_initial_bias'
+model_baseline.save_weights(correct_initial_bias_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="看一下纠正参数初始化后的效果"><a href="#看一下纠正参数初始化后的效果" class="headerlink" title="看一下纠正参数初始化后的效果"></a>看一下纠正参数初始化后的效果</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+model_baseline.load_weights(correct_initial_bias_path)
+model_baseline.layers[-1].bias.assign([0.0])  # 设置最后一层的bias为0
+zero_bias_history = model_baseline.fit(train_features, train_labels, batch_size=BATCH_SIZE, epochs=20, validation_data=(val_features, val_labels), verbose=0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+model_baseline.load_weights(correct_initial_bias_path)
+correct_bias_history = model_baseline.fit(train_features, train_labels, batch_size=BATCH_SIZE, epochs=20, validation_data=(val_features, val_labels), verbose=0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_plot_loss(history, label, color):
+    # Use a log scale on y-axis to show the wide range of values.
+    plt.semilogy(history.epoch, history.history['loss'], color=color, label='Train ' + label)
+    plt.semilogy(history.epoch, history.history['val_loss'], color=color, label='Val ' + label, linestyle="--")
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_loss(zero_bias_history, "Zero Bias", 'red')
+func_plot_loss(correct_bias_history, "Careful Bias", 'blue')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_54_0.png" alt="output_54_0"></p>
+<p>可以看到，纠正过后，损失值更小</p>
+<h3 id="train-the-baseline-model"><a href="#train-the-baseline-model" class="headerlink" title="train the baseline model"></a>train the baseline model</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_baseline = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+model_baseline.load_weights(correct_initial_bias_path)
+baseline_history = model_baseline.fit(train_features, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, 
+                                      callbacks=[early_stopping], validation_data=(val_features, val_labels))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Epoch 1/100
+90/90 [==============================] - 4s 21ms/step - loss: 0.0147 - tp: 64.8352 - fp: 45.5934 - tn: 139430.5055 - fn: 168.6374 - acc: 0.9985 - precision: 0.5985 - recall: 0.3220 - auc: 0.7673 - prc: 0.3309 - val_loss: 0.0073 - val_tp: 0.0000e+00 - val_fp: 0.0000e+00 - val_tn: 45490.0000 - val_fn: 79.0000 - val_acc: 0.9983 - val_precision: 0.0000e+00 - val_recall: 0.0000e+00 - val_auc: 0.8791 - val_prc: 0.6609
+Epoch 2/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0078 - tp: 48.4505 - fp: 13.4286 - tn: 93966.1978 - fn: 112.4945 - acc: 0.9987 - precision: 0.8123 - recall: 0.3008 - auc: 0.8303 - prc: 0.4306 - val_loss: 0.0051 - val_tp: 29.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 50.0000 - val_acc: 0.9988 - val_precision: 0.8286 - val_recall: 0.3671 - val_auc: 0.8922 - val_prc: 0.6677
+Epoch 3/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0081 - tp: 65.3846 - fp: 14.6813 - tn: 93958.2637 - fn: 102.2418 - acc: 0.9986 - precision: 0.7926 - recall: 0.3719 - auc: 0.8072 - prc: 0.4533 - val_loss: 0.0045 - val_tp: 44.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 35.0000 - val_acc: 0.9991 - val_precision: 0.8800 - val_recall: 0.5570 - val_auc: 0.9048 - val_prc: 0.6881
+Epoch 4/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0068 - tp: 71.2308 - fp: 15.0110 - tn: 93965.9011 - fn: 88.4286 - acc: 0.9989 - precision: 0.8163 - recall: 0.4337 - auc: 0.8344 - prc: 0.5153 - val_loss: 0.0042 - val_tp: 47.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 32.0000 - val_acc: 0.9992 - val_precision: 0.8868 - val_recall: 0.5949 - val_auc: 0.9175 - val_prc: 0.7249
+Epoch 5/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0057 - tp: 76.8901 - fp: 19.1648 - tn: 93963.4286 - fn: 81.0879 - acc: 0.9989 - precision: 0.7970 - recall: 0.4733 - auc: 0.8757 - prc: 0.5857 - val_loss: 0.0040 - val_tp: 48.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 31.0000 - val_acc: 0.9992 - val_precision: 0.8889 - val_recall: 0.6076 - val_auc: 0.9175 - val_prc: 0.7392
+Epoch 6/100
+90/90 [==============================] - 1s 10ms/step - loss: 0.0064 - tp: 74.9560 - fp: 15.1319 - tn: 93958.1099 - fn: 92.3736 - acc: 0.9988 - precision: 0.8518 - recall: 0.4300 - auc: 0.8618 - prc: 0.5888 - val_loss: 0.0039 - val_tp: 52.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 27.0000 - val_acc: 0.9993 - val_precision: 0.8966 - val_recall: 0.6582 - val_auc: 0.9174 - val_prc: 0.7480
+Epoch 7/100
+90/90 [==============================] - 1s 10ms/step - loss: 0.0047 - tp: 88.3846 - fp: 12.4615 - tn: 93968.0549 - fn: 71.6703 - acc: 0.9991 - precision: 0.8904 - recall: 0.5613 - auc: 0.9146 - prc: 0.7047 - val_loss: 0.0038 - val_tp: 54.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 25.0000 - val_acc: 0.9993 - val_precision: 0.9000 - val_recall: 0.6835 - val_auc: 0.9174 - val_prc: 0.7568
+Epoch 8/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0043 - tp: 95.3297 - fp: 19.2418 - tn: 93959.6923 - fn: 66.3077 - acc: 0.9991 - precision: 0.8432 - recall: 0.6045 - auc: 0.9324 - prc: 0.7021 - val_loss: 0.0037 - val_tp: 52.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 27.0000 - val_acc: 0.9993 - val_precision: 0.8966 - val_recall: 0.6582 - val_auc: 0.9174 - val_prc: 0.7711
+Epoch 9/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0049 - tp: 94.0220 - fp: 11.9890 - tn: 93963.3736 - fn: 71.1868 - acc: 0.9991 - precision: 0.9108 - recall: 0.5838 - auc: 0.8996 - prc: 0.7061 - val_loss: 0.0036 - val_tp: 53.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 26.0000 - val_acc: 0.9993 - val_precision: 0.8983 - val_recall: 0.6709 - val_auc: 0.9175 - val_prc: 0.7826
+Epoch 10/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0045 - tp: 91.1209 - fp: 20.6923 - tn: 93955.2747 - fn: 73.4835 - acc: 0.9990 - precision: 0.8317 - recall: 0.5825 - auc: 0.9340 - prc: 0.6933 - val_loss: 0.0036 - val_tp: 53.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 26.0000 - val_acc: 0.9993 - val_precision: 0.8983 - val_recall: 0.6709 - val_auc: 0.9175 - val_prc: 0.7929
+Epoch 11/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0045 - tp: 84.9231 - fp: 18.3956 - tn: 93962.7363 - fn: 74.5165 - acc: 0.9990 - precision: 0.8351 - recall: 0.5411 - auc: 0.9233 - prc: 0.6955 - val_loss: 0.0035 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.7973
+Epoch 12/100
+90/90 [==============================] - 1s 10ms/step - loss: 0.0046 - tp: 101.3626 - fp: 17.9341 - tn: 93954.2088 - fn: 67.0659 - acc: 0.9991 - precision: 0.8479 - recall: 0.6011 - auc: 0.9329 - prc: 0.7196 - val_loss: 0.0035 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9175 - val_prc: 0.7939
+Epoch 13/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0050 - tp: 94.1099 - fp: 18.0110 - tn: 93957.0110 - fn: 71.4396 - acc: 0.9990 - precision: 0.8307 - recall: 0.5390 - auc: 0.9075 - prc: 0.6494 - val_loss: 0.0035 - val_tp: 56.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 23.0000 - val_acc: 0.9994 - val_precision: 0.9032 - val_recall: 0.7089 - val_auc: 0.9238 - val_prc: 0.7989
+Epoch 14/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0047 - tp: 89.5495 - fp: 17.6264 - tn: 93958.5604 - fn: 74.8352 - acc: 0.9990 - precision: 0.8187 - recall: 0.5544 - auc: 0.9229 - prc: 0.6758 - val_loss: 0.0035 - val_tp: 58.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 21.0000 - val_acc: 0.9994 - val_precision: 0.9062 - val_recall: 0.7342 - val_auc: 0.9238 - val_prc: 0.7989
+Epoch 15/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0043 - tp: 87.0000 - fp: 16.5934 - tn: 93963.8571 - fn: 73.1209 - acc: 0.9991 - precision: 0.8336 - recall: 0.5472 - auc: 0.9099 - prc: 0.6537 - val_loss: 0.0035 - val_tp: 58.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 21.0000 - val_acc: 0.9994 - val_precision: 0.9062 - val_recall: 0.7342 - val_auc: 0.9238 - val_prc: 0.7999
+Epoch 16/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0040 - tp: 93.5275 - fp: 14.4725 - tn: 93967.1099 - fn: 65.4615 - acc: 0.9992 - precision: 0.8623 - recall: 0.5874 - auc: 0.9295 - prc: 0.7207 - val_loss: 0.0034 - val_tp: 58.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 21.0000 - val_acc: 0.9994 - val_precision: 0.9206 - val_recall: 0.7342 - val_auc: 0.9238 - val_prc: 0.8039
+Epoch 17/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0044 - tp: 87.9451 - fp: 15.0000 - tn: 93970.7033 - fn: 66.9231 - acc: 0.9991 - precision: 0.8475 - recall: 0.5557 - auc: 0.9207 - prc: 0.6808 - val_loss: 0.0034 - val_tp: 59.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 20.0000 - val_acc: 0.9995 - val_precision: 0.9219 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8054
+Epoch 18/100
+90/90 [==============================] - 1s 11ms/step - loss: 0.0042 - tp: 100.8462 - fp: 18.8791 - tn: 93962.7253 - fn: 58.1209 - acc: 0.9991 - precision: 0.8238 - recall: 0.6282 - auc: 0.9299 - prc: 0.7125 - val_loss: 0.0034 - val_tp: 58.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 21.0000 - val_acc: 0.9994 - val_precision: 0.9206 - val_recall: 0.7342 - val_auc: 0.9238 - val_prc: 0.8091
+Epoch 19/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0038 - tp: 91.3956 - fp: 16.1758 - tn: 93965.0989 - fn: 67.9011 - acc: 0.9991 - precision: 0.8653 - recall: 0.5567 - auc: 0.9329 - prc: 0.7471 - val_loss: 0.0034 - val_tp: 59.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 20.0000 - val_acc: 0.9995 - val_precision: 0.9219 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8081
+Epoch 20/100
+90/90 [==============================] - 1s 10ms/step - loss: 0.0035 - tp: 101.1978 - fp: 20.1209 - tn: 93958.4615 - fn: 60.7912 - acc: 0.9992 - precision: 0.8429 - recall: 0.6451 - auc: 0.9545 - prc: 0.7794 - val_loss: 0.0034 - val_tp: 59.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 20.0000 - val_acc: 0.9995 - val_precision: 0.9219 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8084
+Epoch 21/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0033 - tp: 102.5495 - fp: 16.1868 - tn: 93968.0000 - fn: 53.8352 - acc: 0.9993 - precision: 0.8732 - recall: 0.6806 - auc: 0.9385 - prc: 0.7763 - val_loss: 0.0034 - val_tp: 52.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 27.0000 - val_acc: 0.9993 - val_precision: 0.9123 - val_recall: 0.6582 - val_auc: 0.9238 - val_prc: 0.8112
+Epoch 22/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0044 - tp: 89.4615 - fp: 16.7363 - tn: 93964.2857 - fn: 70.0879 - acc: 0.9991 - precision: 0.8323 - recall: 0.5465 - auc: 0.9189 - prc: 0.6915 - val_loss: 0.0033 - val_tp: 55.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 24.0000 - val_acc: 0.9994 - val_precision: 0.9167 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8102
+Epoch 23/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0038 - tp: 98.5385 - fp: 15.2198 - tn: 93966.8791 - fn: 59.9341 - acc: 0.9992 - precision: 0.8713 - recall: 0.6000 - auc: 0.9229 - prc: 0.7481 - val_loss: 0.0033 - val_tp: 55.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 24.0000 - val_acc: 0.9994 - val_precision: 0.9167 - val_recall: 0.6962 - val_auc: 0.9237 - val_prc: 0.8129
+Epoch 24/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0039 - tp: 97.1868 - fp: 18.4505 - tn: 93961.9890 - fn: 62.9451 - acc: 0.9992 - precision: 0.8358 - recall: 0.6341 - auc: 0.9337 - prc: 0.7182 - val_loss: 0.0034 - val_tp: 54.0000 - val_fp: 1.0000 - val_tn: 45489.0000 - val_fn: 25.0000 - val_acc: 0.9994 - val_precision: 0.9818 - val_recall: 0.6835 - val_auc: 0.9238 - val_prc: 0.8156
+Epoch 25/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0042 - tp: 99.9231 - fp: 16.0769 - tn: 93957.1319 - fn: 67.4396 - acc: 0.9991 - precision: 0.8482 - recall: 0.6010 - auc: 0.9216 - prc: 0.7227 - val_loss: 0.0033 - val_tp: 59.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 20.0000 - val_acc: 0.9995 - val_precision: 0.9219 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8132
+Epoch 26/100
+90/90 [==============================] - 1s 7ms/step - loss: 0.0037 - tp: 103.0769 - fp: 16.0110 - tn: 93956.2747 - fn: 65.2088 - acc: 0.9992 - precision: 0.8841 - recall: 0.6262 - auc: 0.9341 - prc: 0.7564 - val_loss: 0.0033 - val_tp: 59.0000 - val_fp: 5.0000 - val_tn: 45485.0000 - val_fn: 20.0000 - val_acc: 0.9995 - val_precision: 0.9219 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8134
+Epoch 27/100
+90/90 [==============================] - 1s 7ms/step - loss: 0.0038 - tp: 98.8022 - fp: 15.9011 - tn: 93962.5604 - fn: 63.3077 - acc: 0.9992 - precision: 0.8723 - recall: 0.6362 - auc: 0.9365 - prc: 0.7486 - val_loss: 0.0033 - val_tp: 59.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 20.0000 - val_acc: 0.9994 - val_precision: 0.9077 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8124
+Epoch 28/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0040 - tp: 98.9451 - fp: 15.8022 - tn: 93965.5714 - fn: 60.2527 - acc: 0.9992 - precision: 0.8606 - recall: 0.6430 - auc: 0.9241 - prc: 0.7183 - val_loss: 0.0033 - val_tp: 59.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 20.0000 - val_acc: 0.9994 - val_precision: 0.9077 - val_recall: 0.7468 - val_auc: 0.9238 - val_prc: 0.8148
+Epoch 29/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0036 - tp: 104.4286 - fp: 13.1648 - tn: 93965.1429 - fn: 57.8352 - acc: 0.9993 - precision: 0.8989 - recall: 0.6587 - auc: 0.9396 - prc: 0.7463 - val_loss: 0.0033 - val_tp: 58.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 21.0000 - val_acc: 0.9994 - val_precision: 0.9062 - val_recall: 0.7342 - val_auc: 0.9238 - val_prc: 0.8150
+Epoch 30/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0039 - tp: 104.1319 - fp: 12.7033 - tn: 93967.4066 - fn: 56.3297 - acc: 0.9992 - precision: 0.8847 - recall: 0.6371 - auc: 0.9197 - prc: 0.7073 - val_loss: 0.0033 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8163
+Epoch 31/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0037 - tp: 91.6154 - fp: 17.1648 - tn: 93966.5495 - fn: 65.2418 - acc: 0.9992 - precision: 0.8379 - recall: 0.5814 - auc: 0.9231 - prc: 0.7264 - val_loss: 0.0033 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8168
+Epoch 32/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0038 - tp: 98.9231 - fp: 14.8681 - tn: 93962.0440 - fn: 64.7363 - acc: 0.9991 - precision: 0.8635 - recall: 0.5902 - auc: 0.9405 - prc: 0.7401 - val_loss: 0.0033 - val_tp: 56.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 23.0000 - val_acc: 0.9994 - val_precision: 0.9032 - val_recall: 0.7089 - val_auc: 0.9238 - val_prc: 0.8164
+Epoch 33/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0037 - tp: 102.0549 - fp: 16.8242 - tn: 93959.9231 - fn: 61.7692 - acc: 0.9992 - precision: 0.8656 - recall: 0.6255 - auc: 0.9333 - prc: 0.7486 - val_loss: 0.0034 - val_tp: 54.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 25.0000 - val_acc: 0.9994 - val_precision: 0.9643 - val_recall: 0.6835 - val_auc: 0.9238 - val_prc: 0.8174
+Epoch 34/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0030 - tp: 106.4396 - fp: 10.6593 - tn: 93972.9231 - fn: 50.5495 - acc: 0.9994 - precision: 0.9169 - recall: 0.6839 - auc: 0.9287 - prc: 0.7915 - val_loss: 0.0034 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8158
+Epoch 35/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0039 - tp: 96.9780 - fp: 15.2857 - tn: 93964.0220 - fn: 64.2857 - acc: 0.9992 - precision: 0.8767 - recall: 0.5986 - auc: 0.9371 - prc: 0.7327 - val_loss: 0.0034 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8157
+Epoch 36/100
+90/90 [==============================] - 1s 10ms/step - loss: 0.0039 - tp: 97.0440 - fp: 16.4725 - tn: 93962.8242 - fn: 64.2308 - acc: 0.9992 - precision: 0.8561 - recall: 0.6162 - auc: 0.9231 - prc: 0.7042 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8161
+Epoch 37/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0040 - tp: 98.1978 - fp: 16.4176 - tn: 93961.2747 - fn: 64.6813 - acc: 0.9992 - precision: 0.8608 - recall: 0.6091 - auc: 0.9226 - prc: 0.7067 - val_loss: 0.0034 - val_tp: 54.0000 - val_fp: 3.0000 - val_tn: 45487.0000 - val_fn: 25.0000 - val_acc: 0.9994 - val_precision: 0.9474 - val_recall: 0.6835 - val_auc: 0.9238 - val_prc: 0.8160
+Epoch 38/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0036 - tp: 97.2198 - fp: 15.0879 - tn: 93970.4835 - fn: 57.7802 - acc: 0.9992 - precision: 0.8639 - recall: 0.6325 - auc: 0.9437 - prc: 0.7358 - val_loss: 0.0034 - val_tp: 55.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 24.0000 - val_acc: 0.9993 - val_precision: 0.9016 - val_recall: 0.6962 - val_auc: 0.9238 - val_prc: 0.8155
+Epoch 39/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0041 - tp: 107.5385 - fp: 18.5604 - tn: 93953.8352 - fn: 60.6374 - acc: 0.9991 - precision: 0.8364 - recall: 0.6481 - auc: 0.9290 - prc: 0.7210 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8160
+Epoch 40/100
+90/90 [==============================] - 1s 7ms/step - loss: 0.0041 - tp: 96.3846 - fp: 16.7143 - tn: 93964.8352 - fn: 62.6374 - acc: 0.9992 - precision: 0.8532 - recall: 0.6206 - auc: 0.9248 - prc: 0.6902 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8154
+Epoch 41/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0037 - tp: 103.1758 - fp: 14.4505 - tn: 93961.2198 - fn: 61.7253 - acc: 0.9992 - precision: 0.8754 - recall: 0.6197 - auc: 0.9334 - prc: 0.7572 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8157
+Epoch 42/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.0034 - tp: 90.2088 - fp: 15.3846 - tn: 93967.3516 - fn: 67.6264 - acc: 0.9991 - precision: 0.8634 - recall: 0.5541 - auc: 0.9456 - prc: 0.7623 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8152
+Epoch 43/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.0040 - tp: 96.2308 - fp: 21.1209 - tn: 93957.6813 - fn: 65.5385 - acc: 0.9990 - precision: 0.8026 - recall: 0.5805 - auc: 0.9326 - prc: 0.7090 - val_loss: 0.0034 - val_tp: 53.0000 - val_fp: 2.0000 - val_tn: 45488.0000 - val_fn: 26.0000 - val_acc: 0.9994 - val_precision: 0.9636 - val_recall: 0.6709 - val_auc: 0.9238 - val_prc: 0.8150
+Restoring model weights from the end of the best epoch.
+Epoch 00043: early stopping
+</code></pre><h3 id="查看训练模型的history图"><a href="#查看训练模型的history图" class="headerlink" title="查看训练模型的history图"></a>查看训练模型的history图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_plot_metrics(history):
+    metrics = ['loss', 'prc', 'precision', 'recall']
+    for n, metric in enumerate(metrics):
+        name = metric.replace("_"," ").capitalize()
+        plt.subplot(2,2,n+1)
+        plt.plot(history.epoch, history.history[metric], color='blue', label='Train')
+        plt.plot(history.epoch, history.history['val_'+metric], color='blue', linestyle="--", label='Val')
+        plt.xlabel('Epoch')
+        plt.ylabel(name)
+        if metric == 'loss':
+            pass
+#             plt.ylim([0, plt.ylim()[1]])
+        elif metric == 'auc':
+            plt.ylim([0.8,1])
+        elif metric == 'recall':
+            plt.ylim([0,1])
+        else:
+            plt.ylim([0,1])
+        plt.legend()
+    plt.tight_layout()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_metrics(baseline_history)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_60_0.png" alt="output_60_0"></p>
+<h3 id="查看一下混淆矩阵"><a href="#查看一下混淆矩阵" class="headerlink" title="查看一下混淆矩阵"></a>查看一下混淆矩阵</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_predictions_baseline = model_baseline.predict(train_features, batch_size=BATCH_SIZE)
+test_predictions_baseline = model_baseline.predict(test_features, batch_size=BATCH_SIZE)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_plot_cm(labels, predictions, p=0.5):
+    cm = confusion_matrix(labels, predictions > p)
+    plt.figure(figsize=(5,5))
+    sns.heatmap(cm, annot=True, fmt="d")
+    plt.title('Confusion matrix @{:.2f}'.format(p))
+    plt.ylabel('Actual label')
+    plt.xlabel('Predicted label')
+
+    print('Legitimate Transactions Detected (True Negatives): ', cm[0][0])
+    print('Legitimate Transactions Incorrectly Detected (False Positives): ', cm[0][1])
+    print('Fraudulent Transactions Missed (False Negatives): ', cm[1][0])
+    print('Fraudulent Transactions Detected (True Positives): ', cm[1][1])
+    print('Total Fraudulent Transactions: ', np.sum(cm[1]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">baseline_results = model_baseline.evaluate(test_features, test_labels, batch_size=BATCH_SIZE, verbose=0)
+for name, value in zip(model_baseline.metrics_names, baseline_results):
+    print(name, ': ', value)
+print()
+
+func_plot_cm(test_labels, test_predictions_baseline)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>loss :  0.002730185631662607
+tp :  72.0
+fp :  9.0
+tn :  56855.0
+fn :  26.0
+acc :  0.9993855357170105
+precision :  0.8888888955116272
+recall :  0.7346938848495483
+auc :  0.9487220048904419
+prc :  0.8363494873046875
+
+Legitimate Transactions Detected (True Negatives):  56855
+Legitimate Transactions Incorrectly Detected (False Positives):  9
+Fraudulent Transactions Missed (False Negatives):  26
+Fraudulent Transactions Detected (True Positives):  72
+Total Fraudulent Transactions:  98
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_64_1.png" alt="output_64_1"></p>
+<h3 id="画roc图"><a href="#画roc图" class="headerlink" title="画roc图"></a>画roc图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_plot_roc(name, labels, predictions, **kwargs):
+    fp, tp, _ = sklearn.metrics.roc_curve(labels, predictions)
+
+    plt.plot(100*fp, 100*tp, label=name, linewidth=2, **kwargs)
+    plt.xlabel('False positives [%]')
+    plt.ylabel('True positives [%]')
+    plt.xlim([-0.5,20])
+    plt.ylim([80,100.5])
+    plt.grid(True)
+    ax = plt.gca()
+    ax.set_aspect('equal')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_roc("Train Baseline", train_labels, train_predictions_baseline, color='red')
+func_plot_roc("Test Baseline", test_labels, test_predictions_baseline, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2cc0264550&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_67_1.png" alt="output_67_1"></p>
+<h3 id="画PR图"><a href="#画PR图" class="headerlink" title="画PR图"></a>画PR图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_plot_prc(name, labels, predictions, **kwargs):
+    precision, recall, _ = sklearn.metrics.precision_recall_curve(labels, predictions)
+
+    plt.plot(precision, recall, label=name, linewidth=2, **kwargs)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.grid(True)
+    ax = plt.gca()
+    ax.set_aspect('equal')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_prc("Train Baseline", train_labels, train_predictions_baseline, color='red')
+func_plot_prc("Test Baseline", test_labels, test_predictions_baseline, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2cc00d0e20&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_70_1.png" alt="output_70_1"></p>
+<h2 id="model-1-add-class-weight"><a href="#model-1-add-class-weight" class="headerlink" title="model_1: add class_weight"></a>model_1: add class_weight</h2><h3 id="计算class-weight"><a href="#计算class-weight" class="headerlink" title="计算class_weight"></a>计算class_weight</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">weight_for_0 = (1 / neg) * (total / 2.0)  # total / (2*neg)
+weight_for_1 = (1 / pos) * (total / 2.0)  # total / (2*pos)
+
+class_weight = {
+    0: weight_for_0,
+    1: weight_for_1
+}
+
+class_weight
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>{0: 0.5008652375006595, 1: 289.43800813008136}
+</code></pre><h3 id="train-a-model-with-class-weight"><a href="#train-a-model-with-class-weight" class="headerlink" title="train a model with class weight"></a>train a model with class weight</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_weight = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+model_weight.load_weights(correct_initial_bias_path)
+model_weight_history = model_weight.fit(train_features, train_labels, 
+                                        batch_size=BATCH_SIZE, epochs=EPOCHS, 
+                                        callbacks=[early_stopping], 
+                                        validation_data=(val_features, val_labels),
+                                        # the class weights go here
+                                        class_weight=class_weight)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Epoch 1/100
+90/90 [==============================] - 4s 20ms/step - loss: 3.3108 - tp: 85.5495 - fp: 103.0659 - tn: 150735.5495 - fn: 178.4066 - acc: 0.9983 - precision: 0.5085 - recall: 0.3590 - auc: 0.7769 - prc: 0.3236 - val_loss: 0.0081 - val_tp: 10.0000 - val_fp: 6.0000 - val_tn: 45484.0000 - val_fn: 69.0000 - val_acc: 0.9984 - val_precision: 0.6250 - val_recall: 0.1266 - val_auc: 0.9132 - val_prc: 0.3528
+Epoch 2/100
+90/90 [==============================] - 1s 9ms/step - loss: 1.5420 - tp: 58.9451 - fp: 177.4945 - tn: 93802.3516 - fn: 101.7802 - acc: 0.9972 - precision: 0.2352 - recall: 0.3316 - auc: 0.7668 - prc: 0.1856 - val_loss: 0.0093 - val_tp: 56.0000 - val_fp: 32.0000 - val_tn: 45458.0000 - val_fn: 23.0000 - val_acc: 0.9988 - val_precision: 0.6364 - val_recall: 0.7089 - val_auc: 0.9470 - val_prc: 0.5701
+Epoch 3/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.8803 - tp: 92.3956 - fp: 448.8462 - tn: 93533.2418 - fn: 66.0879 - acc: 0.9947 - precision: 0.1718 - recall: 0.5509 - auc: 0.8812 - prc: 0.2806 - val_loss: 0.0147 - val_tp: 62.0000 - val_fp: 94.0000 - val_tn: 45396.0000 - val_fn: 17.0000 - val_acc: 0.9976 - val_precision: 0.3974 - val_recall: 0.7848 - val_auc: 0.9680 - val_prc: 0.6804
+Epoch 4/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.6487 - tp: 110.7582 - fp: 801.8242 - tn: 93174.9560 - fn: 53.0330 - acc: 0.9914 - precision: 0.1226 - recall: 0.6634 - auc: 0.9129 - prc: 0.2730 - val_loss: 0.0227 - val_tp: 66.0000 - val_fp: 166.0000 - val_tn: 45324.0000 - val_fn: 13.0000 - val_acc: 0.9961 - val_precision: 0.2845 - val_recall: 0.8354 - val_auc: 0.9691 - val_prc: 0.7008
+Epoch 5/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.4749 - tp: 126.5165 - fp: 1314.5934 - tn: 92661.6813 - fn: 37.7802 - acc: 0.9859 - precision: 0.0907 - recall: 0.7836 - auc: 0.9293 - prc: 0.2892 - val_loss: 0.0308 - val_tp: 66.0000 - val_fp: 281.0000 - val_tn: 45209.0000 - val_fn: 13.0000 - val_acc: 0.9935 - val_precision: 0.1902 - val_recall: 0.8354 - val_auc: 0.9708 - val_prc: 0.6695
+Epoch 6/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.4803 - tp: 128.5824 - fp: 1652.0330 - tn: 92324.8791 - fn: 35.0769 - acc: 0.9824 - precision: 0.0749 - recall: 0.7747 - auc: 0.9277 - prc: 0.2729 - val_loss: 0.0380 - val_tp: 66.0000 - val_fp: 448.0000 - val_tn: 45042.0000 - val_fn: 13.0000 - val_acc: 0.9899 - val_precision: 0.1284 - val_recall: 0.8354 - val_auc: 0.9745 - val_prc: 0.6359
+Epoch 7/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.3692 - tp: 136.0110 - fp: 2004.2967 - tn: 91972.8242 - fn: 27.4396 - acc: 0.9787 - precision: 0.0646 - recall: 0.8400 - auc: 0.9357 - prc: 0.2538 - val_loss: 0.0446 - val_tp: 66.0000 - val_fp: 548.0000 - val_tn: 44942.0000 - val_fn: 13.0000 - val_acc: 0.9877 - val_precision: 0.1075 - val_recall: 0.8354 - val_auc: 0.9741 - val_prc: 0.6173
+Epoch 8/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.3391 - tp: 133.3846 - fp: 2250.4615 - tn: 91731.2527 - fn: 25.4725 - acc: 0.9759 - precision: 0.0547 - recall: 0.8384 - auc: 0.9464 - prc: 0.2333 - val_loss: 0.0502 - val_tp: 66.0000 - val_fp: 602.0000 - val_tn: 44888.0000 - val_fn: 13.0000 - val_acc: 0.9865 - val_precision: 0.0988 - val_recall: 0.8354 - val_auc: 0.9740 - val_prc: 0.6335
+Epoch 9/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.3891 - tp: 134.6374 - fp: 2574.4066 - tn: 91403.6154 - fn: 27.9121 - acc: 0.9727 - precision: 0.0507 - recall: 0.8210 - auc: 0.9373 - prc: 0.2371 - val_loss: 0.0550 - val_tp: 66.0000 - val_fp: 643.0000 - val_tn: 44847.0000 - val_fn: 13.0000 - val_acc: 0.9856 - val_precision: 0.0931 - val_recall: 0.8354 - val_auc: 0.9756 - val_prc: 0.6202
+Epoch 10/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.3159 - tp: 137.5714 - fp: 2726.1538 - tn: 91248.8462 - fn: 28.0000 - acc: 0.9712 - precision: 0.0490 - recall: 0.8459 - auc: 0.9529 - prc: 0.2447 - val_loss: 0.0597 - val_tp: 67.0000 - val_fp: 707.0000 - val_tn: 44783.0000 - val_fn: 12.0000 - val_acc: 0.9842 - val_precision: 0.0866 - val_recall: 0.8481 - val_auc: 0.9754 - val_prc: 0.6138
+Epoch 11/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.2898 - tp: 142.0110 - fp: 2837.5055 - tn: 91137.0440 - fn: 24.0110 - acc: 0.9695 - precision: 0.0480 - recall: 0.8655 - auc: 0.9555 - prc: 0.2209 - val_loss: 0.0630 - val_tp: 67.0000 - val_fp: 753.0000 - val_tn: 44737.0000 - val_fn: 12.0000 - val_acc: 0.9832 - val_precision: 0.0817 - val_recall: 0.8481 - val_auc: 0.9755 - val_prc: 0.6147
+Epoch 12/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.2809 - tp: 134.1429 - fp: 2854.5824 - tn: 91132.2088 - fn: 19.6374 - acc: 0.9695 - precision: 0.0454 - recall: 0.8817 - auc: 0.9487 - prc: 0.2253 - val_loss: 0.0639 - val_tp: 67.0000 - val_fp: 770.0000 - val_tn: 44720.0000 - val_fn: 12.0000 - val_acc: 0.9828 - val_precision: 0.0800 - val_recall: 0.8481 - val_auc: 0.9754 - val_prc: 0.6218
+Epoch 13/100
+90/90 [==============================] - 1s 9ms/step - loss: 0.3396 - tp: 139.3956 - fp: 2952.3626 - tn: 91026.8462 - fn: 21.9670 - acc: 0.9683 - precision: 0.0439 - recall: 0.8461 - auc: 0.9395 - prc: 0.2182 - val_loss: 0.0630 - val_tp: 67.0000 - val_fp: 758.0000 - val_tn: 44732.0000 - val_fn: 12.0000 - val_acc: 0.9831 - val_precision: 0.0812 - val_recall: 0.8481 - val_auc: 0.9763 - val_prc: 0.6152
+Epoch 14/100
+90/90 [==============================] - 1s 8ms/step - loss: 0.2931 - tp: 133.0000 - fp: 2956.3736 - tn: 91029.8462 - fn: 21.3516 - acc: 0.9685 - precision: 0.0404 - recall: 0.8468 - auc: 0.9493 - prc: 0.2041 - val_loss: 0.0675 - val_tp: 67.0000 - val_fp: 811.0000 - val_tn: 44679.0000 - val_fn: 12.0000 - val_acc: 0.9819 - val_precision: 0.0763 - val_recall: 0.8481 - val_auc: 0.9769 - val_prc: 0.6114
+Restoring model weights from the end of the best epoch.
+Epoch 00014: early stopping
+</code></pre><h3 id="check-training-history"><a href="#check-training-history" class="headerlink" title="check training history"></a>check training history</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_metrics(model_weight_history)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_76_0.png" alt="output_76_0"></p>
+<h3 id="查看一下混淆矩阵-1"><a href="#查看一下混淆矩阵-1" class="headerlink" title="查看一下混淆矩阵"></a>查看一下混淆矩阵</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_predictions_weight = model_weight.predict(train_features, batch_size=BATCH_SIZE)
+test_predictions_weight = model_weight.predict(test_features, batch_size=BATCH_SIZE)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">results = model_weight.evaluate(test_features, test_labels, batch_size=BATCH_SIZE, verbose=0)
+for name, value in zip(model_weight.metrics_names, results):
+    print(name, ': ', value)
+print()
+
+func_plot_cm(test_labels, test_predictions_weight)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>loss :  0.02326195128262043
+tp :  83.0
+fp :  210.0
+tn :  56654.0
+fn :  15.0
+acc :  0.9960500001907349
+precision :  0.28327643871307373
+recall :  0.8469387888908386
+auc :  0.969890296459198
+prc :  0.7208744287490845
+
+Legitimate Transactions Detected (True Negatives):  56654
+Legitimate Transactions Incorrectly Detected (False Positives):  210
+Fraudulent Transactions Missed (False Negatives):  15
+Fraudulent Transactions Detected (True Positives):  83
+Total Fraudulent Transactions:  98
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_79_1.png" alt="output_79_1"></p>
+<h3 id="画roc图-1"><a href="#画roc图-1" class="headerlink" title="画roc图"></a>画roc图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_roc("Train weight", train_labels, train_predictions_weight, color='red')
+func_plot_roc("Test weight", test_labels, test_predictions_weight, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2c9c227dc0&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_81_1.png" alt="output_81_1"></p>
+<h3 id="画PR图-1"><a href="#画PR图-1" class="headerlink" title="画PR图"></a>画PR图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_prc("Train weight", train_labels, train_predictions_weight, color='red')
+func_plot_prc("Test weight", test_labels, test_predictions_weight, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2c9c19fd90&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_83_1.png" alt="output_83_1"></p>
+<h2 id="model-2-上采样少的那个类别"><a href="#model-2-上采样少的那个类别" class="headerlink" title="model_2: 上采样少的那个类别"></a>model_2: 上采样少的那个类别</h2><h3 id="上采样"><a href="#上采样" class="headerlink" title="上采样"></a>上采样</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">pos_features = train_features[bool_train_labels]
+neg_features = train_features[~bool_train_labels]
+
+pos_labels = train_labels[bool_train_labels]
+neg_labels = train_labels[~bool_train_labels]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="using-numpy"><a href="#using-numpy" class="headerlink" title="using numpy"></a>using numpy</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">ids = np.arange(len(pos_features))
+choices = np.random.choice(ids, len(neg_features))  # Generates a random sample from a given 1-D array
+
+res_pos_features = pos_features[choices]
+res_pos_labels = pos_labels[choices]
+
+res_pos_features.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(181961, 29)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">resampled_features = np.concatenate([res_pos_features, neg_features], axis=0)
+resampled_labels = np.concatenate([res_pos_labels, neg_labels], axis=0)
+
+# 随机打乱
+order = np.arange(len(resampled_labels))
+np.random.shuffle(order)
+resampled_features = resampled_features[order]
+resampled_labels = resampled_labels[order]
+
+resampled_features.shape
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(363922, 29)
+</code></pre><h4 id="using-tf-data"><a href="#using-tf-data" class="headerlink" title="using tf.data"></a>using tf.data</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_make_ds(features, labels):
+    ds = tf.data.Dataset.from_tensor_slices((features, labels))
+    ds = ds.shuffle(len(features)).repeat()  # 重复无数次
+    return ds
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pos_ds = func_make_ds(pos_features, pos_labels)
+neg_ds = func_make_ds(neg_features, neg_labels)
+
+for features, label in pos_ds.take(1):
+    print(features, label)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>tf.Tensor(
+[-0.72499268  2.48494345 -5.          4.71183888 -3.39522677 -1.54142183
+ -5.          2.32846081 -2.95406275 -5.          5.         -5.
+  0.5493042  -5.          0.99578148 -5.         -5.         -5.
+  3.88524349  1.80758865  2.51455711  0.55774627  0.9575459  -1.26789652
+ -3.3464076   1.04065595  4.89460213  2.17526156 -1.45033267], shape=(29,), dtype=float64) tf.Tensor(1, shape=(), dtype=int64)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">resampled_ds = tf.data.experimental.sample_from_datasets([pos_ds, neg_ds], weights=[0.5, 0.5])
+resampled_ds = resampled_ds.batch(BATCH_SIZE).prefetch(tf.data.experimental.AUTOTUNE)
+
+val_ds = tf.data.Dataset.from_tensor_slices((val_features, val_labels)).cache()
+val_ds = val_ds.batch(BATCH_SIZE).prefetch(tf.data.experimental.AUTOTUNE)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">for features, label in resampled_ds.take(1):
+    print(label.numpy().mean())
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>0.50537109375
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">resampled_steps_per_epoch = np.ceil(2.0*neg/BATCH_SIZE)  # 正负样本量/batch_size
+resampled_steps_per_epoch
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>278.0
+</code></pre><h3 id="train-a-model-on-oversample-data"><a href="#train-a-model-on-oversample-data" class="headerlink" title="train a model on oversample data"></a>train a model on oversample data</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">model_sampled = func_make_model(n_x=train_features.shape[-1], metrics=METRICS)
+model_sampled.load_weights(correct_initial_bias_path)
+
+# reset the bias to zero, since this dataset is balanced
+model_sampled.layers[-1].bias.assign([0.0])  # 设置最后一层的bias为0
+
+model_sampled_history = model_sampled.fit(resampled_ds, epochs=EPOCHS, steps_per_epoch=resampled_steps_per_epoch,
+                                          callbacks=[early_stopping], 
+                                          validation_data=val_ds)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>Epoch 1/100
+278/278 [==============================] - 9s 25ms/step - loss: 0.7187 - tp: 106770.7025 - fp: 41735.0538 - tn: 158500.6093 - fn: 36668.2939 - acc: 0.7680 - precision: 0.6690 - recall: 0.6851 - auc: 0.8375 - prc: 0.7999 - val_loss: 0.1986 - val_tp: 67.0000 - val_fp: 1074.0000 - val_tn: 44416.0000 - val_fn: 12.0000 - val_acc: 0.9762 - val_precision: 0.0587 - val_recall: 0.8481 - val_auc: 0.9660 - val_prc: 0.7480
+Epoch 2/100
+278/278 [==============================] - 6s 23ms/step - loss: 0.2155 - tp: 128022.4910 - fp: 8284.8065 - tn: 135214.0609 - fn: 15191.3011 - acc: 0.9150 - precision: 0.9348 - recall: 0.8921 - auc: 0.9683 - prc: 0.9752 - val_loss: 0.1105 - val_tp: 67.0000 - val_fp: 704.0000 - val_tn: 44786.0000 - val_fn: 12.0000 - val_acc: 0.9843 - val_precision: 0.0869 - val_recall: 0.8481 - val_auc: 0.9679 - val_prc: 0.7478
+Epoch 3/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.1596 - tp: 129871.1828 - fp: 4884.9964 - tn: 138569.3584 - fn: 13387.1219 - acc: 0.9358 - precision: 0.9629 - recall: 0.9063 - auc: 0.9833 - prc: 0.9858 - val_loss: 0.0815 - val_tp: 68.0000 - val_fp: 640.0000 - val_tn: 44850.0000 - val_fn: 11.0000 - val_acc: 0.9857 - val_precision: 0.0960 - val_recall: 0.8608 - val_auc: 0.9694 - val_prc: 0.7165
+Epoch 4/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.1347 - tp: 131100.8423 - fp: 4062.0036 - tn: 139467.2903 - fn: 12082.5233 - acc: 0.9432 - precision: 0.9699 - recall: 0.9146 - auc: 0.9890 - prc: 0.9900 - val_loss: 0.0661 - val_tp: 68.0000 - val_fp: 571.0000 - val_tn: 44919.0000 - val_fn: 11.0000 - val_acc: 0.9872 - val_precision: 0.1064 - val_recall: 0.8608 - val_auc: 0.9694 - val_prc: 0.7182
+Epoch 5/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.1192 - tp: 132650.0143 - fp: 3900.9642 - tn: 139417.2115 - fn: 10744.4695 - acc: 0.9486 - precision: 0.9712 - recall: 0.9245 - auc: 0.9918 - prc: 0.9923 - val_loss: 0.0570 - val_tp: 67.0000 - val_fp: 569.0000 - val_tn: 44921.0000 - val_fn: 12.0000 - val_acc: 0.9873 - val_precision: 0.1053 - val_recall: 0.8481 - val_auc: 0.9670 - val_prc: 0.7172
+Epoch 6/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.1076 - tp: 133341.7706 - fp: 3745.2294 - tn: 139902.4552 - fn: 9723.2043 - acc: 0.9524 - precision: 0.9724 - recall: 0.9312 - auc: 0.9936 - prc: 0.9936 - val_loss: 0.0479 - val_tp: 67.0000 - val_fp: 508.0000 - val_tn: 44982.0000 - val_fn: 12.0000 - val_acc: 0.9886 - val_precision: 0.1165 - val_recall: 0.8481 - val_auc: 0.9682 - val_prc: 0.7194
+Epoch 7/100
+278/278 [==============================] - 6s 21ms/step - loss: 0.0995 - tp: 134289.4444 - fp: 3585.8961 - tn: 140065.9319 - fn: 8771.3871 - acc: 0.9566 - precision: 0.9739 - recall: 0.9381 - auc: 0.9947 - prc: 0.9946 - val_loss: 0.0433 - val_tp: 67.0000 - val_fp: 502.0000 - val_tn: 44988.0000 - val_fn: 12.0000 - val_acc: 0.9887 - val_precision: 0.1178 - val_recall: 0.8481 - val_auc: 0.9685 - val_prc: 0.7209
+Epoch 8/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.0906 - tp: 136117.1470 - fp: 3446.8566 - tn: 139792.3333 - fn: 7356.3226 - acc: 0.9623 - precision: 0.9752 - recall: 0.9490 - auc: 0.9956 - prc: 0.9955 - val_loss: 0.0391 - val_tp: 67.0000 - val_fp: 458.0000 - val_tn: 45032.0000 - val_fn: 12.0000 - val_acc: 0.9897 - val_precision: 0.1276 - val_recall: 0.8481 - val_auc: 0.9647 - val_prc: 0.7208
+Epoch 9/100
+278/278 [==============================] - 6s 21ms/step - loss: 0.0871 - tp: 136469.3692 - fp: 3419.2043 - tn: 139679.6810 - fn: 7144.4050 - acc: 0.9630 - precision: 0.9756 - recall: 0.9498 - auc: 0.9959 - prc: 0.9957 - val_loss: 0.0363 - val_tp: 67.0000 - val_fp: 448.0000 - val_tn: 45042.0000 - val_fn: 12.0000 - val_acc: 0.9899 - val_precision: 0.1301 - val_recall: 0.8481 - val_auc: 0.9607 - val_prc: 0.7211
+Epoch 10/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.0823 - tp: 136684.5591 - fp: 3467.4803 - tn: 140006.9319 - fn: 6553.6882 - acc: 0.9649 - precision: 0.9751 - recall: 0.9540 - auc: 0.9963 - prc: 0.9961 - val_loss: 0.0333 - val_tp: 67.0000 - val_fp: 437.0000 - val_tn: 45053.0000 - val_fn: 12.0000 - val_acc: 0.9901 - val_precision: 0.1329 - val_recall: 0.8481 - val_auc: 0.9611 - val_prc: 0.7214
+Epoch 11/100
+278/278 [==============================] - 6s 22ms/step - loss: 0.0779 - tp: 137468.5520 - fp: 3409.0538 - tn: 139987.1111 - fn: 5847.9427 - acc: 0.9673 - precision: 0.9760 - recall: 0.9581 - auc: 0.9967 - prc: 0.9965 - val_loss: 0.0317 - val_tp: 67.0000 - val_fp: 436.0000 - val_tn: 45054.0000 - val_fn: 12.0000 - val_acc: 0.9902 - val_precision: 0.1332 - val_recall: 0.8481 - val_auc: 0.9515 - val_prc: 0.7120
+Restoring model weights from the end of the best epoch.
+Epoch 00011: early stopping
+</code></pre><h3 id="check-training-history-1"><a href="#check-training-history-1" class="headerlink" title="check training history"></a>check training history</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_metrics(model_sampled_history)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_98_0.png" alt="output_98_0"></p>
+<h3 id="查看一下混淆矩阵-2"><a href="#查看一下混淆矩阵-2" class="headerlink" title="查看一下混淆矩阵"></a>查看一下混淆矩阵</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_predictions_sampled = model_sampled.predict(train_features, batch_size=BATCH_SIZE)
+test_predictions_sampled = model_sampled.predict(test_features, batch_size=BATCH_SIZE)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">results = model_sampled.evaluate(test_features, test_labels, batch_size=BATCH_SIZE, verbose=0)
+for name, value in zip(model_sampled.metrics_names, results):
+    print(name, ': ', value)
+print()
+
+func_plot_cm(test_labels, test_predictions_sampled)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>loss :  0.19912180304527283
+tp :  91.0
+fp :  1298.0
+tn :  55566.0
+fn :  7.0
+acc :  0.9770900011062622
+precision :  0.06551475822925568
+recall :  0.9285714030265808
+auc :  0.9868985414505005
+prc :  0.7712134718894958
+
+Legitimate Transactions Detected (True Negatives):  55566
+Legitimate Transactions Incorrectly Detected (False Positives):  1298
+Fraudulent Transactions Missed (False Negatives):  7
+Fraudulent Transactions Detected (True Positives):  91
+Total Fraudulent Transactions:  98
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_101_1.png" alt="output_101_1"></p>
+<h3 id="画roc图-2"><a href="#画roc图-2" class="headerlink" title="画roc图"></a>画roc图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_roc("Train sampled", train_labels, train_predictions_sampled, color='red')
+func_plot_roc("Test sampled", test_labels, test_predictions_sampled, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2c5c561fd0&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_103_1.png" alt="output_103_1"></p>
+<h3 id="画PR图-2"><a href="#画PR图-2" class="headerlink" title="画PR图"></a>画PR图</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">func_plot_prc("Train sampled", train_labels, train_predictions_sampled, color='red')
+func_plot_prc("Test sampled", test_labels, test_predictions_sampled, color='blue', linestyle='--')
+plt.legend(loc='lower right')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f2c5c7c57c0&gt;
+</code></pre><p><img src="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/output_105_1.png" alt="output_105_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/">https://myhaa.github.io/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                    <span class="chip bg-color">分类</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">神经网络</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%95%B0%E6%8D%AE/">
+                                    <span class="chip bg-color">不平衡数据</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2021-09-13T09-19-18',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/09/13/tensorflow-xue-xi-zhi-bu-ping-heng-shu-ju-de-fen-lei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="TensorFlow学习之不平衡数据的分类">
+                        
+                        <span class="card-title">TensorFlow学习之不平衡数据的分类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            TensorFlow学习之不平衡数据的分类
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/TensorFlow%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    TensorFlow学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%88%86%E7%B1%BB/">
+                        <span class="chip bg-color">分类</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%95%B0%E6%8D%AE/">
+                        <span class="chip bg-color">不平衡数据</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/09/06/shi-yong-gong-ju-zhi-ffmpeg/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="实用工具之FFmpeg">
+                        
+                        <span class="card-title">实用工具之FFmpeg</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            FFmpeg视频处理入门教程
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    实用工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/FFmpeg/">
+                        <span class="chip bg-color">FFmpeg</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
