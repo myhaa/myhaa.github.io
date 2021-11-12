@@ -332,3 +332,10 @@ pd.Series(['80001,800002', '150001,150002', '80001,80002,150001,150002']).str.ge
 
 * [参考](https://stackoverflow.com/questions/23586510/return-multiple-columns-from-pandas-apply)
 
+## 16、[Python 3: os.walk() file paths UnicodeEncodeError: 'utf-8' codec can't encode: surrogates not allowed](https://stackoverflow.com/questions/27366479/python-3-os-walk-file-paths-unicodeencodeerror-utf-8-codec-cant-encode-s)
+
+```python
+for p,d,f in os.walk(b'.'):
+    print(p.decode('utf-8', 'replace'))
+```
+
