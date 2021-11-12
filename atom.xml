@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2021-09-14T10:33:13.163Z</updated>
+  <updated>2021-11-12T08:39:52.502Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,94 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习之吴恩达课程作业5</title>
+    <link href="https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/"/>
+    <id>https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/</id>
+    <published>2021-11-08T01:19:18.000Z</published>
+    <updated>2021-11-12T08:39:52.502Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;吴恩达深度学习课程作业L2W6&quot;&gt;&lt;a href=&quot;#吴恩达深度学习课程作业L2W6&quot; class=&quot;headerlink&quot; title=&quot;吴恩达深度学习课程作业L2W6&quot;&gt;&lt;/a&gt;吴恩达深度学习课程作业L2W6&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Improving
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习之吴恩达课程作业4</title>
+    <link href="https://myhaa.github.io/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/"/>
+    <id>https://myhaa.github.io/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/</id>
+    <published>2021-11-03T01:19:18.000Z</published>
+    <updated>2021-11-12T08:35:25.638Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;吴恩达深度学习课程作业L2W5&quot;&gt;&lt;a href=&quot;#吴恩达深度学习课程作业L2W5&quot; class=&quot;headerlink&quot; title=&quot;吴恩达深度学习课程作业L2W5&quot;&gt;&lt;/a&gt;吴恩达深度学习课程作业L2W5&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Improving
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="神经网络" scheme="https://myhaa.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读书笔记之深度学习推荐系统</title>
+    <link href="https://myhaa.github.io/2021/09/23/du-shu-bi-ji-zhi-shen-du-xue-xi-tui-jian-xi-tong/"/>
+    <id>https://myhaa.github.io/2021/09/23/du-shu-bi-ji-zhi-shen-du-xue-xi-tui-jian-xi-tong/</id>
+    <published>2021-09-23T01:07:26.000Z</published>
+    <updated>2021-09-23T10:35:21.658Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;参考书籍&quot;&gt;&lt;a href=&quot;#参考书籍&quot; class=&quot;headerlink&quot; title=&quot;参考书籍&quot;&gt;&lt;/a&gt;参考书籍&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href&gt;王喆的深度学习推荐系统&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="https://myhaa.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="推荐系统" scheme="https://myhaa.github.io/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>TensorFlow学习之不平衡数据的分类</title>
@@ -504,90 +592,6 @@
     
     
       <category term="图像识别" scheme="https://myhaa.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NLP之TextRank</title>
-    <link href="https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/"/>
-    <id>https://myhaa.github.io/2021/03/10/nlp-zhi-textrank/</id>
-    <published>2021-03-10T08:57:10.000Z</published>
-    <updated>2021-05-12T12:29:08.343Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="NLP" scheme="https://myhaa.github.io/categories/NLP/"/>
-    
-    
-      <category term="关键词提取" scheme="https://myhaa.github.io/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习之PageRank</title>
-    <link href="https://myhaa.github.io/2021/03/10/ji-qi-xue-xi-zhi-pagerank/"/>
-    <id>https://myhaa.github.io/2021/03/10/ji-qi-xue-xi-zhi-pagerank/</id>
-    <published>2021-03-10T07:13:33.000Z</published>
-    <updated>2021-06-21T08:09:25.196Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/2021/03/10/ji-qi-xue-xi-zhi-pagerank/image-20210621160912259.png&quot; alt=&quot;image-20210621160912259&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;基础&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="https://myhaa.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="数据挖掘" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
-    
-      <category term="十大算法" scheme="https://myhaa.github.io/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NLP之TF-IDF</title>
-    <link href="https://myhaa.github.io/2021/03/10/nlp-zhi-tf-idf/"/>
-    <id>https://myhaa.github.io/2021/03/10/nlp-zhi-tf-idf/</id>
-    <published>2021-03-10T03:55:41.000Z</published>
-    <updated>2021-05-12T12:28:47.872Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="NLP" scheme="https://myhaa.github.io/categories/NLP/"/>
-    
-    
-      <category term="关键词提取" scheme="https://myhaa.github.io/tags/%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/"/>
     
   </entry>
   

@@ -1,0 +1,2601 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="深度学习之吴恩达课程作业5, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="吴恩达深度学习课程作业L2W6
+Improving Deep Neural Networks
+加强深度网络性能的一些技巧
+参数求解优化方法
+
+HW参考
+视频链接
+作业链接
+
+优化方法简介Gradient descent goes “down">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>深度学习之吴恩达课程作业5 | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        深度学习之吴恩达课程作业5
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">神经网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-11-08
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    802
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    4 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="吴恩达深度学习课程作业L2W6"><a href="#吴恩达深度学习课程作业L2W6" class="headerlink" title="吴恩达深度学习课程作业L2W6"></a>吴恩达深度学习课程作业L2W6</h1><ul>
+<li>Improving Deep Neural Networks</li>
+<li>加强深度网络性能的一些技巧</li>
+<li>参数求解优化方法</li>
+</ul>
+<h2 id="HW参考"><a href="#HW参考" class="headerlink" title="HW参考"></a>HW参考</h2><ol>
+<li><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">视频链接</a></li>
+<li><a href="https://github.com/suqi/deeplearning_andrewng/tree/master/Course2-DL-tuning/week6" target="_blank" rel="noopener">作业链接</a></li>
+</ol>
+<h2 id="优化方法简介"><a href="#优化方法简介" class="headerlink" title="优化方法简介"></a>优化方法简介</h2><p>Gradient descent goes “downhill” on a cost function $J$. Think of it as trying to do this:<br><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/cost.jpg" style="width:650px;height:300px;"></p>
+<caption><center> <u> **Figure 1** </u>: **Minimizing the cost is like finding the lowest point in a hilly landscape**<br> At each step of the training, you update your parameters following a certain direction to try to get to the lowest possible point. </center></caption>
+
+<p><strong>Notations</strong>: As usual, $\frac{\partial J}{\partial a } = $ <code>da</code> for any variable <code>a</code>.</p>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+import matplotlib.pyplot as plt
+import scipy.io
+import math
+import sklearn
+import sklearn.datasets
+
+%matplotlib inline
+plt.rcParams['figure.figsize'] = (7.0, 4.0) # set default size of plots
+plt.rcParams['image.interpolation'] = 'nearest'
+plt.rcParams['image.cmap'] = 'gray'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="数据生成模拟函数"><a href="#数据生成模拟函数" class="headerlink" title="数据生成模拟函数"></a>数据生成模拟函数</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">def update_parameters_with_gd_test_case():
+    np.random.seed(1)
+    learning_rate = 0.01
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+
+    dW1 = np.random.randn(2,3)
+    db1 = np.random.randn(2,1)
+    dW2 = np.random.randn(3,3)
+    db2 = np.random.randn(3,1)
+
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
+
+    return parameters, grads, learning_rate
+
+"""
+def update_parameters_with_sgd_checker(function, inputs, outputs):
+    if function(inputs) == outputs:
+        print("Correct")
+    else:
+        print("Incorrect")
+"""
+
+
+def random_mini_batches_test_case():
+    np.random.seed(1)
+    mini_batch_size = 64
+    X = np.random.randn(12288, 148)
+    Y = np.random.randn(1, 148) < 0.5
+    return X, Y, mini_batch_size
+
+
+def initialize_velocity_test_case():
+    np.random.seed(1)
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    return parameters
+
+
+def update_parameters_with_momentum_test_case():
+    np.random.seed(1)
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+
+    dW1 = np.random.randn(2,3)
+    db1 = np.random.randn(2,1)
+    dW2 = np.random.randn(3,3)
+    db2 = np.random.randn(3,1)
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
+    v = {'dW1': np.array([[ 0.,  0.,  0.],
+        [ 0.,  0.,  0.]]), 'dW2': np.array([[ 0.,  0.,  0.],
+        [ 0.,  0.,  0.],
+        [ 0.,  0.,  0.]]), 'db1': np.array([[ 0.],
+        [ 0.]]), 'db2': np.array([[ 0.],
+        [ 0.],
+        [ 0.]])}
+    return parameters, grads, v
+
+
+def initialize_adam_test_case():
+    np.random.seed(1)
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    return parameters
+
+
+def update_parameters_with_adam_test_case():
+    np.random.seed(1)
+    v, s = ({'dW1': np.array([[ 0.,  0.,  0.],
+         [ 0.,  0.,  0.]]), 'dW2': np.array([[ 0.,  0.,  0.],
+         [ 0.,  0.,  0.],
+         [ 0.,  0.,  0.]]), 'db1': np.array([[ 0.],
+         [ 0.]]), 'db2': np.array([[ 0.],
+         [ 0.],
+         [ 0.]])}, {'dW1': np.array([[ 0.,  0.,  0.],
+         [ 0.,  0.,  0.]]), 'dW2': np.array([[ 0.,  0.,  0.],
+         [ 0.,  0.,  0.],
+         [ 0.,  0.,  0.]]), 'db1': np.array([[ 0.],
+         [ 0.]]), 'db2': np.array([[ 0.],
+         [ 0.],
+         [ 0.]])})
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+
+    dW1 = np.random.randn(2,3)
+    db1 = np.random.randn(2,1)
+    dW2 = np.random.randn(3,3)
+    db2 = np.random.randn(3,1)
+
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
+
+    return parameters, grads, v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="神经网络结构封装"><a href="#神经网络结构封装" class="headerlink" title="神经网络结构封装"></a>神经网络结构封装</h2><h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_sigmoid(Z):
+    """
+    Implements the sigmoid activation in numpy
+
+    Arguments:
+    Z -- numpy array of any shape
+
+    Returns:
+    A -- output of sigmoid(z), same shape as Z
+    cache -- returns Z as well, useful during backpropagation
+    """
+
+    A = 1/(1+np.exp(-Z))
+    cache = Z
+
+    return A, cache
+
+def func_relu(Z):
+    """
+    Implement the RELU function.
+
+    Arguments:
+    Z -- Output of the linear layer, of any shape
+
+    Returns:
+    A -- Post-activation parameter, of the same shape as Z
+    cache -- a python dictionary containing "A" ; stored for computing the backward pass efficiently
+    """
+
+    A = np.maximum(0,Z)
+
+    assert(A.shape == Z.shape)
+
+    cache = Z 
+    return A, cache
+
+
+def func_relu_backward(dA, cache):
+    """
+    Implement the backward propagation for a single RELU unit.
+
+    Arguments:
+    dA -- post-activation gradient, of any shape
+    cache -- 'Z' where we store for computing backward propagation efficiently
+
+    Returns:
+    dZ -- Gradient of the cost with respect to Z
+    """
+
+    Z = cache
+    dZ = np.array(dA, copy=True) # just converting dz to a correct object.
+
+    # When z <= 0, you should set dz to 0 as well. 
+    dZ[Z <= 0] = 0
+
+    assert (dZ.shape == Z.shape)
+
+    return dZ
+
+def func_sigmoid_backward(dA, cache):
+    """
+    Implement the backward propagation for a single SIGMOID unit.
+
+    Arguments:
+    dA -- post-activation gradient, of any shape
+    cache -- 'Z' where we store for computing backward propagation efficiently
+
+    Returns:
+    dZ -- Gradient of the cost with respect to Z
+    """
+
+    Z = cache
+
+    s = 1/(1+np.exp(-Z))
+    dZ = dA * s * (1-s)
+
+    assert (dZ.shape == Z.shape)
+
+    return dZ
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="参数初始化"><a href="#参数初始化" class="headerlink" title="参数初始化"></a>参数初始化</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_L_layers_initialize_parameters(layer_dims, seed=1):
+    """
+    L层神经网络参数初始化
+    :param layer_dims: python array (list) containing the dimensions of each layer in our network
+    :param seed: 随机种子
+    :return: 
+        parameters -- python dictionary containing your parameters "W1", "b1", ..., "WL", "bL":
+        Wl -- weight matrix of shape (layer_dims[l], layer_dims[l-1])
+        bl -- bias vector of shape (layer_dims[l], 1)
+    """
+    np.random.seed(seed)
+    parameters = {}
+    L = len(layer_dims)
+
+    # 这里/ np.sqrt(layer_dims[layer-1])很重要，如果还是*0.01，会导致模型cost降不下去
+    for layer in range(1, L):
+#         parameters['W' + str(layer)] = np.random.randn(layer_dims[layer], layer_dims[layer-1]) / np.sqrt(layer_dims[layer-1]) # * 0.01
+        # todo he initialize
+        parameters['W' + str(layer)] = np.random.randn(layer_dims[layer], layer_dims[layer-1]) * np.sqrt(2 / layer_dims[layer-1]) # * 0.01
+        parameters['b' + str(layer)] = np.zeros((layer_dims[layer], 1))
+
+        assert(parameters['W' + str(layer)].shape == (layer_dims[layer], layer_dims[layer-1]))
+        assert(parameters['b' + str(layer)].shape == (layer_dims[layer], 1))
+    return parameters
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_linear_forward(A, W, b):
+    """
+    linear forward
+    :param A:
+    :param W:
+    :param b:
+    :return Z,chche:
+        Z -- the input of the activation function, also called pre-activation parameter 
+        cache -- a python dictionary containing "A", "W" and "b" ; stored for computing the backward pass efficiently
+    """
+    Z = np.dot(W, A) + b
+
+    assert(Z.shape == (W.shape[0], A.shape[1]))
+    cache = (A, W, b)
+    return Z, cache
+
+def func_linear_activation_forward(A_prev, W, b, activation):
+    """
+    Implement the forward propagation for the LINEAR->ACTIVATION layer
+    :param A_prev: activations from previous layer (or input data): (size of previous layer, number of examples)
+    :param W: weights matrix: numpy array of shape (size of current layer, size of previous layer)
+    :param b: bias vector, numpy array of shape (size of the current layer, 1)
+    :param activation: the activation to be used in this layer, stored as a text string: "sigmoid" or "relu"
+    :return:
+        A -- the output of the activation function, also called the post-activation value 
+        cache -- a python dictionary containing "linear_cache" and "activation_cache";
+                 stored for computing the backward pass efficiently
+    """
+    Z, linear_cache = func_linear_forward(A_prev, W, b)
+    if activation == 'sigmoid':
+        A, activation_cache = func_sigmoid(Z)
+    elif activation == 'relu':
+        A, activation_cache = func_relu(Z)
+    else:
+        raise ValueError('activation param')
+
+    assert(A.shape == (W.shape[0], A_prev.shape[1]))
+    cache = (linear_cache, activation_cache)
+    return A, cache
+
+def func_L_model_forward(X, parameters):
+    """
+    Implement forward propagation for the [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID computation
+
+    :param X -- data, numpy array of shape (input size, number of examples)
+    :param parameters -- output of initialize_parameters_deep()
+
+    :return:
+        AL -- last post-activation value
+        caches -- list of caches containing:
+                    every cache of linear_relu_forward() (there are L-1 of them, indexed from 0 to L-2)
+                    the cache of linear_sigmoid_forward() (there is one, indexed L-1)
+    """
+    caches = []
+    A = X
+    L = len(parameters) // 2
+
+    for layer in range(1, L):
+        A_prev = A
+        W, b = parameters['W'+str(layer)], parameters['b'+str(layer)]
+        A, cache = func_linear_activation_forward(A_prev, W, b, 'relu')
+        caches.append(cache)
+
+    A_prev = A
+    layer = L
+    W, b = parameters['W'+str(layer)], parameters['b'+str(layer)]
+    A, cache = func_linear_activation_forward(A_prev, W, b, 'sigmoid')
+    caches.append(cache)
+
+    assert(A.shape == (1, X.shape[1]))
+    return A, caches
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="compute-cost"><a href="#compute-cost" class="headerlink" title="compute cost"></a>compute cost</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_compute_cost(AL, Y):
+    """
+    Implement the cost function defined by equation (7).
+
+    :param AL -- probability vector corresponding to your label predictions, shape (1, number of examples)
+    :param Y -- true "label" vector (for example: containing 0 if non-cat, 1 if cat), shape (1, number of examples)
+
+    :return:
+        cost -- cross-entropy cost
+    """
+    m = Y.shape[1]
+
+    # todo RuntimeWarning: divide by zero encountered in log
+    AL = np.clip(AL, 1e-10, 1-1e-10)
+
+#     Compute loss from aL and y.
+
+#     logprobs = np.multiply(-np.log(AL), Y) + np.multiply(-np.log(1 - AL), 1 - Y)
+#     cost = 1./m * np.nansum(logprobs)
+
+#     cost = -1 / m * np.sum(np.multiply(Y, np.log(AL))+np.multiply(1-Y, np.log(1-AL)))
+    cost = (1./m) * (-np.dot(Y,np.log(AL).T) - np.dot(1-Y, np.log(1-AL).T))
+
+    cost = np.squeeze(cost)      # To make sure your cost's shape is what we expect (e.g. this turns [[17]] into 17).
+
+    assert(cost.shape == ())
+    return cost
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="backward"><a href="#backward" class="headerlink" title="backward"></a>backward</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_linear_backward(dZ, cache):
+    """
+    Implement the linear portion of backward propagation for a single layer (layer l)
+
+    :param dZ -- Gradient of the cost with respect to the linear output (of current layer l)
+    :param cache -- tuple of values (A_prev, W, b) coming from the forward propagation in the current layer
+
+    :return:
+        dA_prev -- Gradient of the cost with respect to the activation (of the previous layer l-1), same shape as A_prev
+        dW -- Gradient of the cost with respect to W (current layer l), same shape as W
+        db -- Gradient of the cost with respect to b (current layer l), same shape as b
+    """
+    A_prev, W, b = cache
+    m = A_prev.shape[1]
+
+    dW = 1. / m * np.dot(dZ, A_prev.T)
+    db = 1. / m * np.sum(dZ, axis=1, keepdims=True)  # axis=1是行记录求和
+    dA_prev = np.dot(W.T, dZ)
+
+    assert(dW.shape == W.shape)
+    assert(db.shape == b.shape)
+    assert(dA_prev.shape == A_prev.shape)
+    return dA_prev, dW, db
+
+def func_linear_activation_backward(dA, cache, activation):
+    """
+    Implement the backward propagation for the LINEAR->ACTIVATION layer.
+
+    :param dA -- post-activation gradient for current layer l 
+    :param cache -- tuple of values (linear_cache, activation_cache) we store for computing backward propagation efficiently
+    :param activation -- the activation to be used in this layer, stored as a text string: "sigmoid" or "relu"
+
+    :returns
+        dA_prev -- Gradient of the cost with respect to the activation (of the previous layer l-1), same shape as A_prev
+        dW -- Gradient of the cost with respect to W (current layer l), same shape as W
+        db -- Gradient of the cost with respect to b (current layer l), same shape as b
+    """
+    linear_cache, activation_cache = cache
+
+    if activation == 'relu':
+        dZ = func_relu_backward(dA, activation_cache)
+    elif activation == 'sigmoid':
+        dZ = func_sigmoid_backward(dA, activation_cache)
+    else:
+        raise ValueError('activation param')
+    dA_prev, dW, db = func_linear_backward(dZ, linear_cache)
+    return dA_prev, dW, db
+
+def func_L_model_backward(AL, Y, caches):
+    """
+    Implement the backward propagation for the [LINEAR->RELU] * (L-1) -> LINEAR -> SIGMOID group
+
+    :param AL -- probability vector, output of the forward propagation (L_model_forward())
+    :param Y -- true "label" vector (containing 0 if non-cat, 1 if cat)
+    :param caches -- list of caches containing:
+                    every cache of linear_activation_forward() with "relu" (it's caches[l], for l in range(L-1) i.e l = 0...L-2)
+                    the cache of linear_activation_forward() with "sigmoid" (it's caches[L-1])
+
+    :return:
+        grads -- A dictionary with the gradients
+                 grads["dA" + str(l)] = ... 
+                 grads["dW" + str(l)] = ...
+                 grads["db" + str(l)] = ... 
+    """
+    grads = {}
+    L = len(caches)
+    m = AL.shape[1]
+    Y = Y.reshape(AL.shape)
+
+    # todo divide by zero encountered in true_divide
+    dAL = - (np.divide(Y, AL, where=AL!=0) - np.divide(1-Y, 1-AL, where=(1-AL)!=0))
+#     dAL = - (np.divide(Y, AL) - np.divide(1-Y, 1-AL))
+
+    cur_cache = caches[L-1]
+    grads['dA' + str(L-1)], grads['dW'+str(L)], grads['db'+str(L)] = func_linear_activation_backward(dAL, cur_cache, activation='sigmoid')
+
+    for layer in reversed(range(L-1)):
+        cur_cache = caches[layer]
+        dA_prev_tmp, dW_tmp, db_tmp = func_linear_activation_backward(grads["dA"+str(layer+1)], cur_cache, activation='relu')
+        grads['dA'+str(layer)] = dA_prev_tmp
+        grads['dW'+str(layer+1)] = dW_tmp
+        grads['db'+str(layer+1)] = db_tmp
+
+#     current_cache = caches[L-1]
+#     grads["dA" + str(L)], grads["dW" + str(L)], grads["db" + str(L)] = func_linear_activation_backward(dAL, current_cache, activation = "sigmoid")
+
+#     for l in reversed(range(L-1)):
+#         # lth layer: (RELU -> LINEAR) gradients.
+#         current_cache = caches[l]
+#         dA_prev_temp, dW_temp, db_temp = func_linear_activation_backward(grads["dA" + str(l + 2)], current_cache, activation = "relu")
+#         grads["dA" + str(l + 1)] = dA_prev_temp
+#         grads["dW" + str(l + 1)] = dW_temp
+#         grads["db" + str(l + 1)] = db_temp
+
+    return grads
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="update-parameters"><a href="#update-parameters" class="headerlink" title="update parameters"></a>update parameters</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_update_parameters(parameters, grads, lr):
+    """
+    Update parameters using gradient descent
+
+    :param parameters -- python dictionary containing your parameters 
+    :param grads -- python dictionary containing your gradients, output of L_model_backward
+    :param lr: learning rate
+    :return:
+        parameters -- python dictionary containing your updated parameters 
+                      parameters["W" + str(l)] = ... 
+                      parameters["b" + str(l)] = ...
+    """
+    L = len(parameters) // 2
+
+    for layer in range(1, L+1):
+        parameters['W'+str(layer)] = parameters['W'+str(layer)] - lr * grads['dW' + str(layer)]
+        parameters['b'+str(layer)] = parameters['b'+str(layer)] - lr * grads['db' + str(layer)]
+
+    return parameters
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="predict"><a href="#predict" class="headerlink" title="predict"></a>predict</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_predict(X, y, parameters):
+    """
+    This function is used to predict the results of a  L-layer neural network.
+
+    :param X -- data set of examples you would like to label
+    :param parameters -- parameters of the trained model
+    :return:
+        p -- predictions for the given dataset X
+    """
+    m = X.shape[1]
+    L = len(parameters) // 2
+    p = np.zeros((1, m))
+
+    probas, caches = func_L_model_forward(X, parameters)
+
+    for i in range(probas.shape[1]):
+        if probas[0, i] > 0.5:
+            p[0, i] = 1
+        else:
+            p[0, i] = 0
+
+    print('acc: {}'.format(np.sum(p==y)/m))
+    return p
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="dnn-model"><a href="#dnn-model" class="headerlink" title="dnn model"></a>dnn model</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_L_layer_dnn_model(X, Y, layer_dims, lr=0.001, num_epochs=10000, print_cost=False):
+    """
+    多层神经网络模型
+    :param X:
+    :param Y:
+    :param layer_dims: python array (list) containing the dimensions of each layer in our network
+    :param lr: learning rate
+    :param num_epochs:
+    :param print_cost:
+    :return params
+    """
+    np.random.seed(1)
+    costs = []
+#     m = X.shape[1]
+
+    # 参数初始化
+    parameters = func_L_layers_initialize_parameters(layer_dims)
+
+    # loop
+    for epoch in range(num_epochs):
+        # 前向传播
+        AL, caches = func_L_model_forward(X, parameters)
+
+        # 计算损失
+        cost = func_compute_cost(AL, Y)
+
+        # 后向传播
+        grads = func_L_model_backward(AL, Y, caches)
+
+        # 更新参数
+        parameters = func_update_parameters(parameters, grads, lr)
+
+        # 打印信息
+        if print_cost and epoch % 100 == 0:
+            print('cost after epoch {}: {}'.format(epoch, np.squeeze(cost)))
+        if epoch % 100 == 0:
+            costs.append(cost)
+
+    return parameters, costs
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="其他通用函数"><a href="#其他通用函数" class="headerlink" title="其他通用函数"></a>其他通用函数</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_load_params_and_grads(seed=1):
+    np.random.seed(seed)
+    W1 = np.random.randn(2,3)
+    b1 = np.random.randn(2,1)
+    W2 = np.random.randn(3,3)
+    b2 = np.random.randn(3,1)
+
+    dW1 = np.random.randn(2,3)
+    db1 = np.random.randn(2,1)
+    dW2 = np.random.randn(3,3)
+    db2 = np.random.randn(3,1)
+
+    return W1, b1, W2, b2, dW1, db1, dW2, db2
+
+
+def func_load_2D_dataset():
+    data = scipy.io.loadmat('./深度学习之吴恩达课程作业5/data.mat')
+    train_X = data['X'].T
+    train_Y = data['y'].T
+    test_X = data['Xval'].T
+    test_Y = data['yval'].T
+
+    plt.scatter(train_X[0, :], train_X[1, :], c=train_Y, s=40, cmap=plt.cm.Spectral);
+
+    return train_X, train_Y, test_X, test_Y
+
+
+def func_plot_decision_boundary(model, X, y):
+    # Set min and max values and give it some padding
+    x_min, x_max = X[0, :].min() - 1, X[0, :].max() + 1
+    y_min, y_max = X[1, :].min() - 1, X[1, :].max() + 1
+    h = 0.01
+    # Generate a grid of points with distance h between them
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    # Predict the function value for the whole grid
+    Z = model(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    # Plot the contour and training examples
+    plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral)
+    plt.ylabel('x2')
+    plt.xlabel('x1')
+    plt.scatter(X[0, :], X[1, :], c=y, cmap=plt.cm.Spectral)
+    plt.show()
+
+
+def func_predict_dec(parameters, X):
+    """
+    Used for plotting decision boundary.
+
+    Arguments:
+    parameters -- python dictionary containing your parameters 
+    X -- input data of size (m, K)
+
+    Returns
+    predictions -- vector of predictions of our model (red: 0 / blue: 1)
+    """
+
+    # Predict using forward propagation and a classification threshold of 0.5
+    AL, cache = func_L_model_forward(X, parameters)
+    predictions = (AL>0.5)
+    return predictions
+
+
+def func_load_dataset():
+    np.random.seed(3)
+    train_X, train_Y = sklearn.datasets.make_moons(n_samples=300, noise=.2) #300 #0.2 
+    # Visualize the data
+    plt.scatter(train_X[:, 0], train_X[:, 1], c=train_Y, s=40, cmap=plt.cm.Spectral);
+    train_X = train_X.T
+    train_Y = train_Y.reshape((1, train_Y.shape[0]))
+
+    return train_X, train_Y
+
+
+def func_plot_cost(costs, lr):
+    """
+    plot cost
+    :param costs: 
+    """
+    # plot the cost
+    plt.plot(costs)
+    plt.ylabel('cost')
+    plt.xlabel('epochs (per 100)')
+    plt.title("Learning rate = " + str(lr))
+    plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><h3 id="batch-gradient-descent-全量梯度下降"><a href="#batch-gradient-descent-全量梯度下降" class="headerlink" title="batch gradient descent=全量梯度下降"></a>batch gradient descent=全量梯度下降</h3><ul>
+<li>When you take gradient steps with respect to all <code>m</code> examples on each step, it is also called <code>Batch Gradient Descent</code></li>
+<li>参数更新公式<script type="math/tex; mode=display">
+W^{[l]} = W^{[l]} - \alpha \text{ } dW^{[l]} \\
+b^{[l]} = b^{[l]} - \alpha \text{ } db^{[l]}</script></li>
+</ul>
+<h4 id="overwrite-update-parameters"><a href="#overwrite-update-parameters" class="headerlink" title="overwrite update parameters"></a>overwrite update parameters</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_update_parameters_with_gd(parameters, grads, lr):
+    """
+    Update parameters using one step of gradient descent
+
+    :param parameters -- python dictionary containing your parameters 
+    :param grads -- python dictionary containing your gradients, output of L_model_backward
+    :param lr: learning rate
+    :return:
+        parameters -- python dictionary containing your updated parameters 
+                      parameters["W" + str(l)] = ... 
+                      parameters["b" + str(l)] = ...
+    """
+    L = len(parameters) // 2
+
+    for layer in range(1, L+1):
+        parameters['W'+str(layer)] = parameters['W'+str(layer)] - lr * grads['dW' + str(layer)]
+        parameters['b'+str(layer)] = parameters['b'+str(layer)] - lr * grads['db' + str(layer)]
+
+    return parameters
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, grads, lr = update_parameters_with_gd_test_case()
+parameters, grads, lr
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>({&#39;W1&#39;: array([[ 1.62434536, -0.61175641, -0.52817175],
+         [-1.07296862,  0.86540763, -2.3015387 ]]),
+  &#39;b1&#39;: array([[ 1.74481176],
+         [-0.7612069 ]]),
+  &#39;W2&#39;: array([[ 0.3190391 , -0.24937038,  1.46210794],
+         [-2.06014071, -0.3224172 , -0.38405435],
+         [ 1.13376944, -1.09989127, -0.17242821]]),
+  &#39;b2&#39;: array([[-0.87785842],
+         [ 0.04221375],
+         [ 0.58281521]])},
+ {&#39;dW1&#39;: array([[-1.10061918,  1.14472371,  0.90159072],
+         [ 0.50249434,  0.90085595, -0.68372786]]),
+  &#39;db1&#39;: array([[-0.12289023],
+         [-0.93576943]]),
+  &#39;dW2&#39;: array([[-0.26788808,  0.53035547, -0.69166075],
+         [-0.39675353, -0.6871727 , -0.84520564],
+         [-0.67124613, -0.0126646 , -1.11731035]]),
+  &#39;db2&#39;: array([[0.2344157 ],
+         [1.65980218],
+         [0.74204416]])},
+ 0.01)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters = func_update_parameters_with_gd(parameters, grads, lr)
+parameters
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>{&#39;W1&#39;: array([[ 1.63535156, -0.62320365, -0.53718766],
+        [-1.07799357,  0.85639907, -2.29470142]]),
+ &#39;b1&#39;: array([[ 1.74604067],
+        [-0.75184921]]),
+ &#39;W2&#39;: array([[ 0.32171798, -0.25467393,  1.46902454],
+        [-2.05617317, -0.31554548, -0.3756023 ],
+        [ 1.1404819 , -1.09976462, -0.1612551 ]]),
+ &#39;b2&#39;: array([[-0.88020257],
+        [ 0.02561572],
+        [ 0.57539477]])}
+</code></pre><h3 id="mini-batch-gradient-descent-小批量梯度下降"><a href="#mini-batch-gradient-descent-小批量梯度下降" class="headerlink" title="mini batch gradient descent=小批量梯度下降"></a>mini batch gradient descent=小批量梯度下降</h3><ul>
+<li><p>步骤</p>
+<ol>
+<li><p><strong>Shuffle</strong>: Create a shuffled version of the training set (X, Y) as shown below. Each column of X and Y represents a training example. Note that the random shuffling is done synchronously between X and Y. Such that after the shuffling the $i^{th}$ column of X is the example corresponding to the $i^{th}$ label in Y. The shuffling step ensures that examples will be split randomly into different mini-batches. </p>
+<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_shuffle.png" style="width:550px;height:300px;"></p>
+</li>
+<li><p><strong>Partition</strong>: Partition the shuffled (X, Y) into mini-batches of size <code>mini_batch_size</code> (here 64). Note that the number of training examples is not always divisible by <code>mini_batch_size</code>. The last mini batch might be smaller, but you don’t need to worry about this. When the final mini-batch is smaller than the full <code>mini_batch_size</code>, it will look like this: </p>
+<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_partition.png" style="width:550px;height:300px;"></p>
+</li>
+</ol>
+</li>
+<li><p>注意：最后一个batch可能不满batch_size</p>
+</li>
+</ul>
+<h4 id="构建-random-mini-batches函数"><a href="#构建-random-mini-batches函数" class="headerlink" title="构建 random_mini_batches函数"></a>构建 random_mini_batches函数</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_random_mini_batches(X, Y, batch_size=64, seed=0):
+    """
+    Creates a list of random minibatches from (X, Y)
+
+    :param X -- input data, of shape (input size, number of examples)
+    :param Y -- true "label" vector (1 for blue dot / 0 for red dot), of shape (1, number of examples)
+    :param batch_size -- size of the mini-batches, integer
+    :return mini_batches -- list of synchronous (mini_batch_X, mini_batch_Y)
+    """
+    np.random.seed(seed)
+    m = X.shape[1]
+    mini_batches = []
+
+    # step 1: shuffle
+    permutation = list(np.random.permutation(m))
+    shuffled_X = X[:, permutation]
+    shuffled_Y = Y[:, permutation].reshape((1, m))
+
+    # step 2: partition
+    num_complete_minibatches = math.floor(m / batch_size)
+    for k in range(0, num_complete_minibatches):
+        mini_batch_X = shuffled_X[:, k*batch_size: (k+1)*batch_size]
+        mini_batch_Y = shuffled_Y[:, k*batch_size: (k+1)*batch_size]
+
+        mini_batch = (mini_batch_X, mini_batch_Y)
+        mini_batches.append(mini_batch)
+
+    if m % batch_size != 0:
+        mini_batch_X = shuffled_X[:, num_complete_minibatches*batch_size:]
+        mini_batch_Y = shuffled_Y[:, num_complete_minibatches*batch_size:]
+
+        mini_batch = (mini_batch_X, mini_batch_Y)
+        mini_batches.append(mini_batch)
+    return mini_batches
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">X_assess, Y_assess, mini_batch_size = random_mini_batches_test_case()
+mini_batches = func_random_mini_batches(X_assess, Y_assess, mini_batch_size)
+
+print ("shape of the 1st mini_batch_X: " + str(mini_batches[0][0].shape))
+print ("shape of the 2nd mini_batch_X: " + str(mini_batches[1][0].shape))
+print ("shape of the 3rd mini_batch_X: " + str(mini_batches[2][0].shape))
+print ("shape of the 1st mini_batch_Y: " + str(mini_batches[0][1].shape))
+print ("shape of the 2nd mini_batch_Y: " + str(mini_batches[1][1].shape)) 
+print ("shape of the 3rd mini_batch_Y: " + str(mini_batches[2][1].shape))
+print ("mini batch sanity check: " + str(mini_batches[0][0][0][0:3]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>shape of the 1st mini_batch_X: (12288, 64)
+shape of the 2nd mini_batch_X: (12288, 64)
+shape of the 3rd mini_batch_X: (12288, 20)
+shape of the 1st mini_batch_Y: (1, 64)
+shape of the 2nd mini_batch_Y: (1, 64)
+shape of the 3rd mini_batch_Y: (1, 20)
+mini batch sanity check: [ 0.90085595 -0.7612069   0.2344157 ]
+</code></pre><h3 id="Stochastic-Gradient-Descent-随机梯度下降"><a href="#Stochastic-Gradient-Descent-随机梯度下降" class="headerlink" title="Stochastic Gradient Descent=随机梯度下降"></a>Stochastic Gradient Descent=随机梯度下降</h3><p>A variant of this is Stochastic Gradient Descent (SGD), which is equivalent to mini-batch gradient descent where each mini-batch has just 1 example. The update rule that you have just implemented does not change. What changes is that you would be computing gradients on just one training example at a time, rather than on the whole training set. The code examples below illustrate the difference between stochastic gradient descent and (batch) gradient descent.</p>
+<ul>
+<li>具体过程</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">X = data_input
+Y = labels
+parameters = func_initialize_parameters(layer_dims)
+m = X.shape[1]
+
+for i in range(epochs):
+    for j in range(m):
+        a, caches = func_forward_propagation(X[:, j], parameters)  # 每次只用一个样本
+        cost = func_compute_cost(a, Y[:, j])
+        grads = func_backward_propagation(a, caches, parameters)
+        parameters = func_update_parameters(parameters, grads)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>In Stochastic Gradient Descent, you use only 1 training example before updating the gradients. When the training set is large, SGD can be faster. But the parameters will “oscillate”(振荡) toward the minimum rather than converge smoothly. Here is an illustration of this:</p>
+<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_sgd.png" style="width:750px;height:250px;"></p>
+<caption><center> <u> <font color="purple"> **Figure 1** </font></u><font color="purple">  : **SGD vs GD**<br> "+" denotes a minimum of the cost. SGD leads to many oscillations to reach convergence. But each step is a lot faster to compute for SGD than for GD, as it uses only one training example (vs. the whole batch for GD). </font></center></caption>
+
+<p><strong>Note</strong> also that implementing SGD requires 3 for-loops in total:</p>
+<ol>
+<li>Over the number of iterations</li>
+<li>Over the $m$ training examples</li>
+<li>Over the layers (to update all parameters, from $(W^{[1]},b^{[1]})$ to $(W^{[L]},b^{[L]})$)</li>
+</ol>
+<p>In practice, you’ll often get faster results if you do not use neither the whole training set, nor only one training example, to perform each update. Mini-batch gradient descent uses an intermediate number of examples for each step. With mini-batch gradient descent, you loop over the mini-batches instead of looping over individual training examples.</p>
+<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_minibatch.png" style="width:750px;height:250px;"></p>
+<caption><center> <u> <font color="purple"> **Figure 2** </font></u>: <font color="purple">  **SGD vs Mini-Batch GD**<br> "+" denotes a minimum of the cost. Using mini-batches in your optimization algorithm often leads to faster optimization. </font></center></caption>
+
+<font color="blue">
+
+**What you should remember**:
+- The difference between gradient descent, mini-batch gradient descent and stochastic gradient descent is the number of examples you use to perform one update step.
+- You have to tune a learning rate hyperparameter $\alpha$.
+- With a well-turned mini-batch size, usually it outperforms either gradient descent or stochastic gradient descent (particularly when the training set is large).
+
+选定一个良好的批量值，通常由于梯度下降和随机梯度下降
+
+## 梯度下降with Momentum
+
+Because mini-batch gradient descent makes a parameter update after seeing just a subset of examples, the direction of the update has some variance, and so the path taken by mini-batch gradient descent will "oscillate" toward convergence. Using momentum can reduce these oscillations.(用Momentum可以减小这样的振荡)
+
+Momentum takes into account the past gradients to smooth out the update. We will store the 'direction' of the previous gradients in the variable $v$ (会考虑前面的梯度值). Formally, this will be the exponentially weighted average of the gradient on previous steps. You can also think of $v$ as the "velocity" of a ball rolling downhill, building up speed (and momentum) according to the direction of the gradient/slope of the hill. 
+
+<img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/opt_momentum.png" style="width:400px;height:250px;">
+<caption><center> <u><font color="purple">**Figure 3**</font></u><font color="purple">: The red arrows shows the direction taken by one step of mini-batch gradient descent with momentum. The blue points show the direction of the gradient (with respect to the current mini-batch) on each step. Rather than just following the gradient, we let the gradient influence $v$ and then take a step in the direction of $v$.<br> <font color="black"> </font></font></center>
+
+计算公式如下
+
+The momentum update rule is, for $l = 1, ..., L$: 
+
+$$ \begin{cases}
+v_{dW^{[l]}} = \beta v_{dW^{[l]}} + (1 - \beta) dW^{[l]} \\
+W^{[l]} = W^{[l]} - \alpha v_{dW^{[l]}}
+\end{cases}\tag{3}$$
+
+$$\begin{cases}
+v_{db^{[l]}} = \beta v_{db^{[l]}} + (1 - \beta) db^{[l]} \\
+b^{[l]} = b^{[l]} - \alpha v_{db^{[l]}} 
+\end{cases}\tag{4}$$
+
+where L is the number of layers, $\beta$ is the momentum and $\alpha$ is the learning rate. All parameters should be stored in the `parameters` dictionary.
+
+**Note** that:
+- The velocity is initialized with zeros. So the algorithm will take a few iterations to "build up" velocity and start to take bigger steps.
+- If $\beta = 0$, then this just becomes standard gradient descent without momentum. 
+
+**How do you choose $\beta$?**
+
+- The larger the momentum $\beta$ is, the smoother the update because the more we take the past gradients into account. But if $\beta$ is too big, it could also smooth out the updates too much. 
+- <font size="3" color="red">Common values for $\beta$ range from 0.8 to 0.999. If you don't feel inclined to tune this, $\beta = 0.9$ is often a reasonable default. </font>
+- Tuning the optimal $\beta$ for your model might need trying several values to see what works best in term of reducing the value of the cost function $J$. 
+
+<font color="blue">
+
+**What you should remember**:
+- Momentum takes past gradients into account to smooth out the steps of gradient descent. It can be applied with batch gradient descent, mini-batch gradient descent or stochastic gradient descent.
+- You have to tune a momentum hyperparameter $\beta$ and a learning rate $\alpha$.
+
+### initialize velocity
+
+
+```python
+def func_initialize_velocity(parameters):
+    """
+    initialize velocity
+    :param parameters:
+    :return v: python dictionary containing the current velocity.
+                v['dW' + str(l)] = velocity of dWl
+                v['db' + str(l)] = velocity of dbl
+    """
+    L = len(parameters) // 2
+    v = {}
+
+    for layer in range(1, L+1):
+        # Return an array of zeros with the same shape and type as a given array
+        v['dW' + str(layer)] = np.zeros_like(parameters['W' + str(layer)])
+        v['db' + str(layer)] = np.zeros_like(parameters['b' + str(layer)])
+
+    return v
+```
+
+
+```python
+parameters = initialize_velocity_test_case()
+parameters
+```
+
+
+
+
+    {'W1': array([[ 1.62434536, -0.61175641, -0.52817175],
+            [-1.07296862,  0.86540763, -2.3015387 ]]),
+     'b1': array([[ 1.74481176],
+            [-0.7612069 ]]),
+     'W2': array([[ 0.3190391 , -0.24937038,  1.46210794],
+            [-2.06014071, -0.3224172 , -0.38405435],
+            [ 1.13376944, -1.09989127, -0.17242821]]),
+     'b2': array([[-0.87785842],
+            [ 0.04221375],
+            [ 0.58281521]])}
+
+
+
+
+```python
+v = func_initialize_velocity(parameters)
+v
+```
+
+
+
+
+    {'dW1': array([[0., 0., 0.],
+            [0., 0., 0.]]),
+     'db1': array([[0.],
+            [0.]]),
+     'dW2': array([[0., 0., 0.],
+            [0., 0., 0.],
+            [0., 0., 0.]]),
+     'db2': array([[0.],
+            [0.],
+            [0.]])}
+
+
+
+### overwrite update parameters
+
+
+```python
+def func_update_parameters_with_momentum(parameters, grads, v, beta, lr):
+    """
+    Update parameters using gradient descent
+
+    :param parameters -- python dictionary containing your parameters 
+    :param grads -- python dictionary containing your gradients, output of L_model_backward
+    :param v -- python dictionary containing the current velocity
+    :param beta -- the momentum hyperparameter, scalar
+    :param lr: learning rate
+    :return:
+        parameters -- python dictionary containing your updated parameters 
+                      parameters["W" + str(l)] = ... 
+                      parameters["b" + str(l)] = ...
+    """
+    L = len(parameters) // 2
+
+    for layer in range(1, L+1):
+        v['dW' + str(layer)] = beta * v['dW' + str(layer)] + (1-beta) * grads['dW' + str(layer)]
+        v['db' + str(layer)] = beta * v['db' + str(layer)] + (1-beta) * grads['db' + str(layer)]
+
+        parameters['W'+str(layer)] = parameters['W'+str(layer)] - lr * v['dW' + str(layer)]
+        parameters['b'+str(layer)] = parameters['b'+str(layer)] - lr * v['db' + str(layer)]
+
+    return parameters, v
+```
+
+
+```python
+parameters, grads, v = update_parameters_with_momentum_test_case()
+parameters, grads, v
+```
+
+
+
+
+    ({'W1': array([[ 1.62434536, -0.61175641, -0.52817175],
+             [-1.07296862,  0.86540763, -2.3015387 ]]),
+      'b1': array([[ 1.74481176],
+             [-0.7612069 ]]),
+      'W2': array([[ 0.3190391 , -0.24937038,  1.46210794],
+             [-2.06014071, -0.3224172 , -0.38405435],
+             [ 1.13376944, -1.09989127, -0.17242821]]),
+      'b2': array([[-0.87785842],
+             [ 0.04221375],
+             [ 0.58281521]])},
+     {'dW1': array([[-1.10061918,  1.14472371,  0.90159072],
+             [ 0.50249434,  0.90085595, -0.68372786]]),
+      'db1': array([[-0.12289023],
+             [-0.93576943]]),
+      'dW2': array([[-0.26788808,  0.53035547, -0.69166075],
+             [-0.39675353, -0.6871727 , -0.84520564],
+             [-0.67124613, -0.0126646 , -1.11731035]]),
+      'db2': array([[0.2344157 ],
+             [1.65980218],
+             [0.74204416]])},
+     {'dW1': array([[0., 0., 0.],
+             [0., 0., 0.]]),
+      'dW2': array([[0., 0., 0.],
+             [0., 0., 0.],
+             [0., 0., 0.]]),
+      'db1': array([[0.],
+             [0.]]),
+      'db2': array([[0.],
+             [0.],
+             [0.]])})
+
+
+
+
+```python
+beta = 0.9
+lr = 0.01
+parameters, v = func_update_parameters_with_momentum(parameters, grads, v, beta, lr)
+parameters
+```
+
+
+
+
+    {'W1': array([[ 1.62544598, -0.61290114, -0.52907334],
+            [-1.07347112,  0.86450677, -2.30085497]]),
+     'b1': array([[ 1.74493465],
+            [-0.76027113]]),
+     'W2': array([[ 0.31930698, -0.24990073,  1.4627996 ],
+            [-2.05974396, -0.32173003, -0.38320915],
+            [ 1.13444069, -1.0998786 , -0.1713109 ]]),
+     'b2': array([[-0.87809283],
+            [ 0.04055394],
+            [ 0.58207317]])}
+
+
+
+## 梯度下降 with adam
+
+Adam算法是训练神经网络最有效的优化算法之一。它结合了RMSProp和Momentum的想法
+
+计算步骤如下：
+1. It calculates an exponentially weighted average of past gradients, and stores it in variables $v$ (before bias correction) and $v^{corrected}$ (with bias correction). 
+2. It calculates an exponentially weighted average of the squares of the past gradients, and  stores it in variables $s$ (before bias correction) and $s^{corrected}$ (with bias correction). 
+3. It updates parameters in a direction based on combining information from "1" and "2".
+
+计算公式如下：
+
+$$
+\begin{cases}
+v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1 - \beta_1) \frac{\partial \mathcal{J} }{ \partial W^{[l]} } \\
+v^{corrected}_{dW^{[l]}} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t} \\
+s_{dW^{[l]}} = \beta_2 s_{dW^{[l]}} + (1 - \beta_2) (\frac{\partial \mathcal{J} }{\partial W^{[l]} })^2 \\
+s^{corrected}_{dW^{[l]}} = \frac{s_{dW^{[l]}}}{1 - (\beta_1)^t} \\
+W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}{\sqrt{s^{corrected}_{dW^{[l]}}} + \varepsilon}
+\end{cases}
+$$
+where:
+- t counts the number of steps taken of Adam 
+- L is the number of layers
+- $\beta_1$ and $\beta_2$ are hyperparameters that control the two exponentially weighted averages. 
+- $\alpha$ is the learning rate
+- $\varepsilon$ is a very small number to avoid dividing by zero
+
+<font color="blue" size="3">
+
+超参数一般设定：
+1. $\beta_1$=0.9
+2. $\beta_2$=0.999
+3. $\varepsilon = 1e-10$
+</font>
+
+<h3 id="initialize-adam"><a href="#initialize-adam" class="headerlink" title="initialize adam"></a>initialize adam</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_initialize_adam(parameters):
+    """
+    Initializes v and s as two python dictionaries with:
+                - keys: "dW1", "db1", ..., "dWL", "dbL" 
+                - values: numpy arrays of zeros of the same shape as the corresponding gradients/parameters.
+
+    Arguments:
+    parameters -- python dictionary containing your parameters.
+                    parameters["W" + str(l)] = Wl
+                    parameters["b" + str(l)] = bl
+
+    Returns: 
+    v -- python dictionary that will contain the exponentially weighted average of the gradient.
+                    v["dW" + str(l)] = ...
+                    v["db" + str(l)] = ...
+    s -- python dictionary that will contain the exponentially weighted average of the squared gradient.
+                    s["dW" + str(l)] = ...
+                    s["db" + str(l)] = ...
+    """
+    L = len(parameters) // 2
+    v = {}
+    s = {}
+
+    for layer in range(1, L+1):
+        v['dW'+str(layer)] = np.zeros_like(parameters['W'+str(layer)])
+        v['db'+str(layer)] = np.zeros_like(parameters['b'+str(layer)])
+        s['dW'+str(layer)] = np.zeros_like(parameters['W'+str(layer)])
+        s['db'+str(layer)] = np.zeros_like(parameters['b'+str(layer)])
+
+    return v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters = initialize_adam_test_case()
+parameters
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>{&#39;W1&#39;: array([[ 1.62434536, -0.61175641, -0.52817175],
+        [-1.07296862,  0.86540763, -2.3015387 ]]),
+ &#39;b1&#39;: array([[ 1.74481176],
+        [-0.7612069 ]]),
+ &#39;W2&#39;: array([[ 0.3190391 , -0.24937038,  1.46210794],
+        [-2.06014071, -0.3224172 , -0.38405435],
+        [ 1.13376944, -1.09989127, -0.17242821]]),
+ &#39;b2&#39;: array([[-0.87785842],
+        [ 0.04221375],
+        [ 0.58281521]])}
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">v, s = func_initialize_adam(parameters)
+v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>({&#39;dW1&#39;: array([[0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db1&#39;: array([[0.],
+         [0.]]),
+  &#39;dW2&#39;: array([[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db2&#39;: array([[0.],
+         [0.],
+         [0.]])},
+ {&#39;dW1&#39;: array([[0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db1&#39;: array([[0.],
+         [0.]]),
+  &#39;dW2&#39;: array([[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db2&#39;: array([[0.],
+         [0.],
+         [0.]])})
+</code></pre><h3 id="overwrite-update-parameters-1"><a href="#overwrite-update-parameters-1" class="headerlink" title="overwrite update parameters"></a>overwrite update parameters</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_update_parameters_with_adam(parameters, grads, v, s, t, lr=0.01, beta1=0.9, beta2=0.999, epsilon=1e-8):
+    """
+    Update parameters using Adam
+
+    Arguments:
+    parameters -- python dictionary containing your parameters:
+                    parameters['W' + str(l)] = Wl
+                    parameters['b' + str(l)] = bl
+    grads -- python dictionary containing your gradients for each parameters:
+                    grads['dW' + str(l)] = dWl
+                    grads['db' + str(l)] = dbl
+    v -- Adam variable, moving average of the first gradient, python dictionary
+    s -- Adam variable, moving average of the squared gradient, python dictionary
+    t -- epoch
+    learning_rate -- the learning rate, scalar.
+    beta1 -- Exponential decay hyperparameter for the first moment estimates 
+    beta2 -- Exponential decay hyperparameter for the second moment estimates 
+    epsilon -- hyperparameter preventing division by zero in Adam updates
+
+    Returns:
+    parameters -- python dictionary containing your updated parameters 
+    v -- Adam variable, moving average of the first gradient, python dictionary
+    s -- Adam variable, moving average of the squared gradient, python dictionary
+    """
+    L = len(parameters) // 2
+    v_corrected = {}
+    s_corrected = {}
+
+    for layer in range(1, L+1):
+        v['dW'+str(layer)] = beta1 * v['dW'+str(layer)] + (1-beta1)*grads['dW'+str(layer)]
+        v['db'+str(layer)] = beta1 * v['db'+str(layer)] + (1-beta1)*grads['db'+str(layer)]
+
+        s['dW'+str(layer)] = beta2 * s['dW'+str(layer)] + (1-beta2)*np.square(grads['dW'+str(layer)])
+        s['db'+str(layer)] = beta2 * s['db'+str(layer)] + (1-beta2)*np.square(grads['db'+str(layer)])
+
+        v_corrected['dW'+str(layer)] = v['dW'+str(layer)] / (1-pow(beta1, t))
+        v_corrected['db'+str(layer)] = v['db'+str(layer)] / (1-pow(beta1, t))
+
+        s_corrected['dW'+str(layer)] = s['dW'+str(layer)] / (1-pow(beta2, t))
+        s_corrected['db'+str(layer)] = s['db'+str(layer)] / (1-pow(beta2, t))
+
+        parameters['W'+str(layer)] = parameters['W'+str(layer)] - lr * v_corrected['dW'+str(layer)] / (np.sqrt(s_corrected['dW'+str(layer)]) + epsilon)
+        parameters['b'+str(layer)] = parameters['b'+str(layer)] - lr * v_corrected['db'+str(layer)] / (np.sqrt(s_corrected['db'+str(layer)]) + epsilon)
+
+    return parameters, v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, grads, v, s = update_parameters_with_adam_test_case()
+parameters, grads, v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>({&#39;W1&#39;: array([[ 1.62434536, -0.61175641, -0.52817175],
+         [-1.07296862,  0.86540763, -2.3015387 ]]),
+  &#39;b1&#39;: array([[ 1.74481176],
+         [-0.7612069 ]]),
+  &#39;W2&#39;: array([[ 0.3190391 , -0.24937038,  1.46210794],
+         [-2.06014071, -0.3224172 , -0.38405435],
+         [ 1.13376944, -1.09989127, -0.17242821]]),
+  &#39;b2&#39;: array([[-0.87785842],
+         [ 0.04221375],
+         [ 0.58281521]])},
+ {&#39;dW1&#39;: array([[-1.10061918,  1.14472371,  0.90159072],
+         [ 0.50249434,  0.90085595, -0.68372786]]),
+  &#39;db1&#39;: array([[-0.12289023],
+         [-0.93576943]]),
+  &#39;dW2&#39;: array([[-0.26788808,  0.53035547, -0.69166075],
+         [-0.39675353, -0.6871727 , -0.84520564],
+         [-0.67124613, -0.0126646 , -1.11731035]]),
+  &#39;db2&#39;: array([[0.2344157 ],
+         [1.65980218],
+         [0.74204416]])},
+ {&#39;dW1&#39;: array([[0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;dW2&#39;: array([[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db1&#39;: array([[0.],
+         [0.]]),
+  &#39;db2&#39;: array([[0.],
+         [0.],
+         [0.]])},
+ {&#39;dW1&#39;: array([[0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;dW2&#39;: array([[0., 0., 0.],
+         [0., 0., 0.],
+         [0., 0., 0.]]),
+  &#39;db1&#39;: array([[0.],
+         [0.]]),
+  &#39;db2&#39;: array([[0.],
+         [0.],
+         [0.]])})
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, v, s = func_update_parameters_with_adam(parameters, grads, v, s, t=2, lr=0.01, beta1=0.9, beta2=0.999, epsilon=1e-8)
+parameters, v, s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>({&#39;W1&#39;: array([[ 1.63178673, -0.61919778, -0.53561312],
+         [-1.08040999,  0.85796626, -2.29409733]]),
+  &#39;b1&#39;: array([[ 1.75225313],
+         [-0.75376553]]),
+  &#39;W2&#39;: array([[ 0.32648046, -0.25681174,  1.46954931],
+         [-2.05269934, -0.31497584, -0.37661299],
+         [ 1.14121081, -1.09244991, -0.16498684]]),
+  &#39;b2&#39;: array([[-0.88529979],
+         [ 0.03477238],
+         [ 0.57537385]])},
+ {&#39;dW1&#39;: array([[-0.11006192,  0.11447237,  0.09015907],
+         [ 0.05024943,  0.09008559, -0.06837279]]),
+  &#39;dW2&#39;: array([[-0.02678881,  0.05303555, -0.06916608],
+         [-0.03967535, -0.06871727, -0.08452056],
+         [-0.06712461, -0.00126646, -0.11173103]]),
+  &#39;db1&#39;: array([[-0.01228902],
+         [-0.09357694]]),
+  &#39;db2&#39;: array([[0.02344157],
+         [0.16598022],
+         [0.07420442]])},
+ {&#39;dW1&#39;: array([[0.00121136, 0.00131039, 0.00081287],
+         [0.0002525 , 0.00081154, 0.00046748]]),
+  &#39;dW2&#39;: array([[7.17640232e-05, 2.81276921e-04, 4.78394595e-04],
+         [1.57413361e-04, 4.72206320e-04, 7.14372576e-04],
+         [4.50571368e-04, 1.60392066e-07, 1.24838242e-03]]),
+  &#39;db1&#39;: array([[1.51020075e-05],
+         [8.75664434e-04]]),
+  &#39;db2&#39;: array([[5.49507194e-05],
+         [2.75494327e-03],
+         [5.50629536e-04]])})
+</code></pre><h2 id="model-with-different-optimization-algorithms-使用不同优化算法的模型"><a href="#model-with-different-optimization-algorithms-使用不同优化算法的模型" class="headerlink" title="model with different optimization algorithms=使用不同优化算法的模型"></a>model with different optimization algorithms=使用不同优化算法的模型</h2><h3 id="load-moon-dataset"><a href="#load-moon-dataset" class="headerlink" title="load moon dataset"></a>load moon dataset</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_X, train_Y = func_load_dataset()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_53_0.png" alt="output_53_0"></p>
+<h3 id="overwrite-dnn-model"><a href="#overwrite-dnn-model" class="headerlink" title="overwrite dnn model"></a>overwrite dnn model</h3><p>用以下三种方式：</p>
+<ul>
+<li>Mini-batch <strong>Gradient Descent</strong>: it will call your function:<ul>
+<li><code>update_parameters_with_gd()</code></li>
+</ul>
+</li>
+<li>Mini-batch <strong>Momentum</strong>: it will call your functions:<ul>
+<li><code>initialize_velocity()</code> and <code>update_parameters_with_momentum()</code></li>
+</ul>
+</li>
+<li>Mini-batch <strong>Adam</strong>: it will call your functions:<ul>
+<li><code>initialize_adam()</code> and <code>update_parameters_with_adam()</code></li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_L_layer_dnn_model(X, Y, layer_dims, optimizer, lr=0.0007, mini_batch_size=64, beta=0.9,
+                           beta1=0.9, beta2=0.999, epsilon=1e-8, num_epochs=10000, print_cost=True):
+    """
+    多层神经网络模型
+    Arguments:
+    X -- input data, of shape (2, number of examples)
+    Y -- true "label" vector (1 for blue dot / 0 for red dot), of shape (1, number of examples)
+    layers_dims -- python list, containing the size of each layer
+    learning_rate -- the learning rate, scalar.
+    mini_batch_size -- the size of a mini batch
+    beta -- Momentum hyperparameter
+    beta1 -- Exponential decay hyperparameter for the past gradients estimates 
+    beta2 -- Exponential decay hyperparameter for the past squared gradients estimates 
+    epsilon -- hyperparameter preventing division by zero in Adam updates
+    num_epochs -- number of epochs
+    print_cost -- True to print the cost every 1000 epochs
+
+    Returns:
+    parameters -- python dictionary containing your updated parameters 
+    """
+    seed = 10
+#     np.random.seed(seed)
+    L = len(layer_dims)
+    t = 0
+    costs = []
+#     m = X.shape[1]
+
+    # 参数初始化
+    parameters = func_L_layers_initialize_parameters(layer_dims, seed=3)
+
+    # initialize the optimizer
+    if optimizer == 'gd':
+        pass
+    elif optimizer == 'momentum':
+        v = func_initialize_velocity(parameters)
+    elif optimizer == 'adam':
+        v, s = func_initialize_adam(parameters)
+    else:
+        raise ValueError('error optimizer setting!')
+
+    # loop
+    for epoch in range(num_epochs):
+
+        # 每个epoch随机生成minibatch
+        seed += 1
+        mini_batches = func_random_mini_batches(X, Y, mini_batch_size, seed)
+
+        for mini_batch in mini_batches:
+            (mini_batch_X, mini_batch_Y) = mini_batch
+
+            # 前向传播
+            AL, caches = func_L_model_forward(mini_batch_X, parameters)
+
+            # 计算损失
+            cost = func_compute_cost(AL, mini_batch_Y)
+
+            # 后向传播
+            grads = func_L_model_backward(AL, mini_batch_Y, caches)
+
+            # 更新参数
+            if optimizer == 'gd':
+                parameters = func_update_parameters(parameters, grads, lr)
+            elif optimizer == 'momentum':
+                parameters, v = func_update_parameters_with_momentum(parameters, grads, v, beta, lr)
+            elif optimizer == 'adam':
+                t += 1
+                parameters, v, s = func_update_parameters_with_adam(parameters, grads, v, s, t, lr, beta1, beta2, epsilon)
+
+        # 打印信息
+        if print_cost and epoch % 1000 == 0:
+            print('cost after epoch {}: {}'.format(epoch, np.squeeze(cost)))
+        if epoch % 100 == 0:
+            costs.append(cost)
+
+    return parameters, costs
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="mini-batch-gradient-descent"><a href="#mini-batch-gradient-descent" class="headerlink" title="mini-batch gradient descent"></a>mini-batch gradient descent</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 5, 2, 1]
+lr=0.0007
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, costs = func_L_layer_dnn_model(train_X, train_Y, layer_dims, optimizer='gd', lr=lr)
+func_plot_cost(costs, lr=lr)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>cost after epoch 0: 0.6907355122911127
+cost after epoch 1000: 0.6852725328458241
+cost after epoch 2000: 0.6470722240719001
+cost after epoch 3000: 0.6195245549970403
+cost after epoch 4000: 0.5765844355950943
+cost after epoch 5000: 0.6072426395968578
+cost after epoch 6000: 0.5294033317684573
+cost after epoch 7000: 0.4607682398593011
+cost after epoch 8000: 0.465586082399045
+cost after epoch 9000: 0.46451797221676827
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_58_1.png" alt="output_58_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
+
+# Plot decision boundary
+plt.title("Model with Gradient Descent optimization")
+axes = plt.gca()
+axes.set_xlim([-1.5,2.5])
+axes.set_ylim([-1,1.5])
+func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>acc: 0.7966666666666666
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_59_1.png" alt="output_59_1"></p>
+<h3 id="mini-batch-gradient-descent-with-momentum"><a href="#mini-batch-gradient-descent-with-momentum" class="headerlink" title="mini-batch gradient descent with momentum"></a>mini-batch gradient descent with momentum</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 5, 2, 1]
+lr=0.0007
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, costs = func_L_layer_dnn_model(train_X, train_Y, layer_dims, optimizer='momentum', lr=lr)
+func_plot_cost(costs, lr=lr)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>cost after epoch 0: 0.6907412988351506
+cost after epoch 1000: 0.6853405261267576
+cost after epoch 2000: 0.6471448370095255
+cost after epoch 3000: 0.6195943032076023
+cost after epoch 4000: 0.576665034407302
+cost after epoch 5000: 0.607323821900647
+cost after epoch 6000: 0.5294761758786997
+cost after epoch 7000: 0.46093619004872377
+cost after epoch 8000: 0.4657800937012721
+cost after epoch 9000: 0.4647395967922749
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_62_1.png" alt="output_62_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
+
+# Plot decision boundary
+plt.title("Model with momentum")
+axes = plt.gca()
+axes.set_xlim([-1.5,2.5])
+axes.set_ylim([-1,1.5])
+func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>acc: 0.7966666666666666
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_63_1.png" alt="output_63_1"></p>
+<h3 id="mini-batch-with-adam"><a href="#mini-batch-with-adam" class="headerlink" title="mini-batch with adam"></a>mini-batch with adam</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 5, 2, 1]
+lr=0.0007
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, costs = func_L_layer_dnn_model(train_X, train_Y, layer_dims, optimizer='adam', lr=lr)
+func_plot_cost(costs, lr=lr)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>cost after epoch 0: 0.6905522282919487
+cost after epoch 1000: 0.1855671862856554
+cost after epoch 2000: 0.15085206145242497
+cost after epoch 3000: 0.0744535775981412
+cost after epoch 4000: 0.1259357502178564
+cost after epoch 5000: 0.10423511812705896
+cost after epoch 6000: 0.10055245705694958
+cost after epoch 7000: 0.031601421955873635
+cost after epoch 8000: 0.11170898323416338
+cost after epoch 9000: 0.19764808192436198
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_66_1.png" alt="output_66_1"></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
+
+# Plot decision boundary
+plt.title("Model with adam")
+axes = plt.gca()
+axes.set_xlim([-1.5,2.5])
+axes.set_ylim([-1,1.5])
+func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>acc: 0.94
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_67_1.png" alt="output_67_1"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>momentum是有效的，但是对较小的lr和小数据集，影响甚微</li>
+<li>adam收敛更快，通常表现很好（不怎么调参（除了lr）的情况下）</li>
+</ol>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</font></caption></font>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/">https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">神经网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2021-11-08T09-19-18',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业5">
+                        
+                        <span class="card-title">深度学习之吴恩达课程作业5</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            参数求解优化方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业4">
+                        
+                        <span class="card-title">深度学习之吴恩达课程作业4</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            加强深度网络性能的一些技巧
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>

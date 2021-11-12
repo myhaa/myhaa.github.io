@@ -711,6 +711,9 @@ if __name__ == '__main__':
 <h2 id="15、pandas使用apply返回多列"><a href="#15、pandas使用apply返回多列" class="headerlink" title="15、pandas使用apply返回多列"></a>15、pandas使用apply返回多列</h2><ul>
 <li><a href="https://stackoverflow.com/questions/23586510/return-multiple-columns-from-pandas-apply" target="_blank" rel="noopener">参考</a></li>
 </ul>
+<h2 id="16、Python-3-os-walk-file-paths-UnicodeEncodeError-‘utf-8’-codec-can’t-encode-surrogates-not-allowed"><a href="#16、Python-3-os-walk-file-paths-UnicodeEncodeError-‘utf-8’-codec-can’t-encode-surrogates-not-allowed" class="headerlink" title="16、Python 3: os.walk() file paths UnicodeEncodeError: ‘utf-8’ codec can’t encode: surrogates not allowed"></a>16、<a href="https://stackoverflow.com/questions/27366479/python-3-os-walk-file-paths-unicodeencodeerror-utf-8-codec-cant-encode-s" target="_blank" rel="noopener">Python 3: os.walk() file paths UnicodeEncodeError: ‘utf-8’ codec can’t encode: surrogates not allowed</a></h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">for p,d,f in os.walk(b'.'):
+    print(p.decode('utf-8', 'replace'))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1009,16 +1012,16 @@ if __name__ == '__main__':
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                        <span class="chip bg-color">CTR预估</span>
+                    </a>
+                    
                     <a href="/tags/%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/">
                         <span class="chip bg-color">算法介绍</span>
                     </a>
                     
                     <a href="/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">
                         <span class="chip bg-color">协同过滤</span>
-                    </a>
-                    
-                    <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
-                        <span class="chip bg-color">CTR预估</span>
                     </a>
                     
                     <a href="/tags/LR/">
