@@ -427,16 +427,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
-                                <span class="chip bg-color">CTR预估</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/">
                                 <span class="chip bg-color">算法介绍</span>
                             </a>
                         
                             <a href="/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">
                                 <span class="chip bg-color">协同过滤</span>
+                            </a>
+                        
+                            <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                                <span class="chip bg-color">CTR预估</span>
                             </a>
                         
                             <a href="/tags/LR/">
@@ -735,26 +735,20 @@ n_i=n_i+g_i^2</script><p>（4）<script type="math/tex">\eta_i</script></p>
 <script type="math/tex; mode=display">
 \eta_i=\frac{\alpha}{\beta+\sqrt{\sum_{s=1}^t(g_i^s)^2}}=\frac{\alpha}{\beta+\sqrt{n_i}}</script><p>其中<script type="math/tex">\alpha\beta</script>为用户定义的2个参数。</p>
 <p>（5）<script type="math/tex">\sigma_i</script></p>
-<script type="math/tex; mode=display">\sigma_i$$是一个中间计算值，没有实际含义，其定义为：</script><p>\sigma_i=\frac{1}{\eta_{t,i}}-\frac{1}{\eta_{t-1,i}}=\frac{1}{\alpha}(\sqrt{n_i+g_i^2}-\sqrt{n_i})</p>
+<p>其中<script type="math/tex">\sigma_i</script>是一个中间计算值，没有实际含义，其定义为：</p>
 <script type="math/tex; mode=display">
-
-（6）$$z_i</script><script type="math/tex; mode=display">z_i$$也是一个辅助计算的中间值，它的定义为：</script><p>z_{t,i}=g^{(1:t)}-\sum_{s=1}^t{\sigma_{s,i}\omega_{s,i}}</p>
+\sigma_i=\frac{1}{\eta_{t,i}}-\frac{1}{\eta_{t-1,i}}=\frac{1}{\alpha}(\sqrt{n_i+g_i^2}-\sqrt{n_i})</script><p>（6）<script type="math/tex">z_i</script></p>
+<p>其中<script type="math/tex">z_i</script>也是一个辅助计算的中间值，它的定义为：</p>
 <script type="math/tex; mode=display">
-于是$$z_i$$的更新为：</script><p>z_t-z_{t-1}=g_t-\sigma_{t}\omega_{t}</p>
+z_{t,i}=g^{(1:t)}-\sum_{s=1}^t{\sigma_{s,i}\omega_{s,i}}</script><p>于是<script type="math/tex">z_i</script>的更新为：</p>
 <script type="math/tex; mode=display">
-即：</script><p>z_i=z_i+g_t-\sigma_i\omega_i</p>
+z_t-z_{t-1}=g_t-\sigma_{t}\omega_{t}</script><p>即：</p>
 <script type="math/tex; mode=display">
-
-
-#### 3.4.2 FTRL算法
-
-（1）设定以下4个输入参数，这些参数根据经验而定，可以参考以下数据：</script><p>\alpha=0.1,\beta=1,\lambda_1=1,\lambda_2=1</p>
+z_i=z_i+g_t-\sigma_i\omega_i</script><h4 id="3-4-2-FTRL算法"><a href="#3-4-2-FTRL算法" class="headerlink" title="3.4.2 FTRL算法"></a>3.4.2 FTRL算法</h4><p>（1）设定以下4个输入参数，这些参数根据经验而定，可以参考以下数据：</p>
 <script type="math/tex; mode=display">
-
-（2）初始化以下数值：</script><p>z_i=0,n_i=0</p>
+\alpha=0.1,\beta=1,\lambda_1=1,\lambda_2=1</script><p>（2）初始化以下数值：</p>
 <script type="math/tex; mode=display">
-
-（3）对于**每一个样本**的所带的**每一个维度**,更新$$\omega</script><p><img src="https://lujinhong-markdown.oss-cn-beijing.aliyuncs.com/md/%E6%88%AA%E5%B1%8F2020-09-04%20%E4%B8%8A%E5%8D%8810.20.36.png" alt></p>
+z_i=0,n_i=0</script><p>（3）对于<strong>每一个样本</strong>的所带的<strong>每一个维度</strong>,更新<script type="math/tex">\omega</script><br><img src="https://lujinhong-markdown.oss-cn-beijing.aliyuncs.com/md/%E6%88%AA%E5%B1%8F2020-09-04%20%E4%B8%8A%E5%8D%8810.20.36.png" alt></p>
 <p>（4）使用上面更新后的<script type="math/tex">\omega</script>，预测<strong>这个样本</strong>的值，即代入sigmoid函数计算<script type="math/tex">p_t</script></p>
 <script type="math/tex; mode=display">
 p=\frac{1}{1+e^{-(\sum_{i=1}^n\omega_ix_i)}}</script><p>（5）对于<strong>每一个样本</strong>的<strong>每一个维度</strong>，更新<script type="math/tex">g_i,\sigma_i,z_i,n_i</script>，即上面所说的：</p>
@@ -1008,16 +1002,16 @@ R[i]=\frac{1}{||X||}</script><h3 id="2-6-4-特征归一化"><a href="#2-6-4-特�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
-                                    <span class="chip bg-color">CTR预估</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/">
                                     <span class="chip bg-color">算法介绍</span>
                                 </a>
                             
                                 <a href="/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">
                                     <span class="chip bg-color">协同过滤</span>
+                                </a>
+                            
+                                <a href="/tags/CTR%E9%A2%84%E4%BC%B0/">
+                                    <span class="chip bg-color">CTR预估</span>
                                 </a>
                             
                                 <a href="/tags/LR/">
