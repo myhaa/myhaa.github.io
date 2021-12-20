@@ -844,3 +844,54 @@ SET mapreduce.job.priority=VERY_HIGH;
 ```
 
 * [参考链接：yarn设置优先级](https://blog.csdn.net/yisun123456/article/details/82857150)
+
+## 14、求连续登录天数
+
+* [参考](https://blog.csdn.net/theodorewy/article/details/101444607)
+
+```hive
+SELECT
+udid,
+row2,
+count(1) as num,
+count(distinct ds) as dis_num
+FROM
+(
+    SELECT
+    udid,
+    ds,
+    substr(ds, 7, 2) as day_num,
+    dense_rank() OVER(PARTITION BY udid ORDER BY ds) as row1,
+    int(substr(ds, 7, 2))-dense_rank() OVER(PARTITION BY udid ORDER BY ds) as row2
+    FROM table_name
+    WHERE ds BETWEEN '20211101' AND '20211105'
+) t1
+GROUP BY udid, row2
+```
+
+## 15、求连续支付次数
+
+* [参考](https://blog.csdn.net/zhenglit/article/details/88063821)
+
+```hive
+SELECT
+udid,
+item_name,
+row2_row1,
+min(buy_time),
+count(1) as cnt
+FROM
+(
+    select
+    udid,
+    item_name,
+    buy_time,
+    row_number() OVER(PARTITION BY udid, item_name ORDER BY buy_time) as row1,
+    row_number() OVER(PARTITION BY udid ORDER BY buy_time) as row2,
+    row_number() OVER(PARTITION BY udid ORDER BY buy_time) - row_number() OVER(PARTITION BY udid, item_name ORDER BY buy_time) as row2_row1
+    from table_name
+) t1
+GROUP BY udid, item_name, row2_row1
+ORDER BY udid, item_name, row2_row1
+```
+
