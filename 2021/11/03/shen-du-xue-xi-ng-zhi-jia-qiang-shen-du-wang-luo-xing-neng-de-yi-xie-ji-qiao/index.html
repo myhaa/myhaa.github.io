@@ -1172,8 +1172,8 @@ print(parameters)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="在模拟数据上训练"><a href="#在模拟数据上训练" class="headerlink" title="在模拟数据上训练"></a>在模拟数据上训练</h3><h4 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_X, train_Y, test_X, test_Y = load_dataset()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_39_0.png" alt="png"></p>
-<p>​    <img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_39_0.png" alt="output_39_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_39_0.png" alt="png"></p>
+<p>​    <img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_39_0.png" alt="output_39_0"></p>
 <h4 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 10, 5, 1]
 print(layer_dims)
 
@@ -1246,14 +1246,14 @@ on the train set:
 acc: 0.99
 on the test set:
 acc: 0.94
-</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_43_1.png" alt="output_43_1"></p>
+</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_43_1.png" alt="output_43_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">plt.title("Model with np.sqrt(layer_dims[layer-1]) initialization")
 axes = plt.gca()
 axes.set_xlim([-1.5,1.5])
 axes.set_ylim([-1.5,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_44_0.png" alt="output_44_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_44_0.png" alt="output_44_0"></p>
 <h4 id="zero-初始化"><a href="#zero-初始化" class="headerlink" title="zero 初始化"></a>zero 初始化</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, costs = func_L_layer_dnn_model(train_X, train_Y, layer_dims, lr, num_epochs, print_cost, initialization='zeros')
 print('on the train set:')
 pred_train = func_predict(train_X, train_Y, parameters)
@@ -1313,14 +1313,14 @@ on the train set:
 acc: 0.5
 on the test set:
 acc: 0.5
-</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_46_1.png" alt="output_46_1"></p>
+</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_46_1.png" alt="output_46_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">plt.title("Model with Zeros initialization")
 axes = plt.gca()
 axes.set_xlim([-1.5,1.5])
 axes.set_ylim([-1.5,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_47_0.png" alt="output_47_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_47_0.png" alt="output_47_0"></p>
 <h4 id="random-初始化"><a href="#random-初始化" class="headerlink" title="random 初始化"></a>random 初始化</h4><pre class="line-numbers language-lang-python"><code class="language-lang-python">parameters, costs = func_L_layer_dnn_model(train_X, train_Y, layer_dims, lr, num_epochs, print_cost, initialization='random')
 # print(parameters)
 print('on the train set:')
@@ -1392,14 +1392,14 @@ on the train set:
 acc: 0.5
 on the test set:
 acc: 0.5
-</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_49_1.png" alt="output_49_1"></p>
+</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_49_1.png" alt="output_49_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">plt.title("Model with random initialization")
 axes = plt.gca()
 axes.set_xlim([-1.5,1.5])
 axes.set_ylim([-1.5,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_50_0.png" alt="output_50_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_50_0.png" alt="output_50_0"></p>
 <font color="red" size="5">注意：</font>
 * 这里训练不起来是因为参数随机初始化时，参数太大，导致wx+b很大或很少，在sigmoid计算时，处于梯度为0的情况下，导致参数没法更新，即梯度消失情况
 
@@ -2893,7 +2893,7 @@ def gradient_check_n(parameters, gradients, X, Y, epsilon = 1e-7):
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="在模拟数据上训练-1"><a href="#在模拟数据上训练-1" class="headerlink" title="在模拟数据上训练"></a>在模拟数据上训练</h4><h5 id="导入数据-1"><a href="#导入数据-1" class="headerlink" title="导入数据"></a>导入数据</h5><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_X, train_Y, test_X, test_Y = load_dataset()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_129_0.png" alt="output_129_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_129_0.png" alt="output_129_0"></p>
 <h5 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h5><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 10, 5, 1]
 print(layer_dims)
 
@@ -2935,7 +2935,7 @@ on the train set:
 acc: 0.99
 on the test set:
 acc: 0.94
-</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_132_1.png" alt="output_132_1"></p>
+</code></pre><p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_132_1.png" alt="output_132_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">for key, value in parameters.items():
     print(key, value.shape)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -2951,7 +2951,7 @@ axes.set_xlim([-1.5,1.5])
 axes.set_ylim([-1.5,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/output_134_0.png" alt="output_134_0"></p>
+<p><img src="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/output_134_0.png" alt="output_134_0"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><font color="red" size="5">总结</font></h3><ol>
 <li>梯度检验很慢，因为每一个w的分量都要计算plus和minus，所以不用每一个epoch都梯度检验，只需要某些epoch进行检验梯度计算是否正确即可</li>
 <li>梯度检验不适用于dropout，先检验是否正确，再加dropout</li>
@@ -2987,7 +2987,7 @@ func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/">https://myhaa.github.io/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/</a>
+                    <a href="https://myhaa.github.io/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/">https://myhaa.github.io/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -3222,7 +3222,7 @@ func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/">
+                <a href="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/">
                     <div class="card-image">
                         
                         

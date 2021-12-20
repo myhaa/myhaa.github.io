@@ -753,7 +753,7 @@ print(X.shape, Y.shape)
 plt.scatter(X[0, :], X[1, :], c=Y.reshape(X[0, :].shape), s=40, cmap=plt.cm.Spectral)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>&lt;matplotlib.collections.PathCollection at 0x7f58a99ab670&gt;
-</code></pre><p><img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_11_1.png" alt="output_11_1"></p>
+</code></pre><p><img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/output_11_1.png" alt="output_11_1"></p>
 <h3 id="2-3-深入了解"><a href="#2-3-深入了解" class="headerlink" title="2.3-深入了解"></a>2.3-深入了解</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">shape_X = X.shape
 shape_Y = Y.shape
 m = shape_X[1]
@@ -778,7 +778,7 @@ clf.fit(X.T, Y.ravel())
 plt.title('sklearn logistic regression')
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre><code>Text(0.5, 1.0, &#39;sklearn logistic regression&#39;)
-</code></pre><p><img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_18_1.png" alt="output_18_1"></p>
+</code></pre><p><img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/output_18_1.png" alt="output_18_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred_lr = clf.predict(X.T)
 print('acc: ', float((np.dot(Y, pred_lr)) + np.dot(1-Y, 1-pred_lr)) / float(Y.size)*100)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -789,7 +789,7 @@ print('acc: ', float((np.dot(Y, pred_lr)) + np.dot(1-Y, 1-pred_lr)) / float(Y.si
 </ul>
 <h2 id="4-DNN结构实现"><a href="#4-DNN结构实现" class="headerlink" title="4-DNN结构实现"></a>4-DNN结构实现</h2><h3 id="4-1-理论介绍"><a href="#4-1-理论介绍" class="headerlink" title="4.1-理论介绍"></a>4.1-理论介绍</h3><ol>
 <li><p>模型结构</p>
-<p> <img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17ipqoyrg.png" alt="模型结构"></p>
+<p> <img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/q17ipqoyrg.png" alt="模型结构"></p>
 </li>
 <li><p>数学原理</p>
 <p> 输入$x^{(i)}$</p>
@@ -1083,7 +1083,7 @@ shape (1, 1)
 </ol>
 </li>
 <li>说明<ol>
-<li>反向传播通常是DNN中最难（最数学）的部分，详情见下图<br> <img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hcd4yra.png" alt="反向传播过程"></li>
+<li>反向传播通常是DNN中最难（最数学）的部分，详情见下图<br> <img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/q17hcd4yra.png" alt="反向传播过程"></li>
 <li>由于激活函数是<code>tanh</code>，所以$g^{[1]’}(z) = 1-a^2$</li>
 </ol>
 </li>
@@ -1186,7 +1186,7 @@ db1 [[-0.0116354 ]
 </ol>
 </li>
 <li>提示<ol>
-<li>具有良好的学习速率（收敛）图和较差的学习速率（发散）的图如下<br> <img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hh4otzu.gif" alt="良好"><br> <img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/q17hharbth.gif" alt="较差"></li>
+<li>具有良好的学习速率（收敛）图和较差的学习速率（发散）的图如下<br> <img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/q17hh4otzu.gif" alt="良好"><br> <img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/q17hharbth.gif" alt="较差"></li>
 </ol>
 </li>
 </ul>
@@ -1377,7 +1377,7 @@ cost after iter 9000: 0.215573
 plt.title('decision boundary for hidden layer size %i' % 4)
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_70_0.png" alt="output_70_0"></p>
+<p><img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/output_70_0.png" alt="output_70_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">preds = func_predict(parameters, X)
 print('acc: ', (np.dot(Y, preds.T)+np.dot(1-Y, (1-preds).T))/float(Y.size)*100)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1399,7 +1399,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
 #     print ("Accuracy for {} hidden units: {} %".format(n_h, acc))
     plt.title("Accuracy for {} hidden units: {} %".format(n_h, acc))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_74_0.png" alt="output_74_0"></p>
+<p><img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/output_74_0.png" alt="output_74_0"></p>
 <ul>
 <li>较大的模型能够更好的拟合训练集</li>
 <li>隐藏层units数量也不是越多越好</li>
@@ -1443,7 +1443,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">func_train_predict_extra_dataset()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/output_78_0.png" alt="output_78_0"></p>
+<p><img src="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/output_78_0.png" alt="output_78_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1472,7 +1472,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">https://myhaa.github.io/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/</a>
+                    <a href="https://myhaa.github.io/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/">https://myhaa.github.io/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1707,7 +1707,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/">
+                <a href="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/">
                     <div class="card-image">
                         
                         
@@ -1756,7 +1756,7 @@ for i, n_h in enumerate(hidden_layer_sizes):
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/">
+                <a href="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/">
                     <div class="card-image">
                         
                         

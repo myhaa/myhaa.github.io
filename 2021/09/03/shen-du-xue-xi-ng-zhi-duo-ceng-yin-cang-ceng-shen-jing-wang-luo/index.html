@@ -833,7 +833,7 @@ def func_sigmoid_backward(dA, cache):
 <ul>
 <li>如下图</li>
 </ul>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/final_outline.png" alt="final_outline.png"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/final_outline.png" alt="final_outline.png"></p>
 <ul>
 <li>注意<ol>
 <li>每一个前向传播对应一个后向传播，所以要将前向传播的值cache，以便后向传播计算梯度</li>
@@ -844,7 +844,7 @@ def func_sigmoid_backward(dA, cache):
 <li>实现2层神经网络的参数初始化</li>
 <li>实现$L$层神经网络的参数初始化</li>
 </ol>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/relu.png" alt="relu"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/relu.png" alt="relu"></p>
 <h3 id="4-1-2层神经网络"><a href="#4-1-2层神经网络" class="headerlink" title="4.1-2层神经网络"></a>4.1-2层神经网络</h3><ul>
 <li>模型结构是：<em>LINEAR -&gt; RELU -&gt; LINEAR -&gt; SIGMOID</em></li>
 <li>用<code>np.random.randn(shape)*0.01</code>来随机初始化参数</li>
@@ -1129,7 +1129,7 @@ A^{[0]} = X</script></li>
 </code></pre><h3 id="5-3-L-layer-forward"><a href="#5-3-L-layer-forward" class="headerlink" title="5.3-L layer forward"></a>5.3-L layer forward</h3><ul>
 <li>如图：</li>
 </ul>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/model_architecture_kiank.png" alt="model_architecture_ki.png"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/model_architecture_kiank.png" alt="model_architecture_ki.png"></p>
 <ul>
 <li>练习：<ol>
 <li>实现<code>func_L_model_forward()</code></li>
@@ -1273,7 +1273,7 @@ A^{[0]} = X</script></li>
 <li>反向传播模块是为了计算梯度，从而更新参数</li>
 <li>反向传播图</li>
 </ul>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/backprop.png"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/backprop.png"></p>
 <caption><center> **Figure 3** : Forward and Backward propagation for *LINEAR->RELU->LINEAR->SIGMOID* <br> *The purple blocks represent the forward propagation, and the red blocks represent the backward propagation.*  </center></caption>
 
 <ul>
@@ -1297,7 +1297,7 @@ db^{[1]} = \frac{\partial \mathcal{L}}{\partial b^{[1]}} = dz^{[1]} \times \frac
 </ol>
 </li>
 <li><p>如下图</p>
-<p>  <img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/linearback_kiank.png" style="width:250px;height:300px;"></p>
+<p>  <img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/linearback_kiank.png" style="width:250px;height:300px;"></p>
   <caption><center> **Figure 4** </center></caption>
 </li>
 <li><p>求解$(dW^{[l]}, db^{[l]} dA^{[l-1]})$如下：</p>
@@ -1432,10 +1432,10 @@ dZ^{[l]} = dA^{[l]} * g'(Z^{[l]})</script><ul>
 </code></pre><h3 id="7-3-L-layer-backward"><a href="#7-3-L-layer-backward" class="headerlink" title="7.3-L layer backward"></a>7.3-L layer backward</h3><ul>
 <li>结构图</li>
 </ul>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/mn_backward.png" style="width:450px;height:300px;"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/mn_backward.png" style="width:450px;height:300px;"></p>
 <caption><center>  **Figure 5** : Backward pass  </center></caption>
 
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/mn_backward1.jpg" style="width:450px;height:300px;"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/mn_backward1.jpg" style="width:450px;height:300px;"></p>
 <caption><center>  **Figure 5** : Backward pass 截图  </center></caption>
 
 <ul>
@@ -1625,7 +1625,7 @@ b^{[l]} = b^{[l]} - \alpha \text{ } db^{[l]}</script><ul>
     print('acc: {}'.format(np.sum(p==y)/m))
     return p
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-整合到model"><a href="#8-整合到model" class="headerlink" title="8-整合到model"></a>8-整合到model</h2><h3 id="8-1-two-layer-neural-network"><a href="#8-1-two-layer-neural-network" class="headerlink" title="8.1-two layer neural network"></a>8.1-two layer neural network</h3><p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/2layerNN_kiank.png" style="width:650px;height:400px;"></p>
+<h2 id="8-整合到model"><a href="#8-整合到model" class="headerlink" title="8-整合到model"></a>8-整合到model</h2><h3 id="8-1-two-layer-neural-network"><a href="#8-1-two-layer-neural-network" class="headerlink" title="8.1-two layer neural network"></a>8.1-two layer neural network</h3><p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/2layerNN_kiank.png" style="width:650px;height:400px;"></p>
 <caption><center> <u>Figure 2</u>: 2-layer neural network. <br> The model can be summarized as: ***INPUT -> LINEAR -> RELU -> LINEAR -> SIGMOID -> OUTPUT***. </center></caption>
 
 
@@ -1691,7 +1691,7 @@ b^{[l]} = b^{[l]} - \alpha \text{ } db^{[l]}</script><ul>
 
     return parameters, costs
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="8-2-L-layer-deep-neural-network"><a href="#8-2-L-layer-deep-neural-network" class="headerlink" title="8.2 L layer deep neural network"></a>8.2 L layer deep neural network</h3><p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/LlayerNN_kiank.png" style="width:650px;height:400px;"></p>
+<h3 id="8-2-L-layer-deep-neural-network"><a href="#8-2-L-layer-deep-neural-network" class="headerlink" title="8.2 L layer deep neural network"></a>8.2 L layer deep neural network</h3><p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/LlayerNN_kiank.png" style="width:650px;height:400px;"></p>
 <caption><center> <u>Figure 3</u>: L-layer neural network. <br> The model can be summarized as: ***[LINEAR -> RELU] $\times$ (L-1) -> LINEAR -> SIGMOID***</center></caption>
 
 <p><u>Detailed Architecture of figure 3</u>:</p>
@@ -1799,12 +1799,12 @@ plt.imshow(train_set_x_orig[index])
 print('y=' + str(train_set_y_orig[:, index]) + ' it is a ' + classes[np.squeeze(train_set_y_orig[:, index])].decode('utf-8'))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>y=[0] it is a non-cat
-</code></pre><p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_92_1.png" alt="output_92_1"></p>
+</code></pre><p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_92_1.png" alt="output_92_1"></p>
 <ul>
 <li>重塑数据集，将大小(n, length, height, 3)的重塑为(length*height*3, n)</li>
 <li>如下图</li>
 </ul>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/imvectorkiank.png" alt="imvector"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/imvectorkiank.png" alt="imvector"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0], -1).T
 test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[0], -1).T
 
@@ -1872,7 +1872,7 @@ plt.xlabel('iterations (per tens)')
 plt.title("Learning rate =" + str(lr))
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_102_0.png" alt="output_102_0"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_102_0.png" alt="output_102_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred_train = func_predict(train_set_x, train_set_y_orig, parameters)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>acc: 1.0
@@ -1925,7 +1925,7 @@ plt.xlabel('iterations (per tens)')
 plt.title("Learning rate =" + str(lr))
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_108_0.png" alt="output_108_0"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_108_0.png" alt="output_108_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred_train = func_predict(train_set_x, train_set_y_orig, parameters)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>acc: 1.0
@@ -1978,7 +1978,7 @@ plt.xlabel('iterations (per tens)')
 plt.title("Learning rate =" + str(lr))
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_113_0.png" alt="output_113_0"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_113_0.png" alt="output_113_0"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred_train = func_predict(train_set_x, train_set_y_orig, parameters)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>acc: 0.9856459330143541
@@ -1990,7 +1990,7 @@ plt.show()
 </ul>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">func_print_mislabeled_images(classes, test_set_x, test_set_y_orig, pred_test)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_117_0.png" alt="output_117_0"></p>
+<p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_117_0.png" alt="output_117_0"></p>
 <p><strong>一些模型在识别上犯错误的地方</strong></p>
 <ul>
 <li>Cat body in an unusual position</li>
@@ -2025,7 +2025,7 @@ array([[1.]])
 plt.imshow(image)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7f02f60edeb0&gt;
-</code></pre><p><img src="/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/output_123_1.png" alt="output_123_1"></p>
+</code></pre><p><img src="/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/output_123_1.png" alt="output_123_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">print('y_pred=', np.squeeze(my_pred_image), ", your algorithm predicts a \"" + classes[int(np.squeeze(my_pred_image)),].decode("utf-8") +  "\" picture.")
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>y_pred= 1.0 , your algorithm predicts a &quot;cat&quot; picture.
@@ -2057,7 +2057,7 @@ plt.imshow(image)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/">https://myhaa.github.io/2021/09/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-3/</a>
+                    <a href="https://myhaa.github.io/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/">https://myhaa.github.io/2021/09/03/shen-du-xue-xi-ng-zhi-duo-ceng-yin-cang-ceng-shen-jing-wang-luo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -2341,7 +2341,7 @@ plt.imshow(image)
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">
+                <a href="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/">
                     <div class="card-image">
                         
                         

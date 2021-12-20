@@ -498,7 +498,7 @@ HW参考
 <li><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">视频链接</a></li>
 <li><a href="https://github.com/suqi/deeplearning_andrewng/tree/master/Course2-DL-tuning/week6" target="_blank" rel="noopener">作业链接</a></li>
 </ol>
-<h2 id="优化方法简介"><a href="#优化方法简介" class="headerlink" title="优化方法简介"></a>优化方法简介</h2><p>Gradient descent goes “downhill” on a cost function $J$. Think of it as trying to do this:<br><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/cost.jpg" style="width:650px;height:300px;"></p>
+<h2 id="优化方法简介"><a href="#优化方法简介" class="headerlink" title="优化方法简介"></a>优化方法简介</h2><p>Gradient descent goes “downhill” on a cost function $J$. Think of it as trying to do this:<br><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/cost.jpg" style="width:650px;height:300px;"></p>
 <caption><center> <u> **Figure 1** </u>: **Minimizing the cost is like finding the lowest point in a hilly landscape**<br> At each step of the training, you update your parameters following a certain direction to try to get to the lowest possible point. </center></caption>
 
 <p><strong>Notations</strong>: As usual, $\frac{\partial J}{\partial a } = $ <code>da</code> for any variable <code>a</code>.</p>
@@ -1160,10 +1160,10 @@ parameters
 <li><p>步骤</p>
 <ol>
 <li><p><strong>Shuffle</strong>: Create a shuffled version of the training set (X, Y) as shown below. Each column of X and Y represents a training example. Note that the random shuffling is done synchronously between X and Y. Such that after the shuffling the $i^{th}$ column of X is the example corresponding to the $i^{th}$ label in Y. The shuffling step ensures that examples will be split randomly into different mini-batches. </p>
-<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_shuffle.png" style="width:550px;height:300px;"></p>
+<p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/kiank_shuffle.png" style="width:550px;height:300px;"></p>
 </li>
 <li><p><strong>Partition</strong>: Partition the shuffled (X, Y) into mini-batches of size <code>mini_batch_size</code> (here 64). Note that the number of training examples is not always divisible by <code>mini_batch_size</code>. The last mini batch might be smaller, but you don’t need to worry about this. When the final mini-batch is smaller than the full <code>mini_batch_size</code>, it will look like this: </p>
-<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_partition.png" style="width:550px;height:300px;"></p>
+<p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/kiank_partition.png" style="width:550px;height:300px;"></p>
 </li>
 </ol>
 </li>
@@ -1240,7 +1240,7 @@ for i in range(epochs):
         parameters = func_update_parameters(parameters, grads)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>In Stochastic Gradient Descent, you use only 1 training example before updating the gradients. When the training set is large, SGD can be faster. But the parameters will “oscillate”(振荡) toward the minimum rather than converge smoothly. Here is an illustration of this:</p>
-<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_sgd.png" style="width:750px;height:250px;"></p>
+<p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/kiank_sgd.png" style="width:750px;height:250px;"></p>
 <caption><center> <u> <font color="purple"> **Figure 1** </font></u><font color="purple">  : **SGD vs GD**<br> "+" denotes a minimum of the cost. SGD leads to many oscillations to reach convergence. But each step is a lot faster to compute for SGD than for GD, as it uses only one training example (vs. the whole batch for GD). </font></center></caption>
 
 <p><strong>Note</strong> also that implementing SGD requires 3 for-loops in total:</p>
@@ -1250,7 +1250,7 @@ for i in range(epochs):
 <li>Over the layers (to update all parameters, from $(W^{[1]},b^{[1]})$ to $(W^{[L]},b^{[L]})$)</li>
 </ol>
 <p>In practice, you’ll often get faster results if you do not use neither the whole training set, nor only one training example, to perform each update. Mini-batch gradient descent uses an intermediate number of examples for each step. With mini-batch gradient descent, you loop over the mini-batches instead of looping over individual training examples.</p>
-<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/kiank_minibatch.png" style="width:750px;height:250px;"></p>
+<p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/kiank_minibatch.png" style="width:750px;height:250px;"></p>
 <caption><center> <u> <font color="purple"> **Figure 2** </font></u>: <font color="purple">  **SGD vs Mini-Batch GD**<br> "+" denotes a minimum of the cost. Using mini-batches in your optimization algorithm often leads to faster optimization. </font></center></caption>
 
 <font color="blue">
@@ -1268,7 +1268,7 @@ Because mini-batch gradient descent makes a parameter update after seeing just a
 
 Momentum takes into account the past gradients to smooth out the update. We will store the 'direction' of the previous gradients in the variable $v$ (会考虑前面的梯度值). Formally, this will be the exponentially weighted average of the gradient on previous steps. You can also think of $v$ as the "velocity" of a ball rolling downhill, building up speed (and momentum) according to the direction of the gradient/slope of the hill. 
 
-<img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/opt_momentum.png" style="width:400px;height:250px;">
+<img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/opt_momentum.png" style="width:400px;height:250px;">
 <caption><center> <u><font color="purple">**Figure 3**</font></u><font color="purple">: The red arrows shows the direction taken by one step of mini-batch gradient descent with momentum. The blue points show the direction of the gradient (with respect to the current mini-batch) on each step. Rather than just following the gradient, we let the gradient influence $v$ and then take a step in the direction of $v$.<br> <font color="black"> </font></font></center>
 
 计算公式如下
@@ -1692,7 +1692,7 @@ parameters, v, s
          [5.50629536e-04]])})
 </code></pre><h2 id="model-with-different-optimization-algorithms-使用不同优化算法的模型"><a href="#model-with-different-optimization-algorithms-使用不同优化算法的模型" class="headerlink" title="model with different optimization algorithms=使用不同优化算法的模型"></a>model with different optimization algorithms=使用不同优化算法的模型</h2><h3 id="load-moon-dataset"><a href="#load-moon-dataset" class="headerlink" title="load moon dataset"></a>load moon dataset</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">train_X, train_Y = func_load_dataset()
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_53_0.png" alt="output_53_0"></p>
+<p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_53_0.png" alt="output_53_0"></p>
 <h3 id="overwrite-dnn-model"><a href="#overwrite-dnn-model" class="headerlink" title="overwrite dnn model"></a>overwrite dnn model</h3><p>用以下三种方式：</p>
 <ul>
 <li>Mini-batch <strong>Gradient Descent</strong>: it will call your function:<ul>
@@ -1800,7 +1800,7 @@ cost after epoch 6000: 0.5294033317684573
 cost after epoch 7000: 0.4607682398593011
 cost after epoch 8000: 0.465586082399045
 cost after epoch 9000: 0.46451797221676827
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_58_1.png" alt="output_58_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_58_1.png" alt="output_58_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
 
 # Plot decision boundary
@@ -1811,7 +1811,7 @@ axes.set_ylim([-1,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>acc: 0.7966666666666666
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_59_1.png" alt="output_59_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_59_1.png" alt="output_59_1"></p>
 <h3 id="mini-batch-gradient-descent-with-momentum"><a href="#mini-batch-gradient-descent-with-momentum" class="headerlink" title="mini-batch gradient descent with momentum"></a>mini-batch gradient descent with momentum</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 5, 2, 1]
 lr=0.0007
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1828,7 +1828,7 @@ cost after epoch 6000: 0.5294761758786997
 cost after epoch 7000: 0.46093619004872377
 cost after epoch 8000: 0.4657800937012721
 cost after epoch 9000: 0.4647395967922749
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_62_1.png" alt="output_62_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_62_1.png" alt="output_62_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
 
 # Plot decision boundary
@@ -1839,7 +1839,7 @@ axes.set_ylim([-1,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>acc: 0.7966666666666666
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_63_1.png" alt="output_63_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_63_1.png" alt="output_63_1"></p>
 <h3 id="mini-batch-with-adam"><a href="#mini-batch-with-adam" class="headerlink" title="mini-batch with adam"></a>mini-batch with adam</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">layer_dims = [train_X.shape[0], 5, 2, 1]
 lr=0.0007
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1856,7 +1856,7 @@ cost after epoch 6000: 0.10055245705694958
 cost after epoch 7000: 0.031601421955873635
 cost after epoch 8000: 0.11170898323416338
 cost after epoch 9000: 0.19764808192436198
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_66_1.png" alt="output_66_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_66_1.png" alt="output_66_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">pred = func_predict(train_X, train_Y, parameters)
 
 # Plot decision boundary
@@ -1867,7 +1867,7 @@ axes.set_ylim([-1,1.5])
 func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X, train_Y)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>acc: 0.94
-</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/output_67_1.png" alt="output_67_1"></p>
+</code></pre><p><img src="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/output_67_1.png" alt="output_67_1"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>momentum是有效的，但是对较小的lr和小数据集，影响甚微</li>
 <li>adam收敛更快，通常表现很好（不怎么调参（除了lr）的情况下）</li>
@@ -1900,7 +1900,7 @@ func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/">https://myhaa.github.io/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/</a>
+                    <a href="https://myhaa.github.io/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/">https://myhaa.github.io/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -2136,7 +2136,7 @@ func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/11/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-5/">
+                <a href="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/">
                     <div class="card-image">
                         
                         
@@ -2186,7 +2186,7 @@ func_plot_decision_boundary(lambda x: func_predict_dec(parameters, x.T), train_X
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/03/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-4/">
+                <a href="/2021/11/03/shen-du-xue-xi-ng-zhi-jia-qiang-shen-du-wang-luo-xing-neng-de-yi-xie-ji-qiao/">
                     <div class="card-image">
                         
                         

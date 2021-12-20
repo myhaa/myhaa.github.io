@@ -876,7 +876,7 @@ plt.imshow(train_set_x_orig[index])
 print('y=' + str(train_set_y_orig[:, index]) + ' it is a ' + classes[np.squeeze(train_set_y_orig[:, index])].decode('utf-8'))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>y=[0] it is a non-cat
-</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_49_1.png" alt="output_49_1"></p>
+</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/output_49_1.png" alt="output_49_1"></p>
 <ul>
 <li>重塑数据集，将大小(n, length, height, 3)的重塑为(length*height*3, n)</li>
 </ul>
@@ -903,7 +903,7 @@ test_set_x = test_set_x_flatten / 255.
 </code></pre><h3 id="3-学习算法的一般架构"><a href="#3-学习算法的一般架构" class="headerlink" title="3-学习算法的一般架构"></a>3-学习算法的一般架构</h3><ul>
 <li>逻辑回归实际是一个简单的神经网络，如下图</li>
 </ul>
-<p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/LogReg_kiank.png" alt="LogReg_kiank"></p>
+<p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/LogReg_kiank.png" alt="LogReg_kiank"></p>
 <ul>
 <li>算法的数学表达式</li>
 </ul>
@@ -1182,7 +1182,7 @@ plt.imshow(test_set_x[:, index].reshape(test_set_x_orig.shape[1], test_set_x_ori
 print('y=', test_set_y_orig[0, index], 'pred=', d['y_pred_test'][0, index])
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>y= 1 pred= 1
-</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_80_1.png" alt="output_80_1"></p>
+</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/output_80_1.png" alt="output_80_1"></p>
 <ul>
 <li>绘制损失函数和梯度</li>
 </ul>
@@ -1193,7 +1193,7 @@ plt.xlabel('epochs')
 plt.title('lr='+str(d['lr']))
 plt.show()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_82_0.png" alt="output_82_0"></p>
+<p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/output_82_0.png" alt="output_82_0"></p>
 <h4 id="6-学习率的选择"><a href="#6-学习率的选择" class="headerlink" title="6-学习率的选择"></a>6-学习率的选择</h4><ul>
 <li>lr决定我们更新参数的速度</li>
 <li>如果太大，可能会超出最佳值</li>
@@ -1230,7 +1230,7 @@ lr= 0.0001
 train acc: 68.42105263157895 %
 test acc: 36.0 %
 ----------------------------------------------------
-</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_84_1.png" alt="output_84_1"></p>
+</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/output_84_1.png" alt="output_84_1"></p>
 <ul>
 <li>分析<ol>
 <li>不同的学习率带来不同损失</li>
@@ -1261,7 +1261,7 @@ my_pred_image
 </code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">plt.imshow(image)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7f12aa284e20&gt;
-</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/output_90_1.png" alt="output_90_1"></p>
+</code></pre><p><img src="/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/output_90_1.png" alt="output_90_1"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">print('y_pred=', np.squeeze(my_pred_image), ", your algorithm predicts a \"" + classes[int(np.squeeze(my_pred_image)),].decode("utf-8") +  "\" picture.")
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>y_pred= 1 , your algorithm predicts a &quot;cat&quot; picture.
@@ -1293,7 +1293,7 @@ my_pred_image
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/">https://myhaa.github.io/2021/08/08/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-1/</a>
+                    <a href="https://myhaa.github.io/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/">https://myhaa.github.io/2021/08/08/shen-du-xue-xi-ng-zhi-numpy-ru-men-ji-shen-jing-wang-luo-shi-xian-lr/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1536,7 +1536,7 @@ my_pred_image
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/11/shen-du-xue-xi-zhi-wu-en-da-ke-cheng-zuo-ye-2/">
+                <a href="/2021/08/11/shen-du-xue-xi-ng-zhi-yi-ceng-yin-cang-ceng-shen-jing-wang-luo/">
                     <div class="card-image">
                         
                         
