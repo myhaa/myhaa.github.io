@@ -339,3 +339,7 @@ for p,d,f in os.walk(b'.'):
     print(p.decode('utf-8', 'replace'))
 ```
 
+## 16、python - 如何将映射函数应用于 tf.Tensor
+
+* 批量读取图片
+* [用tf.py_function](https://www.coder.work/article/7644016)

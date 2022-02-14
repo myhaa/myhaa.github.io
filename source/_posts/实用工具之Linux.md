@@ -482,6 +482,7 @@ pip3 install tensorflow-gpu
 6. [17.04 - Unable to install nvidia drivers - unable to locate package - Ask Ubuntu](https://askubuntu.com/questions/951046/unable-to-install-nvidia-drivers-unable-to-locate-package)
 7. [Ubuntu报错software-properties-common : Depends: python3-software-properties](https://blog.csdn.net/qq_34168515/article/details/107410732)
 8. [ubuntu-drivers: command not found](https://askubuntu.com/questions/361862/nvidia-drivers-synaptic)
+9. [nvidia-smi返回错误信息‘Failed to initialize NVML: Driver/library version mismatch’](https://spring-quan.github.io/2019/03/29/nvidia-smi%E8%BF%94%E5%9B%9E%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%E2%80%98Failed-to-initialize-NVML-Driver-library-version-mismatch%E2%80%99/)
 
 # 三、参考书籍
 
