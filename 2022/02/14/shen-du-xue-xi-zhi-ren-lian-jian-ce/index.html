@@ -1,0 +1,2178 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="深度学习之人脸检测, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="人脸检测
+github topics
+face_recognition: 本项目是世界上最简洁的人脸识别库，你可以使用Python和命令行工具提取、识别、操作人脸。本项目的人脸识别是基于业内领先的C++开源库 dlib中的深度学习模型，用L">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>深度学习之人脸检测 | Myhaa&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="Myhaa's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Myhaa's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Myhaa's Blog</div>
+        <div class="logo-desc">
+            
+            要么孤独，要么庸俗
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/myhaa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/myhaa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        深度学习之人脸检测
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/">
+                                <span class="chip bg-color">人脸检测</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-02-14
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="人脸检测"><a href="#人脸检测" class="headerlink" title="人脸检测"></a>人脸检测</h1><ul>
+<li><a href="https://github.com/topics/face-detection?o=desc&amp;s=stars" target="_blank" rel="noopener">github topics</a></li>
+<li><a href="https://github.com/ageitgey/face_recognition" target="_blank" rel="noopener">face_recognition</a>: 本项目是世界上最简洁的人脸识别库，你可以使用Python和命令行工具提取、识别、操作人脸。本项目的人脸识别是基于业内领先的C++开源库 dlib中的深度学习模型，用Labeled Faces in the Wild人脸数据集进行测试，有高达99.38%的准确率。但对小孩和亚洲人脸的识别准确率尚待提升。</li>
+<li><a href="https://github.com/serengil/deepface" target="_blank" rel="noopener">deepface</a>: <font color="red">一张图片一张脸</font> Deepface is a lightweight face recognition and facial attribute analysis (age, gender, emotion and race) framework for python. It is a hybrid face recognition framework wrapping state-of-the-art models: VGG-Face, Google FaceNet, OpenFace, Facebook DeepFace, DeepID, ArcFace and Dlib.</li>
+<li><a href="https://github.com/ultralytics/yolov5" target="_blank" rel="noopener">yolov5</a>: YOLOv5 🚀 is a family of object detection architectures and models pretrained on the COCO dataset, and represents Ultralytics open-source research into future vision AI methods, incorporating lessons learned and best practices evolved over thousands of hours of research and development.</li>
+</ul>
+<h1 id="人脸检测和属性分析By百度云"><a href="#人脸检测和属性分析By百度云" class="headerlink" title="人脸检测和属性分析By百度云"></a>人脸检测和属性分析By百度云</h1><ul>
+<li><a href="https://cloud.baidu.com/product/face/detect" target="_blank" rel="noopener">百度云入口</a></li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import requests
+import base64
+from PIL import Image
+import matplotlib.pyplot as plt
+
+image_path = './datasets/image/face_detection.jpg'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="获取access-token函数"><a href="#获取access-token函数" class="headerlink" title="获取access_token函数"></a>获取access_token函数</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_face_get_baidu_access_token():
+    """
+    获取baidu的access_token
+    :return access_token
+    """
+    # encoding:utf-8
+    api_key = 'you_api_key'
+    secret_key = 'you_secret_key'
+
+    # client_id 为官网获取的AK， client_secret 为官网获取的SK
+    # host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=【官网获取的AK】&client_secret=【官网获取的SK】'
+    host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s&client_secret=%s' % (api_key, secret_key)
+    response = requests.get(host)
+    access_token = ''
+    if response:
+        res = response.json()
+        print(res)
+        access_token = res.get('access_token', '')
+    return access_token
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">access_token = func_face_get_baidu_access_token()
+print(access_token)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>{&#39;refresh_token&#39;: &#39;25.6fc065b464989fce6cbd41d4e6ae1b0a.315360000.1959759303.282335-25143866&#39;, &#39;expires_in&#39;: 2592000, &#39;session_key&#39;: &#39;9mzdA5Pj7ZKeP5jo0GEKduVWm7i9fwTHWSpG06S/723YxM+caN9pBehP4cuPHZ3duhWbbqJ27F7p1oAVdqi/11rl5aG07g==&#39;, &#39;access_token&#39;: &#39;24.896a37769e0b9eb3ee4548f4c8259ec7.2592000.1646991303.282335-25143866&#39;, &#39;scope&#39;: &#39;public vis-classify_dishes vis-classify_car brain_all_scope vis-classify_animal vis-classify_plant brain_object_detect brain_realtime_logo brain_dish_detect brain_car_detect brain_animal_classify brain_plant_classify brain_ingredient brain_advanced_general_classify brain_custom_dish vis-faceverify_FACE_V3 brain_poi_recognize brain_vehicle_detect brain_redwine brain_currency brain_vehicle_damage brain_multi_ object_detect wise_adapt lebo_resource_base lightservice_public hetu_basic lightcms_map_poi kaidian_kaidian ApsMisTest_Test权限 vis-classify_flower lpq_开放 cop_helloScope ApsMis_fangdi_permission smartapp_snsapi_base smartapp_mapp_dev_manage iop_autocar oauth_tp_app smartapp_smart_game_openapi oauth_sessionkey smartapp_swanid_verify smartapp_opensource_openapi smartapp_opensource_recapi fake_face_detect_开放Scope vis-ocr_虚拟人物助理 idl-video_虚拟人物助理 smartapp_component smartapp_search_plugin avatar_video_test b2b_tp_openapi b2b_tp_openapi_online&#39;, &#39;session_secret&#39;: &#39;35e5528d67d5a4f50022fa47ad1c590e&#39;}
+24.896a37769e0b9eb3ee4548f4c8259ec7.2592000.1646991303.282335-25143866
+</code></pre><h2 id="获取识别结果函数"><a href="#获取识别结果函数" class="headerlink" title="获取识别结果函数"></a>获取识别结果函数</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">def func_face_get_face_detection_result(image_path, access_token):
+    """
+    人脸检测
+    :param image_path: 图片地址
+    :param access_token: 鉴权
+    :return res: 检测结果
+    """
+    request_url = "https://aip.baidubce.com/rest/2.0/face/v3/detect"
+
+    # 二进制方式打开图片文件
+    f = open(image_path, 'rb')
+    img = base64.b64encode(f.read())
+
+    params = {"image":img, "image_type": "BASE64", "max_face_num": 5, "face_field": "age,gender"}
+    # params = "{\"image\":\"027d8308a2ec665acb1bdf63e513bcb9\",\"image_type\":\"FACE_TOKEN\",\"face_field\":\"faceshape,facetype\"}"
+
+    request_url = request_url + "?access_token=" + access_token
+    headers = {'content-type': 'application/json'}
+    response = requests.post(request_url, data=params, headers=headers)
+    res = {}
+    if response:
+        res = response.json()
+    response.close()
+    return res
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">print(func_face_get_face_detection_result(image_path, access_token=access_token))
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>{&#39;error_code&#39;: 0, &#39;error_msg&#39;: &#39;SUCCESS&#39;, &#39;log_id&#39;: 2103952089, &#39;timestamp&#39;: 1644399303, &#39;cached&#39;: 0, &#39;result&#39;: {&#39;face_num&#39;: 3, &#39;face_list&#39;: [{&#39;face_token&#39;: &#39;8e645a3f8b54fbf6b139e021c55dc7f0&#39;, &#39;location&#39;: {&#39;left&#39;: 561.41, &#39;top&#39;: 221.47, &#39;width&#39;: 65, &#39;height&#39;: 68, &#39;rotation&#39;: 1}, &#39;face_probability&#39;: 1, &#39;angle&#39;: {&#39;yaw&#39;: 77, &#39;pitch&#39;: 15, &#39;roll&#39;: -11.89}, &#39;age&#39;: 24, &#39;gender&#39;: {&#39;type&#39;: &#39;male&#39;, &#39;probability&#39;: 1}}, {&#39;face_token&#39;: &#39;6db2d69550c91ed03b2b408ca15dd591&#39;, &#39;location&#39;: {&#39;left&#39;: 756.48, &#39;top&#39;: 251.15, &#39;width&#39;: 65, &#39;height&#39;: 68, &#39;rotation&#39;: 14}, &#39;face_probability&#39;: 1, &#39;angle&#39;: {&#39;yaw&#39;: 76.54, &#39;pitch&#39;: 18.85, &#39;roll&#39;: -1.31}, &#39;age&#39;: 22, &#39;gender&#39;: {&#39;type&#39;: &#39;female&#39;, &#39;probability&#39;: 0.98}}, {&#39;face_token&#39;: &#39;e66641016cc327aa7e7fb8543ee7116a&#39;, &#39;location&#39;: {&#39;left&#39;: 400.68, &#39;top&#39;: 249.63, &#39;width&#39;: 62, &#39;height&#39;: 58, &#39;rotation&#39;: -6}, &#39;face_probability&#39;: 1, &#39;angle&#39;: {&#39;yaw&#39;: -33.15, &#39;pitch&#39;: 12.93, &#39;roll&#39;: -0.94}, &#39;age&#39;: 22, &#39;gender&#39;: {&#39;type&#39;: &#39;female&#39;, &#39;probability&#39;: 1}}]}}
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">image = Image.open(image_path)
+plt.imshow(image)
+plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>​    <img src="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/output_9_0.png" alt="output_9_0"></p>
+<p>​    </p>
+<h2 id="批量识别结果函数"><a href="#批量识别结果函数" class="headerlink" title="批量识别结果函数"></a>批量识别结果函数</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python"># def func_face_batch_detection():
+#     """
+#     批量识别
+#     """
+#     image_path_list = sorted(os.listdir(image_file_path), key=lambda x: int(x.split('.')[0]))
+#     print(image_path_list)
+#     print('\n')
+
+#     with open(image_face_detection_result_path, mode='a+', encoding='utf-8') as f_w:
+#         for image_name in image_path_list:
+#             image_id = image_name.split('.')[0]
+#             image_path = os.path.join(image_file_path, image_name)
+#             print('image_id: {}, image_path: {}'.format(image_id, image_path))
+#             try:
+#                 image_res = func_face_get_face_detection_result(image_path, access_token)
+#             except Exception as e:
+#                 print(type(e).__name__)
+#                 image_res = {}
+#             print('image_res: {}'.format(image_res))
+#             f_w.write(image_id + '\t' + json.dumps(image_res) + '\n')
+#             print('\n')
+#             time.sleep(5)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># func_face_batch_detection()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="识别结果可视化"><a href="#识别结果可视化" class="headerlink" title="识别结果可视化"></a>识别结果可视化</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python"># with open(image_face_detection_result_path, mode='r', encoding='utf-8') as f:
+#     for line in f:
+#         line = line.strip()
+#         image_id, image_res = line.split('\t')
+#         image_res = json.loads(image_res)
+#         image_path = os.path.join(image_file_path, image_id+'.jpg')
+#         print('image_path: {} \n'.format(image_path))
+#         # if image_id == '5':
+#         #     break
+
+#         # # 图片可视化
+#         try:
+#             image = np.array(plt.imread(image_path))
+#             # print(image_id, image.shape)
+#             # plt.figure(figsize=(9, 9))
+#             # plt.imshow(image)
+
+#             result = image_res.get('result', {})
+#             face_list = result.get('face_list', [])
+#             location_list = []
+#             for i in face_list:
+#                 location_list.append(i.get('location', {}))
+#             # print(location_list)
+#             # print(len(location_list))
+
+#             # 画出检测到的文本框
+#             plt.figure(figsize=(9, 9))
+#             plt.imshow(image)
+#             for box in location_list:
+#                 top = box.get('top', 0)  # 表示定位位置的长方形左上顶点的垂直坐标
+#                 left = box.get('left', 0)  # 表示定位位置的长方形左上顶点的水平坐标
+#                 width = box.get('width', 0)  # 表示定位位置的长方形的宽度
+#                 height = box.get('height', 0)  # 表示定位位置的长方形的高度
+#                 rotation = box.get('rotation', 0)  # 人脸框相对于竖直方向的顺时针旋转角，[-180,180]
+#                 plt.plot([left, left+width], [top, top], 'r', linewidth=1.5)
+#                 plt.plot([left+width, left+width], [top, top+height], 'r', linewidth=1.5)
+#                 plt.plot([left+width, left], [top+height, top+height], 'r', linewidth=1.5)
+#                 plt.plot([left, left], [top+height, top], 'r', linewidth=1.5)
+#             plt.savefig(os.path.join(image_face_detection_dir_result_path, image_id+'.jpg'))
+#             plt.show()
+#         except Exception as e:
+#             print(type(e).__name__)
+#             command = 'cp %s %s' % (os.path.join(image_file_path, image_id+'.jpg'), os.path.join(image_face_detection_dir_result_path, image_id+'.jpg'))
+#             if os.system(command) != 0:
+#                 print('cp error!')
+#         # break
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="人脸检测By-face-recognition"><a href="#人脸检测By-face-recognition" class="headerlink" title="人脸检测By face_recognition"></a>人脸检测By <a href="https://github.com/ageitgey/face_recognition" target="_blank" rel="noopener">face_recognition</a></h1><h2 id="从图片中识别人脸位置"><a href="#从图片中识别人脸位置" class="headerlink" title="从图片中识别人脸位置"></a>从图片中识别人脸位置</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">from PIL import Image
+import face_recognition
+
+%matplotlib inline
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">image_path = './datasets/image/biden.jpg'
+image = face_recognition.load_image_file(image_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+# face_locations = face_recognition.face_locations(image)
+face_locations = face_recognition.face_locations(image, number_of_times_to_upsample=0, model='cnn')
+
+print('found {} face(s) in this photograph.'.format(len(face_locations)))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>found 1 face(s) in this photograph.
+CPU times: user 1.06 s, sys: 786 ms, total: 1.85 s
+Wall time: 8.09 s
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">for face_location in face_locations:
+    top, right, bottom, left = face_location
+    print('a face is located at pixel location Top:{}, Left:{}, Bottom:{}, Right:{}'.format(top, left, bottom, right))
+
+    face_image = image[top:bottom, left:right]
+    pil_image = Image.fromarray(face_image)
+    pil_image.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>a face is located at pixel location Top:235, Left:428, Bottom:518, Right:712
+</code></pre><p><img src="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/output_20_1.png" alt="output_20_1"></p>
+<h2 id="从视频中识别出人脸位置和其名字"><a href="#从视频中识别出人脸位置和其名字" class="headerlink" title="从视频中识别出人脸位置和其名字"></a>从视频中识别出人脸位置和其名字</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import cv2
+import face_recognition
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开视频
+# input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video_path = './datasets/video/song.mp4'
+input_video_path = './datasets/video/laowang.mp4'
+output_video_path = './datasets/video/%s_output.avi' % input_video_path.rsplit('/', 1)[1].split('.')[0]
+output_video_path
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&#39;./datasets/video/laowang_output.avi&#39;
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">input_video = cv2.VideoCapture(input_video_path)
+frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>1456
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(1280, 720, 25.0)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 创建输出电影文件（确保分辨率/帧速率匹配输入视频！）
+# VideoWriter_fourcc为视频编解码器
+# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+fourcc = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')  # ,该参数是MPEG-4编码类型，文件名后缀为.avi
+# 29.97为帧播放速率，（640，360）为视频帧大小
+# output_video = cv2.VideoWriter(output_video_path, fourcc, 29.97, (640, 360))
+output_video = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (frame_width, frame_height))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 加载一些示例图片并学习如何识别它们
+lmm_image = face_recognition.load_image_file('./datasets/image/lin-manuel-miranda.png')
+lmm_face_encodings = face_recognition.face_encodings(lmm_image)[0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">al_image = face_recognition.load_image_file('./datasets/image/alex-lacamoire.png')
+al_face_encodings = face_recognition.face_encodings(al_image)[0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">known_faces = [lmm_face_encodings, al_face_encodings]
+known_names = ['Lin-Manuel Miranda', 'Alex Lacamoire']
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 初始化一些变量
+face_locations = []
+face_encodings = []
+face_names = []
+frame_number = 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+while True:
+    # Grab a single frame of video
+    ret, frame = input_video.read()
+    frame_number += 1
+
+    # quit when the input video file ends
+    if not ret:
+        break
+
+    # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+    rgb_frame = frame[:, :, ::-1]
+
+    # 找出当前视频帧中所有的人脸和人脸编码
+    face_locations = face_recognition.face_locations(rgb_frame)
+    face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+
+    face_names = []
+    for face_encoding in face_encodings:
+        # 看看这张脸和已知的脸是否匹配
+        match = face_recognition.compare_faces(known_faces, face_encoding, tolerance=0.50)
+
+        name = 'unknown'
+        if match[0]:
+            name = known_names[0]
+        elif match[1]:
+            name = known_names[1]
+        face_names.append(name)
+
+    # label the results
+    for (top, right, bottom, left), name in zip(face_locations, face_names):
+        # draw a box around the face
+        # (0,0,255)对应颜色(BGR)，2对应线粗细
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        font = cv2.FONT_HERSHEY_DUPLEX  # 正常大小无衬线字体
+        cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+
+    if frame_number % 100 == 0:
+        print('writing frame {} / {}'.format(frame_number, frame_count))
+    output_video.write(frame)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>writing frame 100 / 1456
+writing frame 200 / 1456
+writing frame 300 / 1456
+writing frame 400 / 1456
+writing frame 500 / 1456
+writing frame 600 / 1456
+writing frame 700 / 1456
+writing frame 800 / 1456
+writing frame 900 / 1456
+writing frame 1000 / 1456
+writing frame 1100 / 1456
+writing frame 1200 / 1456
+writing frame 1300 / 1456
+writing frame 1400 / 1456
+CPU times: user 13min 21s, sys: 2.47 s, total: 13min 23s
+Wall time: 13min 13s
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># all done
+input_video.release()  # 释放视频流
+cv2.destroyAllWindows()  # 关闭所有窗口
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="从批量frame中识别人脸位置"><a href="#从批量frame中识别人脸位置" class="headerlink" title="从批量frame中识别人脸位置"></a>从批量frame中识别人脸位置</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python"># import cv2
+# import face_recognition
+
+# input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video = cv2.VideoCapture(input_video_path)
+
+# frames = []
+# frame_number = 0
+# batch_size = 64
+
+# while input_video.isOpened():
+#     ret, frame = input_video.read()
+
+#     if not ret:
+#         break
+
+#     frame = frame[:, :, ::-1]
+
+#     frame_number += 1
+#     frames.append(frame)
+
+#     if len(frames) == batch_size:
+#         batch_of_face_locations = face_recognition.batch_face_locations(frames, number_of_times_to_upsample=1, batch_size=batch_size)
+
+#         for frame_number_in_batch, face_locations in enumerate(batch_of_face_locations):
+#             number_of_faces_in_frame = len(face_locations)
+
+#             if number_of_faces_in_frame > 0:
+#                 frame_idx = frame_number - batch_size + frame_number_in_batch
+#                 print('found {} face(s) in frame #{}.'.format(number_of_faces_in_frame, frame_idx))
+
+#                 for face_location in face_locations:
+#                     top, right, bottom, left = face_location
+#                     print('- a face is located at pixel location top:{}, left:{}, bottom:{}, right:{}'.format(top, left, bottom, right))
+
+#         frames = []
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="从图片中识别人脸位置并画出框"><a href="#从图片中识别人脸位置并画出框" class="headerlink" title="从图片中识别人脸位置并画出框"></a>从图片中识别人脸位置并画出框</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import face_recognition
+from PIL import Image, ImageDraw
+import numpy as np
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">obama_image = face_recognition.load_image_file('./datasets/image/obama.jpg')
+obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+# 这里有可能会出现报错，可能是你tensorflow的进程占用了GPU，导致这边调用不了，
+# 将所有kernel重置再运行该代码就好了
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">biden_image = face_recognition.load_image_file('./datasets/image/biden.jpg')
+biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">known_face_encodings = [
+    obama_face_encoding,
+    biden_face_encoding
+]
+
+known_face_names = [
+    "Barack Obama",
+    "Joe Biden"
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">unknown_image = face_recognition.load_image_file('./datasets/image/two_people.jpg')
+face_locations = face_recognition.face_locations(unknown_image, number_of_times_to_upsample=1, model='cnn')
+face_encodings = face_recognition.face_encodings(unknown_image, known_face_locations=face_locations, num_jitters=1, model='small')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">pil_image = Image.fromarray(unknown_image)
+draw = ImageDraw.Draw(pil_image)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+    matches = face_recognition.compare_faces(known_face_encodings=known_face_encodings, face_encoding_to_check=face_encoding, tolerance=0.6)
+
+    name = 'unknown'
+
+    face_distances = face_recognition.face_distance(face_encodings=known_face_encodings, face_to_compare=face_encoding)
+    best_match_index = np.argmin(face_distances)
+    if matches[best_match_index]:
+        name = known_face_names[best_match_index]
+
+    draw.rectangle(((left, top), (right, bottom)), outline=(0, 0, 255))
+
+    text_width, text_height = draw.textsize(name)
+    draw.rectangle(((left, bottom - text_height - 10), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
+    draw.text((left + 6, bottom - text_height - 5), name, fill=(255, 255, 255, 255))
+
+del draw
+
+pil_image.show()
+
+# pil_image.save(output_image_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/output_42_0.png" alt="output_42_0"></p>
+<h1 id="人脸性别年龄识别"><a href="#人脸性别年龄识别" class="headerlink" title="人脸性别年龄识别"></a>人脸性别年龄识别</h1><ul>
+<li><a href="https://github.com/yu4u/age-gender-estimation" target="_blank" rel="noopener">age-gender-estimation</a></li>
+<li><a href="https://github.com/mowshon/age-and-gender" target="_blank" rel="noopener">age-and-gender</a></li>
+<li><a href="https://arxiv.org/abs/2010.03791" target="_blank" rel="noopener">Age and Gender Prediction From Face Images Using Attentional Convolutional Network</a></li>
+</ul>
+<h2 id="识别示例-By-age-and-gender"><a href="#识别示例-By-age-and-gender" class="headerlink" title="识别示例 By  age-and-gender"></a>识别示例 By  <a href="https://github.com/mowshon/age-and-gender" target="_blank" rel="noopener">age-and-gender</a></h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">from age_and_gender import *
+from PIL import Image, ImageDraw, ImageFont
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">landmarks_model_path = './datasets/model/age_and_gender/shape_predictor_5_face_landmarks.dat'
+gender_model_path = './datasets/model/age_and_gender/dnn_gender_classifier_v1.dat'
+age_model_path = './datasets/model/age_and_gender/dnn_age_predictor_v1.dat'
+
+input_image_path = './datasets/image/face_detection.jpg'
+input_image_path = './datasets/image/two_people.jpg'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">age_gender_model = AgeAndGender()
+age_gender_model.load_shape_predictor(landmarks_model_path)
+age_gender_model.load_dnn_age_predictor(age_model_path)
+age_gender_model.load_dnn_gender_classifier(gender_model_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">image = Image.open(input_image_path).convert('RGB')
+rec_result = age_gender_model.predict(image)
+rec_result
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>[{&#39;gender&#39;: {&#39;value&#39;: &#39;male&#39;, &#39;confidence&#39;: 99},
+  &#39;age&#39;: {&#39;value&#39;: 55, &#39;confidence&#39;: 60},
+  &#39;face&#39;: [244, 62, 394, 211]},
+ {&#39;gender&#39;: {&#39;value&#39;: &#39;male&#39;, &#39;confidence&#39;: 99},
+  &#39;age&#39;: {&#39;value&#39;: 70, &#39;confidence&#39;: 72},
+  &#39;face&#39;: [792, 95, 941, 244]}]
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">draw = ImageDraw.Draw(image)
+for info in rec_result:
+    gender = info.get('gender', {}).get('value', 'unknown')
+    gender_confidence = info.get('gender', {}).get('confidence', 100)
+    age = info.get('age', {}).get('value', 999)
+    age_confidence = info.get('age', {}).get('confidence', 100)
+    face_location = info.get('face', [])
+
+    left, top, right, bottom = face_location[0], face_location[1], face_location[2], face_location[3]
+
+    draw.rectangle(((left, top), (right, bottom)), outline=(0, 0, 255))
+    draw.text((left - 10, bottom + 10), f"{gender} (~{gender_confidence}%)\n{age} (~{age_confidence}%).", fill=(255, 255, 255, 255), align='center')
+
+del draw
+image.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​<br><img src="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/output_49_0.png" alt="output_49_0"><br>​    </p>
+<h2 id="识别示例-By-face-recognition-和-age-and-gender"><a href="#识别示例-By-face-recognition-和-age-and-gender" class="headerlink" title="识别示例 By face_recognition 和 age-and-gender"></a>识别示例 By <a href="https://github.com/ageitgey/face_recognition" target="_blank" rel="noopener">face_recognition</a> 和 <a href="https://github.com/mowshon/age-and-gender" target="_blank" rel="noopener">age-and-gender</a></h2><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">from age_and_gender import *
+from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+import face_recognition
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">landmarks_model_path = './datasets/model/age_and_gender/shape_predictor_5_face_landmarks.dat'
+gender_model_path = './datasets/model/age_and_gender/dnn_gender_classifier_v1.dat'
+age_model_path = './datasets/model/age_and_gender/dnn_age_predictor_v1.dat'
+
+input_image_path = './datasets/image/face_detection.jpg'
+input_image_path = './datasets/image/two_people.jpg'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">age_gender_model = AgeAndGender()
+age_gender_model.load_shape_predictor(landmarks_model_path)
+age_gender_model.load_dnn_age_predictor(age_model_path)
+age_gender_model.load_dnn_gender_classifier(gender_model_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">image = Image.open(input_image_path).convert('RGB')
+face_locations = face_recognition.face_locations(np.asarray(image), model='hog')
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">rec_result = age_gender_model.predict(image, face_locations)
+rec_result
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>[{&#39;gender&#39;: {&#39;value&#39;: &#39;male&#39;, &#39;confidence&#39;: 99},
+  &#39;age&#39;: {&#39;value&#39;: 71, &#39;confidence&#39;: 61},
+  &#39;face&#39;: [778, 57, 964, 242]},
+ {&#39;gender&#39;: {&#39;value&#39;: &#39;male&#39;, &#39;confidence&#39;: 99},
+  &#39;age&#39;: {&#39;value&#39;: 55, &#39;confidence&#39;: 51},
+  &#39;face&#39;: [253, 47, 408, 202]}]
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">draw = ImageDraw.Draw(image)
+for info in rec_result:
+    gender = info.get('gender', {}).get('value', 'unknown')
+    gender_confidence = info.get('gender', {}).get('confidence', 100)
+    age = info.get('age', {}).get('value', 999)
+    age_confidence = info.get('age', {}).get('confidence', 100)
+    face_location = info.get('face', [])
+
+    left, top, right, bottom = face_location[0], face_location[1], face_location[2], face_location[3]
+
+    draw.rectangle(((left, top), (right, bottom)), outline=(0, 0, 255))
+    draw.text((left - 10, bottom + 10), f"{gender} (~{gender_confidence}%)\n{age} (~{age_confidence}%).", fill=(255, 255, 255, 255), align='center')
+
+del draw
+image.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/output_57_0.png" alt="output_57_0"></p>
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">import cv2
+from age_and_gender import *
+from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+import face_recognition
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">landmarks_model_path = './datasets/model/age_and_gender/shape_predictor_5_face_landmarks.dat'
+gender_model_path = './datasets/model/age_and_gender/dnn_gender_classifier_v1.dat'
+age_model_path = './datasets/model/age_and_gender/dnn_age_predictor_v1.dat'
+
+# input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video_path = './datasets/video/song.mp4'
+input_video_path = './datasets/video/laowang.mp4'
+output_video_path = './datasets/video/%s_output.avi' % input_video_path.rsplit('/', 1)[1].split('.')[0]
+output_video_path
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&#39;./datasets/video/laowang_output.avi&#39;
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开性别年龄模型
+age_gender_model = AgeAndGender()
+age_gender_model.load_shape_predictor(landmarks_model_path)
+age_gender_model.load_dnn_age_predictor(age_model_path)
+age_gender_model.load_dnn_gender_classifier(gender_model_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开视频
+input_video = cv2.VideoCapture(input_video_path)
+frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>1456
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(1280, 720, 25.0)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 创建输出电影文件（确保分辨率/帧速率匹配输入视频！）
+# VideoWriter_fourcc为视频编解码器
+# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+fourcc = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')  # ,该参数是MPEG-4编码类型，文件名后缀为.avi
+# 29.97为帧播放速率，（640，360）为视频帧大小
+# output_video = cv2.VideoWriter(output_video_path, fourcc, 29.97, (640, 360))
+output_video = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (frame_width, frame_height))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 初始化一些变量
+frame_number = 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+while True:
+    # Grab a single frame of video
+    ret, frame = input_video.read()
+    frame_number += 1
+
+    # quit when the input video file ends
+    if not ret:
+        break
+
+    # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+    rgb_frame = frame[:, :, ::-1]
+
+    # 找出当前视频帧中所有的人脸和人脸编码
+    face_locations = face_recognition.face_locations(rgb_frame, model='cnn')
+    rec_result = age_gender_model.predict(rgb_frame, face_locations)
+
+    for info in rec_result:
+        gender = info.get('gender', {}).get('value', 'unknown')
+        gender_confidence = info.get('gender', {}).get('confidence', 100)
+        age = info.get('age', {}).get('value', 999)
+        age_confidence = info.get('age', {}).get('confidence', 100)
+        face_location = info.get('face', [])
+
+        left, top, right, bottom = face_location[0], face_location[1], face_location[2], face_location[3]
+        # draw a box around the face
+        # (0,0,255)对应颜色(BGR)，2对应线粗细
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        font = cv2.FONT_HERSHEY_DUPLEX  # 正常大小无衬线字体
+        name = f"{gender} (~{gender_confidence}%)\n {age} (~{age_confidence}%)."
+        cv2.putText(frame, name, (left - 6, bottom + 10), font, 0.5, (255, 255, 255), 1)
+
+    if frame_number % 100 == 0:
+        print('writing frame {} / {}'.format(frame_number, frame_count))
+    output_video.write(frame)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>writing frame 100 / 1456
+writing frame 200 / 1456
+writing frame 300 / 1456
+writing frame 400 / 1456
+writing frame 500 / 1456
+writing frame 600 / 1456
+writing frame 700 / 1456
+writing frame 800 / 1456
+writing frame 900 / 1456
+writing frame 1000 / 1456
+writing frame 1100 / 1456
+writing frame 1200 / 1456
+writing frame 1300 / 1456
+writing frame 1400 / 1456
+CPU times: user 7min 54s, sys: 25.1 s, total: 8min 19s
+Wall time: 8min 8s
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># all done
+input_video.release()  # 释放视频流
+cv2.destroyAllWindows()  # 关闭所有窗口
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="识别示例-By-deepface-推荐"><a href="#识别示例-By-deepface-推荐" class="headerlink" title="识别示例 By deepface 推荐"></a>识别示例 By <a href="https://github.com/serengil/deepface" target="_blank" rel="noopener">deepface</a> <font color="red">推荐</font></h2><h3 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h3><ul>
+<li>先face_recoginition</li>
+<li>再deepface</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import cv2
+from age_and_gender import *
+from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+import face_recognition
+from deepface import DeepFace
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video_path = './datasets/video/song.mp4'
+input_video_path = './datasets/video/laowang.mp4'
+output_video_path = './datasets/video/%s_output.avi' % input_video_path.rsplit('/', 1)[1].split('.')[0]
+output_video_path
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&#39;./datasets/video/laowang_output.avi&#39;
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开视频
+input_video = cv2.VideoCapture(input_video_path)
+frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>1456
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(1280, 720, 25.0)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 创建输出电影文件（确保分辨率/帧速率匹配输入视频！）
+# VideoWriter_fourcc为视频编解码器
+# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+fourcc = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')  # ,该参数是MPEG-4编码类型，文件名后缀为.avi
+# 29.97为帧播放速率，（640，360）为视频帧大小
+# output_video = cv2.VideoWriter(output_video_path, fourcc, 29.97, (640, 360))
+output_video = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (frame_width, frame_height))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 初始化一些变量
+frame_number = -1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+while True:
+    # Grab a single frame of video
+    ret, frame = input_video.read()
+    frame_number += 1
+
+    # quit when the input video file ends
+    if not ret:
+        break
+
+    # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+    rgb_frame = frame[:, :, ::-1]
+
+    # 找出当前视频帧中所有的人脸和人脸编码
+    face_locations = face_recognition.face_locations(rgb_frame, model='cnn')
+
+    for top, right, bottom, left in face_locations:
+        image = rgb_frame[left:right, top:bottom]
+        try:
+            obj = DeepFace.analyze(img_path = image,
+                                   actions = ['age', 'gender'],#, 'race', 'emotion'], 
+                                   enforce_detection=False,
+                                   detector_backend='dlib',
+                                   prog_bar=False)
+        except:
+            obj = {}
+        age = obj.get('age', 'unknown')
+        gender = obj.get('gender', 'unknown')
+        # draw a box around the face
+        # (0,0,255)对应颜色(BGR)，2对应线粗细
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        font = cv2.FONT_HERSHEY_DUPLEX  # 正常大小无衬线字体
+        name = f"gender: {gender}, age: {age}."
+        cv2.putText(frame, name, (left - 6, bottom + 10), font, 0.5, (255, 255, 255), 1)
+
+    if frame_number % 100 == 0:
+        print('writing frame {} / {}'.format(frame_number, frame_count))
+    output_video.write(frame)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>writing frame 0 / 1456
+writing frame 100 / 1456
+writing frame 200 / 1456
+writing frame 300 / 1456
+writing frame 400 / 1456
+writing frame 500 / 1456
+writing frame 600 / 1456
+writing frame 700 / 1456
+writing frame 800 / 1456
+writing frame 900 / 1456
+writing frame 1000 / 1456
+writing frame 1100 / 1456
+writing frame 1200 / 1456
+writing frame 1300 / 1456
+writing frame 1400 / 1456
+CPU times: user 10min 32s, sys: 2min 19s, total: 12min 51s
+Wall time: 11min 21s
+</code></pre><h3 id="视频-2"><a href="#视频-2" class="headerlink" title="视频"></a>视频</h3><ul>
+<li>不用先face_recoginition</li>
+<li>直接检测+age_gender一起上</li>
+</ul>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># import cv2
+# from age_and_gender import *
+# from PIL import Image, ImageDraw, ImageFont
+# import numpy as np
+# import face_recognition
+# from deepface import DeepFace
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># # input_video_path = './datasets/video/hamilton_clip.mp4'
+# # input_video_path = './datasets/video/song.mp4'
+# input_video_path = './datasets/video/laowang.mp4'
+# output_video_path = './datasets/video/%s_output.avi' % input_video_path.rsplit('/', 1)[1].split('.')[0]
+# output_video_path
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># # 打开视频
+# input_video = cv2.VideoCapture(input_video_path)
+# frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+# frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+# frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+# frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+# frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># # 创建输出电影文件（确保分辨率/帧速率匹配输入视频！）
+# # VideoWriter_fourcc为视频编解码器
+# # fourcc = cv2.VideoWriter_fourcc(*'XVID')
+# fourcc = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')  # ,该参数是MPEG-4编码类型，文件名后缀为.avi
+# # 29.97为帧播放速率，（640，360）为视频帧大小
+# # output_video = cv2.VideoWriter(output_video_path, fourcc, 29.97, (640, 360))
+# output_video = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (frame_width, frame_height))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># # 初始化一些变量
+# frame_number = -1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># %%time
+# while True:
+#     # Grab a single frame of video
+#     ret, frame = input_video.read()
+#     frame_number += 1
+
+#     # quit when the input video file ends
+#     if not ret:
+#         break
+
+#     # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+#     rgb_frame = frame[:, :, ::-1]
+
+#     # 找出当前视频帧中所有的人脸和人脸编码
+#     obj = DeepFace.analyze(img_path = rgb_frame, actions = ['age', 'gender'], enforce_detection=False, detector_backend='dlib', prog_bar=False)
+
+#     age = obj.get('age', 'unknown')
+#     gender = obj.get('gender', 'unknown')
+#     region = obj.get('region', {})
+#     if region:
+#         x = region.get('x', 0)
+#         y = region.get('y', 0)
+#         w = region.get('w', 0)
+#         h = region.get('h', 0)
+
+#         # draw a box around the face
+#         # (0,0,255)对应颜色(BGR)，2对应线粗细
+#         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 2)
+#         font = cv2.FONT_HERSHEY_DUPLEX  # 正常大小无衬线字体
+#         name = f"gender: {gender}, age: {age}."
+#         cv2.putText(frame, name, (x - 6, y + h + 10), font, 0.5, (255, 255, 255), 1)
+
+#     if frame_number % 100 == 0:
+#         print('writing frame {} / {}'.format(frame_number, frame_count))
+#     output_video.write(frame)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="人数识别"><a href="#人数识别" class="headerlink" title="人数识别"></a>人数识别</h1><pre class="line-numbers language-lang-python"><code class="language-lang-python">import cv2
+import face_recognition
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开视频
+input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video_path = './datasets/video/song.mp4'
+# input_video_path = './datasets/video/laowang.mp4'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">input_video = cv2.VideoCapture(input_video_path)
+frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code>2356
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(360, 640, 29.97)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">known_faces = []
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 初始化一些变量
+face_locations = []
+face_encodings = []
+frame_number = 0
+face_count = 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+while True:
+    # Grab a single frame of video
+    ret, frame = input_video.read()
+    frame_number += 1
+
+    # quit when the input video file ends
+    if not ret:
+        break
+
+    # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+    rgb_frame = frame[:, :, ::-1]
+
+    # 找出当前视频帧中所有的人脸和人脸编码
+    face_locations = face_recognition.face_locations(rgb_frame, model='cnn')
+    face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+
+    for face_encoding in face_encodings:
+        # 看看这张脸和已知的脸是否匹配
+        match = face_recognition.compare_faces(known_faces, face_encoding, tolerance=0.6)
+
+        if any(match) :
+            pass
+        else:
+            face_count += 1
+        known_faces.append(face_encoding)
+
+    if frame_number % 100 == 0:
+        # print(match)
+        print('processing frame {} / {}'.format(frame_number, frame_count))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>processing frame 100 / 2356
+processing frame 200 / 2356
+processing frame 300 / 2356
+processing frame 400 / 2356
+processing frame 500 / 2356
+processing frame 600 / 2356
+processing frame 700 / 2356
+processing frame 800 / 2356
+processing frame 900 / 2356
+processing frame 1000 / 2356
+processing frame 1100 / 2356
+processing frame 1200 / 2356
+processing frame 1300 / 2356
+processing frame 1400 / 2356
+processing frame 1500 / 2356
+processing frame 1600 / 2356
+processing frame 1700 / 2356
+processing frame 1800 / 2356
+processing frame 1900 / 2356
+processing frame 2000 / 2356
+processing frame 2100 / 2356
+processing frame 2200 / 2356
+processing frame 2300 / 2356
+CPU times: user 1min 57s, sys: 17 s, total: 2min 14s
+Wall time: 2min 11s
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">face_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>2
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">from IPython.display import Video
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">Video(input_video_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<video src="./datasets/video/hamilton_clip.mp4" controls>
+      Your browser does not support the <code>video</code> element.
+    </video>
+
+
+
+<h1 id="整合：人数-性别-年龄识别"><a href="#整合：人数-性别-年龄识别" class="headerlink" title="整合：人数+性别+年龄识别"></a>整合：人数+性别+年龄识别</h1><pre class="line-numbers language-lang-python"><code class="language-lang-python">import cv2
+from age_and_gender import *
+from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+import face_recognition
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">landmarks_model_path = './datasets/model/age_and_gender/shape_predictor_5_face_landmarks.dat'
+gender_model_path = './datasets/model/age_and_gender/dnn_gender_classifier_v1.dat'
+age_model_path = './datasets/model/age_and_gender/dnn_age_predictor_v1.dat'
+
+input_video_path = './datasets/video/hamilton_clip.mp4'
+# input_video_path = './datasets/video/song.mp4'
+# input_video_path = './datasets/video/laowang.mp4'
+output_video_path = './datasets/video/%s_output.avi' % input_video_path.rsplit('/', 1)[1].split('.')[0]
+output_video_path
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&#39;./datasets/video/hamilton_clip_output.avi&#39;
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开性别年龄模型
+age_gender_model = AgeAndGender()
+age_gender_model.load_shape_predictor(landmarks_model_path)
+age_gender_model.load_dnn_age_predictor(age_model_path)
+age_gender_model.load_dnn_gender_classifier(gender_model_path)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 打开视频
+input_video = cv2.VideoCapture(input_video_path)
+frame_count = int(input_video.get(cv2.CAP_PROP_FRAME_COUNT))  # 视频帧数
+frame_count
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>2356
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">frame_height = int(input_video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 视频高度
+frame_width = int(input_video.get(cv2.CAP_PROP_FRAME_WIDTH))  # 视频宽度
+frame_rate = input_video.get(cv2.CAP_PROP_FPS)  # 帧速率
+frame_height, frame_width, frame_rate
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>(360, 640, 29.97)
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 创建输出电影文件（确保分辨率/帧速率匹配输入视频！）
+# VideoWriter_fourcc为视频编解码器
+# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+fourcc = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')  # ,该参数是MPEG-4编码类型，文件名后缀为.avi
+# 29.97为帧播放速率，（640，360）为视频帧大小
+# output_video = cv2.VideoWriter(output_video_path, fourcc, 29.97, (640, 360))
+output_video = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (frame_width, frame_height))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python"># 初始化一些变量
+frame_number = 0
+known_faces = []
+face_count = 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">%%time
+while True:
+    # Grab a single frame of video
+    ret, frame = input_video.read()
+    frame_number += 1
+
+    # quit when the input video file ends
+    if not ret:
+        break
+
+    # 将图像从BGR颜色(OpenCV使用的)转换为RGB颜色(人脸识别使用的)
+    rgb_frame = frame[:, :, ::-1]
+
+    # 找出当前视频帧中所有的人脸和人脸编码
+    face_locations = face_recognition.face_locations(rgb_frame, model='cnn')
+    face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+
+    # 人数识别
+    for face_encoding in face_encodings:
+        # 看看这张脸和已知的脸是否匹配
+        match = face_recognition.compare_faces(known_faces, face_encoding, tolerance=0.6)
+
+        if any(match) :
+            pass
+        else:
+            face_count += 1
+        known_faces.append(face_encoding)
+
+    # 年龄性别识别
+    rec_result = age_gender_model.predict(rgb_frame, face_locations)
+
+    # 画出框及属性
+    for info in rec_result:
+        gender = info.get('gender', {}).get('value', 'unknown')
+        gender_confidence = info.get('gender', {}).get('confidence', 100)
+        age = info.get('age', {}).get('value', 999)
+        age_confidence = info.get('age', {}).get('confidence', 100)
+        face_location = info.get('face', [])
+
+        left, top, right, bottom = face_location[0], face_location[1], face_location[2], face_location[3]
+        # draw a box around the face
+        # (0,0,255)对应颜色(BGR)，2对应线粗细
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        font = cv2.FONT_HERSHEY_DUPLEX  # 正常大小无衬线字体
+        name = f"gender: {gender} (~{gender_confidence}%)."
+        cv2.putText(frame, name, (left - 6, bottom + 50), font, 0.5, (255, 255, 255), 1)
+        name = f"age: {age} (~{age_confidence}%)."
+        cv2.putText(frame, name, (left - 6, bottom + 30), font, 0.5, (255, 255, 255), 1)
+        name = f"face_count: {face_count}."
+        cv2.putText(frame, name, (left - 6, bottom + 10), font, 0.5, (255, 255, 255), 1)
+
+    if frame_number % 100 == 0:
+        print('writing frame {} / {}'.format(frame_number, frame_count))
+    output_video.write(frame)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>writing frame 100 / 2356
+writing frame 200 / 2356
+writing frame 300 / 2356
+writing frame 400 / 2356
+writing frame 500 / 2356
+writing frame 600 / 2356
+writing frame 700 / 2356
+writing frame 800 / 2356
+writing frame 900 / 2356
+writing frame 1000 / 2356
+writing frame 1100 / 2356
+writing frame 1200 / 2356
+writing frame 1300 / 2356
+writing frame 1400 / 2356
+writing frame 1500 / 2356
+writing frame 1600 / 2356
+writing frame 1700 / 2356
+writing frame 1800 / 2356
+writing frame 1900 / 2356
+writing frame 2000 / 2356
+writing frame 2100 / 2356
+writing frame 2200 / 2356
+writing frame 2300 / 2356
+CPU times: user 7min 34s, sys: 19.3 s, total: 7min 53s
+Wall time: 7min 49s
+</code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python"># all done
+input_video.release()  # 释放视频流
+cv2.destroyAllWindows()  # 关闭所有窗口
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io" rel="external nofollow noreferrer">Myhaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://myhaa.github.io/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/">https://myhaa.github.io/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/">
+                                    <span class="chip bg-color">人脸检测</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您的赏识！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a1900fd4b8fb7a569ef7',
+        clientSecret: 'd1176a5ad242e4887008f5d4389ea5a35f199c44',
+        repo: 'myhaa.github.io',
+        owner: 'myhaa',
+        admin: ["myhaa"],
+        id: '2022-02-14T10-45-18',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/02/14/shen-du-xue-xi-zhi-ren-lian-jian-ce/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深度学习之人脸检测">
+                        
+                        <span class="card-title">深度学习之人脸检测</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            图片或者视频人脸检测及属性分析
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/">
+                        <span class="chip bg-color">人脸检测</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/08/shen-du-xue-xi-ng-zhi-you-hua-fang-fa-shi-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深度学习之吴恩达课程作业5">
+                        
+                        <span class="card-title">深度学习之吴恩达课程作业5</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            参数求解优化方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Myhaa's Blog<br />'
+            + '文章作者: Myhaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://myhaa.github.io" target="_blank">Myhaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "11";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
