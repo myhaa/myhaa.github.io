@@ -1,5 +1,5 @@
 ---
-title: 深度学习之吴恩达课程作业4
+title: L2W5加强深度网络性能的一些技巧
 author: Myhaa
 top: false
 cover: false

@@ -1,5 +1,5 @@
 ---
-title: 深度学习之吴恩达课程作业5
+title: L2W6参数求解优化方法
 author: Myhaa
 top: false
 cover: false

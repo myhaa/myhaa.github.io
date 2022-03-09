@@ -1,5 +1,5 @@
 ---
-title: 深度学习之吴恩达课程作业3
+title: L1W4深层神经网络构建及应用
 author: Myhaa
 top: false
 cover: false
@@ -1000,6 +1000,7 @@ $$
     2. $W^{[l]}$的维度为$(n^{[l]}, n^{[l-1]})$
     3. $A^{[l-1]}$的维度为$(n^{[l-1]}, m)$，故其导数不携带$1/m$
 * 练习：
+    
     1. 实现`func_linear_backward()`函数
 
 
@@ -1229,6 +1230,7 @@ dA_prev, dW, db
     `dAL` $= \frac{\partial \mathcal{L}}{\partial A^{[L]}}$=`- (np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))`
 
 * 练习
+    
     1. 实现`func_L_model_backward()`函数
 
 

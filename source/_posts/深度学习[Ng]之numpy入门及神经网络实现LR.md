@@ -1,5 +1,5 @@
 ---
-title: 深度学习之吴恩达课程作业1
+title: L1W2W3numpy入门和神经网络实现逻辑回归
 author: Myhaa
 top: false
 cover: false

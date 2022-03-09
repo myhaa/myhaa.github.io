@@ -1,5 +1,5 @@
 ---
-title: 深度学习之吴恩达课程作业2
+title: L1W3一层隐藏层神经网络
 author: Myhaa
 top: false
 cover: false
@@ -680,6 +680,7 @@ for key, value in cache.items():
 
 
 * 练习：
+    
     2. 实现`func_compute_cost()`函数
 * 说明：
     1. 计算公式
@@ -1060,6 +1061,7 @@ for key, value in parameters.items():
 ### 4.6-预测
 
 * 练习
+    
     1. 实现`func_predict()`
 * 提示
     1. 预测公式为：
