@@ -895,3 +895,15 @@ GROUP BY udid, item_name, row2_row1
 ORDER BY udid, item_name, row2_row1
 ```
 
+## 16、长度表转宽度表
+
+* [从长格式表到宽格式表的转换](https://cloud.tencent.com/developer/article/1430540)
+
+```hive
+select     user_no,     str_to_map(concat_ws(',',sort_array(collect_set(concat_ws(':', message, detail))))) message1     from user_info     group by user_no     order by user_no
+```
+
+```hive
+select     user_no,    message1['name'] name,    message1['sex'] sex,    message1['age'] age,    message1['education'] education,    message1['regtime'] regtime,    message1['first_buytime'] first_buytimefrom   (select      user_no,      str_to_map(concat_ws(',',collect_set(concat_ws(':', message, detail)))) message1      from user_info      group by user_no      order by user_no   ) a
+```
+
