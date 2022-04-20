@@ -907,3 +907,12 @@ select     user_no,     str_to_map(concat_ws(',',sort_array(collect_set(concat_w
 select     user_no,    message1['name'] name,    message1['sex'] sex,    message1['age'] age,    message1['education'] education,    message1['regtime'] regtime,    message1['first_buytime'] first_buytimefrom   (select      user_no,      str_to_map(concat_ws(',',collect_set(concat_ws(':', message, detail)))) message1      from user_info      group by user_no      order by user_no   ) a
 ```
 
+## 17、`str_to_map`函数
+
+* [Hive str_to_map函数](https://www.cnblogs.com/kopao/p/13753560.html)
+* 注意key,value中本身有分隔符的情况
+
+```sql
+str_to_map(concat_ws(',',collet_set(concat(orderstatus,'=',operatetime))),',','=')
+```
+
