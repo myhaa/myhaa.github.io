@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2022-03-09T01:58:27.819Z</updated>
+  <updated>2022-04-20T11:20:42.630Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ShuffleNetV1pytorch代码实战</title>
+    <link href="https://myhaa.github.io/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/"/>
+    <id>https://myhaa.github.io/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/</id>
+    <published>2022-04-20T02:16:11.000Z</published>
+    <updated>2022-04-20T11:20:42.630Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ShuffleNetV1pytorch代码实战&quot;&gt;&lt;a href=&quot;#ShuffleNetV1pytorch代码实战&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="代码实战" scheme="https://myhaa.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
+    
+    
+      <category term="代码实战" scheme="https://myhaa.github.io/tags/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="ShuffleNet" scheme="https://myhaa.github.io/tags/ShuffleNet/"/>
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>代码实战之知识蒸馏</title>
@@ -39,9 +70,9 @@
       <category term="代码实战" scheme="https://myhaa.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
     
     
-      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="代码实战" scheme="https://myhaa.github.io/tags/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="知识蒸馏" scheme="https://myhaa.github.io/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/"/>
     
@@ -553,36 +584,6 @@
         
         
           &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;KMeans&quot;&gt;&lt;a href=&quot;#KMeans&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="https://myhaa.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="数据挖掘" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
-    
-      <category term="十大算法" scheme="https://myhaa.github.io/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习之决策树</title>
-    <link href="https://myhaa.github.io/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/"/>
-    <id>https://myhaa.github.io/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/</id>
-    <published>2021-03-15T11:39:45.000Z</published>
-    <updated>2021-06-21T08:07:45.209Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/2021/03/15/ji-qi-xue-xi-zhi-jue-ce-shu/image-20210621160625825.png&quot; alt=&quot;image-20210621160625825&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;基础&quot;&gt;&lt;a
         
       
     

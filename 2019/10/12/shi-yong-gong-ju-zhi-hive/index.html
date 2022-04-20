@@ -1484,6 +1484,12 @@ ORDER BY udid, item_name, row2_row1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-lang-hive"><code class="language-lang-hive">select     user_no,    message1['name'] name,    message1['sex'] sex,    message1['age'] age,    message1['education'] education,    message1['regtime'] regtime,    message1['first_buytime'] first_buytimefrom   (select      user_no,      str_to_map(concat_ws(',',collect_set(concat_ws(':', message, detail)))) message1      from user_info      group by user_no      order by user_no   ) a
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="17、str-to-map函数"><a href="#17、str-to-map函数" class="headerlink" title="17、str_to_map函数"></a>17、<code>str_to_map</code>函数</h2><ul>
+<li><a href="https://www.cnblogs.com/kopao/p/13753560.html" target="_blank" rel="noopener">Hive str_to_map函数</a></li>
+<li>注意key,value中本身有分隔符的情况</li>
+</ul>
+<pre class="line-numbers language-lang-sql"><code class="language-lang-sql">str_to_map(concat_ws(',',collet_set(concat(orderstatus,'=',operatetime))),',','=')
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr/>
