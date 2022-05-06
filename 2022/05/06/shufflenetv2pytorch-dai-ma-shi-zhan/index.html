@@ -4,15 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="ShuffleNetV1pytorch代码实战, 统计学 数据挖掘 机器学习 计算广告">
-    <meta name="description" content="ShuffleNetV1pytorch代码实战本文概述
-使用pytorch在MNIST数据集上，实战ShuffleNetV1
+    <meta name="keywords" content="ShuffleNetV2pytorch代码实战, 统计学 数据挖掘 机器学习 计算广告">
+    <meta name="description" content="ShuffleNetV2pytorch代码实战本文概述
+使用pytorch在MNIST数据集上，实战ShuffleNetV2
 本文参考同济子豪兄b站视频; ShuffleNet-Series
 
 
 论文地址
 
-核心算法group pointw">
+ShuffleNetV1核心算法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ShuffleNetV1pytorch代码实战 | Myhaa&#39;s Blog</title>
+    <title>ShuffleNetV2pytorch代码实战 | Myhaa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,13 +312,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ShuffleNetV1pytorch代码实战
+                        ShuffleNetV2pytorch代码实战
                     </div>
                 </div>
             </div>
@@ -463,7 +463,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-20
+                    2022-05-06
                 </div>
                 
 
@@ -479,7 +479,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    21 分
                 </div>
                 
 				
@@ -495,14 +495,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ShuffleNetV1pytorch代码实战"><a href="#ShuffleNetV1pytorch代码实战" class="headerlink" title="ShuffleNetV1pytorch代码实战"></a>ShuffleNetV1pytorch代码实战</h1><h2 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h2><ol>
-<li>使用pytorch在MNIST数据集上，实战ShuffleNetV1</li>
-<li>本文参考<a href="https://www.bilibili.com/video/BV1dQ4y1m7oY?p=1" target="_blank" rel="noopener">同济子豪兄b站视频</a>; <a href="https://github.com/megvii-model/ShuffleNet-Series" target="_blank" rel="noopener">ShuffleNet-Series</a></li>
+                <h1 id="ShuffleNetV2pytorch代码实战"><a href="#ShuffleNetV2pytorch代码实战" class="headerlink" title="ShuffleNetV2pytorch代码实战"></a>ShuffleNetV2pytorch代码实战</h1><h2 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h2><ol>
+<li>使用pytorch在MNIST数据集上，实战ShuffleNetV2</li>
+<li>本文参考<a href="https://www.bilibili.com/video/BV1d3411Y7Ms?spm_id_from=333.999.0.0" target="_blank" rel="noopener">同济子豪兄b站视频</a>; <a href="https://github.com/megvii-model/ShuffleNet-Series" target="_blank" rel="noopener">ShuffleNet-Series</a></li>
 </ol>
 <ul>
-<li><a href="https://arxiv.org/abs/1707.01083" target="_blank" rel="noopener">论文地址</a></li>
+<li><a href="https://arxiv.org/abs/1807.11164" target="_blank" rel="noopener">论文地址</a></li>
 </ul>
-<h2 id="核心算法"><a href="#核心算法" class="headerlink" title="核心算法"></a>核心算法</h2><h3 id="group-pointwise-convolution：分组1-1卷积"><a href="#group-pointwise-convolution：分组1-1卷积" class="headerlink" title="group pointwise convolution：分组1*1卷积"></a>group pointwise convolution：分组1*1卷积</h3><h4 id="常规卷积操作"><a href="#常规卷积操作" class="headerlink" title="常规卷积操作"></a>常规卷积操作</h4><ul>
+<h2 id="ShuffleNetV1核心算法"><a href="#ShuffleNetV1核心算法" class="headerlink" title="ShuffleNetV1核心算法"></a>ShuffleNetV1核心算法</h2><h3 id="group-pointwise-convolution：分组1-1卷积"><a href="#group-pointwise-convolution：分组1-1卷积" class="headerlink" title="group pointwise convolution：分组1*1卷积"></a>group pointwise convolution：分组1*1卷积</h3><h4 id="常规卷积操作"><a href="#常规卷积操作" class="headerlink" title="常规卷积操作"></a>常规卷积操作</h4><ul>
 <li>对于一张<code>5*5*3</code>的输入</li>
 <li>经过<code>3×3</code>卷积核的卷积层(假设输出<code>channel=4</code>，则卷积核<code>shape=3*3*3*4</code>), 最终输出<code>4</code>个<code>Feature Map</code></li>
 <li>如果有<code>same padding</code>则尺寸与输入层相同(<code>5*5</code>)，如果没有则尺寸变为<code>3*3</code></li>
@@ -531,12 +531,34 @@
 <li>如下图</li>
 </ul>
 <p><img src="../images/shuffle_net_architecture_1.png" alt="ShuffleNet网络结构1"><br><img src="../images/shuffle_net_architecture_2.png" alt="ShuffleNet网络结构2"></p>
+<h2 id="ShuffleNetV2核心算法"><a href="#ShuffleNetV2核心算法" class="headerlink" title="ShuffleNetV2核心算法"></a>ShuffleNetV2核心算法</h2><h3 id="四个问题"><a href="#四个问题" class="headerlink" title="四个问题"></a>四个问题</h3><ol>
+<li>乘-加浮点运算次数FLOPs仅反应卷积层，仅为间接指标</li>
+<li>不同硬件上的测试结果不同</li>
+<li>数据读写的内存MAC占用影响很大</li>
+<li>Element-wise逐元素操作带来的开销不可忽略</li>
+</ol>
+<h3 id="四个准则"><a href="#四个准则" class="headerlink" title="四个准则"></a>四个准则</h3><ol>
+<li>输入输出通道数相同时，内存访问量MAC最小</li>
+<li>分组数过大的分组卷积会增加MAC</li>
+<li>碎片化操作对并行加速不友好</li>
+<li>逐元素操作带来的内存和消耗不可忽略</li>
+</ol>
+<h3 id="1-1卷积的FLOPs和MAC"><a href="#1-1卷积的FLOPs和MAC" class="headerlink" title="1*1卷积的FLOPs和MAC"></a>1*1卷积的FLOPs和MAC</h3><p><img src="../images/shuffle_net_v2_1_1_conv_flops_mac.png" alt="1\*1卷积的FLOPs和MAC"></p>
+<h3 id="ShuffleNetV2网络结构"><a href="#ShuffleNetV2网络结构" class="headerlink" title="ShuffleNetV2网络结构"></a>ShuffleNetV2网络结构</h3><p><img src="../images/shuffle_net_v2_architecture.png" alt="ShuffleNetV2网络结构"></p>
+<h3 id="改进点"><a href="#改进点" class="headerlink" title="改进点"></a>改进点</h3><ol>
+<li>去掉了分组卷积，降低MAC</li>
+<li>将channel shuffle提前成channel split（对半分）</li>
+<li>将add操作改为concat操作，避免逐元素操作</li>
+</ol>
 <h2 id="导入module"><a href="#导入module" class="headerlink" title="导入module"></a>导入module</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import torch
 import torchvision
 from torchvision import transforms
 from torchinfo import summary
 from torch.utils.data import DataLoader
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python"># 设置随机数，便于复现
 my_seed = 2030
 torch.manual_seed(my_seed)
@@ -550,8 +572,8 @@ torch.backends.cudnn.benchmark = False
 batch_size = 32
 
 
-models_dir_path = './models/ShuffleNetV1'
-logs_dir_path = './logs/ShuffleNetV1'
+models_dir_path = './models/ShuffleNetV2'
+logs_dir_path = './logs/ShuffleNetV2'
 
 device
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -757,12 +779,12 @@ print(accuracy(test_inputs, test_targets))
                            input(N_i, C_j, stride[0] \times h + m, stride[1] \times w + n)</script><p>If :attr:<code>padding</code> is non-zero, then the input is implicitly zero-padded on both sides<br>for :attr:<code>padding</code> number of points.</p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">import torch
 import torch.nn as nn
-import torch.nn.functional as F
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">class ShuffleV1Block(nn.Module):
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">class ShuffleV2Block(nn.Module):
     # * 后面是限制命名关键字参数，**kw是命名关键字参数，可以传任意多参数
-    def __init__(self, inp, oup, *, group, first_group, mid_channels, ksize, stride):
-        super(ShuffleV1Block, self).__init__()
+    # 相比ShuffleNetV1，它去掉了分组卷积
+    def __init__(self, inp, oup, mid_channels, *, ksize, stride):
+        super(ShuffleV2Block, self).__init__()
         self.stride = stride
         assert stride in [1, 2]
 
@@ -771,117 +793,93 @@ import torch.nn.functional as F
         pad = ksize // 2  # padding
         self.pad = pad
         self.inp = inp
-        self.group = group  # 分组数
 
-        if stride == 2:
-            # 方便下采样concat拼接
-            outputs = oup - inp
-        else:
-            outputs = oup
+        outputs = oup - inp
 
-        branch_main_1 = [
+        branch_main = [
             # ponitwise  1*1分组卷积降维
             nn.Conv2d(in_channels=inp, 
                       out_channels=mid_channels, 
                       kernel_size=1, 
                       stride=1, 
                       padding=0, 
-                      groups=1 if first_group else group, 
                       bias=False),
             nn.BatchNorm2d(mid_channels),
             nn.ReLU(inplace=True),
+
             # depthwise  3*3 depth卷积
             nn.Conv2d(mid_channels, mid_channels, ksize, stride, pad, groups=mid_channels, bias=False),
             nn.BatchNorm2d(mid_channels),
-        ]
 
-        branch_main_2 = [
             # pointwise-linear  1*1分组卷积升维
-            nn.Conv2d(mid_channels, outputs, 1, 1, 0, groups=group, bias=False),
+            nn.Conv2d(mid_channels, outputs, 1, 1, 0, bias=False),
             nn.BatchNorm2d(outputs),
+            nn.ReLU(inplace=True)
         ]
 
-        self.branch_main_1 = nn.Sequential(*branch_main_1)
-        self.branch_main_2 = nn.Sequential(*branch_main_2)
+        self.branch_main = nn.Sequential(*branch_main)
 
         if stride == 2:
             # 下采样concat拼接
-            self.branch_proj = nn.AvgPool2d(kernel_size=3, stride=2, padding=1)
+            branch_proj = [
+                # depthwise  3*3 depth卷积
+                nn.Conv2d(inp, inp, ksize, stride, pad, groups=inp, bias=False),
+                nn.BatchNorm2d(inp),
+
+                # pointwise-linear  1*1分组卷积升维
+                nn.Conv2d(inp, inp, 1, 1, 0, bias=False),
+                nn.BatchNorm2d(inp),
+                nn.ReLU(inplace=True)
+            ]
+
+            self.branch_proj = nn.Sequential(*branch_proj)
+        else:
+            self.branch_proj = None
 
     def channel_shuffle(self, x):
         batch_size, num_channels, height, width = x.data.size()
-        assert num_channels % self.group == 0
-        group_channels = num_channels // self.group  # 计算每个组多少channel数
+        assert num_channels % 4 == 0
 
-        x = x.reshape(batch_size, group_channels, self.group, height, width)
-        x = x.permute(0, 2, 1, 3, 4)  # 转置
-        x = x.reshape(batch_size, num_channels, height, width)
+        x = x.reshape(batch_size * num_channels // 2, 2, height * width)
+        x = x.permute(1, 0, 2)  # 转置
+        x = x.reshape(2, -1, num_channels // 2, height, width)
 
-        return x
+        return x[0], x[1]
 
     def forward(self, old_x):
-        x = old_x
-        x_proj = old_x
-
-        x = self.branch_main_1(x)
-
-        if self.group > 1:
-            x = self.channel_shuffle(x)
-
-        x = self.branch_main_2(x)
-
         if self.stride == 1:
-            # 是我们设计出的strid=1的ShuffleNet单元，
-            # 首先进行了1*1的Gconv(分组卷积)，
-            # 然后接了通道重排(channel shuffle)，
-            # 然后是3*3dw卷积(深度可分离卷积，即各通道做各自的)，但是后边我们并没有接relu，
-            # 最后再add操作
-            return F.relu(x + x_proj)
+            x_proj, x = self.channel_shuffle(old_x)
+            return torch.cat((x_proj, self.branch_main(x)), 1)
         elif self.stride == 2:
-            # 我们设计出了strid=2的ShuffleNet单元，其在残差边上使用了3*3的平均池化，
-            # 注意最后是concat操作，而不是add操作，这样可以不增加计算量的前提下扩大特征维度，（add是通道数值相加，concat是通道堆叠）
-            # 举个例子，所以这里是432+48=480 channels
-            return torch.cat((self.branch_proj(x_proj), F.relu(x)), 1)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            x_proj = old_x
+            x = old_x
+            return torch.cat((self.branch_proj(x_proj), self.branch_main(x)), 1)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="network-py"><a href="#network-py" class="headerlink" title="network.py"></a>network.py</h2><pre class="line-numbers language-lang-python"><code class="language-lang-python">import torch
 import torch.nn as nn
-# from blocks import ShuffleV1Block
+# from blocks import ShuffleV2Block
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">class ShuffleNetV1(nn.Module):
-    def __init__(self, input_size=224, n_class=1000, model_size='2.0x', group=None):
-        super(ShuffleNetV1, self).__init__()
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">class ShuffleNetV2(nn.Module):
+    def __init__(self, input_size=224, n_class=1000, model_size='1.5x'):
+        super(ShuffleNetV2, self).__init__()
         print('model size is ', model_size)
-
-        assert group is not None
 
         self.stage_repeats = [4, 8, 4]
         self.model_size = model_size
 
-        if group == 3:
-            if model_size == '0.5x':
-                self.stage_out_channels = [-1, 12, 120, 240, 480]
-            elif model_size == '1.0x':
-                self.stage_out_channels = [-1, 24, 240, 480, 960]
-            elif model_size == '1.5x':
-                self.stage_out_channels = [-1, 24, 360, 720, 1440]
-            elif model_size == '2.0x':
-                self.stage_out_channels = [-1, 48, 480, 960, 1920]
-            else:
-                raise NotImplementedError
-        elif group == 8:
-            if model_size == '0.5x':
-                self.stage_out_channels = [-1, 16, 192, 384, 768]
-            elif model_size == '1.0x':
-                self.stage_out_channels = [-1, 24, 384, 768, 1536]
-            elif model_size == '1.5x':
-                self.stage_out_channels = [-1, 24, 576, 1152, 2304]
-            elif model_size == '2.0x':
-                self.stage_out_channels = [-1, 48, 768, 1536, 3072]
-            else:
-                raise NotImplementedError
+        if model_size == '0.5x':
+            self.stage_out_channels = [-1, 24, 48, 96, 192, 1024]
+        elif model_size == '1.0x':
+            self.stage_out_channels = [-1, 24, 116, 232, 464, 1024]
+        elif model_size == '1.5x':
+            self.stage_out_channels = [-1, 24, 176, 352, 704, 1024]
+        elif model_size == '2.0x':
+            self.stage_out_channels = [-1, 24, 244, 488, 976, 2048]
+        else:
+            raise NotImplementedError
 
         # building first layer
         input_channel = self.stage_out_channels[1]  # 第一层输出channel
@@ -904,17 +902,30 @@ import torch.nn as nn
             output_channel = self.stage_out_channels[idx_stage+2]
 
             for i in range(num_repeat):
-                stride = 2 if i == 0 else 1
-                first_group = idx_stage == 0 and i == 0
-                self.features.append(ShuffleV1Block(input_channel, output_channel, 
-                                                    group=group, first_group=first_group,
-                                                    mid_channels=output_channel // 4,
-                                                    ksize=3, stride=stride))
+                if i == 0:
+                    self.features.append(
+                        ShuffleV2Block(input_channel, output_channel, 
+                                       mid_channels=output_channel // 2,
+                                       ksize=3, stride=2))
+                else:
+                    self.features.append(
+                        ShuffleV2Block(input_channel // 2, output_channel, 
+                                       mid_channels=output_channel // 2,
+                                       ksize=3, stride=1))
                 input_channel = output_channel
 
         self.features = nn.Sequential(*self.features)
 
-        self.globalpool = nn.AvgPool2d(7)
+        self.last_conv = nn.Sequential(
+            nn.Conv2d(input_channel, self.stage_out_channels[-1], 1, 1, 0, bias=False),
+            nn.BatchNorm2d(self.stage_out_channels[-1]),
+            nn.ReLU(inplace=True)
+        )
+
+        self.globalpool = nn.AvgPool2d(kernel_size=7)
+
+        if self.model_size == '2.0x':
+            self.dropout = nn.Dropout(0.2)
 
         self.classifier = nn.Sequential(
             nn.Linear(self.stage_out_channels[-1], n_class, bias=False)
@@ -925,8 +936,12 @@ import torch.nn as nn
         x = self.first_conv(x)
         x = self.maxpool(x)
         x = self.features(x)
+        x = self.last_conv(x)
 
         x = self.globalpool(x)
+        if self.model_size == '2.0x':
+            x = self.dropout(x)
+
         x = x.contiguous().view(-1, self.stage_out_channels[-1])
         x = self.classifier(x)
         return x
@@ -937,7 +952,7 @@ import torch.nn as nn
                 if 'first' in name:
                     nn.init.normal_(m.weight, 0, 0.01)
                 else:
-                    nn.init.normal_(m.weight, 0, 1.0/m.weight.shape[1])
+                    nn.init.normal_(m.weight, 0, 1.0 / m.weight.shape[1])
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
             elif isinstance(m, nn.BatchNorm2d):
@@ -954,11 +969,11 @@ import torch.nn as nn
                 nn.init.normal_(m.weight, 0, 0.01)
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">model = ShuffleNetV1(group=3)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">model = ShuffleNetV2()
 summary(model)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre><code>model size is  2.0x
+<pre><code>model size is  1.5x
 
 
 
@@ -967,70 +982,58 @@ summary(model)
 =================================================================
 Layer (type:depth-idx)                   Param #
 =================================================================
-ShuffleNetV1                             --
+ShuffleNetV2                             --
 ├─Sequential: 1-1                        --
-│    └─Conv2d: 2-1                       1,296
-│    └─BatchNorm2d: 2-2                  96
+│    └─Conv2d: 2-1                       648
+│    └─BatchNorm2d: 2-2                  48
 │    └─ReLU: 2-3                         --
 ├─MaxPool2d: 1-2                         --
 ├─Sequential: 1-3                        --
-│    └─ShuffleV1Block: 2-4               --
-│    │    └─Sequential: 3-1              7,320
-│    │    └─Sequential: 3-2              18,144
-│    │    └─AvgPool2d: 3-3               --
-│    └─ShuffleV1Block: 2-5               --
-│    │    └─Sequential: 3-4              20,760
-│    │    └─Sequential: 3-5              20,160
-│    └─ShuffleV1Block: 2-6               --
-│    │    └─Sequential: 3-6              20,760
-│    │    └─Sequential: 3-7              20,160
-│    └─ShuffleV1Block: 2-7               --
-│    │    └─Sequential: 3-8              20,760
-│    │    └─Sequential: 3-9              20,160
-│    └─ShuffleV1Block: 2-8               --
-│    │    └─Sequential: 3-10             41,520
-│    │    └─Sequential: 3-11             39,360
-│    │    └─AvgPool2d: 3-12              --
-│    └─ShuffleV1Block: 2-9               --
-│    │    └─Sequential: 3-13             79,920
-│    │    └─Sequential: 3-14             78,720
-│    └─ShuffleV1Block: 2-10              --
-│    │    └─Sequential: 3-15             79,920
-│    │    └─Sequential: 3-16             78,720
-│    └─ShuffleV1Block: 2-11              --
-│    │    └─Sequential: 3-17             79,920
-│    │    └─Sequential: 3-18             78,720
-│    └─ShuffleV1Block: 2-12              --
-│    │    └─Sequential: 3-19             79,920
-│    │    └─Sequential: 3-20             78,720
-│    └─ShuffleV1Block: 2-13              --
-│    │    └─Sequential: 3-21             79,920
-│    │    └─Sequential: 3-22             78,720
-│    └─ShuffleV1Block: 2-14              --
-│    │    └─Sequential: 3-23             79,920
-│    │    └─Sequential: 3-24             78,720
-│    └─ShuffleV1Block: 2-15              --
-│    │    └─Sequential: 3-25             79,920
-│    │    └─Sequential: 3-26             78,720
-│    └─ShuffleV1Block: 2-16              --
-│    │    └─Sequential: 3-27             159,840
-│    │    └─Sequential: 3-28             155,520
-│    │    └─AvgPool2d: 3-29              --
-│    └─ShuffleV1Block: 2-17              --
-│    │    └─Sequential: 3-30             313,440
-│    │    └─Sequential: 3-31             311,040
-│    └─ShuffleV1Block: 2-18              --
-│    │    └─Sequential: 3-32             313,440
-│    │    └─Sequential: 3-33             311,040
-│    └─ShuffleV1Block: 2-19              --
-│    │    └─Sequential: 3-34             313,440
-│    │    └─Sequential: 3-35             311,040
-├─AvgPool2d: 1-4                         --
-├─Sequential: 1-5                        --
-│    └─Linear: 2-20                      1,920,000
+│    └─ShuffleV2Block: 2-4               --
+│    │    └─Sequential: 3-1              16,936
+│    │    └─Sequential: 3-2              888
+│    └─ShuffleV2Block: 2-5               --
+│    │    └─Sequential: 3-3              16,808
+│    └─ShuffleV2Block: 2-6               --
+│    │    └─Sequential: 3-4              16,808
+│    └─ShuffleV2Block: 2-7               --
+│    │    └─Sequential: 3-5              16,808
+│    └─ShuffleV2Block: 2-8               --
+│    │    └─Sequential: 3-6              64,592
+│    │    └─Sequential: 3-7              33,264
+│    └─ShuffleV2Block: 2-9               --
+│    │    └─Sequential: 3-8              64,592
+│    └─ShuffleV2Block: 2-10              --
+│    │    └─Sequential: 3-9              64,592
+│    └─ShuffleV2Block: 2-11              --
+│    │    └─Sequential: 3-10             64,592
+│    └─ShuffleV2Block: 2-12              --
+│    │    └─Sequential: 3-11             64,592
+│    └─ShuffleV2Block: 2-13              --
+│    │    └─Sequential: 3-12             64,592
+│    └─ShuffleV2Block: 2-14              --
+│    │    └─Sequential: 3-13             64,592
+│    └─ShuffleV2Block: 2-15              --
+│    │    └─Sequential: 3-14             64,592
+│    └─ShuffleV2Block: 2-16              --
+│    │    └─Sequential: 3-15             253,088
+│    │    └─Sequential: 3-16             128,480
+│    └─ShuffleV2Block: 2-17              --
+│    │    └─Sequential: 3-17             253,088
+│    └─ShuffleV2Block: 2-18              --
+│    │    └─Sequential: 3-18             253,088
+│    └─ShuffleV2Block: 2-19              --
+│    │    └─Sequential: 3-19             253,088
+├─Sequential: 1-4                        --
+│    └─Conv2d: 2-20                      720,896
+│    └─BatchNorm2d: 2-21                 2,048
+│    └─ReLU: 2-22                        --
+├─AvgPool2d: 1-5                         --
+├─Sequential: 1-6                        --
+│    └─Linear: 2-23                      1,024,000
 =================================================================
-Total params: 5,449,776
-Trainable params: 5,449,776
+Total params: 3,506,720
+Trainable params: 3,506,720
 Non-trainable params: 0
 =================================================================
 </code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">test_data = torch.rand(5, 3, 224, 224)
@@ -1044,11 +1047,11 @@ test_data.size()
 <pre><code>torch.Size([5, 1000])
 </code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">test_outputs
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre><code>tensor([[ 0.3845, -0.2636, -0.4430,  ..., -0.6833, -0.5021,  0.2242],
-        [ 0.3387, -0.2145, -0.3742,  ..., -0.6619, -0.5104,  0.1868],
-        [ 0.4063, -0.4180, -0.2883,  ..., -0.5225, -0.6099,  0.0852],
-        [ 0.2605, -0.1629, -0.4033,  ..., -0.6487, -0.4731,  0.1499],
-        [ 0.2464, -0.3109, -0.5411,  ..., -0.6478, -0.5235,  0.0668]],
+<pre><code>tensor([[-0.1431,  0.0366, -0.0717,  ...,  0.1740,  0.0371,  0.0341],
+        [-0.1007, -0.0392, -0.0115,  ...,  0.1421,  0.0067,  0.0377],
+        [-0.0906, -0.0042, -0.0363,  ...,  0.1792,  0.0322,  0.0410],
+        [-0.0787,  0.0394, -0.0279,  ...,  0.1573,  0.0437,  0.0645],
+        [-0.1096,  0.0807, -0.0481,  ...,  0.1727,  0.0823,  0.0252]],
        grad_fn=&lt;MmBackward0&gt;)
 </code></pre><pre class="line-numbers language-lang-python"><code class="language-lang-python">
 
@@ -1095,13 +1098,13 @@ print(img.size)
 img
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>(956, 555)
-</code></pre><p><img src="/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/output_43_1.png" alt="output_43_1">   </p>
+</code></pre><p><img src="/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/output_45_1.png" alt="png"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">img_resize = OpencvResize(256)(img)
 print(img_resize.size)
 img_resize
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>(441, 256)
-</code></pre><p><img src="/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/output_44_1.png" alt="output_44_1"></p>
+</code></pre><p><img src="/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/output_46_1.png" alt="png"></p>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python">class ToBGRTensor(object):
     """
     转为BGRTensor
@@ -1143,7 +1146,7 @@ img_tensor.shape
     """
     获取运行参数
     """
-    parser = argparse.ArgumentParser('ShuffleNetV1')
+    parser = argparse.ArgumentParser('ShuffleNetV2_Plus')
 
     parser.add_argument('--eval', default=False, action='store_true')
     parser.add_argument('--eval-resume', type=str, default='./models/snet_detnas.pkl', help='path for eval model')
@@ -1160,8 +1163,6 @@ img_tensor.shape
     parser.add_argument('--val-interval', type=int, default=10000, help='val interval')
     parser.add_argument('--save-interval', type=int, default=10000, help='save interval')
 
-
-    parser.add_argument('--group', type=int, default=3, help='group number')
     parser.add_argument('--model-size', type=str, default='2.0x', choices=['0.5x', '1.0x', '1.5x', '2.0x'], help='size of the model')
 
     parser.add_argument('--train-dir', type=str, default='./datasets/train', help='path to training dataset')
@@ -1169,7 +1170,7 @@ img_tensor.shape
 
     args = parser.parse_args()
     return args
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-lang-python"><code class="language-lang-python"># args = get_args()
 # args
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1346,7 +1347,7 @@ img_tensor.shape
     print('load data successfully')
 
     # 构建模型
-    model = ShuffleNetV1(group=args.group, model_size=args.model_size)
+    model = ShuffleNetV2(model_size=args.model_size)
 
     # 构建优化器
     optimizer = torch.optim.SGD(get_parameters(model),
@@ -1441,7 +1442,7 @@ img_tensor.shape
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myhaa.github.io/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/">https://myhaa.github.io/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/</a>
+                    <a href="https://myhaa.github.io/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/">https://myhaa.github.io/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1659,7 +1660,7 @@ img_tensor.shape
         repo: 'myhaa.github.io',
         owner: 'myhaa',
         admin: ["myhaa"],
-        id: '2022-04-20T10-16-11',
+        id: '2022-05-06T10-16-11',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1680,9 +1681,10 @@ img_tensor.shape
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/">
                     <div class="card-image">
@@ -1700,9 +1702,9 @@ img_tensor.shape
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1715,6 +1717,7 @@ img_tensor.shape
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1741,24 +1744,24 @@ img_tensor.shape
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/09/zhi-shi-zheng-liu-pytorch-dai-ma-shi-zhan/">
+                <a href="/2022/04/20/shufflenetv1pytorch-dai-ma-shi-zhan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="代码实战之知识蒸馏">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ShuffleNetV1pytorch代码实战">
                         
-                        <span class="card-title">代码实战之知识蒸馏</span>
+                        <span class="card-title">ShuffleNetV1pytorch代码实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            知识蒸馏pytorch代码实战
+                            ShuffleNetV1pytorch代码实战
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-20
                             </span>
                         <span class="publish-author">
                             
@@ -1779,12 +1782,12 @@ img_tensor.shape
                         <span class="chip bg-color">代码实战</span>
                     </a>
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
+                    <a href="/tags/ShuffleNet/">
+                        <span class="chip bg-color">ShuffleNet</span>
                     </a>
                     
-                    <a href="/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-                        <span class="chip bg-color">知识蒸馏</span>
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
                 </div>

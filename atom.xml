@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://myhaa.github.io/"/>
-  <updated>2022-04-20T11:20:42.630Z</updated>
+  <updated>2022-05-06T11:48:38.237Z</updated>
   <id>https://myhaa.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ShuffleNetV2pytorch代码实战</title>
+    <link href="https://myhaa.github.io/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/"/>
+    <id>https://myhaa.github.io/2022/05/06/shufflenetv2pytorch-dai-ma-shi-zhan/</id>
+    <published>2022-05-06T02:16:11.000Z</published>
+    <updated>2022-05-06T11:48:38.237Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ShuffleNetV2pytorch代码实战&quot;&gt;&lt;a href=&quot;#ShuffleNetV2pytorch代码实战&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="代码实战" scheme="https://myhaa.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
+    
+    
+      <category term="代码实战" scheme="https://myhaa.github.io/tags/%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="ShuffleNet" scheme="https://myhaa.github.io/tags/ShuffleNet/"/>
+    
+      <category term="深度学习" scheme="https://myhaa.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>ShuffleNetV1pytorch代码实战</title>
@@ -567,35 +598,6 @@
     
     
       <category term="读书笔记" scheme="https://myhaa.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习之聚类</title>
-    <link href="https://myhaa.github.io/2021/03/17/ji-qi-xue-xi-zhi-ju-lei/"/>
-    <id>https://myhaa.github.io/2021/03/17/ji-qi-xue-xi-zhi-ju-lei/</id>
-    <published>2021-03-17T01:41:33.000Z</published>
-    <updated>2021-06-21T08:08:26.582Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;h2 id=&quot;KMeans&quot;&gt;&lt;a href=&quot;#KMeans&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="https://myhaa.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="数据挖掘" scheme="https://myhaa.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
-    
-      <category term="十大算法" scheme="https://myhaa.github.io/tags/%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
